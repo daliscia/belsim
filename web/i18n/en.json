@@ -1,0 +1,1453 @@
+{
+ "common": {
+  "baseline": "Baseline",
+  "scenario": "Scenario",
+  "baseline_total": "Baseline total",
+  "year": "Year",
+  "total": "Total",
+  "other_n": "Other ({n})",
+  "value": "Value",
+  "loading": "Loading…",
+  "unit": "Unit",
+  "all": "All",
+  "belgium": "Belgium",
+  "vs_baseline": "vs baseline",
+  "delta_vs_baseline": "Δ vs baseline",
+  "pts": "pts",
+  "pts_gdp": "pts of GDP",
+  "points_gdp": "points of GDP",
+  "points": "points",
+  "thousand": "thousand",
+  "million": "million",
+  "current_prices": "current prices",
+  "prices_of": "{year} prices",
+  "in_prices_of": "in {year} prices",
+  "not_provided": "not provided by the model yet",
+  "remove": "Remove",
+  "change": "Change",
+  "in_scenario": "In scenario",
+  "add_to_scenario": "Add to scenario",
+  "measure": "Measure",
+  "units": "units",
+  "server_unreachable": "The server is not reachable. Start it with: {cmd}",
+  "n_measures": {
+   "one": "{n} measure",
+   "other": "{n} measures"
+  },
+  "n_changes": {
+   "one": "{n} change",
+   "other": "{n} changes"
+  },
+  "list_sep": ", ",
+  "colon": ": ",
+  "per_year": "per year",
+  "all_regions": "All three regions",
+  "region": "Region",
+  "skip": "Skip to content",
+  "still_computing": "The server is still computing this; try again in a minute."
+ },
+ "unit": {
+  "bn": "€ bn",
+  "bn_real": "€ bn, {year} prices",
+  "pct_gdp": "% of GDP",
+  "pct_gdp_short": "% GDP",
+  "eur_real": "€, {year} prices",
+  "thousand_persons": "thousand persons",
+  "persons": "persons",
+  "k": "k",
+  "index": "index, {year} = 1",
+  "years": "years",
+  "y": "y",
+  "eur_per_year": "€ per year",
+  "million_persons": "million"
+ },
+ "fmt": {
+  "pct": "{v}%",
+  "eur": "€ {v}",
+  "eur_bn": "€ {v} bn"
+ },
+ "nav": {
+  "tagline": "Belgium, economy and public finances",
+  "aria": "Views",
+  "group": {
+   "projection": "Projection",
+   "policy": "Policy",
+   "trust": "Trust"
+  },
+  "overview": {
+   "title": "Overview",
+   "nav": "Overview"
+  },
+  "budget": {
+   "title": "Budget",
+   "nav": "Budget"
+  },
+  "regions": {
+   "title": "Regions",
+   "nav": "Regions"
+  },
+  "population": {
+   "title": "Population",
+   "nav": "Population"
+  },
+  "labour": {
+   "title": "Labour",
+   "nav": "Labour"
+  },
+  "economy": {
+   "title": "Economy",
+   "nav": "Economy"
+  },
+  "explorer": {
+   "title": "Explorer",
+   "nav": "All series"
+  },
+  "measures": {
+   "title": "Measures",
+   "nav": "Measures"
+  },
+  "compare": {
+   "title": "Compare scenarios",
+   "nav": "Compare"
+  },
+  "balance": {
+   "title": "Balance the budget",
+   "nav": "Balance the budget"
+  },
+  "distribution": {
+   "title": "Who gains, who loses",
+   "nav": "Distribution"
+  },
+  "payslip": {
+   "title": "Payslip",
+   "nav": "Payslip"
+  },
+  "validation": {
+   "title": "Model against official figures",
+   "nav": "Validation"
+  },
+  "active_measures": {
+   "one": "{n} active measure",
+   "other": "{n} active measures"
+  },
+  "kept_scenarios": {
+   "one": "{n} scenario kept for comparison",
+   "other": "{n} scenarios kept for comparison"
+  },
+  "model_size": "{series} series, {params} parameters",
+  "assumptions": {
+   "one": "{n} parameter is an assumption",
+   "other": "{n} parameters are assumptions"
+  },
+  "reload": "Reload model",
+  "parties": {
+   "title": "Party programmes (2024 costing)",
+   "nav": "Party programmes"
+  },
+  "methodology": "Methodology"
+ },
+ "bar": {
+  "units_aria": "Amounts shown as",
+  "lang_aria": "Language",
+  "year_aria": "Selected year",
+  "play": "Play through the years",
+  "prev_year": "Previous year",
+  "next_year": "Next year",
+  "scenario_n": "Scenario ({n})",
+  "light_theme": "Light theme",
+  "dark_theme": "Dark theme",
+  "refused": "The scenario was refused.",
+  "run_again": "Run again",
+  "simulating": "Simulating the scenario…",
+  "stale_run": "The scenario changed since the last run: figures below are from the previous run.",
+  "stale_never": "The scenario has measures that have not been simulated yet: figures below are the baseline.",
+  "run": "Run scenario",
+  "boot_failed": "The model could not be loaded",
+  "try_again": "Try again",
+  "view_failed": "The {view} view could not be drawn",
+  "loading_model": "Loading the model…",
+  "params_failed": "Parameters could not be loaded: {error}"
+ },
+ "chart": {
+  "aria": "chart",
+  "empty_series": "The model does not provide this series yet.",
+  "empty_series_plural": "The model does not provide these series yet.",
+  "empty_values": "The model does not provide these values yet.",
+  "dashed_baseline": "Dashed: baseline",
+  "range": "{lo} to {hi}",
+  "pyramid_aria": "Population pyramid",
+  "age": "Age {age}"
+ },
+ "cmp": {
+  "show_chart": "Show chart",
+  "show_table": "Show table",
+  "download_csv": "Download CSV",
+  "static": "Static (no behavioural response)",
+  "band_name": "Range of behavioural responses, ×0.5 to ×1.5 (not a confidence interval)",
+  "name_baseline": "{name}, baseline",
+  "col_baseline": "{name} (baseline)",
+  "col_scenario": "{name} (scenario)",
+  "missing": "Not provided by the model yet: {keys}.",
+  "not_available": "Not available yet.",
+  "server_missing": "The server does not provide this yet.",
+  "check_again": "Check again",
+  "compute_failed": "This could not be computed",
+  "try_again": "Try again",
+  "display_failed": "The answer of the server could not be displayed",
+  "sort_by": "Sort by {label}"
+ },
+ "panel": {
+  "aria": "Scenario builder",
+  "default_name": "My scenario",
+  "measure_n": "Measure {n}",
+  "skipped": {
+   "one": "({n} disabled or empty measure left out)",
+   "other": "({n} disabled or empty measures left out)"
+  },
+  "compare": {
+   "none": "This scenario has no active measure to compare.",
+   "updated": "Updated “{name}” in the comparison.",
+   "full": "The comparison holds at most {max} scenarios. Remove one first.",
+   "kept": "Kept “{name}” for comparison."
+  },
+  "import": {
+   "measure": "Added measure “{name}”.",
+   "scenario": "Loaded scenario “{name}”.",
+   "measures": {
+    "one": "Added {n} measure.",
+    "other": "Added {n} measures."
+   },
+   "not_scenario": "This file is not a scenario or a measure (expected \"measures\" or \"changes\").",
+   "failed": "Could not import {file}: {error}",
+   "button": "Import file"
+  },
+  "err": {
+   "no_value": "Give a value.",
+   "not_number": "“{text}” is not a number.",
+   "start_outside": "Start year is outside the simulation."
+  },
+  "change": {
+   "unknown_title": "This parameter does not exist in the model",
+   "unknown": "Unknown parameter: the run will be refused.",
+   "remove": "Remove this change",
+   "operation": "Operation",
+   "from": "from",
+   "to": "to",
+   "from_aria": "Start year",
+   "to_aria": "End year",
+   "open": "open",
+   "phase_in": "phase-in",
+   "phase_aria": "Phase-in years"
+  },
+  "op": {
+   "set": "set to",
+   "add": "add",
+   "mul": "multiply by"
+  },
+  "measure": {
+   "include_title": "Include this measure in the run",
+   "include": "Include {name}",
+   "name": "Measure name",
+   "remove_title": "Remove this measure",
+   "remove": "Remove {name}",
+   "empty": "No changes yet. Pick a parameter in Measures and add a change to this measure."
+  },
+  "lib": {
+   "regional": "Regional",
+   "unknown_params": "Unknown parameters: {list}",
+   "needs_update": "needs update",
+   "added_toast": "Added “{name}”. Run the scenario to see its effect.",
+   "added": "Added",
+   "add": "Add",
+   "title": "Prebuilt measures ({n})",
+   "none_match": "No prebuilt measure for this selection.",
+   "empty": "No prebuilt measures yet. Files in scenarios/ and belsim/measures/library/ appear here.",
+   "scenarios": "Prebuilt scenarios"
+  },
+  "load": "Load",
+  "saved": {
+   "loaded": "Loaded “{name}”.",
+   "delete_title": "Delete this saved scenario",
+   "delete": "Delete {name}",
+   "title": "Saved scenarios ({n})",
+   "empty": "Nothing saved yet. “Save” stores the scenario as a YAML file under scenarios/user/.",
+   "saved_to": "Saved to {file}",
+   "saved_but": "Saved, but: {problem}",
+   "in_browser": "kept in this browser",
+   "empty_browser": "Nothing saved yet. “Save” keeps the scenario in this browser only; use the export buttons to move it elsewhere.",
+   "saved_browser": "Saved in this browser.",
+   "browser_failed": "The browser refused to store the scenario; export it to a file instead."
+  },
+  "status": {
+   "simulating": "Simulating…",
+   "failed": "The last run failed",
+   "none": "No active measures: showing the baseline",
+   "edited": "Edited since the last run",
+   "not_run": "Not run yet",
+   "current": "Results are up to date"
+  },
+  "hide": "Hide",
+  "name_aria": "Scenario name",
+  "running": "Running…",
+  "band": {
+   "title": "Runs the scenario three more times: behavioural responses scaled by 0.5 and 1.5, and switched off. Not a confidence interval.",
+   "label": "Show static costing and the range of behavioural responses",
+   "computing": "(computing…)",
+   "failed": "(failed: {error})"
+  },
+  "refused": "The scenario was refused",
+  "empty": {
+   "lead": "No measures yet.",
+   "rest": "Pick a parameter and add a change, or add a prebuilt measure below."
+  },
+  "add_change": "Add a change",
+  "new_measure": "New empty measure",
+  "clear_confirm": "Remove every measure from this scenario?",
+  "clear": "Clear all",
+  "keep_title": "Keep this scenario, under its name, in the Compare view",
+  "in_comparison": "In comparison",
+  "keep": "Keep for comparison",
+  "save": "Save",
+  "export": "Export {format}",
+  "exported": "Exported {format}",
+  "results_csv": "Results as CSV"
+ },
+ "impact": {
+  "title": "Measure impact",
+  "sub": "{name} minus baseline",
+  "sub_stale": "(scenario edited since this run)",
+  "change_vs_baseline": "Change vs baseline",
+  "group": {
+   "budget": "Budget",
+   "economy": "Economy"
+  },
+  "row": {
+   "revenue": "Revenue",
+   "expenditure": "Expenditure",
+   "balance": "Balance",
+   "debt": "Debt",
+   "gdp_nominal": "GDP, nominal",
+   "gdp_real": "GDP, real",
+   "employment": "Employment",
+   "employment_rate": "Employment rate 20-64",
+   "unemployment_rate": "Unemployment rate"
+  },
+  "years": "Years",
+  "years_aria": "Years shown in the impact table",
+  "years_error": "Give years between {first} and {last}.",
+  "breakdown": {
+   "interaction": "Interaction between measures",
+   "all": "All measures together",
+   "sub": "Effect on the balance of each measure simulated on its own, {unit}",
+   "loading": "Simulating each measure…",
+   "button": "Break down by measure"
+  },
+  "regions": {
+   "title": "By region",
+   "toggle": "By region",
+   "entities_note": "The model reports no government balance by territory: the balance shown is that of each community and region as an institution."
+  },
+  "band": {
+   "title": "Static costing and range of behavioural responses",
+   "failed": "The sensitivity runs failed: {error}",
+   "loading": "Simulating the scenario four times…",
+   "run_first": "Run the scenario to compute the range.",
+   "run": {
+    "static": "Static: no behavioural response",
+    "low": "Low response (×0.5)",
+    "central": "Central (×1)",
+    "high": "High response (×1.5)"
+   },
+   "notice": "This is not a statistical confidence interval. The range shows the same scenario with every behavioural elasticity and fiscal multiplier scaled by 0.5 and by 1.5; the static row switches them off (mechanical effect only). The behavioural parameters are assumptions, so read the spread as \"how much of this result depends on them\".",
+   "toggle_title": "Runs the scenario with behavioural responses scaled by 0.5 and 1.5, and without them",
+   "toggle": "Static costing and response range"
+  },
+  "empty": {
+   "run_lead": "Run the scenario",
+   "run_rest": "to see its effect on revenue, expenditure, the balance, debt, GDP and employment.",
+   "add_lead": "Add a measure",
+   "add_rest": "in the scenario panel, then run it. The impact on the budget and the economy appears here."
+  }
+ },
+ "overview": {
+  "gdp": "GDP",
+  "growth": "Real GDP growth",
+  "population": "Population",
+  "employment_rate": "Employment rate, 20-64",
+  "unemployment_rate": "Unemployment rate",
+  "revenue": "Revenue",
+  "expenditure": "Expenditure",
+  "balance": "Balance",
+  "debt": "Debt",
+  "baseline": "baseline",
+  "balance_title": "Budget balance",
+  "deficit_limit": "Deficit limit, −3% of GDP",
+  "debt_title": "Public debt",
+  "debt_ref": "Reference value, 60% of GDP",
+  "rev_exp_title": "Revenue and expenditure",
+  "about": {
+   "title": "Method in brief",
+   "what": "An annual simulation of Belgium to 2070: population, labour market, economy and every revenue and expenditure line of general government. The baseline follows the Federal Planning Bureau to 2031 and the Study Committee on Ageing afterwards; a measure is a change of parameters and its effect is the difference from that baseline.",
+   "limits_lead": "Not an official costing, not a forecast.",
+   "limits": "Results are orders of magnitude. The Validation view shows where the model matches official figures and where it does not; no independent expert has reviewed it yet.",
+   "link": "Read the methodology"
+  }
+ },
+ "budget": {
+  "side": {
+   "revenue": "Revenue",
+   "expenditure": "Expenditure"
+  },
+  "tab_entities": "By level of government",
+  "unclassified": "Unclassified",
+  "n_groups": {
+   "one": "{n} group",
+   "other": "{n} groups"
+  },
+  "n_lines": {
+   "one": "{n} line",
+   "other": "{n} lines"
+  },
+  "tree": {
+   "title": "{side} in {year}",
+   "sub": "{groups}, {lines}. Click a row to chart it; click the arrow to fold a group.",
+   "fold_group": "Fold {group}",
+   "total_revenue": "Total revenue",
+   "total_expenditure": "Total expenditure",
+   "unfold_all": "Unfold all",
+   "fold_all": "Fold all",
+   "col_line": "Line and ESA code",
+   "col_share": "Share, %",
+   "gap": "The lines sum to {sum} but {key} reports {reported} in {year}."
+  },
+  "detail": {
+   "by_line": "{group}, by line"
+  },
+  "by_group": "{side} by group",
+  "empty_revenue": "The model reports no revenue lines yet.",
+  "empty_expenditure": "The model reports no expenditure lines yet.",
+  "measure": {
+   "revenue": "Revenue",
+   "expenditure": "Expenditure",
+   "balance": "Balance",
+   "debt": "Debt"
+  },
+  "entities": {
+   "title": "Levels of government in {year}",
+   "sub": "{unit}, after inter-governmental transfers",
+   "col_entity": "Entity",
+   "general_government": "General government",
+   "derived": "* Estimated from each line's entity shares, before transfers between governments: the model does not report this figure per entity yet.",
+   "fed_note": "The communities and regions are detailed under “Regions and communities”. The consolidation row is not a government: it is the difference between their sum and the consolidated subsector.",
+   "missing": "Not reported per entity by the model yet: {list}.",
+   "chart_balance": "Balance by level of government",
+   "chart_debt": "Debt by level of government",
+   "chart_revenue": "Revenue by level of government",
+   "chart_expenditure": "Expenditure by level of government",
+   "fed_chart_balance": "Balance of the communities and regions",
+   "fed_chart_debt": "Debt of the communities and regions",
+   "fed_chart_revenue": "Revenue of the communities and regions",
+   "fed_chart_expenditure": "Expenditure of the communities and regions"
+  }
+ },
+ "regions": {
+  "delta": {
+   "employment": "Employment",
+   "gdp": "GDP",
+   "gov_balance": "Regional government balance",
+   "entity_balance": "Balance of the communities and regions"
+  },
+  "empty": {
+   "lead": "No figures by region yet.",
+   "rest": "This view fills in as soon as the model publishes series by region."
+  },
+  "intro": "Baseline in {year}. Move the year slider to change the year.",
+  "intro_run": "“{name}” in {year}, with the change against the baseline.",
+  "mode": {
+   "levels": "Levels",
+   "delta": "Difference from baseline"
+  },
+  "table": {
+   "metric": "Indicator",
+   "title": "The three regions in {year}",
+   "sub": {
+    "one": "{n} indicator published by the regional model",
+    "other": "{n} indicators published by the regional model"
+   },
+   "other_title": "Other series by region, {year}",
+   "other_sub": "Published by the demographic and labour-market modules",
+   "revenue_title": "Revenue by region, {year}",
+   "expenditure_title": "Expenditure by region, {year}",
+   "lines_sub": "Budget lines by region where they arise"
+  },
+  "chart": {
+   "baseline_of": "{region}, baseline",
+   "delta_sub": "Difference from the baseline, {unit}"
+  },
+  "entities_hint": "Budgets of the communities and regions as institutions:",
+  "entities_pending": "Budgets by level of government:",
+  "entities_link": "Budget, by level of government"
+ },
+ "population": {
+  "pyramid": {
+   "loading": "Loading population by age…",
+   "no_data": "No population data for {year}.",
+   "hint": "{total} million people on 1 January {year}. Use the year slider or ▶ in the top bar to move through time.",
+   "load_error": "Could not load the population pyramid: {error}",
+   "title": "Population by age and sex, {year}",
+   "sub": "Persons per single year of age"
+  },
+  "dependency": {
+   "title": "Old-age dependency ratio",
+   "sub": "People aged 67+ per person aged 18-66",
+   "sub_computed": "People aged 67+ per person aged 18-66 (computed from age groups)"
+  },
+  "flows": {
+   "title": "Births, deaths and net migration",
+   "births": "Births",
+   "deaths": "Deaths",
+   "net_migration": "Net migration"
+  },
+  "age_groups": {
+   "title": "Population by age group",
+   "over_67": "67 and over"
+  },
+  "total_title": "Total population",
+  "by_region_title": "Population by region",
+  "migration": {
+   "title": "Immigration and emigration",
+   "immigration": "Immigration",
+   "emigration": "Emigration"
+  },
+  "tfr": {
+   "title": "Total fertility rate",
+   "sub": "Children per woman"
+  },
+  "life": {
+   "title": "Life expectancy at birth",
+   "men": "Men",
+   "women": "Women"
+  }
+ },
+ "labour": {
+  "load_error": "Could not load data for {year}: {error}",
+  "cause": {
+   "unemp_exclusion": "Unemp exclusion",
+   "pension_age": "Pension age",
+   "structural_unemployment": "Structural unemployment",
+   "labour_supply": "Labour supply",
+   "labour_demand": "Labour demand",
+   "cyclical": "Cyclical"
+  },
+  "causes": {
+   "total": "Total change in employment",
+   "title": "Why employment differs from the baseline",
+   "sub": "Thousand persons, by cause as reported by the model",
+   "aria": "Employment against baseline by cause",
+   "none": "This scenario does not change employment."
+  },
+  "population": "Population",
+  "sector": "Sector",
+  "all_sectors": "All sectors",
+  "avg_gross_earnings": "Average gross earnings",
+  "decile": "Decile {n}",
+  "per_age": "Persons per single year of age",
+  "thousand_persons": "Thousand persons",
+  "status": {
+   "title": "Population by status"
+  },
+  "status_age": {
+   "title": "Status by age, {year}"
+  },
+  "employment_rate": "Employment rate, 20-64",
+  "unemployment_rate": "Unemployment rate",
+  "employment": "Employment",
+  "activity_rate": "Activity rate, 20-64",
+  "by_sector": {
+   "title": "Employment by sector and job type, {year}"
+  },
+  "table": {
+   "title": "Employment table, {year}"
+  },
+  "wages": {
+   "title": "Average gross earnings by sector, {year}",
+   "sub": "€ per worker per year, {prices}"
+  },
+  "deciles": {
+   "title": "Earnings by decile, {year}",
+   "sub": "Mean gross annual earnings of each tenth of workers, €, {prices}"
+  },
+  "avg_earnings": {
+   "title": "Average earnings",
+   "private": "Private employees",
+   "public": "Public employees",
+   "self_employed": "Self-employed"
+  },
+  "special_title": "Special work arrangements",
+  "wage_bill": {
+   "title": "Wage bill and self-employed income",
+   "private": "Private wage bill",
+   "public": "Public wage bill",
+   "self_employed": "Self-employed income"
+  }
+ },
+ "economy": {
+  "va": {
+   "title": "Value added by sector",
+   "empty": "The model does not provide value added by sector yet.",
+   "title_year": "Value added by sector, {year}",
+   "value": "Value added"
+  },
+  "gdp_current": "GDP, current prices",
+  "gdp_share_hint": "Shown as a share of itself; switch to € bn",
+  "gdp_volume": "GDP, volume",
+  "growth": "Real GDP growth",
+  "components": {
+   "title": "Expenditure components of GDP",
+   "households": "Household consumption",
+   "government": "Government consumption",
+   "investment": "Investment",
+   "exports": "Exports",
+   "imports": "Imports"
+  },
+  "cons_title": "Household consumption by category",
+  "prices": {
+   "title": "Prices and wage index",
+   "cpi": "Consumer prices",
+   "health_index": "Health index",
+   "wage_index": "Wage index",
+   "gdp_deflator": "GDP deflator"
+  },
+  "inflation": "Inflation",
+  "rates": {
+   "title": "Interest rates",
+   "bond_10y": "10-year government bond",
+   "short": "Short-term"
+  },
+  "income": {
+   "title": "Income components",
+   "compensation": "Compensation of employees",
+   "gos": "Gross operating surplus",
+   "mixed": "Mixed income"
+  },
+  "tax_bases": "Tax bases",
+  "productivity": "Productivity growth",
+  "demand_gap": "Demand gap from the fiscal impulse"
+ },
+ "explorer": {
+  "section": {
+   "fiscal": "Public finances",
+   "revenue": "Revenue lines",
+   "expenditure": "Expenditure lines",
+   "macro": "Economy",
+   "labour": "Labour market",
+   "demo": "Demography",
+   "pop": "Population",
+   "status": "Status of the population",
+   "emp": "Employment",
+   "va": "Value added",
+   "regional": "Regional"
+  },
+  "no_match": "No series matches “{q}”.",
+  "search_placeholder": "Search series, e.g. pension, vat, debt",
+  "mode": {
+   "level": "Levels",
+   "delta": "Difference from baseline"
+  },
+  "remove_aria": "Remove {label}",
+  "delta_sub": "{key}, difference in {unit}",
+  "delta_series": "Scenario minus baseline",
+  "run_first": "Run a scenario to see differences from the baseline.",
+  "all": {
+   "title": "All series",
+   "sub": {
+    "one": "{n} scalar series produced by the model",
+    "other": "{n} scalar series produced by the model"
+   }
+  },
+  "selected": {
+   "one": "{n} selected",
+   "other": "{n} selected"
+  },
+  "selected_capped": {
+   "one": "{n} selected, first {max} charted",
+   "other": "{n} selected, first {max} charted"
+  },
+  "download": "Download selection as CSV",
+  "clear": "Clear",
+  "none": {
+   "title": "Nothing selected",
+   "lead": "Tick one or more series",
+   "rest": "on the left to plot baseline against scenario. Every key the model produces is listed, including ones no other view shows."
+  }
+ },
+ "measures": {
+  "tab": {
+   "params": "Parameters",
+   "impact": "Impact table"
+  },
+  "list_of": {
+   "one": "list of {n}",
+   "other": "list of {n}"
+  },
+  "n_keys": {
+   "one": "{n} key",
+   "other": "{n} keys"
+  },
+  "by_region": "by region",
+  "n_params": {
+   "one": "{n} parameter",
+   "other": "{n} parameters"
+  },
+  "n_files": {
+   "one": "{n} file",
+   "other": "{n} files"
+  },
+  "filter": {
+   "all": "All {n}",
+   "assumptions": "Assumptions {n}",
+   "regional": "Regional competence {n}",
+   "changed": "In scenario {n}"
+  },
+  "tag": {
+   "assumption": "assumption",
+   "regional": "by region",
+   "regional_title": "Regional competence: one value per region, so a measure can change one region only",
+   "wage_linked": "wage-linked",
+   "wage_linked_title": "Follows real wage growth (core.tax_threshold_wage_link)",
+   "in_scenario": "in scenario"
+  },
+  "no_description": "No description",
+  "no_match": "No parameter matches this search.",
+  "no_params": "The model defines no parameters yet. They appear here as soon as params/*.yaml files exist.",
+  "search": "Search name, description, unit or source",
+  "params_title": "Parameters",
+  "params_sub": "{params} in {files}. Values shown are for {year}.",
+  "form": {
+   "title": "Add a change",
+   "sub": "Values use the parameter's own unit; rates are fractions (0.25 = 25%).",
+   "op": {
+    "set": "Set to",
+    "add": "Add",
+    "mul": "Multiply by"
+   },
+   "region_now": "{region}  (now {value})",
+   "whole_region": "Whole value of the region",
+   "whole_value": "Whole value",
+   "element_now": "{path}  (now {value})",
+   "value_placeholder": "number, or JSON for the whole value",
+   "all_territories": "All of them",
+   "permanent": "permanent",
+   "new_measure": "New measure",
+   "new_name": "Name of the new measure",
+   "new_name_placeholder": "e.g. {example}",
+   "added": "Change added. Run the scenario to see its effect.",
+   "added_n": {
+    "one": "{n} change added. Run the scenario to see its effect.",
+    "other": "{n} changes added, one per region. Run the scenario to see their effect."
+   },
+   "operation": "Operation",
+   "element": "Element",
+   "value_unit": "Value, {unit}",
+   "from_year": "From year",
+   "until_year": "Until year",
+   "phase_in": "Phase-in, years",
+   "add_to": "Add to",
+   "submit": "Add change to scenario"
+  },
+  "err": {
+   "no_value": "Give a value for the change.",
+   "bad_json": "The value is not valid JSON.",
+   "not_number": "“{text}” is not a number.",
+   "start_range": "Start year must be between {first} and {last}.",
+   "end_before_start": "The end year is before the start year.",
+   "need_element": "This parameter holds several values: choose which element to change, or give the whole value as JSON."
+  },
+  "preview": {
+   "becomes": "{from} becomes {to}{unit}",
+   "from": "from {start}",
+   "from_to": "from {start} to {end}",
+   "phased": {
+    "one": "phased in over {n} year",
+    "other": "phased in over {n} years"
+   },
+   "uprated": "(the {year} value; later years are uprated with {index})"
+  },
+  "index": {
+   "cpi": "consumer prices",
+   "health_index": "the health index",
+   "wages": "wages"
+  },
+  "indexation": {
+   "uprated": "uprated each year with {index}",
+   "wage_link": "also follows real wage growth to the extent set by {param}",
+   "wage_link_generic": "the wage link of the model",
+   "none": "none (stays at its legislated value)"
+  },
+  "struct": {
+   "element": "Element",
+   "first": "First",
+   "second": "Second",
+   "key": "Key",
+   "empty": "Empty in the baseline."
+  },
+  "choose": {
+   "title": "Choose a parameter",
+   "lead": "Pick a parameter",
+   "rest": "on the left to see its definition and baseline path, then describe how the measure changes it: set a new value, add to it or multiply it, from a start year."
+  },
+  "assumption_note": "This value is an assumption, not an official figure. Treat results that depend on it with care.",
+  "not_stated": "not stated",
+  "kv": {
+   "source": "Source",
+   "indexation": "Indexation",
+   "defined_in": "Defined in",
+   "legislated": "Legislated"
+  },
+  "baseline_by_year": "Baseline value by year",
+  "value_in": "Value in {year}",
+  "address_region": "Choose the region to change with “Region” below.",
+  "address_element": "Address one element with “Element” below.",
+  "already_changed": "Already changed by: {list}.",
+  "load_failed": "Parameters could not be loaded."
+ },
+ "compare": {
+  "being_edited": "{name} (being edited)",
+  "metric": {
+   "balance": "Balance",
+   "revenue": "Revenue",
+   "expenditure": "Expenditure",
+   "gdp_real": "GDP, real",
+   "employment": "Employment",
+   "debt": "Debt"
+  },
+  "set": {
+   "add_aria": "Add a scenario to the comparison",
+   "add": "Add a scenario…",
+   "saved": "Saved scenarios",
+   "prebuilt": "Prebuilt scenarios",
+   "one_measure": "One prebuilt measure on its own",
+   "replace_confirm": "Replace the scenario being edited (“{current}”) with “{name}”? It is not kept in the comparison.",
+   "now_in_panel": "“{name}” is now the scenario in the side panel.",
+   "in_panel": "in the side panel",
+   "edit": "Edit",
+   "remove_title": "Remove from the comparison",
+   "remove": "Remove {name} from the comparison",
+   "title": "Scenarios compared",
+   "sub": "Up to {max} named scenarios, each against the same baseline. “Keep for comparison” in the side panel stores the scenario you are editing under its name.",
+   "remove_all_confirm": "Remove every scenario from the comparison?",
+   "remove_all": "Remove all",
+   "empty_lead": "Nothing to compare yet.",
+   "empty_rest": "Build a scenario in the side panel and choose “Keep for comparison”, or add a saved or prebuilt one with the menu above. Then change the scenario and keep it again under another name."
+  },
+  "refused": "Refused: {error}",
+  "head": {
+   "debt_end": "Δ Debt in {year}, {unit}",
+   "debt_end_title": "Change in the debt ratio in the last simulated year",
+   "title": "Headline results in {year}",
+   "sub": "Each scenario minus the baseline. Move the year slider to change the year; click a column to sort."
+  },
+  "regions": {
+   "title": "By region in {year}",
+   "sub": "Each scenario minus the baseline, in each region"
+  },
+  "years": {
+   "title": "Change against the baseline, by year"
+  },
+  "chart": {
+   "balance": "Budget balance",
+   "debt": "Public debt",
+   "employment": "Employment",
+   "diff_sub": "Difference from the baseline, {unit}"
+  },
+  "mode": {
+   "levels": "Levels",
+   "delta": "Difference from baseline"
+  },
+  "simulating": {
+   "one": "Simulating {n} scenario…",
+   "other": "Simulating {n} scenarios…"
+  },
+  "some_refused": "Some scenarios were refused by the model and are left out of the charts:",
+  "charts_show": "Charts show"
+ },
+ "balance": {
+  "kind": {
+   "deficit": "Deficit limit",
+   "debt": "Stable debt ratio"
+  },
+  "target": "Target",
+  "deficit_at_most": "a deficit of at most",
+  "debt_rule": "a balance that keeps debt, as a share of GDP, where it was the year before",
+  "in_year": "in",
+  "measured_on": "Measured on “{name}”",
+  "measured_on_baseline": "Measured on the baseline: no scenario has been run",
+  "spare": "{v} spare",
+  "gap": {
+   "balance_scenario": "Balance in the scenario",
+   "balance_baseline": "Balance in the baseline",
+   "target": "Target balance",
+   "to_close": "Gap to close",
+   "title": "Gap between the balance and the target",
+   "sub": "Positive = effort still needed to reach the target",
+   "debt_note": "Stabilising balance = −(debt of the previous year × nominal GDP growth) / GDP. It moves with the run's own debt and growth, and ignores stock-flow adjustments."
+  },
+  "series": {
+   "target_deficit": "Target: deficit of {v} of GDP",
+   "target_debt": "Target: balance that stabilises the debt ratio"
+  },
+  "verdict": {
+   "none": "No figure for {year}.",
+   "miss_scenario": "In {year} the scenario misses the target by {pts} points of GDP: {amount}{prices} to find.",
+   "miss_baseline": "In {year} the baseline misses the target by {pts} points of GDP: {amount}{prices} to find.",
+   "meet_scenario": "In {year} the scenario meets the target, with {pts} points of GDP ({amount}) to spare.",
+   "meet_baseline": "In {year} the baseline meets the target, with {pts} points of GDP ({amount}) to spare."
+  },
+  "chart": {
+   "title": "Balance and target"
+  },
+  "rank": {
+   "loading": {
+    "one": "Simulating the {n} prebuilt measure on its own…",
+    "other": "Simulating each of the {n} prebuilt measures on its own…"
+   },
+   "loading_detail": "About ten seconds the first time; cached afterwards.",
+   "no_region": "No regional detail",
+   "measures_for": "Measures",
+   "effect_in": "Effect in",
+   "col_measure": "Measure on its own",
+   "failed": "Could not be simulated: {error}",
+   "col_balance": "Δ balance, {unit}",
+   "col_share": "Share of the gap",
+   "col_share_title": "Change in the balance as a share of the gap to close in the chosen year",
+   "col_employment": "Δ employment, thousand",
+   "col_gdp": "Δ GDP, real, %",
+   "added": "Added “{name}”. Run the scenario to see the new gap.",
+   "no_year": "The ranking has no figures for {year}.",
+   "note": "Each measure is simulated alone against the baseline, with behavioural responses, at the size written in the library. Effects of several measures do not add up exactly (they interact), and a measure already in your scenario would not yield the same amount twice: add measures, run the scenario and read the new gap above.",
+   "title": "What each prebuilt measure changes in {year}",
+   "sub": "Ranked by effect on the balance; click a column to sort.",
+   "filter": "Filter measures"
+  },
+  "unavailable": "The model does not report the balance as a share of GDP yet."
+ },
+ "distribution": {
+  "read_first": "Read this first: how these figures are made.",
+  "income_measured": "Income measured.",
+  "indicator": {
+   "gini": "Gini coefficient",
+   "s80s20": "S80/S20 ratio",
+   "poverty_rate": "At-risk-of-poverty rate"
+  },
+  "indicator_change": "{name}, change",
+  "model_levels": "Model: {baseline} in the baseline, {scenario} in the scenario",
+  "observed": "Observed: {value}",
+  "observed_year": "Observed: {value} in {year}",
+  "read_change_hint": "Read the change, not the level: the model applies the rules to a few typical households, which compresses inequality well below the observed statistics.",
+  "tile": {
+   "gaining": "Households gaining",
+   "gaining_sub": "disposable income up, after price changes",
+   "losing": "Households losing",
+   "losing_sub": "disposable income down, after price changes",
+   "avg": "Average change per household",
+   "avg_sub": "{pct} of disposable income",
+   "all": "All households together",
+   "all_sub": "change in disposable income"
+  },
+  "a_year": "a year",
+  "decile": {
+   "name": "Decile",
+   "title": "Change in disposable income by decile",
+   "title_year": "Change in disposable income by decile, {year}",
+   "none": "The server returned no deciles.",
+   "sub": "Tenths of households from the lowest (1) to the highest (10) income; % change against the baseline, net of the effect on prices",
+   "flat_run": "This scenario does not change disposable income in any decile.",
+   "flat_norun": "Run a scenario to see who gains and who loses.",
+   "series": "% change in disposable income",
+   "tip_change": "Change in disposable income",
+   "baseline_income": "Baseline income",
+   "head": {
+    "baseline_income_eur": "Baseline income, €",
+    "change_eur": "Change, €",
+    "change_pct": "Change, %",
+    "gaining": "Gaining",
+    "losing": "Losing"
+   }
+  },
+  "cause": {
+   "wages": "Wages",
+   "benefits": "Benefits",
+   "contributions": "Contributions",
+   "direct_taxes": "Direct taxes",
+   "indirect_taxes_prices": "Indirect taxes and prices"
+  },
+  "of_which": "of which {cause}",
+  "of_which_eur": "of which {cause}, €",
+  "due_to": "Part of the change in net income due to {cause}",
+  "hh": {
+   "title": "Typical households",
+   "title_year": "Typical households, {year}",
+   "none": "The server returned no households.",
+   "sub": {
+    "one": "{shown} of {n} case. € per year; “Change” is net of the scenario's effect on prices. Click a column to sort.",
+    "other": "{shown} of {n} cases. € per year; “Change” is net of the scenario's effect on prices. Click a column to sort."
+   },
+   "filter": "Filter households"
+  },
+  "col": {
+   "household": "Household",
+   "households": "Households",
+   "households_title": "Number of households this case stands for",
+   "gross": "Gross, €",
+   "net_baseline": "Net, baseline, €",
+   "net_scenario": "Net, scenario, €",
+   "change_before_prices": "Change before prices, €",
+   "change_before_prices_title": "Nominal change in disposable income, before the effect of the scenario on consumer prices",
+   "change_eur": "Change, €",
+   "change_eur_title": "Change in disposable income net of the scenario's effect on consumer prices",
+   "change_pct": "Change, %",
+   "avg": "Average rate",
+   "avg_title": "Taxes and contributions as a share of gross income",
+   "marg": "Marginal rate",
+   "marg_title": "Share of one extra euro of gross income taken by taxes, contributions and lost benefits",
+   "part": "Participation rate",
+   "part_title": "Share of the gross wage lost to taxes and withdrawn benefits when taking up work",
+   "in_scenario_note": "{title} (in the scenario)"
+  },
+  "hint_scenario": "“{name}” against the baseline in {year}. Move the year slider to change the year.",
+  "hint_scenario_stale": "“{name}” against the baseline in {year} (the scenario as it is now in the side panel, not the last run). Move the year slider to change the year.",
+  "hint_baseline": "No active measure: the figures describe the baseline in {year}. Add a measure in the side panel to see who gains and who loses.",
+  "loading": "Computing the effect on households…",
+  "missing": "The household model (POST /api/distribution) is not part of this server yet. This view fills in as soon as it is.",
+  "unexpected": "unexpected answer: {answer}",
+  "poverty": {
+   "title": "Risk of poverty by household type and activity",
+   "sub": "Share of people below 60% of the median equivalised income. The household set is stylised: read the change rather than the level.",
+   "by_household": "By household type",
+   "by_activity": "By activity status (adults)",
+   "share": "Share of the group",
+   "observed": "Observed",
+   "change": "Change, points"
+  }
+ },
+ "payslip": {
+  "form": {
+   "kind": "Type of income",
+   "household": "Household",
+   "region": "Region (local and regional taxes)",
+   "gross_min": "Gross from, € per year",
+   "gross_max": "Gross to, € per year",
+   "at": "Breakdown at, € per year"
+  },
+  "ref": {
+   "min_wage": "Minimum wage",
+   "p25": "Lower quartile",
+   "median": "Median",
+   "p75": "Upper quartile",
+   "p90": "90th percentile",
+   "top": "Top"
+  },
+  "ref_bar": "Move the breakdown to a reference wage of {year}:",
+  "ref_button": "{name}, {amount}",
+  "breakdown": {
+   "title": "Breakdown",
+   "none": "The server returned no breakdown.",
+   "title_at": "Breakdown at a gross income of {amount} per year",
+   "sub": "€ per year unless a rate.",
+   "sub_nearest": "Nearest computed point to {amount}. € per year unless a rate.",
+   "item": "Item"
+  },
+  "item": {
+   "gross": "Gross income",
+   "employer_cost": "Employer cost",
+   "ssc_employer": "Employer contributions",
+   "ssc_employee": "Employee contributions",
+   "taxable_income": "Taxable income",
+   "tax_federal": "Federal tax",
+   "tax_regional": "Regional tax",
+   "tax_local": "Municipal surcharge",
+   "tax_child_credit": "Child tax credit",
+   "tax_total": "Income tax, total",
+   "allowances_tax_free_allowance": "Tax-free allowance",
+   "allowances_marital_quotient": "Marital quotient",
+   "allowances_family_allowance": "Family allowances",
+   "household_gross": "Household gross income",
+   "net": "Net income",
+   "net_earner_only": "Net income, earner only",
+   "marginal_rate": "Marginal rate",
+   "average_rate": "Average rate",
+   "participation_rate": "Participation rate",
+   "federal": "Federal tax",
+   "regional": "Regional tax",
+   "local": "Municipal surcharge",
+   "child_credit": "Child tax credit",
+   "income_tax": "Income tax",
+   "tax_free_allowance": "Tax-free allowance",
+   "marital_quotient": "Marital quotient",
+   "family_allowance": "Family allowances",
+   "benefits": "Benefits",
+   "market_income": "Market income",
+   "indirect_taxes": "Indirect taxes"
+  },
+  "no_grid": "unexpected answer: no grid",
+  "same": "The scenario does not change this payslip: baseline and scenario coincide.",
+  "net": {
+   "title": "Net income against gross income",
+   "sub": "€ per year, {year}. Click the chart to move the breakdown.",
+   "head_baseline": "Net, baseline",
+   "head_scenario": "Net, scenario"
+  },
+  "gross": "Gross",
+  "gross_prefix": "Gross € ",
+  "marg": {
+   "title": "Marginal rate against gross income",
+   "sub": "Share of one extra euro of gross income that does not reach net income, %",
+   "head_baseline": "Marginal rate, baseline, %",
+   "head_scenario": "Marginal rate, scenario, %"
+  },
+  "options_loading": "Loading the payslip options…",
+  "options_missing": "The payslip calculator (GET /api/payslip/options, POST /api/payslip) is not part of this server yet. This view fills in as soon as it is.",
+  "whose": "Whose payslip",
+  "whose_sub_scenario": "Rules of {year} (move the year slider), baseline against “{name}”",
+  "whose_sub_baseline": "Rules of {year} (move the year slider), baseline only: no active measure",
+  "loading": "Computing the payslip…",
+  "missing": "The payslip calculator (POST /api/payslip) is not part of this server yet."
+ },
+ "validation": {
+  "bucket": {
+   "b0": "within 5%",
+   "b1": "5 to 10%",
+   "b2": "10 to 25%",
+   "b3": "25 to 50%",
+   "b4": "more than 50%"
+  },
+  "bucket_count": "{count} {label}",
+  "bucket_legend": "{label} ({count})",
+  "source": "Source",
+  "confidence": {
+   "high": "high",
+   "medium": "medium",
+   "low": "low"
+  },
+  "confidence_title": "Confidence in the reference figure: {level}",
+  "sum": {
+   "baseline_compared": {
+    "one": "{n} baseline figure compared",
+    "other": "{n} baseline figures compared"
+   },
+   "costing_compared": {
+    "one": "{n} costing figure compared",
+    "other": "{n} costing figures compared"
+   },
+   "median": ", median gap {gap} of the official figure",
+   "no_equivalent": {
+    "one": "{n} has no model equivalent",
+    "other": "{n} have no model equivalent"
+   },
+   "zero_ref": {
+    "one": "{n} has a reference of zero (no relative gap)",
+    "other": "{n} have a reference of zero (no relative gap)"
+   }
+  },
+  "filter": {
+   "any_confidence": "Any confidence",
+   "high": "High",
+   "medium": "Medium",
+   "low": "Low",
+   "by_reference": "By reference",
+   "largest_gaps": "Largest gaps first",
+   "institution": "Institution",
+   "any_institution": "Any institution",
+   "only_compared": "Only compared",
+   "search": "Search description, source or unit"
+  },
+  "status": {
+   "no_model_equivalent": "no model equivalent"
+  },
+  "variant": {
+   "static": "static",
+   "behavioural": "behavioural",
+   "unspecified": "method not stated"
+  },
+  "col": {
+   "when": "Year or period",
+   "official": "Official",
+   "model": "Model",
+   "gap": "Gap",
+   "gap_pct": "Gap, % of official",
+   "figure": "Figure",
+   "model_static": "Model, static",
+   "model_behavioural": "Model, behavioural",
+   "reference": "Reference",
+   "searched": "Where it was searched"
+  },
+  "base": {
+   "title": "Baseline projection against official projections",
+   "sub": {
+    "one": "{shown} of {n} figure shown. Gap = model minus official.",
+    "other": "{shown} of {n} figures shown. Gap = model minus official."
+   },
+   "empty": "No reference matches these filters."
+  },
+  "meas": {
+   "title": "Measures against official costings",
+   "sub": {
+    "one": "{shown} of {n} figure shown. The gap compares the official figure with the model run of the same kind (static when the official costing is static, otherwise with behavioural responses): that column is marked.",
+    "other": "{shown} of {n} figures shown. The gap compares the official figure with the model run of the same kind (static when the official costing is static, otherwise with behavioural responses): that column is marked."
+   },
+   "empty": "No costing matches these filters.",
+   "official_costing": "Official costing: {institution}",
+   "added": "Added “{name}” to the scenario.",
+   "add": "Add this measure to the scenario",
+   "model_year": "{ref} (model {model})"
+  },
+  "rest": {
+   "not_found_title": "References looked for and not found",
+   "not_found_sub": "Official figures that would be useful but could not be located",
+   "none": "None listed.",
+   "problems_title": "References that could not be evaluated",
+   "problems_none": "Every reference with a model equivalent was evaluated."
+  },
+  "loading": "Running the model against the official reference figures…",
+  "loading_detail": "Every costed measure is simulated twice (with and without behavioural responses). About a minute the first time, then cached until the parameters change.",
+  "missing": "The server has no validation reference file.",
+  "tab": {
+   "baseline": "Baseline ({n})",
+   "measures": "Measure costings ({n})",
+   "not_found": "Not found or not evaluated ({n})"
+  },
+  "how_title": "How to read this.",
+  "how_text": "Each line sets a figure published by an official body next to what the model gives for the same thing. Small gaps on a line close to your question are a reason to trust the result; large gaps say the model answers that kind of question poorly. Confidence is about the reference figure: high = read in the official document, medium = reliable secondary source or simple arithmetic on an official table, low = weaker.",
+  "retrieved": "References retrieved on {date}",
+  "computed_in": "Computed in {seconds} s."
+ },
+ "parties": {
+  "title": "Party programmes (2024 costing)",
+  "none": "No party scenario is available on this server.",
+  "caveat_lead": "Read this first.",
+  "source_link": "Planning Bureau: DC2024",
+  "method_title": "How the measures were translated",
+  "group": {
+   "nl": "Dutch-speaking parties",
+   "fr": "French-speaking parties",
+   "national": "National party"
+  },
+  "keep": "Compare",
+  "details": "Details",
+  "load_long": "Load as active scenario",
+  "keep_long": "Add to comparison",
+  "load_title": "Make the measures of {name} the scenario in the side panel",
+  "keep_title": "Add the measures of {name} to the scenarios compared",
+  "panel_title": "Party programmes, 2024 costing ({n})",
+  "panel_line": "{n} measures, {with} with changes",
+  "list_sub": "The measures each party submitted to the Federal Planning Bureau in 2024, translated into this model. By language community, then in alphabetical order.",
+  "coverage_aria": "Coverage of {name}: {text}",
+  "cov_short": "{m} modelled, {p} partly",
+  "col": {
+   "party": "Party",
+   "measures": "Costed / submitted",
+   "measures_title": "Measures costed by the Bureau out of the measures submitted",
+   "coverage": "Share of the ex-ante impulse by status",
+   "impulse": "Official ex-ante impulse {year}, EUR mn",
+   "impulse_title": "Sum of the Bureau's ex-ante impulses of the party's costed measures (prices and quantities of 2024, positive = improves the balance); own addition"
+  },
+  "status": {
+   "modelled": "Modelled",
+   "partly_modelled": "Partly modelled",
+   "not_modelled": "Not modelled",
+   "already_in_baseline": "Already in baseline"
+  },
+  "method": {
+   "pinned": "Value taken from the fiche; the model's costing can differ from the Bureau's.",
+   "sized": "Parameter sized on the Bureau's ex-ante impulse.",
+   "proxy": "Carried by a broader budget line, sized on the Bureau's impulse: the amount is reproduced, not the design of the measure.",
+   "increment": "Partly enacted since 2024: only what goes beyond the law is added.",
+   "reversal": "Reverses a reform enacted since 2024.",
+   "baseline": "Enacted since 2024 ({what}): in the baseline, nothing added.",
+   "not_costed": "Not costed by the Planning Bureau: no impulse published.",
+   "zero_impulse": "Zero ex-ante impulse in the costing (budget-neutral or structural measure).",
+   "no_lever": "No suitable parameter in the model.",
+   "residual": "The parameter cannot carry the whole impulse (EUR {gap} mn missing).",
+   "missing": "Missing lever: {lever}."
+  },
+  "baseline": {
+   "unemp_limit": "time limit on unemployment benefits",
+   "rcc": "end of unemployment with company supplement",
+   "welfare_freeze": "no real increases of benefits in 2025-2029",
+   "pension_bonus": "pension bonus ended",
+   "perequation": "perequation of civil-servant pensions limited",
+   "defence": "defence at 2% of GDP in 2029 and 2.5% in 2034",
+   "replacement_reductions": "lower tax reductions for unemployment benefits and high pensions"
+  },
+  "lever": {
+   "new_tax": "a new tax of its own (digital, aviation, banks, road charge…)",
+   "wealth_tax": "a tax on net wealth",
+   "capital_income": "progressive taxation of capital income",
+   "rental_income": "taxation of actual rents",
+   "cit_base": "the corporate tax base (deductions, exemptions)",
+   "alt_remuneration": "the tax treatment of company cars, vouchers and stock options",
+   "targeted_tax_credit": "a tax credit targeted on low and middle wages",
+   "pit_brackets": "more than four income-tax brackets",
+   "pit_expenditure": "specific income-tax deductions",
+   "targeted_reductions": "target-group reductions of contributions and payroll tax",
+   "benefit_structure": "benefit rules by household type, ceilings and eligibility",
+   "health_envelope": "specific health-care budgets and prices",
+   "programme_spending": "a spending programme of its own",
+   "asylum_migration": "asylum and migration spending",
+   "asset_sales": "sales of state holdings (proceeds and their use)",
+   "energy_policy": "energy policy (nuclear plants, support schemes, tariffs)",
+   "institutional": "the cost of political institutions and administrations paying benefits",
+   "activation": "activation and return-to-work policies",
+   "regulation": "market regulation and administrative simplification",
+   "labour_regulation": "labour law (minimum wage, flexi-jobs, overtime, resignation)",
+   "excise_structure": "the structure of excise duties (refunds, shifts between fuels)",
+   "vat_item": "the VAT rate of one product",
+   "local_finance": "transfers to local authorities"
+  },
+  "detail": {
+   "title": "{name}: measures submitted in 2024",
+   "sub": "{full} · {n} measures, of which {costed} costed by the Bureau. Each measure simulated on its own.",
+   "pick": "Party",
+   "pick_one": "Choose a party…",
+   "none_title": "One party in detail",
+   "none": "Choose a party to see its measures, their status, the Bureau's impulse and the effect in this model.",
+   "loading": "Simulating each measure of {name}…",
+   "source": "Fiches (PDF)",
+   "workbook": "Results workbook of the Bureau",
+   "title_in_fiche": "Title in the fiche",
+   "filter": {
+    "all": "All measures",
+    "changes": "With changes",
+    "none": "Without changes"
+   },
+   "year_note": "Year {T} of the programme is read in year {y} of the model. Use the year control above (effects up to {max}).",
+   "scaled": "≈ {v} in {year}",
+   "package": "Whole package",
+   "package_sub": "All measures with changes together (effects do not add up exactly)",
+   "official_results": "The Bureau's results for the package, {year}",
+   "model_results": "This model, {year}",
+   "units": "Model columns: change in the balance before interest, EUR mn of the year; employment in thousand persons. Small print under the official impulse: the same share of GDP in euros of the model year.",
+   "col": {
+    "fiche": "Fiche",
+    "measure": "Measure",
+    "status": "Status and method",
+    "official": "Official impulse {year}, EUR mn of 2024",
+    "official_title": "Ex-ante budgetary impulse published by the Bureau for year {T} of the programme, in prices and quantities of 2024 (positive = improves the balance)",
+    "static": "Model, static, {year}",
+    "behav": "Model, with behaviour, {year}",
+    "model_title": "Change in the primary balance in {year} (EUR mn) when this measure alone is added to the baseline",
+    "employment": "Δ Employment, {year}"
+   }
+  },
+  "all": {
+   "button": "Compare all parties",
+   "hide": "Hide the comparison",
+   "title": "All parties side by side, {year}",
+   "sub": "Each package against the same baseline. Small print: the Planning Bureau's own result for {oyear} of the programmes.",
+   "loading": "Simulating the {n} party programmes…",
+   "note": "The two sets of figures differ by model, by baseline and by coverage: only the measures with changes are in this model's result, and reforms enacted since 2024 are in its baseline. The coverage bar shows how much of each package is modelled.",
+   "model": "This model",
+   "bureau": "Bureau",
+   "col": {
+    "balance": "Δ Balance {year}, pts of GDP",
+    "employment": "Δ Employment {year}, thousand",
+    "gdp": "Δ GDP, real, {year}, %",
+    "debt": "Δ Debt {year}, pts of GDP"
+   },
+   "chart": {
+    "balance": "Change in the budget balance, {year}",
+    "debt": "Change in the debt ratio, {year}",
+    "employment": "Change in employment, {year}",
+    "gdp": "Change in real GDP, {year}"
+   },
+   "chart_unit": {
+    "balance": "points of GDP",
+    "debt": "points of GDP",
+    "employment": "thousand persons",
+    "gdp": "%"
+   },
+   "dist_button": "Show the effect by income decile (about half a minute)",
+   "dist_hide": "Hide",
+   "dist_title": "Disposable income by income decile, {year}",
+   "dist_sub": "Change in household disposable income per tenth of households, in %. Second line: the Bureau's direct impact where it computed one.",
+   "dist_loading": "Computing the distribution for {n} parties…",
+   "decile": "D{n}"
+  }
+ },
+ "meta": {
+  "description": "A free, open simulator of Belgium's economy and public finances, 2024-2070: change taxes, benefits and spending and see the effect on the budget, jobs and households. An exploratory model, not an official costing."
+ },
+ "foot": {
+  "disclaimer": "Exploratory model — not an official costing.",
+  "source": "Source code (AGPL-3.0)",
+  "method": "How it was built and how far to trust it",
+  "build": "Build {commit}, {date}"
+ },
+ "wp": {
+  "doc_title": "Methodology — belsim",
+  "meta_description": "How the belsim simulator of Belgium's public finances was built, where its numbers come from, how far they agree with official figures, and what it should not be used for.",
+  "contents": "Contents",
+  "open_app": "Open the simulator",
+  "print": "Print or save as PDF",
+  "na": "not available",
+  "pending": "Being computed by the server",
+  "live_failed": "Some live figures could not be loaded from the server; they are marked “not available” in the text.",
+  "build": {
+   "commit": "Build (git commit)",
+   "date": "Date of the build",
+   "params": "Parameters",
+   "assumptions": "of which assumptions",
+   "tests": "Automated tests",
+   "dirty": "with uncommitted changes",
+   "unknown": "The build could not be identified."
+  },
+  "params": {
+   "caption": "Parameters and assumptions by parameter file",
+   "file": "File",
+   "count": "Parameters",
+   "assumptions": "Assumptions",
+   "share": "Share"
+  },
+  "base": {
+   "caption": "Baseline (no policy change), selected years"
+  },
+  "val": {
+   "computing": "The comparison with official figures is being computed by the server (about a minute the first time). This section fills in by itself.",
+   "failed": "The comparison with official figures could not be loaded; it is available in the Validation view of the simulator.",
+   "group": {
+    "base": "Baseline projection",
+    "ind": "Costings and evaluations of measures"
+   },
+   "line": "{n} figures, {compared} compared: {w10} within 10% of the official figure, {w25} within 25%, {w50} within 50%.",
+   "caption": "Model against official figures: a selection",
+   "col": {
+    "what": "Reference",
+    "official": "Official",
+    "model": "Model",
+    "gap": "Gap"
+   },
+   "sec": {
+    "near": "Baseline to 2031",
+    "long": "Long run",
+    "static": "Taxes, static costing",
+    "dynamic": "Dynamic responses",
+    "measures": "Enacted or costed measures"
+   }
+  },
+  "sources": {
+   "caption": "{n} documents in the reference file",
+   "institution": "Institution",
+   "document": "Document",
+   "date": "Date",
+   "refs": "References"
+  },
+  "dist": {
+   "caption": "Synthetic households against the income survey, baseline {year}",
+   "gini": "Gini coefficient of disposable income",
+   "s80": "Income quintile share ratio (S80/S20)",
+   "poverty": "At-risk-of-poverty rate",
+   "by_type": "At-risk-of-poverty rate by household type",
+   "observed": "Survey (EU-SILC {year})"
+  }
+ }
+}

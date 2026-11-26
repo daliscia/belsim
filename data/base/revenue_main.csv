@@ -1,0 +1,117 @@
+na_item,label,year,S13,S1311,S1314,S1312,S1313
+B1G,"Value added, gross",2024,91703.5,16811.5,2112.3,44319.5,28460.2
+B1N,"Value added, net",2024,76748.2,13868.2,2027.8,36536.1,24316.1
+B2N,Net operating surplus,2024,113.2,58.0,0.0,-0.1,55.3
+B5N,"Balance of primary incomes/national income, net",2024,43769.3,39386.0,-982.9,-2673.0,8039.2
+B6N,"Disposable income, net",2024,126863.7,4848.3,40127.5,51679.6,30208.3
+B8G,"Saving, gross",2024,-5614.3,-10352.7,379.6,1185.1,3173.7
+B8N,"Saving, net",2024,-20569.6,-13296.0,295.1,-6598.3,-970.4
+B9,Net lending (+)/net borrowing (-),2024,-27241.4,-16774.6,221.9,-9593.4,-1095.3
+P1,Output,2024,117946.5,22424.4,3417.4,56443.9,35660.8
+P11_P12,Market output and output for own final use,2024,9124.0,1447.6,38.9,5880.9,1756.6
+P11_P12_P131,"Market output, output for own final use and payments for non-market output",2024,19705.6,4914.9,720.6,9207.0,4863.1
+P13,Non-market output,2024,108822.5,20976.8,3378.5,50563.0,33904.2
+P131,Payments for non-market output,2024,10581.6,3467.3,681.7,3326.1,3106.5
+P132,"Non-market output, other",2024,98240.9,17509.5,2696.8,47236.9,30797.7
+P2,Intermediate consumption,2024,26243.0,5612.9,1305.1,12124.4,7200.6
+P3,Final consumption expenditure,2024,147435.7,18144.3,39832.4,58277.9,31181.1
+P31,Individual consumption expenditure,2024,95674.5,2099.1,39830.1,41156.7,12588.6
+P32,Collective consumption expenditure,2024,51761.2,16045.2,2.3,17121.2,18592.5
+P5,Gross capital formation,2024,19428.7,4567.0,108.3,9529.7,5223.7
+P51G,Gross fixed capital formation,2024,19364.8,4519.5,108.3,9518.2,5218.8
+P51C,Consumption of fixed capital,2024,14955.3,2943.3,84.5,7783.4,4144.1
+P52_P53,Changes in inventories and acquisitions less disposals of valuables,2024,63.9,47.5,0.0,11.5,4.9
+P11,Market output,2024,4141.7,64.3,0.0,2357.1,1720.3
+P12,Output for own final use,2024,4982.3,1383.3,38.9,3523.8,36.3
+D1PAY,"Compensation of employees, expenditure",2024,77355.4,13810.2,2027.8,36895.1,24622.3
+D11PAY,"Wages and salaries, expenditure",2024,52188.1,9093.1,1433.3,24881.2,16780.5
+D12PAY,"Employers' social contributions, expenditures",2024,25167.3,4717.1,594.5,12013.9,7841.8
+D2REC,"Taxes on production and imports, revenue",2024,73248.5,54243.1,2280.0,9187.2,7538.2
+D21REC,"Taxes on products, revenue",2024,60410.0,51558.2,1968.1,6883.7,0.0
+D211REC,"Value added type taxes (VAT), revenue",2024,37832.3,37832.3,0.0,0.0,0.0
+D29PAY,"Other taxes on production, expenditure",2024,0.0,0.0,0.0,0.0,0.0
+D29REC,"Other taxes on production, revenue",2024,12838.5,2684.9,311.9,2303.5,7538.2
+D3PAY,"Subsidies, expenditure",2024,22041.5,6738.3,3656.6,11261.1,385.5
+D3REC_S212,"Subsidies, revenue from the EU institutions",2024,0.0,0.0,0.0,0.0,0.0
+D31PAY,"Subsidies on products, expenditure",2024,3608.7,2013.1,0.0,1410.6,185.0
+D39PAY,"Other subsidies on production, expenditure",2024,18432.8,4725.2,3656.6,9850.5,200.5
+D39REC,"Other subsidies on production, revenue",2024,720.4,0.0,0.0,358.9,361.5
+D4PAY,"Property income, expenditure",2024,13604.0,11027.0,62.6,2515.3,436.9
+D4PAY_S1311,"Property income, expenditure, of which to subsector central government (S1311)",2024,,,0.0,0.0,0.0
+D4PAY_S1312,"Property income, expenditure, of which to subsector state government (S1312)",2024,,29.0,0.0,,0.0
+D4PAY_S1313,"Property income, expenditure, of which to subsector local government (S1313)",2024,,5.3,0.0,0.0,
+D4PAY_S1314,"Property income, expenditure, of which to subsector social security funds (S1314)",2024,,403.0,,0.5,0.0
+D4REC,"Property income, revenue",2024,6053.1,2850.2,456.3,1916.3,1268.1
+D41GREC,"Total interest before FISIM allocation, revenue",2024,3146.6,1490.9,454.1,1410.7,228.7
+D41GPAY,"Total interest before FISIM allocation, expenditure",2024,13993.7,11035.9,62.6,2701.2,631.8
+D41PAY,"Interest, expenditure",2024,13603.1,11027.0,62.6,2515.3,436.0
+D41REC,"Interest, revenue",2024,3439.7,1509.0,456.3,1571.1,341.1
+D42_TO_D45PAY,"Other property income, expenditure",2024,0.9,0.0,0.0,0.0,0.9
+D42_TO_D45REC,"Other property income, revenue",2024,2613.4,1341.2,0.0,345.2,927.0
+D42REC,"Distributed income of corporations, revenue",2024,1991.5,1185.5,0.0,192.8,613.2
+D42PAY,"Distributed income of corporations, expenditure",2024,0.0,0.0,0.0,0.0,0.0
+D43REC,"Reinvested earnings on foreign direct investment, revenue",2024,0.0,0.0,0.0,0.0,0.0
+D43PAY,"Reinvested earnings on foreign direct investment, expenditure",2024,0.0,0.0,0.0,0.0,0.0
+D44REC,"Other investment income, revenue",2024,12.1,0.0,0.0,7.4,4.7
+D44PAY,"Other investment income, expenditure",2024,0.9,0.0,0.0,0.0,0.9
+D45REC,"Rent, revenue",2024,609.8,155.7,0.0,145.0,309.1
+D45PAY,"Rent, expenditure",2024,0.0,0.0,0.0,0.0,0.0
+D5PAY,"Current taxes on income, wealth, etc., expenditure",2024,84.7,0.0,0.0,2.2,82.5
+D5REC,"Current taxes on income, wealth, etc., revenue",2024,104740.6,83755.5,1791.6,14554.7,4638.8
+D51A_C1REC,"Taxes on individual or household income including holding gains, revenue",2024,73712.3,54941.6,1370.6,13294.6,4105.5
+D51B_C2REC,"Taxes on the income or profits of corporations including holding gains, revenue",2024,27026.8,27026.8,0.0,0.0,0.0
+D51REC,"Taxes on income, revenue",2024,101965.7,83195.0,1370.6,13294.6,4105.5
+D59REC,"Other current taxes, revenue",2024,2774.9,560.5,421.0,1260.1,533.3
+D61REC,"Net social contributions, revenue",2024,94416.0,3572.0,80354.3,8459.1,2030.6
+D611REC,"Employers' actual social contributions, revenue",2024,48566.7,63.1,48492.8,10.8,0.0
+D613REC,"Households' actual social contributions, revenue",2024,32190.6,0.0,31861.5,308.2,20.9
+D62_D632PAY,"Social benefits other than social transfers in kind and social transfers in kind - purchased market production, expenditure",2024,158433.7,9100.8,114131.9,30319.3,4881.7
+D62PAY,"Social benefits other than social transfers in kind, expenditure",2024,109238.9,8466.0,76996.3,19278.3,4498.3
+D62PAY_GF1002,"Social benefits other than social transfers in kind, expenditure, of which COFOG 10.2 old age",2024,61312.7,4358.2,46320.7,8662.2,1971.6
+D62PAY_GF1003,"Social benefits other than social transfers in kind, expenditure, of which COFOG 10.3 survivors",2024,8766.8,0.0,8740.5,0.0,26.3
+D62PAY_GF1005,"Social benefits other than social transfers in kind, expenditure, of which COFOG 10.5 unemployment",2024,5677.4,0.0,5677.4,0.0,0.0
+D632PAY,"Social transfers in kind, purchased market production, expenditure",2024,49194.8,634.8,37135.6,11041.0,383.4
+D7PAY,"Other current transfers, expenditure",2024,11752.9,118917.5,14364.9,17133.4,1116.3
+D7PAY_S1311,"Other current transfers, expenditure, of which to subsector central government (S1311)",2024,,,3729.4,24.0,1.8
+D7PAY_S1312,"Other current transfers, expenditure, of which to subsector state government (S1312)",2024,,56915.4,8001.9,,345.2
+D7PAY_S1313,"Other current transfers, expenditure, of which to subsector local government (S1313)",2024,,4342.5,1735.6,14509.4,
+D7PAY_S1314,"Other current transfers, expenditure, of which to subsector social security funds (S1314)",2024,,50174.0,,0.0,0.0
+D7REC,"Other current transfers, revenue",2024,5014.3,5518.3,50325.7,67752.7,21196.8
+D7REC_S212,"Other current transfers, revenue, from the institutions and bodies of the European Union",2024,1233.9,244.8,0.0,989.1,0.0
+D71REC,"Net non-life insurance premiums, revenue",2024,0.0,0.0,0.0,0.0,0.0
+D71PAY,"Net non-life insurance premiums , expenditure",2024,137.5,0.0,0.0,84.5,53.0
+D72REC,"Non-life insurance claims, revenue",2024,133.7,0.0,0.0,98.9,34.8
+D72PAY,"Non-life insurance claims, expenditure",2024,0.0,0.0,0.0,0.0,0.0
+D73REC,"Current transfers within general government, revenue",2024,,3755.2,50174.0,65262.5,20587.5
+D73PAY,"Current transfers within general government , expenditure",2024,,111431.9,13466.9,14533.4,347.0
+D74REC,"Current international cooperation, revenue",2024,1417.6,378.1,0.0,989.1,50.4
+D74REC_S212,"Current international cooperation, revenue from the EU institutions",2024,1233.9,244.8,0.0,989.1,0.0
+D74PAY,"Current international cooperation, expenditure",2024,2027.8,1937.3,15.9,74.6,0.0
+D74PAY_S212,"Current international cooperation, expenditure, to the institutions and bodies of the European Union",2024,138.3,122.4,15.9,0.0,0.0
+D75REC,"Miscellaneous current transfers, revenue",2024,3463.0,1385.0,151.7,1402.2,524.1
+D75PAY,"Miscellaneous current transfers, expenditure",2024,5181.0,1141.7,882.1,2440.9,716.3
+D76PAY,"VAT- and GNI-based EU own resources, expenditure",2024,4406.6,4406.6,,,
+D8,Adjustment for the change in pension entitlements,2024,-2.4,0.0,0.0,0.0,-2.4
+D9PAY,"Capital transfers, expenditure",2024,6060.7,1919.9,32.4,5320.5,387.0
+D9PAY_S1311,"Capital transfers, expenditure, of which to subsector central government (S1311)",2024,,,0.0,1.4,0.0
+D9PAY_S1312,"Capital transfers, expenditure, of which to subsector state government (S1312)",2024,,73.7,0.0,,19.1
+D9PAY_S1313,"Capital transfers, expenditure, of which to subsector local government (S1313)",2024,,25.5,0.0,1443.8,
+D9PAY_S1314,"Capital transfers, expenditure, of which to subsector social security funds (S1314)",2024,,35.6,,0.0,0.0
+D9PAY_S2,"Capital transfers, expenditure, to the rest of the world",2024,671.8,613.8,0.0,58.0,0.0
+D9PAY_S212,"Capital transfers, expenditure, to the institutions and bodies of the EU",2024,28.5,28.5,0.0,0.0,0.0
+D9REC,"Capital transfers, revenue",2024,4189.8,48.9,-16.9,4262.2,1494.7
+D9REC_S2,"Capital transfers, revenue, from the rest of the world",2024,371.3,60.6,0.0,310.7,0.0
+D9REC_S212,"Capital transfers, revenue from the institutions and bodies of the EU",2024,368.3,57.6,0.0,310.7,0.0
+D91REC,"Capital taxes, revenue",2024,4257.7,457.7,0.0,3800.0,0.0
+D92_D99REC,"Investment grants and other capital transfers, revenue",2024,-67.9,-408.8,-16.9,462.2,1494.7
+D92PAY,"Investment grants, expenditure",2024,4953.7,1376.2,0.0,4737.5,146.5
+D92REC,"Investment grants, revenue",2024,329.3,41.7,35.6,362.4,1196.1
+D99REC,"Other capital transfers, revenue",2024,-397.2,-450.5,-52.5,99.8,298.6
+D99PAY,"Other capital transfers, expenditure",2024,1107.0,543.7,32.4,583.0,240.5
+D995REC,Capital transfers from general government to relevant sectors representing taxes and social contributions assessed but unlikely to be collected,2024,666.7,566.7,100.0,,
+OP5ANP,Gross capital formation and acquisitions less disposals of non-financial non-produced assets,2024,19756.1,4550.9,108.3,9720.2,5376.7
+NP,Acquisitions less disposals of non-financial non-produced assets,2024,327.4,-16.1,0.0,190.5,153.0
+TE,Total general government expenditure,2024,335329.6,171677.5,135689.6,125291.5,44487.1
+PTC,Total payable tax credits,2024,1566.2,958.1,0.0,608.1,0.0
+TC,Payable tax credits that exceed the taxpayer's liability,2024,490.1,393.1,0.0,97.0,0.0
+TR,Total general government revenue,2024,308088.3,154902.9,135911.6,115698.1,43391.8

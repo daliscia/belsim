@@ -1,0 +1,77 @@
+na_item,label,year,S13,S1311,S1314,S1312,S1313
+D2_D5_D91,Total tax receipts,2024,182246.4,138456.0,4071.5,27541.9,12177.0
+D2_D5_D91_D61_M_D611V_D612_M_M_D613V_D614_M_D995,Total receipts from taxes and compulsory social contributions after deduction of amounts assessed but unlikely to be collected,2024,262268.0,137952.4,84256.9,27860.8,12197.9
+D2_D5_D91_D61_M_D612_M_D614_M_D995,Total receipts from taxes and social contributions after deduction of amounts assessed but unlikely to be collected,2024,262336.9,137952.4,84325.8,27860.8,12197.9
+D2_D5_D91_D61_M_D995,Total receipts from taxes and social contributions (including imputed social contributions) after deduction of amounts assessed but unlikely to be collected,2024,275995.6,141461.3,84325.8,36000.9,14207.6
+D2,Taxes on production and imports,2024,73248.5,54243.1,2280.0,9187.2,7538.2
+D21,Taxes on products,2024,60410.0,51558.2,1968.1,6883.7,0.0
+D211,Value added type taxes (VAT),2024,37832.3,37832.3,0.0,0.0,0.0
+D212,Taxes and duties on imports excluding VAT,2024,1041.5,1041.5,0.0,0.0,0.0
+D2121,Import duties,2024,0.0,0.0,0.0,0.0,0.0
+D2122,Taxes on imports excluding VAT and import duties,2024,1041.5,1041.5,0.0,0.0,0.0
+D2122A,Levies on imported agricultural products,2024,0.0,0.0,0.0,0.0,0.0
+D2122B,Monetary compensatory amounts on imports,2024,0.0,0.0,0.0,0.0,0.0
+D2122C,Excise duties,2024,1041.5,1041.5,0.0,0.0,0.0
+D2122D,General sales taxes,2024,0.0,0.0,0.0,0.0,0.0
+D2122E,Taxes on specific services,2024,0.0,0.0,0.0,0.0,0.0
+D2122F,Profits of import monopolies,2024,0.0,0.0,0.0,0.0,0.0
+D214,"Taxes on products, except VAT and import taxes",2024,21536.2,12684.4,1968.1,6883.7,0.0
+D214A,Excise duties and consumption taxes,2024,11433.6,9876.2,0.0,1557.4,0.0
+D214B,Stamp taxes,2024,0.0,0.0,0.0,0.0,0.0
+D214C,Taxes on financial and capital transactions,2024,5488.2,784.9,0.0,4703.3,0.0
+D214D,Car registration taxes,2024,471.9,0.0,0.0,471.9,0.0
+D214E,Taxes on entertainment,2024,0.0,0.0,0.0,0.0,0.0
+D214F,"Taxes on lotteries, gambling and betting",2024,151.1,0.0,0.0,151.1,0.0
+D214G,Taxes on insurance premiums,2024,3111.7,1759.4,1352.3,0.0,0.0
+D214H,Other taxes on specific services,2024,42.3,42.3,0.0,0.0,0.0
+D214I,General sales or turnover taxes,2024,0.0,0.0,0.0,0.0,0.0
+D214J,Profits of fiscal monopolies,2024,220.0,220.0,0.0,0.0,0.0
+D214K,Export duties and monetary compensatory amounts on exports,2024,0.0,0.0,0.0,0.0,0.0
+D214L,Other taxes on products n.e.c.,2024,617.4,1.6,615.8,0.0,0.0
+D29,Other taxes on production,2024,12838.5,2684.9,311.9,2303.5,7538.2
+D29A,"Taxes on land, buildings and other structures",2024,7284.7,0.0,0.0,522.4,6762.3
+D29B,Taxes on the use of fixed assets,2024,732.6,0.0,0.0,670.5,62.1
+D29C,Total wage bill and payroll taxes,2024,0.0,0.0,0.0,0.0,0.0
+D29D,Taxes on international transactions,2024,0.0,0.0,0.0,0.0,0.0
+D29E,Business and professional licences,2024,437.8,437.8,0.0,0.0,0.0
+D29F,Taxes on pollution,2024,1006.0,0.0,0.0,1006.0,0.0
+D29G,Under-compensation of VAT (flat rate system),2024,0.0,0.0,0.0,0.0,0.0
+D29H,Other taxes on production n.e.c.,2024,3377.4,2247.1,311.9,104.6,713.8
+D5,"Current taxes on income, wealth, etc.",2024,104740.6,83755.5,1791.6,14554.7,4638.8
+D51,Taxes on income,2024,101965.7,83195.0,1370.6,13294.6,4105.5
+D51A,Taxes on individual or household income,2024,73712.3,54941.6,1370.6,13294.6,4105.5
+D51A_C1,Taxes on individual or household income including holding gains,2024,73712.3,54941.6,1370.6,13294.6,4105.5
+D51B,Taxes on the income or profits of corporations,2024,27026.8,27026.8,0.0,0.0,0.0
+D51B_C2,Taxes on the income or profits of corporations including holding gains,2024,27026.8,27026.8,0.0,0.0,0.0
+D51D,Taxes on winnings from lottery or gambling,2024,0.0,0.0,0.0,0.0,0.0
+D51E,Other taxes on income n.e.c.,2024,1226.6,1226.6,0.0,0.0,0.0
+D59,Other current taxes,2024,2774.9,560.5,421.0,1260.1,533.3
+D59A,Current taxes on capital,2024,1362.8,560.5,421.0,0.0,381.3
+D59B,Poll taxes,2024,0.0,0.0,0.0,0.0,0.0
+D59C,Expenditure taxes,2024,0.0,0.0,0.0,0.0,0.0
+D59D,Payments by households for licences,2024,1386.1,0.0,0.0,1260.1,126.0
+D59E,Taxes on international transactions,2024,0.0,0.0,0.0,0.0,0.0
+D59F,Other current taxes n.e.c.,2024,26.0,0.0,0.0,0.0,26.0
+D61,Net social contributions,2024,94415.9,3572.0,80354.3,8459.0,2030.6
+D61SC,Social insurance scheme service charges,2024,0.1,0.0,0.0,0.0,0.1
+D611,Employers' actual social contributions,2024,48566.7,63.1,48492.8,10.8,0.0
+D611C,Compulsory employers' actual social contributions,2024,48566.7,63.1,48492.8,10.8,0.0
+D611V,Voluntary employers' actual social contributions,2024,0.0,0.0,0.0,0.0,0.0
+D612,Employers' imputed social contributions,2024,13657.9,3508.9,0.0,8140.1,2008.9
+D6121,Employers' imputed pension contributions,2024,13565.1,3508.9,0.0,8047.3,2008.9
+D6122,Employers' imputed non-pension contributions,2024,92.8,0.0,0.0,92.8,0.0
+D613,Households' actual social contributions,2024,32190.6,0.0,31861.5,308.2,20.9
+D613CE,Compulsory employees' actual social contributions,2024,24393.9,0.0,24064.8,308.2,20.9
+D613CN,Compulsory actual social contributions by the non-employed,2024,2405.5,0.0,2405.5,0.0,0.0
+D613C,Compulsory households' actual social contributions,2024,32121.7,0.0,31792.6,308.2,20.9
+D613CS,Compulsory actual social contributions by the self-employed,2024,5322.3,0.0,5322.3,0.0,0.0
+D613V,Voluntary households' actual social contributions,2024,68.9,0.0,68.9,0.0,0.0
+D614,Households' social contributions supplements,2024,0.9,0.0,0.0,0.0,0.9
+D91,Capital taxes,2024,4257.7,457.7,0.0,3800.0,0.0
+D91A,Taxes on capital transfers,2024,3792.6,0.0,0.0,3792.6,0.0
+D91B,Capital levies,2024,465.1,457.7,0.0,7.4,0.0
+D91C,Other capital taxes n.e.c.,2024,0.0,0.0,0.0,0.0,0.0
+D995,Capital transfers from general government to relevant sectors representing taxes and social contributions assessed but unlikely to be collected,2024,666.7,566.7,100.0,,
+D995A,Taxes on products assessed but unlikely to be collected,2024,534.8,534.8,,,
+D995C,Taxes on income assessed but unlikely to be collected,2024,31.9,31.9,,,
+D995E,Employers'actual social contributions assessed but unlikely to be collected,2024,100.0,,100.0,,

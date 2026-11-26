@@ -1,0 +1,117 @@
+# Regional dimension (module: belsim.regional; also read by labour, macro and expenditure).
+# Regions: FLA (Flanders, BE2), WAL (Wallonia, BE3, incl. the German-speaking Community), BRU (Brussels, BE1).
+# Federated entities: flemish_community (Flemish Community = Community + Region), walloon_region
+# (incl. the German-speaking Community, merged for want of a fourth territory in the model),
+# french_community, brussels_region (incl. the community commissions COCOM, COCOF, VGC).
+# Regional calibration tables (GDP, employment, income by region): data/base/regional_accounts.csv
+# (Eurostat, belsim.data.fetch_regional). Figures below were read from documents (source given) or
+# are marked ASSUMPTION.
+
+regional.productivity_growth_wedge:
+  description: Difference between the productivity growth of a region (place of work) and the national trend macro.productivity_growth. Raises regional GDP and, by the region's weight, national GDP. Wages keep following the national trend (see belsim.regional). REGIONAL LEVER - Change(..., key="FLA").
+  unit: fraction per year
+  source: "ASSUMPTION - no regional divergence in the baseline (2015-2024 real GDP growth by region, Eurostat nama_10r_2gvagr, differs by a few tenths of a point a year)"
+  values:
+    2024: {FLA: 0.0, WAL: 0.0, BRU: 0.0}
+
+regional.commuting_matrix:
+  description: Share of the employed residents of a region (outer key) working in each region (inner key); the remainder works abroad. Workplace employment is then calibrated on the regional accounts.
+  unit: share
+  source: "Statbel, Labour Force Survey 2024, detailed publication table T2.062Q (https://statbel.fgov.be/fr/themes/emploi-formation/marche-du-travail/emploi-et-chomage, file of 17 March 2025): Flanders to Brussels 254 213, Wallonia to Brussels 148 649, Brussels to Flanders 59 058, Brussels to Wallonia 27 847, Flanders to Wallonia 31 874, Wallonia to Flanders 45 307, abroad 47 734 / 69 123 / 9 325, Brussels residents working in Brussels 417 863. Shares DERIVED - denominators: Brussels = sum of its flows (514 093); Flanders and Wallonia = LFS employed 15-64 (Eurostat lfst_r_lfe2emp 2024: 3 041 200 and 1 434 600)"
+  values:
+    2024:
+      FLA: {FLA: 0.8902, WAL: 0.0105, BRU: 0.0836}
+      WAL: {FLA: 0.0316, WAL: 0.8166, BRU: 0.1036}
+      BRU: {FLA: 0.1149, WAL: 0.0542, BRU: 0.8128}
+
+regional.brussels_dutch_share:
+  description: Share of the Brussels population served by the Flemish Community (the rest by the French Community); splits Community spending and accounts between regions.
+  unit: share
+  source: "IBSA/BISA table 6.1.1.1, school population 2024-2025 in Brussels schools (https://ibsa.brussels/sites/default/files/documents/6.1_enseignement_population_scolaire_20260922.xlsx): 57 156 pupils in Dutch-language and 202 345 in French-language nursery, primary and secondary education = 22.0% (the Special Financing Act uses a conventional 20/80 key)"
+  values:
+    2024: 0.22
+
+regional.service_voucher_shares:
+  description: Shares of the regions in the service-voucher subsidy budget (weights of subsidy.service_voucher_factor)
+  unit: share
+  source: "ASSUMPTION - regional budgets not found; roughly the regional distribution of voucher users (Flanders about 60%)"
+  values:
+    2024: {FLA: 0.60, WAL: 0.25, BRU: 0.15}
+
+regional.entity_accounts_2024:
+  description: ESA 2010 accounts 2024 of the federated entities - total revenue, total expenditure, balance (net lending) and consolidated gross debt. walloon_region = Walloon Region + German-speaking Community (579.5 / 695.5 / -116.0 / 1 224.0); brussels_region = Region + COCOM + COCOF + VGC (unconsolidated sum). The entities are not consolidated with each other; the difference with sub-sector S1312 (interregional units +771.1 balance, transfers between entities -6 745.5 on both sides, debt 3 532.6 - 5 120.4) is the pseudo-entity interregional_consolidation.
+  unit: EUR mn
+  source: "NBB.Stat, datasets DF_NFGOV_NET_DISS (government deficit/surplus overview) and DF_CGDS1312 (breakdown of communities and regions), https://nsidisseminate-stat.nbb.be/rest/data/BE2,DF_NFGOV_NET_DISS,1.0/all , vintage read 2026-11-25; sums for walloon_region and brussels_region DERIVED"
+  values:
+    2024:
+      flemish_community: {revenue: 67883.5, expenditure: 73056.6, balance: -5173.1, debt: 47477.7}
+      walloon_region: {revenue: 18907.5, expenditure: 21037.7, balance: -2130.2, debt: 39957.5}
+      french_community: {revenue: 25094.2, expenditure: 26607.0, balance: -1512.8, debt: 14257.4}
+      brussels_region: {revenue: 9003.0, expenditure: 10551.4, balance: -1548.6, debt: 15981.7}
+
+regional.sfa_grants_2024:
+  description: Special Financing Act transfers from the federal government to each entity in 2024 by mechanism - vat_pupils (VAT allocation to the Communities, follows pupils), pit_key (PIT allocations following the personal income tax yield of the territory - Communities' PIT allocation, Regions' employment / tax-expenditure / residual dotations), needs_population (family allowances, elderly care, health care and hospitals - follow the population under 18 and over 80), solidarity (national solidarity mechanism for regions whose PIT share is below their population share), transition (transition mechanism, nominally constant to 2024 then phased out), other (Brussels financing, commuter and international-civil-servant compensation, other). Regional PIT surcharges and regional taxes are own revenue, not included. The model scales the non-transition components so that their sum is the aggregate federal transfer of the balance module (ESA, 57 018 in 2024 against 56 222 here).
+  unit: EUR mn
+  source: "Federal 'Expose general - budget 2025', Chamber DOC 56 0852/001, tables 2-3, column 2024 (https://www.lachambre.be/FLWB/PDF/56/0852/56K0852001.pdf); Walloon components: 'Expose particulier' budget 2024 (https://finances.wallonie.be/files/budget2024/Budget%202024/Dolimont/EPDO.pdf: solidarity 796.9, transition 620.5). DERIVED: grouping by mechanism; transition amounts other than Wallonia's = 2025 budget amount / 0.9. ASSUMPTION: Brussels solidarity 2024 = 448 (2025 budget 487.3, Voies et Moyens 2025 DOC 56 0853/001, scaled by the Walloon 2024/2025 ratio), the rest of the Brussels PIT dotation being pit_key"
+  values:
+    2024:
+      flemish_community: {vat_pupils: 12555.5, pit_key: 10387.5, needs_population: 9225.8, solidarity: 0.0, transition: -474.4, other: 351.8}
+      walloon_region: {vat_pupils: 114.9, pit_key: 1915.7, needs_population: 108.5, solidarity: 796.9, transition: 629.6, other: -1.2}
+      french_community: {vat_pupils: 8971.0, pit_key: 3245.1, needs_population: 4580.4, solidarity: 0.0, transition: 155.4, other: 44.9}
+      brussels_region: {vat_pupils: 0.0, pit_key: 686.8, needs_population: 1507.1, solidarity: 448.0, transition: 134.8, other: 838.4}
+
+regional.sfa_transition_phase_out:
+  description: Transition mechanism of the Special Financing Act - last year at the full nominal amount and number of years of the linear phase-out to zero
+  unit: year, years
+  source: "Special Financing Act of 16 January 1989 as amended in 2014, art. 48/1: constant in nominal terms until 2024, then reduced linearly to zero over ten years"
+  values:
+    2024: {last_full_year: 2024, years: 10}
+
+regional.own_taxes_2024:
+  description: Own tax revenue of the regions in 2024 (ESA) - regional personal income tax and other regional taxes (indirect taxes + capital taxes). Used for the regional split of the tax lines when the revenue module does not publish revenue by region.
+  unit: EUR mn
+  source: "NBB.Stat DF_NFGOV_NET_DISS, 2024, vintage read 2026-11-25 (other = indirect taxes + capital taxes, DERIVED sum)"
+  values:
+    2024:
+      pit: {FLA: 9083.5, WAL: 4203.6, BRU: 1267.5}
+      other: {FLA: 7281.7, WAL: 3389.2, BRU: 1561.6}
+
+regional.local_government_2024:
+  description: Local government (S1313) accounts 2024 by region (WAL incl. the German-speaking municipalities). The part not allocated to a region (police and rescue zones etc. - revenue 8 843.2, debt 1 443.8) is spread in proportion by the model, which applies these shares to the national local-government aggregates.
+  unit: EUR mn
+  source: "NBB.Stat DF_NFGOV_NET_DISS and DF_CGDS1313, 2024, vintage read 2026-11-25"
+  values:
+    2024:
+      revenue: {FLA: 18309.9, WAL: 11314.3, BRU: 4924.5}
+      expenditure: {FLA: 18762.7, WAL: 11743.3, BRU: 5193.1}
+      debt: {FLA: 11754.1, WAL: 10417.0, BRU: 3535.3}
+
+regional.consolidation_shares:
+  description: Regional attribution of the transfers between federated entities that are consolidated in sub-sector S1312 (mainly the Sainte-Emilie transfer from the French Community to the Walloon Region and COCOF, 4 611 EUR mn to Wallonia in the 2024 budget, and the financing of the Brussels community commissions by the Region); used only for regional.gov_revenue / gov_expenditure.
+  unit: share
+  source: "ASSUMPTION - built on the Sainte-Emilie amount (Walloon 'Expose particulier' budget 2024) relative to the 6 745 EUR mn consolidated"
+  values:
+    2024: {FLA: 0.05, WAL: 0.70, BRU: 0.25}
+
+regional.fiscal_incidence_keys:
+  description: Allocation key by region of federal and social-security expenditure lines for regional.net_fiscal_transfer (lines not listed - population). Keys - retired, elderly (65+), unemployed, disabled, health_need (age-cost profile), children, inactive (18-64), private_employees, population.
+  unit: key
+  source: "ASSUMPTION - benefit-incidence conventions as in the National Bank study of interregional transfers (Dury et al., NBB Economic Review, September 2008): social benefits by residence of the recipient, indivisible spending and interest by population"
+  values:
+    2024:
+      pension_employees: retired
+      pension_self_employed: retired
+      pension_civil_servants: retired
+      pension_grapa: elderly
+      unemployment: unemployed
+      rcc_swt: unemployed
+      invalidity: disabled
+      sickness_primary: private_employees
+      disability_allowances: disabled
+      health_care: health_need
+      health_admin_prevention: health_need
+      long_term_care: health_need
+      family_allowances: children
+      social_assistance: inactive
+      labour_market_benefits: private_employees
+      subsidy_wage: private_employees

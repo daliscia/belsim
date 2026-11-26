@@ -1,0 +1,183 @@
+# Macro-economic parameters (prefix macro.). National-accounts levels for 2024 are data
+# (data/base/macro_*.csv, belsim/data/fetch_macro.py); the paths below are assumptions in the
+# style of the Federal Planning Bureau medium-term outlook and the 2024 Ageing Report.
+
+macro.inflation:
+  description: Consumer price inflation (national CPI, annual average)
+  unit: fraction per year
+  source: "Federal Planning Bureau, Economic outlook 2026-2031 (June 2026), see data/reference/validation.yaml for 2025-2031; ASSUMPTION - 2% (ECB target) from 2032"
+  values:
+    2024: 0.0314
+    2025: 0.025
+    2026: 0.034
+    2027: 0.029
+    2028: 0.023
+    2029: 0.018
+    2030: 0.017
+    2032: 0.02
+
+macro.health_index_wedge:
+  description: Growth of the health index minus CPI inflation (the health index excludes tobacco, alcohol and motor fuels)
+  unit: fraction per year
+  source: "Federal Planning Bureau, Economic outlook 2026-2031 (June 2026), see data/reference/validation.yaml (health index minus consumer price inflation); 0 from 2031"
+  values:
+    2024: 0.002
+    2025: 0.001
+    2026: -0.002
+    2027: 0.002
+    2028: -0.001
+    2029: 0.0
+    2030: 0.001
+    2031: 0.0
+
+macro.gdp_deflator_wedge:
+  description: Growth of the GDP deflator minus CPI inflation. Negative in 2026-2028 - import prices (energy) lift consumer prices more than the price of domestic output (terms-of-trade loss), so nominal GDP grows less than a CPI-based projection would give
+  unit: fraction per year
+  source: "2025: Eurostat nama_10_gdp (GDP at current prices 640,853 EUR mn, +3.47%, for real growth of 0.9%: deflator +2.55%, consumer prices +2.5%). 2026-2031: Federal Planning Bureau, Economic outlook 2026-2031 (June 2026), Tableaux A.2-A.4: GDP at current prices 663,326 / 687,370 / 710,640 / 733,587 / 756,470 / 778,846 EUR mn over real growth 0.7 / 1.0 / 1.2 / 1.4 / 1.3 / 1.2% gives a GDP deflator of 2.60 / 2.60 / 2.16 / 1.80 / 1.80 / 1.74% against consumer prices 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7% (National Bank, June 2026: deflator 2.0 / 3.1 / 2.5% in 2026-2028, 0.2 point more in total); ASSUMPTION - zero from 2032 (the Study Committee on Ageing projects in constant prices, i.e. one price index)"
+  values:
+    2024: 0.0
+    2025: 0.0005
+    2026: -0.008
+    2027: -0.003
+    2028: -0.0014
+    2029: 0.0
+    2030: 0.001
+    2031: 0.0004
+    2032: 0.0
+
+macro.interest_rate_10y:
+  description: 10-year Belgian government bond yield
+  unit: fraction
+  source: "Federal Planning Bureau, Economic outlook 2026-2031 (June 2026), see data/reference/validation.yaml for 2025-2031; ASSUMPTION - 3.5% in the long run"
+  values:
+    2024: 0.0292
+    2025: 0.032
+    2026: 0.035
+    2027: 0.036
+    2028: 0.035
+    2029: 0.034
+    2030: 0.033
+    2031: 0.032
+    2034: 0.035
+
+macro.interest_rate_short:
+  description: 3-month money-market rate (euro area)
+  unit: fraction
+  source: "Eurostat irt_st_a (2024: 3.57%, 2025: 2.18%); ASSUMPTION afterwards"
+  values:
+    2024: 0.0357
+    2025: 0.0218
+    2026: 0.020
+    2028: 0.022
+    2030: 0.025
+
+macro.productivity_growth:
+  description: Trend growth of labour productivity per worker (all sectors). To 2031 it is the growth that, with the model's own employment path, reproduces official real GDP growth
+  unit: fraction per year
+  source: "ASSUMPTION - calibrated on real GDP growth: 2025 Eurostat nama_10_gdp (+0.9%); 2026-2031 Federal Planning Bureau, Economic outlook 2026-2031 (June 2026), Tableau A.3 (0.7 / 1.0 / 1.2 / 1.4 / 1.3 / 1.2%), given the employment path of the baseline (values computed by `python -m belsim.macro.outlook`; rerun it when baseline employment changes). For comparison, the Bureau's own GDP per worker grows by 0.6 / 0.3 / 0.3 / 0.3 / 0.5 / 0.3 / 0.3% in 2025-2031 and the Study Committee on Ageing uses 0.3% a year to 2031. From 2032: Study Committee on Ageing, Annual Report 2026: 1.35% from 2040 (see data/reference/validation.yaml); ASSUMPTION - linear path in between"
+  values:
+    2024: 0.006
+    2025: 0.0112
+    2026: 0.0035
+    2027: 0.0025
+    2028: 0.0038
+    2029: 0.0049
+    2030: 0.0021
+    2031: 0.0007
+    2032: 0.0042
+    2033: 0.0053
+    2034: 0.0065
+    2035: 0.0077
+    2036: 0.0088
+    2037: 0.01
+    2038: 0.0112
+    2039: 0.0123
+    2040: 0.0135
+
+macro.cyclical_output_gap:
+  description: Exogenous cyclical position of output relative to the supply-side path (adds to the behavioural demand gap; private employment reacts through labour.okun_coefficient)
+  unit: fraction of GDP
+  source: "ASSUMPTION - the labour supply released by the 2025 pension-age rise and the 2026 unemployment reform is absorbed gradually; sized so that real GDP growth is close to the observed 0.9% in 2025 (Eurostat nama_10_gdp) and to the Federal Planning Bureau outlook for 2026-2027; closed by 2031"
+  values:
+    2024: 0.0
+    2025: -0.004
+    2026: -0.005
+    2027: -0.003
+    2028: -0.001
+    2029: 0.0
+macro.productivity_growth_sector_wedge:
+  description: Productivity growth of a sector minus the common trend (missing sector = 0)
+  unit: fraction per year
+  source: "ASSUMPTION - common trend"
+  values:
+    2024: {}
+
+macro.hours_output_elasticity:
+  description: Elasticity of output per worker to hours worked per worker
+  unit: elasticity
+  source: "ASSUMPTION - below 1 because hourly productivity rises when working time falls"
+  values:
+    2024: 0.8
+
+macro.real_wage_productivity_share:
+  description: Share of trend productivity growth passed into real wages (1 = constant wage share in the long run)
+  unit: fraction
+  source: "ASSUMPTION - long-run convention of the Study Committee on Ageing"
+  values:
+    2024: 1.0
+
+macro.real_wage_productivity_lag_weight:
+  description: Weight of the previous year's trend productivity growth in this year's real wage growth
+  unit: fraction
+  source: "ASSUMPTION"
+  values:
+    2024: 0.5
+
+macro.household_savings_rate:
+  description: Gross household saving as a share of gross disposable income
+  unit: fraction
+  source: "Eurostat nasa_10_nf_tr 2024, S14_S15: B8G / B6G = 52 075 / 370 112"
+  values:
+    2024: 0.1407
+
+macro.fuel_share_of_cp072:
+  description: Share of motor fuels in COICOP 07.2 (operation of personal transport equipment), which Eurostat publishes only as a whole (EUR 19.7bn in 2024)
+  unit: fraction
+  source: "ASSUMPTION - household budget survey: fuels are about 40% of 07.2"
+  values:
+    2024: 0.40
+
+macro.investment_share_factor:
+  description: Multiplier on the 2024 ratio of gross capital formation (incl. housing) to GDP
+  unit: factor
+  source: "ASSUMPTION - constant investment ratio (2024: 24.5% of GDP, Eurostat nama_10_gdp P5G; dwellings 5.3%, nama_10_an6)"
+  values:
+    2024: 1.0
+
+macro.gov_consumption_wage_weight:
+  description: Weight of the public wage bill in the growth of government consumption (rest follows nominal GDP)
+  unit: fraction
+  source: "Eurostat gov_10a_main 2024: compensation of employees / final consumption of S13 = 77.4 / 147.4"
+  values:
+    2024: 0.52
+
+macro.interest_income_rate_elasticity:
+  description: Elasticity of household interest income to the 10-year rate
+  unit: elasticity
+  source: "ASSUMPTION - deposit and bond portfolios reprice slowly"
+  values:
+    2024: 0.5
+
+macro.property_transactions_2024:
+  description: Value of real-estate transactions subject to registration duties in 2024 (grows with nominal GDP)
+  unit: EUR million
+  source: "ASSUMPTION - about 9% of GDP, back-of-the-envelope from regional registration-duty receipts and statutory rates (not downloaded)"
+  values:
+    2024: 56000
+
+macro.inheritance_flow_2024:
+  description: Value of inheritances and gifts in 2024 (grows with deaths x financial wealth per head)
+  unit: EUR million
+  source: "ASSUMPTION - about 6.5% of GDP: roughly 112 000 deaths x average estate, plus gifts (not downloaded)"
+  values:
+    2024: 40000

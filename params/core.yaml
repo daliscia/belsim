@@ -1,0 +1,7 @@
+core.tax_threshold_wage_link:
+  description: Share of real wage growth passed on to income-tax and social-contribution thresholds, on top of their legal price indexation. 0 = current law (thresholds follow prices only, so the tax burden rises as real wages grow); 1 = thresholds follow wages (constant average tax rate). LEVER.
+  unit: share
+  source: "ASSUMPTION - current law to 2030, then thresholds follow wages, the usual no-policy-change convention of long-term projections (Study Committee on Ageing keeps implicit tax rates constant)"
+  values:
+    2024: 0.0
+    2031: 1.0

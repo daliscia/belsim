@@ -1,0 +1,1140 @@
+# Government revenue parameters (owner: belsim.fiscal.revenue).
+#
+# Legislation of income year 2024 (tax year 2025) unless dated otherwise. Amount thresholds are
+# uprated with the health index (Belgian tax brackets and social thresholds are indexed), rates
+# are not. A dated entry of an uprated parameter is an amount in euros of ITS year and is indexed
+# from there. Values marked "ASSUMPTION" were NOT verified on an official or authoritative
+# source: either a modelling share, or a legislated figure that could not be checked.
+# Legislated values were checked on the web on 25 November 2026; "official" = government or
+# parliament page, "secondary" = Big-4 / payroll provider / publisher table.
+# Monthly or quarterly social amounts that are indexed during the year are entered as the
+# time-weighted average of the legal amounts in force in the year (the model's indices are
+# annual averages).
+# The level of every revenue line is calibrated in code on the 2024 accounts
+# (data/base/revenue_lines.csv), so structural shares below only affect how a line reacts
+# to a change, never its 2024 level.
+#
+# Reforms of the federal government formed in 2025 ("Arizona") are in the baseline when they are
+# law: programme law of 18 July 2025 (MB 29.07.2025), law of 18 December 2025 (MB 30.12.2025),
+# law of 6 April 2026 on capital gains (MB 21.04.2026), programme law of 30 May 2026
+# (MB 01.06.2026), law of 15 July 2026 reforming personal income tax (MB 29.07.2026). The text of
+# the 15 July 2026 law was read as tabled (Chamber DOC 56 1243/001, 17.12.2025); payroll-provider
+# summaries of the published law confirm its main lines, final amounts may differ marginally.
+
+# ============================================================== personal income tax (pit.)
+pit.bracket_thresholds:
+  description: Upper limits of the first three personal income tax brackets (net taxable income)
+  unit: EUR
+  source: "Income year 2024 (AY 2025): 15,820 / 27,920 / 48,320 - Wolters Kluwer 'Fiscale grensbedragen aj. 2025' and practicali.be/blog/geindexeerde-bedragen-aj-2025 (secondary, read 25.11.2026). Official later values for information (fin.belgium.be/en/private-individuals/tax-return/income/tax-rates): income 2025 16,320 / 28,800 / 49,840; income 2026 16,720 / 29,510 / 51,070 - i.e. fiscal indexation of +3.2 % and +2.4 %, one year behind the health index used here. No reform of the brackets."
+  uprate: health_index
+  wage_link: true
+  values: {2024: [15820, 27920, 48320]}
+
+pit.indexation_lag_base:
+  description: Legal indexation of the personal income tax amounts - consumer price index of the year before the base year relative to the base year. The law indexes the amounts of income year t on the average consumer prices of year t-1 (Income Tax Code art. 178), whereas the parameters are uprated with the health index of year t; the revenue module applies the ratio (0 = switch the correction off).
+  unit: ratio
+  source: "Official amounts of income 2025 over income 2024 (fin.belgium.be/en/private-individuals/tax-return/income/tax-rates, read 25.11.2026): 16,320 / 15,820 = 1.0316, 28,800 / 27,920 = 1.0315, 49,840 / 48,320 = 1.0315 -> 1 / 1.0315. Check on income 2026: the rule gives 15,820 x 1.0315 x 1.025 (consumer prices 2025) = 16,726 against 16,720 official. ASSUMPTION that the index is the national consumer price index (the two observed years fit it better than the health index)."
+  values: {2024: 0.96946}
+
+pit.bracket_rates:
+  description: Marginal personal income tax rates of the four brackets
+  unit: rate
+  source: "Income Tax Code 1992 art. 130: 25 / 40 / 45 / 50 %; confirmed for income 2025 and 2026 on fin.belgium.be/en/private-individuals/tax-return/income/tax-rates (official, read 25.11.2026)"
+  values: {2024: [0.25, 0.40, 0.45, 0.50]}
+
+pit.basic_allowance:
+  description: Tax-free allowance (belastingvrije som / quotite exemptee), relieved at the bottom-bracket rates. For pensions and replacement income see pit.allowance_neutralised_replacement.
+  unit: EUR
+  source: "2024: 10,570 (secondary: Wolters Kluwer / Practicali AY 2025 tables). 2026: 11,550, official (fin.belgium.be tax-rates page, income 2026). Reform - law of 15 July 2026 (MB 29.07.2026), art. 131 CIR: base amount 4,785 -> 4,945 (income 2026) -> 4,990 (2027) -> 5,070 (2028) -> 5,840 (2029) -> 6,230 (2030); the explanatory memorandum (Chamber DOC 56 1243/001 p. 5) sets the indexed targets 14,450 for AY 2030 and 15,600 for AY 2031, the King adjusting the base amount to reach them. 2027 and 2028 entries = pre-reform allowance (11,176 in 2026, indexed with the health index of the Federal Planning Bureau outlook of June 2026: +3.1 % in 2027, +2.2 % in 2028 -> 11,522 and 11,776) x the legal ratio of base amounts (4,990 / 4,785 and 5,070 / 4,785); an earlier version used 1.94 % a year, which put the 2027 step at half the official costing once the model's own index ran faster (ASSUMPTION for the indexation of 2027-2028 only: the model indexes with the health index of the year, the law with that of the year before). Status: law."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 10570, 2026: 11550, 2027: 12016, 2028: 12477, 2029: 14450, 2030: 15600}
+
+pit.allowance_special_scale:
+  description: Switch (1 or 0) - the tax on the tax-free allowance (basic amount and supplements) is computed with the special scale of pit.allowance_scale_thresholds and pit.allowance_second_band_rate (1) or with the ordinary brackets (0).
+  unit: flag
+  source: "Income Tax Code 1992 art. 134 par. 2 al. 2 (special rate, in force for income 2024). Law of 15 July 2026, art. 10 (Chamber DOC 56 1243/001 p. 7 and art. 10, official, read 26.11.2026): 'A partir de l'exercice d'imposition 2030, l'impot afferent a la quotite du revenu exemptee d'impot sera a nouveau calcule au meme taux que celui pour l'impot de base. Le taux special de l'article 134, par. 2, alinea 2, CIR 92 est abroge' -> 0 from income 2029. Status: law."
+  values: {2024: 1, 2029: 0}
+
+pit.allowance_scale_thresholds:
+  description: Special scale for the tax on the tax-free allowance - upper limits of its first three bands (the allowance and its supplements for children are valued at the bottom rate, 25 %, up to the first limit, at pit.allowance_second_band_rate, 30 %, up to the second, then at the second bracket rate, 40 %, up to the third and at 45 % above).
+  unit: EUR
+  source: "Income Tax Code 1992 art. 134, income year 2024 (AY 2025): 25 % up to 11,120, 30 % up to 15,820, 40 % up to 26,360, 45 % up to 48,320 - Wolters Kluwer, 'Recapitulatif des principaux plafonds fiscaux, exercice d'imposition 2025' (J. Wellens, 22.12.2023; secondary, read 26.11.2026; base amounts 5,705 / 8,120 / 13,530 also in Chamber DOC 56 1243/001, coordinated text, official)."
+  uprate: health_index
+  wage_link: true
+  values: {2024: [11120, 15820, 26360]}
+
+pit.allowance_second_band_rate:
+  description: Special scale for the tax on the tax-free allowance - rate of its second band (between the first two limits of pit.allowance_scale_thresholds). The other bands use the rates of the ordinary brackets (25 %, then 40 % and 45 %).
+  unit: rate
+  source: "Income Tax Code 1992 art. 134 par. 2 al. 2: 25 / 30 / 40 / 45 % (Wolters Kluwer table of AY 2025 amounts, secondary; Chamber DOC 56 1243/001 coordinated text, official; read 26.11.2026)."
+  values: {2024: 0.30}
+
+pit.allowance_neutralised_replacement:
+  description: Part of the tax-free allowance that does not benefit pensions, unemployment and sickness benefits. The 2026-2030 increases of the allowance are neutralised for these incomes by cutting their tax reductions by the same advantage, which is modelled as a lower allowance for them.
+  unit: EUR
+  source: "Law of 15 July 2026, art. 147 CIR as amended; Chamber DOC 56 1243/001 p. 5: 'les montants des reductions d'impot de base pour pensions et revenus de remplacement sont a chaque fois diminues d'un montant egal a l'avantage qui est obtenu de la majoration de la quotite du revenu exemptee d'impot' (official, read 25.11.2026). Amounts = pit.basic_allowance less the pre-reform allowance (11,176 in 2026, then indexed with the health index of the Federal Planning Bureau outlook of June 2026: 11,522 / 11,776 / 11,988 / 12,204 for 2027-2030), so that pensions and replacement incomes keep exactly the indexed pre-reform allowance. Status: law."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 0, 2026: 374, 2027: 494, 2028: 701, 2029: 2462, 2030: 3396}
+
+pit.allowance_neutralised_population_share:
+  description: Share of the neutralisation of the higher tax-free allowance (pit.allowance_neutralised_replacement) that binds in the population of tax units drawing pensions or benefits. Below 1 because many of them also have earned income in the year (part-year unemployment or sickness, pensioners who work) and the cut in their tax reduction is pro rata of the replacement income - they keep part of the increase. Aggregate revenue only; the calculator for a single payslip neutralises in full.
+  unit: share
+  source: "ASSUMPTION for the share, set on an official costing: FPS Finance (Aurora microsimulation on the returns of tax year 2023) puts the increase of the allowance at -531.0 / -714.7 / -1,057.7 / -3,484.0 / -4,988.4 mn for 2026-2030, all levels (Court of Audit, commentary on the 2026 budget, Chamber DOC 56 1279/003, annex 1, official, fetched 26.11.2026); with full neutralisation for every recipient of a pension or benefit the model gave 0.88 of it in every year (467 / 622 / 887 / 3,113 / 4,378), i.e. about 0.6 mn full-benefit taxpayers short. Rule: Income Tax Code art. 147-154 (the reduction for replacement income, and so its cut, is limited to the share of that income in net income)."
+  values: {2024: 1.0, 2026: 0.78}
+
+pit.reform_other_measures_cost:
+  description: Net cost of the measures of the 2026 personal income tax reform that the tax calculator does not hold (copyright income regime, overtime, deduction for entrepreneurs, lower tax on pensions, prepayment surcharge, directors' pay and the 20 % rule, less the correction factor for municipalities), all levels of government, in EUR mn at the 2024 level of GDP (it grows with GDP). 0 = without these measures. LEVER.
+  unit: EUR mn (2024 GDP scale)
+  source: "Court of Audit, commentary on the 2026 budget (Chamber DOC 56 1279/003, annex 1 'Reforme de l'impot des personnes physiques 2026-2030', FPS Finance estimates, official, fetched 26.11.2026), EUR mn 2026-2030: copyright -142.13 a year; overtime -100.84; prepayment surcharge -12.42; directors' pay +19.17; 20 % rule +28.87 / +32.39 / +33.92 / +33.92 / +33.92; lower tax on pensions -26.50 from 2027; deduction for entrepreneurs -89.75 in 2027-2028, -114.40 from 2029; correction factor for municipalities +42.17 in 2029, +174.07 in 2030 -> net -207.4 / -320.1 / -318.6 / -301.0 / -169.1, divided by the nominal GDP index of the Federal Planning Bureau outlook of June 2026 (1.0694 / 1.1082 / 1.1457 / 1.1827 / 1.2196). The measures of the same table that the calculator holds (allowance, fiscal work bonus, special contribution, children, single parents, unemployment and pension reductions, marital quotient) are not in this amount. ASSUMPTION - the 2030 amount holds as a share of GDP afterwards. Status: law of 15 July 2026."
+  values: {2024: 0.0, 2026: 193.9, 2027: 288.8, 2028: 278.0, 2029: 254.5, 2030: 138.7}
+
+pit.expense_deduction_rate:
+  description: Flat-rate professional expense deduction of employees, share of gross wage net of social contributions
+  unit: rate
+  source: "Income Tax Code 1992 art. 51: 30 % (secondary: Wolters Kluwer / Practicali AY 2025 tables, read 25.11.2026)"
+  values: {2024: 0.30}
+
+pit.expense_deduction_max:
+  description: Ceiling of the flat-rate professional expense deduction of employees
+  unit: EUR
+  source: "Income year 2024 (AY 2025): 5,750 - Wolters Kluwer 'Fiscale grensbedragen aj. 2025', practicali.be (secondary, read 25.11.2026)"
+  uprate: health_index
+  wage_link: true
+  values: {2024: 5750}
+
+pit.workbonus_tax_reduction_rate:
+  description: Fiscal work bonus - tax reduction as a share of the social work bonus actually granted, for part A (low wages) and part B (very low wages). The annual ceiling of the reduction (1,380 EUR for income 2024) is not modelled.
+  unit: rate
+  source: "2024: 33.14 % of part A and 52.54 % of part B (Chamber DOC 56 1243/001 title 16, official; Securex). Law of 15 July 2026 title 16: part B 63 % for AY 2027-2028 (income 2026-2027) and 72 % from AY 2029; part A 35 % from AY 2029 (income 2028). Status: law."
+  values:
+    2024: {a: 0.3314, b: 0.5254}
+    2026: {a: 0.3314, b: 0.63}
+    2028: {a: 0.35, b: 0.72}
+
+pit.reduction_replacement:
+  description: Tax reduction for replacement income (basic + additional amount), by kind (pensions, unemployment benefits, sickness and invalidity benefits). The separate phase-out of the additional amount is not modelled.
+  unit: EUR
+  source: "Income Tax Code 1992 art. 147, income year 2024 (AY 2025): pensions 2,151.72 basic + 444.78 additional = 2,596.50; unemployment 2,151.72 + 60 % of the additional amount (being phased out) = 2,418.59; sickness-invalidity 2,887.28 - practicali.be/blog/geindexeerde-bedragen-aj-2025 (secondary, read 25.11.2026); base amounts 1,148 and 236.38 confirmed in Chamber DOC 56 1243/001 art. 15 (official). Old from-memory values were 2,573 / 2,573 / 3,303."
+  uprate: health_index
+  wage_link: true
+  values: {2024: {pension: 2596.50, unemployment: 2418.59, disability: 2887.28}}
+
+pit.reduction_unemployment_factor:
+  description: Multiplier on the tax reduction for unemployment benefits (reform path)
+  unit: ratio
+  source: "Law of 15 July 2026 title 4 (Chamber DOC 56 1243/001 art. 15-19, official): from AY 2027 (income 2026) the basic reduction is cut to a quarter and the additional reduction abolished -> (2,151.72 / 4) / 2,418.59 = 0.2224; abolished from AY 2030 (income 2029). The transitional full reduction for single parents with 1-2 children is not modelled. Status: law."
+  values: {2024: 1.0, 2026: 0.2224, 2029: 0.0}
+
+pit.reduction_unemployment_phaseout:
+  description: Taxable income between which the tax reduction for unemployment benefits is phased out to zero [start, end]
+  unit: EUR
+  source: "Income year 2024: 27,900 - 34,830 (practicali.be AY 2025 table, secondary). Law of 15 July 2026 art. 18 (Chamber DOC 56 1243/001 p. 14-15, official): from AY 2027 base amounts 11,020 - 14,750, i.e. 21,290 - 28,490 at the AY 2026 coefficient, x 1.0244 for income 2026."
+  uprate: health_index
+  wage_link: true
+  values: {2024: [27900, 34830], 2026: [21810, 29185]}
+
+pit.reduction_phaseout_start:
+  description: Taxable income above which the tax reduction for pensions and sickness benefits is phased out
+  unit: EUR
+  source: "Income Tax Code 1992 art. 151-152, income year 2024 (AY 2025): 27,900 - practicali.be AY 2025 table (secondary, read 25.11.2026). Old from-memory value was 27,320."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 27900}
+
+pit.reduction_phaseout_end:
+  description: Taxable income at which the phase-out of the tax reduction for pensions and sickness benefits ends
+  unit: EUR
+  source: "Income Tax Code 1992 art. 151-152, income year 2024 (AY 2025): 55,810 - practicali.be AY 2025 table (secondary); consistent with 57,560 for AY 2026 in Chamber DOC 56 1243/001 p. 15 (official). Old from-memory value was 54,630."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 55810}
+
+pit.reduction_floor_share:
+  description: Share of the replacement-income tax reduction kept above the phase-out end, by kind
+  unit: share
+  source: "One third for pensions: Chamber DOC 56 1243/001 art. 21 ('encore accordees a concurrence d'un tiers', official). Sickness-invalidity one third: ASSUMPTION - same art. 152 rule, not read. Unemployment: zero (art. 151, phased out fully; see pit.reduction_unemployment_phaseout)."
+  values: {2024: {pension: 0.3333, unemployment: 0.0, disability: 0.3333}}
+
+pit.reduction_pension_top_limits:
+  description: Taxable income between which the remaining third of the pension tax reduction is withdrawn [start, end] (applies when pit.reduction_pension_top_phaseout is 1)
+  unit: EUR
+  source: "Law of 15 July 2026, new art. 151/2 CIR (Chamber DOC 56 1243/001 art. 21, official): base amounts 30,445 and 36,545 = 58,810 and 70,570 at the AY 2026 coefficient; here deflated to income-2024 euros with 55,810 / 57,560."
+  uprate: health_index
+  wage_link: true
+  values: {2024: [57022, 68424]}
+
+pit.reduction_pension_top_phaseout:
+  description: Switch (0 or 1) for the withdrawal of the pension tax reduction from high incomes
+  unit: share
+  source: "Law of 15 July 2026, art. 151/2 CIR, applicable from AY 2027 = income 2026 (Chamber DOC 56 1243/001 art. 21). Status: law."
+  values: {2024: 0.0, 2026: 1.0}
+
+pit.autonomy_factor:
+  description: Share of the federal state tax handed over to the regions (autonomiefactor / facteur d'autonomie)
+  unit: share
+  source: "Special Finance Act art. 5/2: definitive factor 24.957 % (practicali.be AY 2025 and AY 2027 tables, secondary, read 25.11.2026)"
+  values: {2024: 0.24957}
+
+pit.regional_surcharge:
+  description: Regional surcharge (opcentiemen / centimes additionnels) on the reduced state tax, by region of residence. LEVER - one region with Change(key="WAL").
+  unit: rate
+  source: "33.257 % in Flanders and Wallonia, 32.591 % in Brussels, AY 2025 to AY 2027 (practicali.be, secondary, read 25.11.2026). A Brussels cut of 1 point from income 2027 is a draft only (not in the baseline)."
+  values: {2024: {FLA: 0.33257, WAL: 0.33257, BRU: 0.32591}}
+
+pit.region_tax_share:
+  description: Shares of the regions of residence in the state tax (federal + regional personal income tax), used as weights for the national-average surcharges of a payslip without a region. The aggregate revenue lines do not use it (they compute each region from its own population).
+  unit: share
+  source: "Statbel, fiscal income statistics, income year 2024, table C (official; statbel.fgov.be/fr/themes/menages/revenus-fiscaux, read 25.11.2026): state tax Flanders 39,121 mn, Wallonia 16,408 mn, Brussels 5,373 mn of 60,902 mn (data/base/revenue_pit_statbel.csv)."
+  values: {2024: {FLA: 0.6424, WAL: 0.2694, BRU: 0.0882}}
+
+pit.municipal_surcharge:
+  description: Average municipal surcharge on the total (federal + regional) personal income tax, by region. LEVER - one region with Change(key="BRU").
+  unit: rate
+  source: "Flanders 7.17 % (2024 and 2025; 7.22 % in 2026 - Belfius local finance study 25.06.2026 and Flemish government APB table), Wallonia 7.95 % (7.92-7.97 % in 2025; UVCW, Belfius), Brussels 6.3 % (2025; Belfius 15.10.2026) - secondary / local-government sources read 25.11.2026. Cross-check on assessed tax (Statbel fiscal income statistics, income 2024, table C, official): municipal taxes / state tax = 7.07 % in Flanders, 8.05 % in Wallonia, 6.22 % in Brussels."
+  values: {2024: {FLA: 0.0717, WAL: 0.0795, BRU: 0.063}}
+
+# ---- household rules (tax units): used by the aggregate income tax and by belsim.distribution
+pit.child_allowance_supplement:
+  description: Supplement to the income-tax-free allowance for 1, 2, 3 and 4 dependent children (cumulative amounts, by income year), granted to the partner with the higher taxable income. LEVER.
+  unit: EUR
+  source: "Income Tax Code 1992 art. 132. 2024 (AY 2025) - Wolters Kluwer table of indexed tax amounts, 22.12.2023 (secondary; https://assets.contenthub.wolterskluwer.com/api/public/content/2136072-tabel-fiscale-grensbedragen-d4b9e55b48). 2025 (AY 2026) - FPS Finance, dependent children page (official; https://fin.belgium.be/nl/particulieren/belastingaangifte/persoonlijke-situatie/personen-ten-laste/kinderen). 2026-2029 - law of 15 July 2026 reforming the personal income tax (Belgian Official Gazette 29.07.2026), read in the text adopted in committee, Chamber DOC 56 1243/009 (official; https://www.dekamer.be/FLWB/PDF/56/1243/56K1243009.pdf) - the Gazette text itself was not opened, title 3: base amounts for 1 / 2 children raised from 870 / 2 240 to 935 / 2 250 (income 2026), 1 005 / 2 260 (2027), 1 075 / 2 272.50 (2028), 1 162.50 / 2 325 (2029), three and four children unchanged, all indexed with the coefficient frozen at the AY 2026 level (new art. 178 par. 2/1). Indexed amounts 2026 and 2029 as published by Liantis (secondary; https://www.liantis.be/nl/nieuws/nieuwe-regels-bedrijfsvoorheffing-vanaf-1-november-2026-wat-de-impact-op-het-nettoloon); 2027 and 2028 = base amount x 2.2795 (the coefficient implied by the AY 2026 amounts), own calculation. Indexation resumes from income 2030. All web sources read 25.11.2026."
+  uprate: health_index
+  wage_link: true
+  values:
+    2024: [1920, 4950, 11090, 17940]
+    2025: [1980, 5110, 11440, 18510]
+    2026: [2130, 5130, 11440, 18510]
+    2027: [2290, 5150, 11440, 18510]
+    2028: [2450, 5180, 11440, 18510]
+    2029: [2650, 5300, 11440, 18510]
+
+pit.child_allowance_extra_per_child:
+  description: Supplement to the tax-free allowance for each dependent child beyond the fourth (by income year). LEVER.
+  unit: EUR
+  source: "ITC 1992 art. 132. 2024 - Wolters Kluwer table of indexed tax amounts, 22.12.2023 (secondary; https://assets.contenthub.wolterskluwer.com/api/public/content/2136072-tabel-fiscale-grensbedragen-d4b9e55b48). 2025 - FPS Finance, dependent children page (official; https://fin.belgium.be/nl/particulieren/belastingaangifte/persoonlijke-situatie/personen-ten-laste/kinderen). Frozen at the AY 2026 amount for income 2026-2029 by the law of 15 July 2026 reforming the personal income tax (Belgian Official Gazette 29.07.2026), read in the text adopted in committee, Chamber DOC 56 1243/009 (official; https://www.dekamer.be/FLWB/PDF/56/1243/56K1243009.pdf) - the Gazette text itself was not opened; indexation resumes from income 2030."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 6850, 2025: 7070, 2026: 7070, 2027: 7070, 2028: 7070, 2029: 7070}
+
+pit.single_parent_allowance:
+  description: Extra tax-free allowance of a single person with dependent children (by income year). LEVER.
+  unit: EUR
+  source: "ITC 1992 art. 133. 2024 - Wolters Kluwer table of indexed tax amounts, 22.12.2023 (secondary; https://assets.contenthub.wolterskluwer.com/api/public/content/2136072-tabel-fiscale-grensbedragen-d4b9e55b48). 2025 - FPS Finance, dependent children page (official; https://fin.belgium.be/nl/particulieren/belastingaangifte/persoonlijke-situatie/personen-ten-laste/kinderen). Frozen at the AY 2026 amount for income 2026-2029 by the law of 15 July 2026 reforming the personal income tax (Belgian Official Gazette 29.07.2026), read in the text adopted in committee, Chamber DOC 56 1243/009 (official; https://www.dekamer.be/FLWB/PDF/56/1243/56K1243009.pdf) - the Gazette text itself was not opened (from income 2029 it is refused when another adult who is not a close relative lives in the household - not relevant for the stylised single parents)."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 1920, 2025: 1980, 2026: 1980, 2027: 1980, 2028: 1980, 2029: 1980}
+
+pit.child_credit_max_per_child:
+  description: Maximum refundable tax credit per dependent child for the part of the child supplements that cannot be used against tax (unused supplement x bottom-bracket rate). LEVER.
+  unit: EUR
+  source: "ITC 1992 art. 134. 550 EUR for income 2024 - Wolters Kluwer table of indexed tax amounts, 22.12.2023 (secondary; https://assets.contenthub.wolterskluwer.com/api/public/content/2136072-tabel-fiscale-grensbedragen-d4b9e55b48); same amount for AY 2026 on the FPS Finance children page (official). Frozen in nominal terms from AY 2026 by the law of 18 December 2025 according to BDO (secondary; https://www.bdo.be/nl-be/microsites/belastinghervorming/interactief-overzicht-fiscale-sociale-maatregelen-2d7bfd773e91786835ead2f04ecb3c8a) - ASSUMPTION that the freeze has no end date."
+  values:
+    2024: 550
+
+pit.marital_quotient_rate:
+  description: Marital quotient - share of the couple's joint net professional income up to which income is attributed to the partner with little or no own income. LEVER.
+  unit: share
+  source: "Income Tax Code 1992 art. 87-88: 30 %, unchanged by the 2026 reform (which cuts the maximum amount, see pit.marital_quotient_max)."
+  values:
+    2024: 0.30
+
+pit.marital_quotient_max:
+  description: Maximum amount attributed to the partner under the marital quotient, by income year - 'work' for couples in general, 'pension' for couples where both partners have reached 66 (67 from AY 2031). LEVER.
+  unit: EUR
+  source: "2024 (AY 2025): 13 050 - Wolters Kluwer table of indexed tax amounts, 22.12.2023 (secondary; https://assets.contenthub.wolterskluwer.com/api/public/content/2136072-tabel-fiscale-grensbedragen-d4b9e55b48), and the same amount in the FPS Finance explanatory notes to the AY 2025 return (official; https://fin.belgium.be/sites/default/files/media/documents/explications-partie-1-rw-2025.pdf). 2025 (AY 2026): 13 460 - FPS Finance (official; https://fin.belgium.be/nl/particulieren/belastingaangifte/persoonlijke-situatie/huwelijk-samenwonen). From income 2026 - law of 15 July 2026 reforming the personal income tax (Belgian Official Gazette 29.07.2026), read in the text adopted in committee, Chamber DOC 56 1243/009 (official; https://www.dekamer.be/FLWB/PDF/56/1243/56K1243009.pdf) - the Gazette text itself was not opened, title 5 (art. 27-34): base amount 6 700 cut to 5 860 (income 2026), 5 030 (2027), 4 190 (2028), 3 350 (2029 onwards) in general; for couples of pensionable age 6 365 in income 2026, then 335 less each year down to 335 in income 2044 and no quotient from income 2045. Amounts = base x 2.0096 rounded to 10 EUR (coefficient frozen at the AY 2026 level, new art. 178 par. 3; reproduces 11 780 and 12 790 published by Liantis for income 2026). ASSUMPTION - the frozen coefficient is read as having no end date, so the amounts are not indexed after 2029; if indexation resumes the quotient is worth more than modelled."
+  values:
+    2024: {work: 13050, pension: 13050}
+    2025: {work: 13460, pension: 13460}
+    2026: {work: 11780, pension: 12790}
+    2027: {work: 10110, pension: 12120}
+    2028: {work: 8420, pension: 11440}
+    2029: {work: 6730, pension: 10770}
+    2030: {work: 6730, pension: 10100}
+    2031: {work: 6730, pension: 9430}
+    2032: {work: 6730, pension: 8750}
+    2033: {work: 6730, pension: 8080}
+    2034: {work: 6730, pension: 7410}
+    2035: {work: 6730, pension: 6730}
+    2036: {work: 6730, pension: 6060}
+    2037: {work: 6730, pension: 5390}
+    2038: {work: 6730, pension: 4710}
+    2039: {work: 6730, pension: 4040}
+    2040: {work: 6730, pension: 3370}
+    2041: {work: 6730, pension: 2690}
+    2042: {work: 6730, pension: 2020}
+    2043: {work: 6730, pension: 1350}
+    2044: {work: 6730, pension: 670}
+    2045: {work: 6730, pension: 0}
+
+pit.single_parent_eligible_share:
+  description: Share of the individually taxed persons with dependent children who receive the single-parent supplement to the tax-free allowance (population of tax units only; a single-parent payslip always gets it). Below 1 from income 2029, when the supplement is refused if another adult who is not a close relative lives in the household.
+  unit: share
+  source: "Law of 15 July 2026 (see pit.single_parent_allowance): restriction from income 2029. ASSUMPTION for the share: 218 thousand one-adult households with children (Eurostat EU-LFS 2024, data/base/distribution_households.csv) against 619 thousand individual returns with dependants (Statbel fiscal income statistics 2024, table B.5) -> about 0.35; the others are mostly unmarried couples."
+  values: {2024: 1.0, 2029: 0.35}
+
+pit.sole_income_pension_share:
+  description: Share of the joint returns with a single income (the couples for whom the marital quotient matters most) that are pensioner couples; the others are working-age couples. Shapes the population of tax units behind the aggregate income tax.
+  unit: share
+  source: "ASSUMPTION, anchored: of about 637,000 couples with a marital quotient, 277,000 are not pensioners (Ligue des familles and press on the 2026 reform, January 2026, secondary) -> 57 % pensioners. Number of joint returns with one income: 283,875 (Statbel fiscal income statistics 2024, table B.3, official)."
+  values: {2024: 0.57}
+
+pit.bracket_base_factor:
+  description: Alternative tax base, off by default - multiplier on the taxable income that falls in each bracket of the income-tax schedule (25 / 40 / 45 / 50 %), in the population of tax units behind the aggregate income tax. All 1 = the distribution of the 2024 tax returns. Set to [1, 1, 0.88, 0.88] for the smaller upper-bracket bases implied by the Planning Bureau's 2024 costings (one factor for the two upper brackets, so that moving the limit between them is costed on the same footing); the receipts are unchanged in the year it is switched on (the tax the smaller base does not explain is carried as an amount that grows with GDP and does not react to the schedule), so a change of rates or brackets is costed on the smaller base - compare a measure between two runs that both carry the change. LEVER (sensitivity).
+  unit: ratio by bracket
+  source: "Default 1 - Statbel fiscal income statistics, income 2024 (official): 124 / 67 / 50 / 34 bn taxed at 25 / 40 / 45 / 50 %. Alternative, inferred - Federal Planning Bureau, DC2024 fiches (dc2024.be, official, read 26.11.2026; EXPEDITION model on 2017 tax returns uprated to 2024, no table by bracket published): 40 % rate to 30 % -6,545 mn (VB 102), 45 % rate to 40 % -2,312 mn (VB 103, Open Vld 101), 50 % threshold from 48,320 to 61,000 EUR -552 mn (VB 104). With the model's own ratio of cost to bracket income these imply about 67 bn in the 40 % bracket (as in the returns), 44 bn in the 45 % bracket (50 bn in the returns) and 10.3 bn between 48,320 and 61,000 EUR (12.2 bn). ASSUMPTION - the factor inferred for the first part of the top bracket is applied to all of it. The 2024 returns are the more credible base for 2024: they are the observed incomes of that year, and on them the schedule reproduces the 2024 receipts (calibration factor of the federal tax 1.00), while the smaller bases leave 4.6 bn of state tax, 7 %, unexplained; incomes uprated uniformly from 2017 miss the incomes that moved above the price-indexed thresholds since. The 10-18 % by which the model exceeds the upper-bracket costings is read as that difference of base, not as an error of either."
+  values: {2024: [1.0, 1.0, 1.0, 1.0]}
+
+pit.tax_unit_type_follows_income:
+  description: Switch (1 or 0) - the kind of tax unit of a taxpayer (taxed alone, partner in a two-income couple, sole income of a couple) follows his or her place in the income distribution, as in the tax returns; 0 gives every income group the same mix. Read once, in the base year - it shapes the population of tax units behind the aggregate income tax, not the law.
+  unit: flag
+  source: "Statbel fiscal income statistics, income 2024, tables B.1-B.3 (official; data/base/revenue_pit_distribution.csv): distribution of net taxable income by type of return - a joint return with one income averages 45,400 EUR against 27,600 EUR for an individual return and 37,600 EUR per partner of a two-income joint return. In the model the taxpayers taxed alone then average 27,200 EUR, the sole incomes of joint returns 38,900 EUR and partners of two-income couples 35,600 EUR. Effect on costings - abolishing the marital quotient under the rules of income 2025 yields 342 mn at 2024 prices (322 mn with the same mix in every income group) against 491 mn in the Planning Bureau's DC2024 costing (fiche DeFI 104); the rest depends on how income is split inside two-income couples, which is not published (pit.two_income_lower_share)."
+  values: {2024: 1}
+
+pit.two_income_lower_share:
+  description: Share of the joint taxable income of a two-income couple held by the partner with the lower income - five equally likely values. Used once, in the base year, to turn the distribution of tax returns into a distribution of persons (the brackets apply to each partner); it mostly decides how much income of couples reaches the top bracket.
+  unit: share
+  source: "ASSUMPTION - the fiscal statistics publish joint returns, not the split between partners. Mean 0.36, anchored on the gap in annual earnings between women and men (about 20 % in annual gross wages, part-time included - Institute for the Equality of Women and Men / Statbel wage-gap reports, from memory), which gives the lower earner a little under 40 % on average, with wide dispersion."
+  values: {2024: [0.18, 0.30, 0.38, 0.45, 0.49]}
+
+pit.company_car_benefit:
+  description: Average taxable benefit in kind of a company car (voordeel van alle aard / avantage de toute nature)
+  unit: EUR
+  source: "ASSUMPTION for the average (taken slightly above the legal minimum). Legal minimum verified: 1,600 EUR for income 2024, 1,650 for 2025, 1,690 for 2026 (Wolters Kluwer tables; Partena infoflash 'Montants fiscaux 2025', secondary)"
+  uprate: health_index
+  wage_link: true
+  values: {2024: 2000}
+
+pit.company_car_share_by_decile:
+  description: Share of private-sector employees with a company car, by wage decile (lowest to highest)
+  unit: share
+  source: "ASSUMPTION - order of magnitude: roughly 15 % of employees overall, concentrated in the upper half of the wage distribution (FPS Mobility / Federal Planning Bureau studies, from memory)"
+  values: {2024: [0.0, 0.0, 0.01, 0.03, 0.06, 0.10, 0.16, 0.24, 0.36, 0.52]}
+
+pit.pension_decile_profile:
+  description: Gross pension of each tenth of pensioners relative to the average pension (used to tax pension spending progressively)
+  unit: ratio
+  source: "ASSUMPTION - stylised dispersion of pensions (low employee and self-employed pensions, high civil-servant pensions)"
+  values: {2024: [0.35, 0.55, 0.68, 0.78, 0.88, 0.98, 1.08, 1.22, 1.45, 2.03]}
+
+pit.benefit_decile_profile:
+  description: Unemployment or invalidity benefit of each tenth of beneficiaries relative to the average benefit
+  unit: ratio
+  source: "ASSUMPTION - stylised dispersion (benefits are compressed between minimum and ceiling)"
+  values: {2024: [0.60, 0.72, 0.82, 0.90, 0.96, 1.02, 1.08, 1.16, 1.27, 1.47]}
+
+pit.tax_expenditure_pension_savings:
+  description: Budget cost of the federal tax reduction for pension savings and long-term savings, at 2024 scale (grows with nominal GDP)
+  unit: EUR mn
+  source: "Federal inventory of tax expenditures 2024 (annex to the 2026 budget, Chamber DOC 56 1279/002, 28.01.2026, official): pension savings 619.60 + federal long-term savings 306.94 in 2024. Lever: set to 0 to abolish. (The ceilings are frozen for AY 2026-2030, not modelled.) Old from-memory value was 750."
+  values: {2024: 927}
+
+pit.tax_expenditure_service_vouchers:
+  description: Budget cost of the regional tax reductions for service vouchers (dienstencheques / titres-services), by region, at 2024 scale (grows with nominal GDP). LEVER - set a region to 0 to abolish.
+  unit: EUR mn
+  source: "Federal inventory of tax expenditures 2024 (Chamber DOC 56 1279/002, official): 218.07 in 2024, of which Flanders 175.68; Flanders abolished the reduction from 2025 (inventory shows 0). ASSUMPTION for the split of the remaining 42.4 between Wallonia (30) and Brussels (12), by population. Brussels abolition in 2026 and the Walloon abolition announced for 2027 (yield 23 mn) are not entered (amounts by region not verified)."
+  values:
+    2024: {FLA: 176, WAL: 30, BRU: 12}
+    2025: {FLA: 0, WAL: 30, BRU: 12}
+
+pit.tax_expenditure_mortgage:
+  description: Budget cost of the regional tax relief for owner-occupied housing loans (woonbonus, cheque habitat, bonus logement), by region, at 2024 scale (grows with nominal GDP). LEVER - set a region to 0 to abolish.
+  unit: EUR mn
+  source: "Federal inventory of tax expenditures 2024 (Chamber DOC 56 1279/002, official): regional housing bonuses 1,802.71 in 2024; regional split of 2023 (1,846.59: Flanders 1,065.56, Wallonia 722.01, Brussels 59.02) applied to the 2024 total. The schemes are closed to new loans (Flanders 2020, Brussels 2017, Wallonia 2025), so the true cost declines over time, which is not modelled (ASSUMPTION for the constant path)."
+  values: {2024: {FLA: 1040, WAL: 705, BRU: 58}}
+
+# ============================================================== social contributions (ssc.)
+ssc.employee_rate:
+  description: Employee social security contribution rate on gross wages (private sector and contractual public staff)
+  unit: rate
+  source: "NSSO administrative instructions 2024/2, 'Les cotisations de securite sociale': 7.50 + 3.55 + 1.15 + 0.87 = 13.07 % (socialsecurity.be/employer/instructions/dmfa/fr/2024-2/instructions/socialsecuritycontributions/contributions.html, official, read 25.11.2026)"
+  values: {2024: 0.1307}
+
+ssc.employee_rate_statutory:
+  description: Personal contribution rate of statutory civil servants (7.5 % survivors' pension fund + 3.55 % health care)
+  unit: rate
+  source: "7.5 % + 3.55 % = 11.05 % - components on socialsecurity.be/citizen/fr/a-propos-de-la-securite-sociale/financement-de-la-securite-sociale (official, read 25.11.2026)"
+  values: {2024: 0.1105}
+
+ssc.public_statutory_share:
+  description: Share of statutory staff among public employees used in the payslip of kind emp_public
+  unit: share
+  source: "ASSUMPTION - roughly half of general-government staff is statutory (NSSO statistics, from memory)"
+  values: {2024: 0.5}
+
+ssc.pay_months:
+  description: Number of monthly wages in annual gross pay (12 + thirteenth month + double holiday pay), used to derive the monthly reference wage of the work bonus
+  unit: months
+  source: "ASSUMPTION - typical white-collar package (13.92)"
+  values: {2024: 13.92}
+
+ssc.workbonus_a_max_monthly:
+  description: Social work bonus, part A (low wages) - maximum monthly reduction of employee contributions, white-collar workers
+  unit: EUR/month
+  source: "NSSO administrative instructions, 'Bonus a l'emploi' (socialsecurity.be/employer/instructions/dmfa/fr/<edition>/instructions/deductions/workers_reductions/workbonus.html, editions 2024-1 to 2026-3, official, read 25.11.2026). 2024: single formula until March (max 267.42 for A+B), April 115.91, from 1 May 118.22 -> average 116.9 (Jan-Mar split pro rata). 2025: 120.59 from February (indexation only). 2026: 123.00 (Jan), 125.04 (1 April, real increase with the minimum wage), 127.54 (1 July) -> average 125.78. Old model used one bonus of 277.5."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 116.9, 2026: 125.78}
+
+ssc.workbonus_b_max_monthly:
+  description: Social work bonus, part B (very low wages) - maximum monthly reduction of employee contributions, white-collar workers
+  unit: EUR/month
+  source: "NSSO administrative instructions, 'Bonus a l'emploi' (see ssc.workbonus_a_max_monthly). 2024: April 156.30, from 1 May 159.43 -> average 157.7 (Jan-Mar pro rata of the single formula). 2026: 165.87 (Jan), 168.62 (April), 171.99 (July) -> average 169.62."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 157.7, 2026: 169.62}
+
+ssc.workbonus_b_full_wage_monthly:
+  description: Monthly reference wage up to which part B of the social work bonus is granted in full
+  unit: EUR/month
+  source: "NSSO administrative instructions, 'Bonus a l'emploi' (see ssc.workbonus_a_max_monthly). 2024: 2,054.01 (Jan-Mar), 2,090.78 (April), 2,132.59 (from May) -> average 2,109.5. 2026: 2,218.73 / 2,255.50 (April) / 2,300.62 (July) -> average 2,268.9. Old from-memory value was 2,070."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 2109.5, 2026: 2268.9}
+
+ssc.workbonus_a_full_wage_monthly:
+  description: Monthly reference wage up to which part A of the social work bonus is granted in full and at which part B reaches zero
+  unit: EUR/month
+  source: "NSSO administrative instructions, 'Bonus a l'emploi' (see ssc.workbonus_a_max_monthly). 2024: 2,623.00 (Jan-Mar, kink of the single formula), 2,669.96 (April), 2,723.36 (from May) -> average 2,693.8. 2026: 2,833.36 / 2,880.32 (April) / 2,937.93 (July) -> average 2,897.4."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 2693.8, 2026: 2897.4}
+
+ssc.workbonus_zero_wage_monthly:
+  description: Monthly reference wage at which the social work bonus (part A) is fully phased out
+  unit: EUR/month
+  source: "NSSO administrative instructions, 'Bonus a l'emploi' (see ssc.workbonus_a_max_monthly). 2024: 3,144.45 (Jan-April), 3,207.40 (from May) -> average 3,186.4. 2026: 3,271.48 (Jan-Feb), 3,336.98 (March-Aug), 3,403.62 (from Sept) -> average 3,348.3. The programme law of 30 May 2026 announces higher ceilings from 1 January 2028 (parameters not found, not in the baseline)."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 3186.4, 2026: 3348.3}
+
+ssc.special_thresholds:
+  description: Special social security contribution - income limits of the annual scale (taxable income of a person taxed alone); the last limit is where the maximum is reached
+  unit: EUR
+  source: "Law of 30 March 1994 art. 108, current text reproduced in Chamber DOC 56 1243/001 (coordinated text, official, read 25.11.2026): 18,592.02 / 21,070.96 / 37,344.00 / 40,997.26 / 60,181.95; amounts are not indexed. Law of 15 July 2026 art. 86 (from AY 2029 = income 2028): contribution individualised, limits 19,000 / 21,070.96 / 41,630. Status: law. Old model used the first band of the quarterly NSSO withholding scale (5,836.14 x 4) on gross wages."
+  values: {2024: [18592.02, 21070.96, 37344.00, 40997.26, 60181.95], 2028: [19000.0, 21070.96, 41630.0]}
+
+ssc.special_rates:
+  description: Special social security contribution - rate in each band of the annual scale
+  unit: rate
+  source: "Law of 30 March 1994 art. 108 (Chamber DOC 56 1243/001, official): 5 % / 1.3 % / 4.009 % / 1.2996 %; from income 2028 4.75 % / 1.3 % (law of 15 July 2026 art. 86)."
+  values: {2024: [0.05, 0.013, 0.04009, 0.012996], 2028: [0.0475, 0.013]}
+
+ssc.special_joint_thresholds:
+  description: Special social security contribution - income limits of the scale for households with a joint assessment (spouses and legal cohabitants), applied to their joint taxable income; the last limit is where the maximum is reached. Empty from income 2028 - the contribution is then due per person on the scale of ssc.special_thresholds.
+  unit: EUR
+  source: "Law of 30 March 1994 art. 108 par. 1, third subparagraph, text in force until assessment year 2028 as reproduced in Chamber DOC 56 1243/001 (coordinated text, official, read 26.11.2026): 5 % between 18,592.02 and 21,070.96; 123.95 + 1.3 % up to 60,181.95; 632.39 up to 74,688.00; 632.39 + 1.3629 % up to 81,944.00; 731.28 above. Law of 15 July 2026 art. 86 (from AY 2029 = income 2028): subparagraph repealed, income taken per spouse. Status: law."
+  values: {2024: [18592.02, 21070.96, 60181.95, 74688.0, 81944.0], 2028: []}
+
+ssc.special_joint_rates:
+  description: Special social security contribution - rate in each band of the scale for households with a joint assessment (ssc.special_joint_thresholds)
+  unit: rate
+  source: "Law of 30 March 1994 art. 108 par. 1, third subparagraph (Chamber DOC 56 1243/001, official): 5 % / 1.3 % / 0 / 1.3629 %; repealed from income 2028 (law of 15 July 2026 art. 86)."
+  values: {2024: [0.05, 0.013, 0.0, 0.013629], 2028: []}
+
+ssc.special_max:
+  description: Maximum annual special social security contribution (per household until income 2027, per person from 2028)
+  unit: EUR
+  source: "Law of 30 March 1994 art. 108: 731.28 (Chamber DOC 56 1243/001, official; = 12 x 60.94 monthly NSSO withholding, socialsecurity.be instructions). From income 2028: 365.64 per person (law of 15 July 2026 art. 86). Old value 243.76 was wrong: 60.94 is the monthly, not the quarterly, maximum."
+  values: {2024: 731.28, 2028: 365.64}
+
+ssc.employer_rate:
+  description: Basic employer contribution rate, private sector (incl. wage moderation), after the tax shift
+  unit: rate
+  source: "NSSO administrative instructions 2024/2: 19.88 % basic + 5.12 % wage moderation = 25 % (socialsecurity.be/employer/instructions/dmfa/fr/2024-2/instructions/socialsecuritycontributions/contributions.html, official, read 25.11.2026)"
+  values: {2024: 0.25}
+
+ssc.employer_other_rate:
+  description: Other employer contributions on gross wages (1.60-1.69 % contribution of employers with 10+ workers, closure funds, temporary unemployment, asbestos fund, second-pillar levy, blue-collar holiday pay etc.), average
+  unit: rate
+  source: "ASSUMPTION for the average; the level is calibrated on D.611. Official range for white-collar workers, Q1 2024: global rate 25.29 % (<10 workers), 26.98 % (10-19), 27.04 % (20+) (FEB table quoted by SPW Recherche, recherche.wallonie.be/DGF_Coefficient-charges-patronales_2024), i.e. 0.3-2.0 % on top of the basic rate, before blue-collar and second-pillar contributions."
+  values: {2024: 0.027}
+
+ssc.structural_reduction_slope:
+  description: Structural reduction of employer contributions (category 1), low-wage component - reduction per euro of wage below the threshold S0
+  unit: rate
+  source: "NSSO administrative instructions, 'La reduction structurelle' (socialsecurity.be/employer/instructions/dmfa/fr/<edition>/instructions/deductions/structuralreduction_targetgroupreductions/structuralreduction.html, editions 2024-1 to 2026-3, official, read 25.11.2026): R = 0.1400 x (S0 - S) + gamma x (S2 - S), F = 0; alpha = 0.1400 throughout 2024-2026"
+  values: {2024: 0.14}
+
+ssc.structural_reduction_threshold:
+  description: Annual gross wage (4 x quarterly S0) below which the low-wage structural reduction of employer contributions applies
+  unit: EUR
+  source: "NSSO administrative instructions, 'La reduction structurelle' (see ssc.structural_reduction_slope): S0 = 10,797.67 per quarter in Q1-Q2 2024, 11,013.62 in Q3-Q4 -> annual sum 43,622.58. Later values are indexation only (11,233.89 from Q2 2025, 11,458.57 from Q1 2026, 11,687.74 from Q3 2026). Old from-memory value was 43,000."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 43622.58}
+
+ssc.structural_reduction_low_slope:
+  description: Structural reduction of employer contributions (category 1), very-low-wage component - reduction per euro of wage below the threshold S2
+  unit: rate
+  source: "NSSO administrative instructions, 'La reduction structurelle' (see ssc.structural_reduction_slope): gamma = 0.40 in 2024 and Q1 2025; 0.21 in Q2 2025; 0.15 from Q3 2025 (reform: wider and flatter component; the 2025 entry is the regime in force from 1 July 2025); 0.16 from Q2 2026."
+  values: {2024: 0.40, 2025: 0.15, 2026: 0.16}
+
+ssc.structural_reduction_low_threshold:
+  description: Annual gross wage (4 x quarterly S2) below which the very-low-wage structural reduction applies
+  unit: EUR
+  source: "NSSO administrative instructions, 'La reduction structurelle' (see ssc.structural_reduction_slope): S2 = 6,502.69 (Q1 2024), 6,807.18 (Q2), 6,943.32 (Q3-Q4) -> annual sum 27,196.51; 8,400.00 in Q2 2025 and 9,360.00 from Q3 2025 (2025 entry = 4 x 9,360, regime in force from 1 July 2025); then indexation only (9,547.20 from Q1 2026, 9,738.14 from Q3 2026)."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 27196.51, 2025: 37440.0}
+
+ssc.fte_floor_wage:
+  description: Annual full-time minimum wage used to read low annual earnings as part-time work - the structural reduction of employer contributions is assessed by law on the full-time-equivalent reference wage and scaled by the fraction worked, so earnings below this amount get that fraction of the reduction of a full-time minimum wage (12 x the minimum monthly income, indexed). 0 = reduction computed on annual earnings as they are (the bottom two earnings deciles then pay almost no employer contributions). The labour-demand response to contribution cuts is tuned with this rule on.
+  unit: EUR
+  source: "12 x the guaranteed average minimum monthly income, 2024 average 2,048 EUR (see dist.min_wage_monthly: 1,994.18 / 2,029.88 / 2,070.48 during 2024, secondary). Rule: NSSO administrative instructions, 'La reduction structurelle' - R is computed with the reference quarterly wage S (wage brought to full-time, complete quarter) and multiplied by the performance fraction (official, see ssc.structural_reduction_slope). ASSUMPTION that everybody earning less than the full-time minimum wage over the year works part-time or part of the year at that wage."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 24576.0}
+
+ssc.employer_cap_wage:
+  description: Annual gross wage (4 x the quarterly ceiling) above which basic employer contributions are no longer due (partial exemption for very high wages)
+  unit: EUR
+  source: "Programme law of 18 July 2025 (MB 29.07.2025) and royal decree of 6 October 2025; NSSO administrative instructions 'Exoneration partielle pour les tres hauts salaires' (socialsecurity.be/employer/instructions/dmfa/fr/latest/instructions/deductions/otheremployersreductions/partial_exemption_very_high_salaries.html, official, read 25.11.2026): quarterly ceiling 85,000 from Q3 2025; 86,700 from 1.1.2026; 88,434 from 1.7.2026 (2026 entry = sum of the four quarters). Not applicable in 2024 (see ssc.employer_cap_exempt_share). Budget cost 75 mn in 2026 (press, RTBF) - the model's wage deciles do not reach the ceiling, so the aggregate cost is not captured."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 340000.0, 2025: 340000.0, 2026: 350268.0}
+
+ssc.employer_cap_exempt_share:
+  description: Share of the basic employer contribution exempted on the part of the wage above ssc.employer_cap_wage (0 = no ceiling)
+  unit: share
+  source: "Programme law of 18 July 2025: exemption of basic employer contributions and wage moderation above the ceiling from the third quarter of 2025 (NSSO instructions, see ssc.employer_cap_wage) -> half a year in 2025, full from 2026. Status: law."
+  values: {2024: 0.0, 2025: 0.5, 2026: 1.0}
+
+ssc.employer_rate_public:
+  description: Average actual employer contribution rate on general-government wages (contractual staff at private-like rates, statutory staff at reduced rates, local pension-fund contributions)
+  unit: rate
+  source: "Eurostat gov_10a_main + NBB national tax list 2024: D.611 paid by general government (11,228) / D.11 paid by general government (52,188)"
+  values: {2024: 0.215}
+
+ssc.self_employed_rate:
+  description: Social contribution rate of the self-employed (main occupation) up to the first ceiling
+  unit: rate
+  source: "FPS Social Security, 'Note de cotisations 2024 - tableau' (socialsecurity.belgium.be/sites/default/files/content/docs/fr/elaboration-politique-sociale/independants/note_de_cotisations_2024_-_tableau_f.pdf, official, read 25.11.2026): 20.50 %; unchanged in the 2025 and 2026 notes. Fund management fees (about 3-4.25 % of contributions) come on top and are not government revenue."
+  values: {2024: 0.205}
+
+ssc.self_employed_rate_upper:
+  description: Social contribution rate of the self-employed between the first and second ceilings (zero above)
+  unit: rate
+  source: "FPS Social Security, 'Note de cotisations 2024 - tableau' (official, see ssc.self_employed_rate): 14.16 %; unchanged in 2025 and 2026"
+  values: {2024: 0.1416}
+
+ssc.self_employed_ceiling_1:
+  description: First income ceiling of self-employed contributions
+  unit: EUR
+  source: "FPS Social Security, 'Note de cotisations 2024 - tableau' (official, see ssc.self_employed_rate): 72,810.95; indexation only afterwards (73,447.52 in 2025, 75,024.54 in 2026)"
+  uprate: health_index
+  wage_link: true
+  values: {2024: 72810.95}
+
+ssc.self_employed_ceiling_2:
+  description: Second income ceiling of self-employed contributions (no contribution above)
+  unit: EUR
+  source: "FPS Social Security, 'Note de cotisations 2024 - tableau' (official, see ssc.self_employed_rate): 107,300.30; indexation only afterwards (108,238.40 in 2025, 110,562.42 in 2026)"
+  uprate: health_index
+  wage_link: true
+  values: {2024: 107300.30}
+
+ssc.self_employed_min_income:
+  description: Minimum income on which a self-employed person in main occupation pays contributions
+  unit: EUR
+  source: "FPS Social Security, 'Note de cotisations 2024 - tableau' (official, see ssc.self_employed_rate): 16,861.46; indexation only afterwards (17,008.88 in 2025, 17,374.08 in 2026)"
+  uprate: health_index
+  wage_link: true
+  values: {2024: 16861.46}
+
+ssc.pension_health_rate:
+  description: Health-insurance contribution withheld on pensions
+  unit: rate
+  source: "Federal Pensions Service, 'Du brut au net' (sfpd.fgov.be/fr/paiement/brut-net, official, read 25.11.2026): 3.55 %. The solidarity contribution on high pensions (0-2 %) is not modelled separately (it is in the calibrated level of the line)."
+  values: {2024: 0.0355}
+
+ssc.pension_health_threshold:
+  description: Annual gross pension below which no health contribution is withheld (the contribution may not push the pension below it), single person
+  unit: EUR
+  source: "ASSUMPTION for the 2024 level, derived: Federal Pensions Service (sfpd.fgov.be/fr/paiement/brut-net, official, read 25.11.2026) gives 2,120.08 per month for a single pensioner from 1 September 2026; removing the three 2 % indexations since (Feb 2025, Jan 2026, mid 2026) gives 1,997.80 from May 2024 and 1,958.63 before -> 2024 average 1,984.74 x 12. The 2024 page itself could not be read. Old from-memory value was 22,400."
+  uprate: health_index
+  wage_link: true
+  values: {2024: 23817}
+
+# ============================================================== corporate income tax (cit.)
+cit.rate:
+  description: Standard corporate income tax rate
+  unit: rate
+  source: "Income Tax Code 1992 art. 215: 25 % (PwC Worldwide Tax Summaries, Belgium - taxes on corporate income, reviewed 10.09.2026, secondary; the FPS Finance rate page was unreachable)"
+  values: {2024: 0.25}
+
+cit.base_share_path:
+  description: Taxable corporate profits in the baseline, as a share of GDP relative to 2024 (index by year). The model's profit proxy has no depreciation dynamics; over the years of this path the baseline tax base follows it, afterwards the ratio to the proxy is held. A scenario moves the base through the proxy.
+  unit: index by year
+  source: "Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau C.3 (net operating surplus of companies: 89,848 / 93,566 / 96,828 / 97,039 / 97,994 / 100,711 / 103,051 / 105,388 mn in 2024-2031) over Tableau A.2 (GDP at current prices), official, fetched 26.11.2026: 14.5 % of GDP in 2024, 13.5 % in 2031 - 'l'assiette evolue moins vite que le PIB en raison de la dynamique des amortissements deductibles'."
+  values:
+    2024: {2024: 1.0, 2025: 1.0061, 2026: 1.0077, 2027: 0.9746, 2028: 0.9520, 2029: 0.9478, 2030: 0.9404, 2031: 0.9341}
+
+cit.sme_rate:
+  description: Reduced corporate income tax rate on the first 100,000 EUR of profit of small companies
+  unit: rate
+  source: "Income Tax Code 1992 art. 215: 20 % on the first 100,000 EUR for small companies (art. 1:24 CSA) paying a minimum director remuneration (45,000 EUR; 50,000 indexed from AY 2027, law of 15 July 2026) - PwC Worldwide Tax Summaries reviewed 10.09.2026, KPMG (secondary)"
+  values: {2024: 0.20}
+
+cit.sme_base_share:
+  description: Share of the taxable base taxed at the reduced SME rate
+  unit: share
+  source: "Derived from the federal inventory of tax expenditures 2024 (Chamber DOC 56 1279/002, official): cost of the reduced rate 582.14 mn (AY 2024) / 5 points = 11.6 bn of base, against a base of about 108 bn (2024 receipts 27.0 bn / 25 %). ASSUMPTION for the total base. Old judgemental value was 0.08."
+  values: {2024: 0.107}
+
+cit.innovation_deduction_rate:
+  description: Innovation income deduction - share of qualifying net innovation income exempt from corporate tax
+  unit: rate
+  source: "Income Tax Code 1992 art. 205/1: 85 % (PwC Worldwide Tax Summaries, Belgium - tax credits and incentives, secondary, read 25.11.2026)"
+  values: {2024: 0.85}
+
+cit.innovation_income_share:
+  description: Qualifying innovation income as a share of profits before deductions
+  unit: share
+  source: "Derived from the federal inventory of tax expenditures 2024 (Chamber DOC 56 1279/002, official): cost of the innovation income deduction 1,208.06 mn (AY 2024) / (25 % x 85 %) = 5.7 bn, against profits before these deductions of about 117 bn. ASSUMPTION for the total base."
+  values: {2024: 0.049}
+
+cit.investment_deduction_base_share:
+  description: Share of profits before deductions removed by the investment deduction
+  unit: share
+  source: "Derived from the federal inventory of tax expenditures 2024 (Chamber DOC 56 1279/002, official): investment deduction 649.09 mn + 'green' investments 305.31 mn (AY 2024) / 25 % = 3.8 bn, against profits before these deductions of about 117 bn. ASSUMPTION for the total base and for a constant share after the 2025 reform of the deduction (basic 10 %, thematic 40 / 30 %, technology 13.5 %: finances.belgium.be/fr/entreprises/impot_des_societes/avantages_fiscaux/deduction_pour_investissement). Old judgemental value was 0.015."
+  values: {2024: 0.033}
+
+cit.minimum_tax_rate:
+  description: Minimum effective tax rate of large multinational groups (OECD Pillar Two, in force since 2024)
+  unit: rate
+  source: "Law of 19 December 2023 (MB 28.12.2023), groups with at least 750 mn EUR turnover: 15 % (finances.belgium.be/fr/entreprises/international/pillar-2, official, read 25.11.2026)"
+  values: {2024: 0.15}
+
+cit.minimum_tax_base_share:
+  description: Share of taxable profits earned by in-scope groups taxed below the minimum rate
+  unit: share
+  source: "ASSUMPTION - order of magnitude consistent with a top-up yield of a few hundred million EUR"
+  values: {2024: 0.03}
+
+cit.minimum_tax_low_etr:
+  description: Average effective rate of the low-taxed profits subject to the minimum-tax top-up
+  unit: rate
+  source: "ASSUMPTION - order of magnitude"
+  values: {2024: 0.10}
+
+# ============================================================== VAT (vat.)
+vat.rate_standard:
+  description: Standard VAT rate
+  unit: rate
+  source: "VAT Code / Royal Decree no. 20: 21 % (finances.belgium.be/fr/entreprises/tva/assujettissement-tva/taux-et-calcul/taux-tva, official, read 25.11.2026). The November 2025 budget agreement kept it at 21 %; a 22 % rate floated for the 2027 budget was dropped (press, 15.10.2026)."
+  values: {2024: 0.21}
+
+vat.rate_intermediate:
+  description: Intermediate VAT rate (restaurant meals, social housing, margarine, coal; hotels and campsites from March 2026)
+  unit: rate
+  source: "VAT Code / Royal Decree no. 20: 12 % (finances.belgium.be taux-tva page; Memento fiscal 2025 chapter VAT, official, read 25.11.2026)"
+  values: {2024: 0.12}
+
+vat.rate_reduced:
+  description: Reduced VAT rate (food, medicines, books, renovation of old dwellings, household gas and electricity, passenger transport; hotels until February 2026)
+  unit: rate
+  source: "VAT Code / Royal Decree no. 20: 6 % (finances.belgium.be taux-tva page; Memento fiscal 2025 chapter VAT, official, read 25.11.2026)"
+  values: {2024: 0.06}
+
+vat.mix:
+  description: >-
+    Share of each tax base taxed at the [standard, intermediate, reduced, zero or exempt] rate
+    (shares of the value before VAT). Keys are the consumption categories plus three
+    non-household bases (new housing investment, government purchases, inputs of VAT-exempt
+    sectors). To move a category to another rate, change its row.
+  unit: share
+  source: "Government rows: public investment (government_investment) bears VAT at close to the standard rate - works and equipment; 5 % own-account production without VAT is an ASSUMPTION - which gives the 0.085 % of GDP of VAT lost on an investment cut of 0.5 % of GDP in the Planning Bureau's HERMES variant (654 mn of indirect taxes at 2024 scale); the mix of current purchases (government) is then what leaves the 2024 VAT on all government purchases unchanged (it was one mix of 75 / 0 / 15 / 10 for both). Household rows: derived - household consumption by COICOP 2018 class (Eurostat nama_10_cp18, Belgium 2024) x the legal rate of each class (Royal Decree no. 20; exemptions of art. 44 VAT Code), built by belsim.data.fetch_revenue_vat into data/base/revenue_vat_structure.csv (the within-class splits of mixed classes are ASSUMPTIONS listed there). Households: 87 bn at 21 %, 5.9 bn at 12 %, 66 bn at 6 %. Restaurants row set on official figures: federal inventory of tax expenditures 2023 (Chamber DOC 56 1279/002, table BTW - TVA, official, read 26.11.2026) - horeca at 6 % 1,199 mn forgone = 8.0 bn taxable, at 12 % 508 mn = 5.6 bn; takeaway meals 6.0 bn (budget costing 362 mn) and hotels 2.6 bn (158 mn). Non-household rows: ASSUMPTION anchored on the same inventory - construction at 6 % 3,261 mn forgone = 21.7 bn taxable in 2023 (renovation of dwellings older than 10 years, demolition-reconstruction, social housing, schools), necessities at 6 % 10,589 mn = 70.6 bn for all buyers against 58 bn for households (medicines, food and water bought by government, hospitals, care homes); housing investment (gross fixed capital formation in dwellings, 32.9 bn in 2024 with taxes) follows the Planning Bureau's DC2024 costing of a 12 % rate on new housing (fiche MR 802, dc2024.be, official, read 26.11.2026): 'the average VAT rate on residential investment implies that 21 % is paid on about two thirds of it, a reduced rate on the remaining third', and 9 points on that two thirds are worth 1,354 mn in 2024, i.e. 15.0 bn on which 21 % is actually paid and 7.5 bn at a reduced rate. In the model's terms (shares of the value before VAT, the compliance gap of vat.compliance_gap applying to the standard-rated part): 60 % at 21 % (17.3 bn due, 14.8 bn paid), 26 % at 6 or 12 %, and 14 % outside VAT - ASSUMPTION for that remainder, the costs of ownership transfer counted in investment (registration duties on dwellings, about 4 bn). It was 36.5 / 1.5 / 50 / 12 %, a judgement that put half of housing investment at 6 % and costed the fiche at half its value; 2024 VAT is unchanged (calibrated), the calibration factor moves from 1.000 to 0.99. Cross-check: revenue forgone through the reduced rates = 14.4 bn in 2024, about 16 % of the notional ideal revenue, between the European Commission's rate gap (13.1 %, VAT gap report 2025, year 2023) and the inventory (15.8 bn, 18 %). The previous judgemental mix had 75 bn at 6 % and 12 bn at 12 %; now 91 bn and 6.3 bn. Dated change (verified): hotel and campsite accommodation 6 -> 12 % from 1 March 2026 (royal decree approved 13.02.2026; KPMG TaxNewsFlash and BDO news alert, secondary; official yield 158 mn a year, the row change gives about the same) - 2026 entry = 10 months. Pesticides 12 -> 21 % from the same date (too small to enter). The increases for takeaway meals, sport and culture decided in November 2025 were withdrawn on 13.02.2026 and are NOT in the baseline."
+  values:
+    2024: &vatmix
+      food: [0.009, 0.009, 0.982, 0.0]
+      alcohol: [1.0, 0.0, 0.0, 0.0]
+      tobacco: [1.0, 0.0, 0.0, 0.0]
+      fuel: [1.0, 0.0, 0.0, 0.0]
+      energy_home: [0.16, 0.01, 0.83, 0.0]
+      housing: [0.0, 0.0, 0.0, 1.0]
+      restaurants: [0.235, 0.31, 0.455, 0.0]
+      renovation: [0.40, 0.0, 0.60, 0.0]
+      other_goods: [0.793, 0.0, 0.147, 0.06]
+      other_services: [0.271, 0.0, 0.091, 0.638]
+      housing_investment: [0.60, 0.015, 0.245, 0.14]
+      government: [0.628, 0.0, 0.242, 0.130]
+      government_investment: [0.95, 0.0, 0.0, 0.05]
+      exempt_sectors: [0.90, 0.0, 0.08, 0.02]
+    2026:
+      <<: *vatmix
+      restaurants: [0.235, 0.41, 0.355, 0.0]
+    2027:
+      <<: *vatmix
+      restaurants: [0.235, 0.43, 0.335, 0.0]
+
+vat.gov_purchases_share:
+  description: Purchases of general government bearing non-deductible VAT (intermediate consumption + investment) as a share of government final consumption. Fallback only - used when the expenditure lines are not available; otherwise the base is built from them (vat.gov_intermediate_share).
+  unit: share
+  source: "Eurostat gov_10a_main 2024: (P.2 26,243 + P.51g 19,365) / P.3 147,436"
+  values: {2024: 0.31}
+
+vat.gov_intermediate_share:
+  description: Share of intermediate consumption (and defence investment) in the expenditure lines that mix wages and purchases (administration, education, defence, police, transport ...). With public investment it makes the base of the non-deductible VAT paid by government itself.
+  unit: share
+  source: "Derived: Eurostat gov_10a_main 2024, intermediate consumption P.2 26,243 mn + investment P.51g 19,365 mn = 45,608 mn, less the public-investment line (17,783 mn), over the 117,523 mn of the model's expenditure lines with a P.2 component -> 0.238 (same 2024 base as before, so 2024 VAT is unchanged)."
+  values: {2024: 0.238}
+
+vat.gov_marginal_purchases_share:
+  description: Share of a CHANGE in those expenditure lines against the baseline that is purchases of goods and services (the rest is wages). 1 = a consumption cut falls on purchases, as in the Planning Bureau's variants; vat.gov_intermediate_share = pro rata of wages and purchases. LEVER.
+  unit: share
+  source: "ASSUMPTION, anchored: in the HERMES variant 'public consumption -0.5 % of GDP' (purchases of goods and services) indirect taxes fall by 459 mn in year t, about 15 % of the cut - Federal Planning Bureau, Working Paper 4 DC2024 (data/reference/validation.yaml, hermes_public_consumption_cut); with the model's rates on government purchases (16 % less the compliance gap) that needs the whole cut to be purchases."
+  values: {2024: 1.0}
+
+vat.exempt_sector_input_share_gdp:
+  description: Purchases bearing non-deductible VAT outside households, housing investment and government - inputs and investment of VAT-exempt activities (finance, health, education, renting, non-profit institutions) and non-deductible costs of other businesses - as a share of GDP
+  unit: share
+  source: "Derived as a residual (ASSUMPTION for the attribution): the VAT total tax liability of 2024 is the receipts over one minus the European Commission's compliance gap (37,832 / 0.877 = 43.1 bn); household consumption (COICOP x legal rates), housing investment and government purchases explain 33.6 bn of it; the remaining 9.5 bn is non-deductible VAT on the inputs and investment of exempt activities (finance, insurance, health, education, renting, non-profit institutions, small businesses under the exemption scheme) and of other businesses (half of company-car costs, restaurant and reception costs) = a base of 54 bn, 8.8 % of GDP. Old order-of-magnitude value was 0.035 (with a standard-rate share of household services of 45 % instead of 27 %)."
+  values: {2024: 0.088}
+
+vat.compliance_gap:
+  description: VAT compliance gap on supplies at the standard rate - share of the VAT due at 21 % that is not collected (fraud, insolvency, errors). LEVER for anti-fraud measures.
+  unit: share
+  source: "European Commission, VAT gap in the EU, 2025 report (published 11.12.2025): Belgium 12.3 % of the VAT total tax liability in 2023, 5,230 mn EUR (taxation-customs.ec.europa.eu/taxation/vat/fight-against-vat-fraud/vat-gap_en, official, read 25.11.2026); latest year available, used for 2024. ASSUMPTION for the attribution: the whole gap is put on the standard-rated liability (85 % of the total in the model -> 12.3 % / 0.85), because the amounts declared at 6 % and 12 % (federal inventory of tax expenditures: 100 bn at 6 % in 2023) are not below what national-accounts consumption gives at those rates (see vat.compliance_gap_reduced). With a uniform gap the model put a point of standard rate at 1.7 bn and understated every reduced-rate costing by a sixth."
+  values: {2024: 0.145}
+
+vat.compliance_gap_reduced:
+  description: VAT compliance gap on supplies at the reduced and intermediate rates (6 % and 12 %) - share of the VAT due at those rates that is not collected.
+  unit: share
+  source: "ASSUMPTION - zero: the taxable amounts declared at 6 % and 12 % in VAT returns (federal inventory of tax expenditures 2023, Chamber DOC 56 1279/002: 100 bn at 6 %, 6.3 bn at 12 %) are at least as large as the reduced-rate bases derived from national-accounts consumption and investment (91 bn and 6.3 bn in the model), and official costings of reduced-rate changes (food, takeaway meals, hotels, culture) are consistent with the full base. Under-declaration in restaurants and renovation work is therefore not visible in the aggregate."
+  values: {2024: 0.0}
+
+# ============================================================== excise and similar (excise.)
+# Duties are per physical unit. They are converted into ad-valorem equivalents with the pre-tax
+# unit price. The law fixes duties in nominal terms: they are held at their legislated nominal
+# level until 2031 (dated entries; the Planning Bureau's outlook of June 2026 notes that excise
+# receipts "se tassent" because ad-quantum duties do not follow inflation). ASSUMPTION after 2031:
+# `uprate: cpi`, i.e. duties are raised with inflation (projection convention; without it excise
+# revenue would erode to a fraction of GDP by 2070). Taxed volumes follow `excise.volume_growth`.
+# The 2025 level of every excise line is the observed outturn (data/base/revenue_outturn.csv), so
+# the unverified 2025 restructuring of the tobacco duty is in the level of the line.
+# Level against the budget documents: the excise lines follow the national accounts (ESA, national
+# tax list): 11,416 mn in 2024 against 11,130 mn of federal cash receipts "accises et divers"
+# (Expose general 2026). The ESA lines also hold what the excise administration does not collect
+# for the federal budget - the regional share of the energy levies (0.29 x 550 mn), the federal
+# contribution on electricity and gas, animal-health and packaging levies - and are shifted from
+# cash to the month of the transaction. Dynamics: in 2025 cash receipts rose 0.8 % with duties
+# frozen except tobacco, whose legal sales fell (2,737 mn in 2023, 2,555 mn in 2024: FPS Finance
+# figures in the press); the model has no cross-border or illicit-trade response in the baseline,
+# so its tobacco line keeps growing with consumption.
+excise.fuel_duty:
+  description: Excise duty on motor fuel, average of petrol and diesel
+  unit: EUR/litre
+  source: "FPS Finance, Memento fiscal 2025 (situation 31.12.2024), chapter excise: unleaded petrol 95 600.1587 and road diesel 600.1586 EUR per 1,000 litres (eservices.minfin.fgov.be Fisconetplus, official, read 25.11.2026). Unchanged in 2025 (Energia/Petrolfed key figures 2025) and still 0.6002 in September 2026 (secondary) - hence the 2025 and 2026 entries; increases 'from 2027' were announced without rates and are not in the baseline. Nominal to 2031 (no legislated change), inflation uprating after 2031 is a projection convention (ASSUMPTION). The refund for professional diesel (193.50 EUR per 1,000 l) is in the calibrated level."
+  uprate: cpi
+  values: {2024: 0.60016, 2025: 0.60016, 2026: 0.60016, 2027: 0.60016, 2028: 0.60016, 2029: 0.60016, 2030: 0.60016, 2031: 0.60016}
+
+excise.fuel_pretax_price:
+  description: Average pump price of motor fuel before excise and VAT
+  unit: EUR/litre
+  source: "2025-2031 entries = the 2024 value x the consumer price index of the baseline (Federal Planning Bureau outlook of June 2026: +2.5 / 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7 %), entered as dated values so that a scenario that moves consumer prices does not change the ratio of a nominal duty to this price; uprated with consumer prices after 2031. Derived from Statbel average maximum prices 2024 (bestat.statbel.fgov.be, official): petrol 95 E10 1.7158 and diesel B7 1.7913 EUR per litre incl. VAT -> 0.818 and 0.880 before excise and VAT; weighted about one third petrol, two thirds diesel (excise receipts 2024: petrol 2.15 bn, diesel 4.00 bn - Energia key figures citing FPS Finance). Old from-memory value was 0.80."
+  uprate: cpi
+  values: {2024: 0.86, 2025: 0.8815, 2026: 0.9115, 2027: 0.9379, 2028: 0.9595, 2029: 0.9767, 2030: 0.9934, 2031: 1.0102}
+
+excise.tobacco_duty:
+  description: Excise duty on tobacco (specific + ad valorem), per pack of 20 cigarettes
+  unit: EUR/pack
+  source: "FPS Finance, Memento fiscal 2025, chapter excise (official, read 25.11.2026): cigarettes since 1.1.2024 - ad valorem 34.04 % of the retail price + 178.00 EUR per 1,000 (specific 6.8914 + special 171.1086). On the weighted average price of 9.35 EUR per 20 (Tax Foundation 'Cigarette taxes in Europe' from European Commission data, secondary) = 3.56 + 3.18 = 6.74. 2025-2026 rates not verified (press: ad valorem lowered to 31.50 % with a higher specific duty from 1.1.2025; Tax Foundation shows 7.30 EUR on an average price of 11.14 at 1.1.2026) - the dated entries keep the 2024 duty and the 2025 outturn of the line carries the change (no increase was decided for 2026: press, October 2026). Nominal to 2031, inflation uprating after 2031 is a projection convention (ASSUMPTION). Old from-memory value was 6.4."
+  uprate: cpi
+  values: {2024: 6.74, 2025: 6.74, 2026: 6.74, 2027: 6.74, 2028: 6.74, 2029: 6.74, 2030: 6.74, 2031: 6.74}
+
+excise.tobacco_pretax_price:
+  description: Price of a pack of 20 cigarettes before excise and VAT
+  unit: EUR/pack
+  source: "2025-2031 entries = the 2024 value x the consumer price index of the baseline (Federal Planning Bureau outlook of June 2026: +2.5 / 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7 %), entered as dated values so that a scenario that moves consumer prices does not change the ratio of a nominal duty to this price; uprated with consumer prices after 2031. Derived: weighted average price 9.35 EUR (see excise.tobacco_duty, secondary) / 1.21 less excise 6.74. Old value 1.86 assumed a 10 EUR pack and a lower duty."
+  uprate: cpi
+  values: {2024: 0.99, 2025: 1.0147, 2026: 1.0493, 2027: 1.0797, 2028: 1.1045, 2029: 1.1244, 2030: 1.1435, 2031: 1.1629}
+
+excise.alcohol_duty:
+  description: Excise duty on alcoholic drinks, average per litre of pure alcohol across beer, wine and spirits
+  unit: EUR/litre pure alcohol
+  source: "FPS Finance, Memento fiscal 2025, chapter excise (official, read 25.11.2026): spirits 2,992.7928 EUR per hl of pure alcohol; still wine 74.9086 EUR per hl (sparkling 256.3223); beer 2.0043 EUR per hl and degree Plato. Per litre of pure alcohol: spirits 29.9, wine (12.5 %) 6.0, beer (5 %, 12 degrees Plato) 4.8; ASSUMPTION for the weights (beer 45 %, wine 38 %, spirits 17 % of alcohol consumed) -> 9.5. Cross-check: 2024 receipts 740 mn / about 90 mn litres of pure alcohol = 8.2. Rates unchanged in 2025 and 2026 (spirits still 2,992.79 EUR per hl of pure alcohol in Chamber DOC 56 0525/001; no change in the budget laws of 2025 and 2026) - hence the 2025 and 2026 entries; nominal to 2031 (no legislated change), inflation uprating after 2031 is a projection convention (ASSUMPTION). Old judgemental value was 11.0."
+  uprate: cpi
+  values: {2024: 9.5, 2025: 9.5, 2026: 9.5, 2027: 9.5, 2028: 9.5, 2029: 9.5, 2030: 9.5, 2031: 9.5}
+
+excise.alcohol_pretax_price:
+  description: Average price of alcoholic drinks before excise and VAT, per litre of pure alcohol
+  unit: EUR/litre pure alcohol
+  source: "2025-2031 entries = the 2024 value x the consumer price index of the baseline (Federal Planning Bureau outlook of June 2026: +2.5 / 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7 %), entered as dated values so that a scenario that moves consumer prices does not change the ratio of a nominal duty to this price; uprated with consumer prices after 2031. ASSUMPTION - order of magnitude"
+  uprate: cpi
+  values: {2024: 45.0, 2025: 46.12, 2026: 47.69, 2027: 49.08, 2028: 50.21, 2029: 51.11, 2030: 51.98, 2031: 52.86}
+
+excise.energy_duty:
+  description: Federal excise on household gas and electricity, average per MWh of home energy
+  unit: EUR/MWh
+  source: "FPS Finance, Memento fiscal 2025, chapter excise (official, read 25.11.2026): households, end 2024 - natural gas 9.2278 EUR/MWh (0-12 MWh), electricity 49.4061 EUR/MWh (0-20 MWh). ASSUMPTION for the weights (17 MWh gas and 3.5 MWh electricity per household, the reference household of the FPS) -> 16.1. Note: the national tax list records most of the special excise on gas and electricity with mineral oils (line excise_fuel), so this duty drives a smaller line than its level suggests. Rates unchanged in 2025 and until 1 August 2026 (gas 9.23 and electricity 49.41 EUR/MWh are the starting points of the reform, see excise.energy_shift_factor) - hence the 2025 and 2026 entries; nominal to 2031 (no legislated change), inflation uprating after 2031 is a projection convention (ASSUMPTION). Old order-of-magnitude value was 8.0."
+  uprate: cpi
+  values: {2024: 16.1, 2025: 16.1, 2026: 16.1, 2027: 16.1, 2028: 16.1, 2029: 16.1, 2030: 16.1, 2031: 16.1}
+
+excise.energy_shift_factor:
+  description: Multiplier on excise.energy_duty for the legislated shift of excise from electricity to gas (weighted household rate relative to unchanged 2024 rates)
+  unit: ratio
+  source: "Programme law of 30 May 2026, in force 1 August 2026 (press: Belga 28.07.2026 citing FPS Finance; trajectory from Test-Achats and one accountancy blog, secondary): gas 9.23 -> 10.31 (1.8.2026) -> 11.39 (2027) -> 12.47 (2028) EUR/MWh; electricity 49.41 -> 46 -> 43 -> 40 -> 38 (2029). Weighted 17 / 3.5 MWh: 16.09 -> 16.40 -> 16.79 -> 17.17 -> 16.83; 2026 = 5 months. Official yield in 2029 (gas +365 mn, heating oil +28 mn, electricity -170 mn, incl. business use) is larger than what this household-weighted factor gives. Status: law."
+  values: {2024: 1.0, 2026: 1.008, 2027: 1.043, 2028: 1.067, 2029: 1.046}
+
+excise.energy_green_levy:
+  description: Regional green-certificate and energy-fund levies passed on in energy bills, average per MWh
+  unit: EUR/MWh
+  source: "2025-2031 entries = the 2024 value x the consumer price index of the baseline (Federal Planning Bureau outlook of June 2026: +2.5 / 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7 %), entered as dated values so that a scenario that moves consumer prices does not change the ratio of a nominal duty to this price; uprated with consumer prices after 2031. ASSUMPTION - order of magnitude; inflation uprating is a projection convention"
+  uprate: cpi
+  values: {2024: 10.0, 2025: 10.25, 2026: 10.598, 2027: 10.906, 2028: 11.157, 2029: 11.358, 2030: 11.551, 2031: 11.747}
+
+excise.energy_pretax_price:
+  description: Average household price of electricity, gas and heating oil before levies and VAT
+  unit: EUR/MWh
+  source: "2025-2031 entries = the 2024 value x the consumer price index of the baseline (Federal Planning Bureau outlook of June 2026: +2.5 / 3.4 / 2.9 / 2.3 / 1.8 / 1.7 / 1.7 %), entered as dated values so that a scenario that moves consumer prices does not change the ratio of a nominal duty to this price; uprated with consumer prices after 2031. ASSUMPTION - order of magnitude for the 2024 mix of gas (about 70) and electricity (about 250)"
+  uprate: cpi
+  values: {2024: 110.0, 2025: 112.75, 2026: 116.58, 2027: 119.96, 2028: 122.72, 2029: 124.93, 2030: 127.06, 2031: 129.22}
+
+excise.volume_growth:
+  description: Annual growth of the taxed volumes of motor fuel, tobacco and alcohol in the baseline (the model's real consumption of the category is replaced by this trend; a scenario still moves volumes through its effect on consumption). LEVER for the pace of electrification or of the decline of smoking.
+  unit: rate per year
+  source: "Fuel: Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau 1 - CO2 emissions of road transport 24.1 Mt in 2024 -> 21.6 Mt in 2031 = -1.6 % a year (official, fetched 26.11.2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf); heating fuels ('autres secteurs') -1.4 % a year. Tobacco: Court of Audit commentary on the 2026 budget - tobacco excise -20.7 mn (-0.8 %) in 2026 at unchanged duties (official, in data/reference/validation.yaml); industry and retail-panel sources report far larger falls of legal sales in 2025 (-23 % cigarettes in the first half, NielsenIQ in the press) together with a shift to cross-border and illicit purchases, but ESA receipts still rose 4.3 % in 2025 after the rate change. Alcohol: receipts +0.6 % in 2025 at unchanged duties (Eurostat / NBB national tax list). ASSUMPTION - the 2026-2031 pace continues afterwards; tobacco -1 % and alcohol 0 % a year are rounded judgement values on that evidence."
+  values:
+    2024: {fuel: 0.0, tobacco: 0.0, alcohol: 0.0}
+    2025: {fuel: -0.016, tobacco: -0.01, alcohol: 0.0}
+
+rev.ets2_price:
+  description: Price of an emission allowance of the second EU emissions trading system (ETS2 - road fuel and heating fuels), whose auction receipts are government revenue from 2028 (added to the line of emission permits and environmental taxes). 0 = no ETS2.
+  unit: EUR per tonne CO2
+  source: "2028: 46 EUR/t, the assumption of the Federal Planning Bureau outlook of June 2026 (footnote 2: mean of the 33 EUR of the Commission guidance and the 59 EUR intervention price of the market stability reserve; official, fetched 26.11.2026). The outlook books the receipts with the interregional unit (no agreement on their sharing) and no spending against them. ASSUMPTION for 2029-2031 (61 / 68 / 70): derived from the jump of the indirect taxes of the communities and regions in the same outlook (Tableau D.3: 9,214 mn in 2027, 11,309 / 12,176 / 12,686 / 12,970 in 2028-2031) less an underlying growth of 2.7 % a year, over the covered emissions; constant in real terms afterwards."
+  uprate: cpi
+  values: {2024: 0.0, 2028: 46.0, 2029: 61.0, 2030: 68.0, 2031: 70.0}
+
+rev.ets2_emissions:
+  description: Emissions covered by ETS2 at their 2024 level (road transport and heating of buildings). In the projection they follow the taxed volume of motor fuel (excise.volume_growth).
+  unit: Mt CO2
+  source: "Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau 1 / F.2: road transport 24.1 Mt + other sectors (buildings) 19.8 Mt in 2024 (official, fetched 26.11.2026); the same table gives 40.9 Mt in 2028, the model 41.2."
+  values: {2024: 43.9}
+
+excise.beverage_packaging_rate:
+  description: Excise on non-alcoholic beverages and coffee plus the packaging levy, ad-valorem equivalent on food and drink consumption
+  unit: rate
+  source: "ASSUMPTION - order of magnitude (2024 receipts of the line 546 mn on food and non-alcoholic drink consumption). Statutory rates for reference (Memento fiscal 2025, official): sweetened soft drinks 11.9233 EUR/hl, packaging levy 9.86 EUR/hl non-reusable, 1.41 reusable."
+  values: {2024: 0.01}
+
+# ============================================================== capital and wealth (cap.)
+cap.withholding_rate:
+  description: Withholding tax rate on interest and dividends (roerende voorheffing / precompte mobilier)
+  unit: rate
+  source: "Income Tax Code 1992 art. 269: 30 % (Court of Audit, comments on the 2026 budget, Chamber DOC 56 1279/003, official; Test-Achats 2026 tax ceilings, secondary; read 25.11.2026)"
+  values: {2024: 0.30}
+
+cap.withholding_reduced_rate:
+  description: Reduced withholding tax rate (VVPRbis dividends of small companies, liquidation reserves, regulated savings deposits above the exemption)
+  unit: rate
+  source: "15 % in 2024 (savings deposits above the exemption; VVPRbis). Programme law of 30 May 2026 (MB 01.06.2026): VVPRbis 15 -> 18 % for dividends from 1 July 2026, liquidation-reserve distributions brought to a total of 18 % (KPMG, Degand & Partners, secondary; Court of Audit DOC 56 1279/003; budgeted yield +90 mn in 2026). 2026 entry = half a year. Savings deposits stay at 15 % (a small part of this base). Status: law."
+  values: {2024: 0.15, 2026: 0.165, 2027: 0.18}
+
+cap.income_share_reduced:
+  description: Share of household interest and dividend income taxed at the reduced rate
+  unit: share
+  source: "ASSUMPTION, anchored: withholding tax on VVPRbis dividends and liquidation reserves was 760.4 mn in 2024 (Court of Audit, Chamber DOC 56 1279/003, official), 11.4 % of the 2024 receipts of the line (6,656 mn); with 20 % of income exempt this needs a reduced-rate share of 0.16. Old order-of-magnitude value was 0.10."
+  values: {2024: 0.16}
+
+cap.income_share_exempt:
+  description: Share of household interest and dividend income exempt from withholding tax (savings-deposit interest below 1,020 EUR, first 833 EUR of dividends, pension and insurance wrappers)
+  unit: share
+  source: "ASSUMPTION - order of magnitude. The exemptions themselves: savings-deposit interest 1,020 EUR and dividends 833 EUR in 2025 and 2026, frozen until 2030 (Test-Achats, Wikifin/FSMA, secondary, read 25.11.2026); the 2024 amounts were not read."
+  values: {2024: 0.20}
+
+cap.securities_account_tax_rate:
+  description: Annual tax on securities accounts above 1 million EUR
+  unit: rate
+  source: "Law of 17 February 2021: 0.15 %. Programme law of 30 May 2026 (MB 01.06.2026): 0.30 % for reference periods ending on or after 1 June 2026, i.e. the period closing 30 September 2026; threshold unchanged (FPS Finance finance.belgium.be/en/E-services/divtax, official; KPMG, secondary; read 25.11.2026). Official yield +414 mn in 2026 and +462 mn in a full year (Expose general 2026, Chamber DOC 56 1278/001), against 462 mn of receipts in 2024. Status: law."
+  values: {2024: 0.0015, 2026: 0.0030}
+
+cap.tob_rate:
+  description: Stock-exchange tax (TOB / beurstaks), average rate on taxed transactions
+  unit: rate
+  source: "ASSUMPTION for the average. Legal rates verified: 0.12 % (bonds, max 1,300 EUR), 0.35 % (shares, max 1,600), 1.32 % (accumulating funds, max 4,000), unchanged since 2018 (circular 2026/C/42 of 18.03.2026 as summarised by Forum for the Future, secondary, read 25.11.2026). A 'modernisation' of the tax is announced only (not in the baseline)."
+  values: {2024: 0.0035}
+
+cap.gains_tax_rate:
+  description: Tax on capital gains on financial assets realised by households (solidarity contribution), on gains accrued from 1 January 2026
+  unit: rate
+  source: "Law of 6 April 2026 (MB 21.04.2026), bill Chamber DOC 56 1244/001: 10 % on gains realised from 1 January 2026; annual exemption of 10,000 EUR (indexed; unused part carried forward 1,000 a year up to 15,000); substantial interests (20 % or more) exempt up to 1 mn then 1.25 / 2.5 / 5 / 10 %; internal gains 33 %; value at 31.12.2025 as reference (FPS Finance fin.belgium.be/nl/particulieren/belastingaangifte/inkomsten/meerwaardebelasting, official; KPMG, RSM, secondary; read 25.11.2026). Status: law."
+  values: {2024: 0.0, 2026: 0.10}
+
+cap.gains_taxable_gains:
+  description: Taxable realised capital gains on financial assets above the exemption, at 2024 scale (grows with household financial wealth). Gains accrued before 2026 are exempt, so the base builds up gradually.
+  unit: EUR mn
+  source: "Set on the official yield: Expose general of the 2026 budget (Chamber DOC 56 1278/001, 28.01.2026) - 236 mn withheld in 2026 of which the FPS expects 116 mn to be refunded (120 mn net), cruising speed after five years, about 600 mn from 2032; the Court of Audit (DOC 56 1279/003) finds the 2026 estimate unreliable. ASSUMPTION for the path in between (linear) and for wealth growth of about 3.5 % a year in the conversion to 2024 scale. The government's earlier path (250 / 300 / 400 / 500 mn for 2026-2029, press February 2025) is superseded. Highly uncertain."
+  values: {2024: 0, 2026: 1100, 2027: 1800, 2028: 2400, 2029: 3000, 2030: 3600, 2031: 4100, 2032: 4600}
+
+# ============================================================== property and inheritance (prop.)
+prop.region_base_share:
+  description: Regional shares of the property and inheritance tax bases (value of transactions, estates, rental values)
+  unit: share
+  source: "ASSUMPTION - judgemental, close to regional shares in household income. Cross-check on receipts (mixed years, official regional sources): registration duties Flanders about 2,690 mn (2025), Wallonia 1,255 mn (2024 budget), Brussels 559 mn (2024) -> 60 / 28 / 12 %; inheritance Flanders about 1,820 mn, Wallonia 798 mn."
+  values: {2024: {FLA: 0.62, WAL: 0.26, BRU: 0.12}}
+
+prop.registration_rate:
+  description: Standard registration duty on real-estate purchases, by region
+  unit: rate
+  source: "Flanders 12 % since 1.1.2022 (vlaanderen.be, 'Algemeen tarief in het verkooprecht', official); Wallonia 12.5 % (wallonie.be, official); Brussels 12.5 % (Brussels Fiscality fiche 'Droits de vente 2026', official) - read 25.11.2026"
+  values: {2024: {FLA: 0.12, WAL: 0.125, BRU: 0.125}}
+
+prop.registration_rate_sole_home:
+  description: Registration duty on the purchase of a sole own home, by region (allowance schemes are shown as an effective rate)
+  unit: rate
+  source: "Flanders: 3 % for deeds from 1.1.2022, 2 % from 1.1.2025 (vlaanderen.be, 'Verlaagd tarief ... enige eigen woning', official); back to 3 % for sale agreements from 1.1.2027 - Flemish 2027 budget agreement, Vlabel position SP 26021, decree not yet voted (status: formally agreed). Wallonia: 3 % for deeds from 1.1.2025, allowance and cheque habitat abolished - decree of 5 December 2024, MB 13.12.2024 (wallex.wallonie.be, official). Brussels: 12.5 % with an allowance on the first 200,000 EUR for prices up to 600,000 (Brussels Fiscality, official); no enacted reform. ASSUMPTION for the effective rates of the allowance schemes (Wallonia 2024: 0.11; Brussels: 0.08). Read 25.11.2026."
+  values:
+    2024: {FLA: 0.03, WAL: 0.11, BRU: 0.08}
+    2025: {FLA: 0.02, WAL: 0.03, BRU: 0.08}
+    2027: {FLA: 0.03, WAL: 0.03, BRU: 0.08}
+
+prop.sole_home_share:
+  description: Share of the value of real-estate transactions bought as sole own home
+  unit: share
+  source: "ASSUMPTION - order of magnitude"
+  values: {2024: 0.45}
+
+prop.inheritance_rate:
+  description: Average effective inheritance and gift tax rate on the flow of inheritances and gifts, by region
+  unit: rate
+  source: "ASSUMPTION for the effective rates. Statutory scales verified (read 25.11.2026): Flanders direct line 3 / 9 / 27 % (50k / 250k), others 25-55 % (vlaanderen.be, official; no rate change in 2026, only a higher partner allowance and a 'single' reduction, cost not found - not entered); Wallonia direct line 3-30 %, others up to 80 % (notaire.be); Brussels direct line 3-30 %, others up to 80 % (notaire.be). Dated change: Walloon decree of 5 December 2024 (MB 13.12.2024, wallex.wallonie.be) roughly halves inheritance rates for deaths from 1 January 2028 (direct line 3-15 %, others max 40 %) and lowers gift tax; announced cost about 400 mn on about 950 mn of receipts -> effective rate 0.08 -> 0.046. Status: law - but on 12.10.2026 the Walloon government announced it will replace the halving by a 75,000 EUR exemption per direct-line heir at about half the cost (not voted; would correspond to about 0.063)."
+  values:
+    2024: {FLA: 0.06, WAL: 0.08, BRU: 0.08}
+    2028: {FLA: 0.06, WAL: 0.046, BRU: 0.08}
+
+prop.property_tax_rate:
+  description: Regional base rate of the recurrent property tax on indexed cadastral income
+  unit: rate
+  source: "Flanders 3.97 % (vlaanderen.be, 'Berekening van de onroerende voorheffing', official); Wallonia 1.25 % (UVCW / Belfius local finance studies); Brussels 1.25 % (Brussels Fiscality fiche 'Precompte immobilier 2026', official) - read 25.11.2026. Indexation coefficient of cadastral income: 2.1763 (2024), 2.2446 (2025), 2.3000 (2026)."
+  values: {2024: {FLA: 0.0397, WAL: 0.0125, BRU: 0.0125}}
+
+prop.property_tax_local_multiplier:
+  description: Provincial + municipal surcharges on the property tax, as a multiple of the regional levy (opcentiemen / 100)
+  unit: ratio
+  source: "Brussels: municipal average 3,281 centimes in 2024, 3,339 in 2025, 3,599 in 2026, + agglomeration 989 (Brussels Fiscality fiche 'Precompte immobilier 2026', official) -> 42.7 / 43.3 / 45.9. Wallonia: municipal average 2,584-2,599 in 2025 (UVCW, Belfius; 2,622 in 2026) + provincial about 1,500 (ASSUMPTION, not found) -> 41.0. Flanders: municipal average 916 in 2026 (Belfius study 25.06.2026); 2024 municipal average and provincial average (about 220) not found - ASSUMPTION 10.9. Read 25.11.2026. Old Brussels value was 40.0."
+  values:
+    2024: {FLA: 10.9, WAL: 41.0, BRU: 42.7}
+    2025: {FLA: 10.9, WAL: 41.0, BRU: 43.3}
+    2026: {FLA: 10.9, WAL: 41.0, BRU: 45.9}
+
+# ============================================================== other revenue (rev.)
+rev.insurance_premium_tax_rate:
+  description: Annual tax on insurance contracts (standard rate), plus the social-security supplements on car, fire and hospital insurance through calibration
+  unit: rate
+  source: "Code of miscellaneous duties and taxes art. 175: 9.25 %. Programme law of 30 May 2026: 9.60 % for premiums due from 1 July 2026, other rates (1.10 / 1.40 / 2 / 4.40 %) unchanged (FPS Finance finance.belgium.be/en/E-services/divtax, official, read 25.11.2026; budgeted +51 mn in 2026, Expose general 2026). 2026 entry = half a year. Status: law."
+  values: {2024: 0.0925, 2026: 0.09425, 2027: 0.096}
+
+rev.dividends:
+  description: Dividends received by government, by holding, at 2024 scale (grow with nominal GDP). Set a holding to 0 to simulate its sale.
+  unit: EUR mn
+  source: "ASSUMPTION - split of the 2024 total (Eurostat gov_10a_main D.42 = 1,991 EUR mn, of which federal 1,186) by holding, from memory of company announcements; the total is calibrated on the accounts"
+  values:
+    2024:
+      belfius: 440
+      bnp_paribas: 300
+      proximus: 200
+      bpost: 15
+      national_bank: 0
+      other_federal: 230
+      regions_and_local: 806
+
+rev.outturn_persistence:
+  description: Share of the gap between the observed 2025 outturn of a line and the model that persists in later years in the model's own projection (lines not listed - 1, the 2025 level becomes the new base; 0 = the gap was a one-off or a matter of timing). While rev.fpb_alignment is on, the categories it covers follow the Planning Bureau's change from the observed 2025 level in 2026-2031 whatever is entered here.
+  unit: share by line
+  source: "Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), section 4.4.1.1 (official, fetched 26.11.2026). Personal income tax: the 2025 split between the federal tax and the regional and municipal surcharges comes from the slower pace of assessments in 2024 and its acceleration in 2025, partly reversed in 2026 ('roles moins negatifs ... en contrecoup'). In the outlook's subsector accounts (Tableaux D.3 and D.5) the 2025 level of the surcharges stays - household taxes of the regions 2.32 % of GDP in 2024, 2.46 % in 2025, 2.47-2.52 % in 2026-2029; local 0.75 / 0.78 / 0.77-0.78 % - so 2024 was the low year: regional surcharges 1 (observed +872 mn against the model), municipal 0.8 (+279 mn); the federal tax keeps the counterpart of both, 1,151 of its -1,643 mn -> 0.7, the rest is the temporary part (the three were 0 before, which sent 0.17 point of GDP back from the regions and municipalities to the federal government from 2026). Corporate tax: advance payments were exceptionally high in 2024 (higher penalties for insufficient prepayments) and slowed in 2025; in the outlook corporate tax per euro of net operating surplus is 93.4 % of its 2024 level in 2025, 96.6 % in 2026, 99.3 % in 2027 and 100 % in 2028 (Tableaux C.3 and D.1) -> 0.5, 0.1, 0. ASSUMPTION for every other line: the 2025 level persists."
+  values:
+    2024: {pit_federal: 0.7, pit_regional: 1.0, pit_local: 0.8, cit: 0.5}
+    2027: {pit_federal: 0.7, pit_regional: 1.0, pit_local: 0.8, cit: 0.1}
+    2028: {pit_federal: 0.7, pit_regional: 1.0, pit_local: 0.8, cit: 0.0}
+
+rev.line_factor:
+  description: >-
+    Discretionary multiplier on a revenue line (1.0 = current policy), for lines without an
+    explicit legislated rate (vehicle taxes, environmental taxes, bank levies, sales, ...) and
+    for dated baseline changes. Address one line with Change(key="<line>").
+  unit: ratio
+  source: "2026 entry: annual tax on credit institutions raised from 0.15205 / 0.20204 % to 0.19286 / 0.25626 % (programme law of 30 May 2026; KPMG, secondary), budgeted +150 mn in 2026 (Expose general 2026, Chamber DOC 56 1278/001, official) on 1,644 mn of bank and financial-sector levies in 2024 -> 1.09. Status: law. Non-tax revenue 2026-2031 (relative to the observed 2025 level, which the baseline reproduces): Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau D.1 (official, fetched 26.11.2026) - property income 0.887 % of GDP in 2025 -> 0.830 % in 2031 (three property-income lines, same factor); current transfers and subsidies received 0.867 % -> 0.602 % (flat to falling in euros: 5,567 mn in 2025, 4,687 mn in 2031; both current-transfer lines); capital transfers received 0.231 % of GDP in 2026 (last Recovery and Resilience Facility payments) then 0.08-0.07 %, taken as levels over the observed 2025 share of 0.164 % (both capital-transfer lines). ASSUMPTION - 2031 shares held afterwards. Employer contributions, private sector, from 2026: exemption of basic contributions above the very-high-wage ceiling (ssc.employer_cap_wage), budget cost 75 mn a year (press, RTBF; secondary) on 39.8 bn - the model's wage deciles do not reach the ceiling, so the cost is entered here -> 0.9981. Employee contributions from 2028: higher social work bonus from 1 January 2028 (programme law of 30 May 2026; the new ceilings were not found, so the payslip calculator is unchanged) at the cost shown by the Federal Planning Bureau, outlook of June 2026, Tableau B.4 (official, fetched 26.11.2026) - work bonus 1,845 mn in 2027, 2,286 / 2,444 / 2,487 / 2,534 mn in 2028-2031 against 1,886 / 1,928 / 1,978 / 2,035 mn at the growth of the bonus in the model: 400 / 516 / 509 / 499 mn on the line -> 0.9858 / 0.9823 / 0.9831 / 0.9839 (the Court of Audit, DOC 56 1279/003, had 147 mn for the social bonus before the programme law)."
+  values:
+    2024: &linefactor
+      ssc_employer_private: 1.0
+      ssc_employer_public: 1.0
+      ssc_imputed: 1.0
+      ssc_employee: 1.0
+      ssc_self_employed: 1.0
+      ssc_replacement_income: 1.0
+      special_ssc: 1.0
+      pit_federal: 1.0
+      pit_regional: 1.0
+      pit_local: 1.0
+      withholding_tax: 1.0
+      cit: 1.0
+      vat: 1.0
+      excise_fuel: 1.0
+      excise_tobacco: 1.0
+      excise_alcohol: 1.0
+      excise_energy: 1.0
+      energy_green_levies: 1.0
+      excise_beverages_packaging: 1.0
+      registration_duties: 1.0
+      stock_exchange_tax: 1.0
+      insurance_premium_tax: 1.0
+      gambling_lottery: 1.0
+      pharma_levies: 1.0
+      property_tax: 1.0
+      inheritance_gift_tax: 1.0
+      securities_account_tax: 1.0
+      capital_gains_tax: 1.0
+      vehicle_taxes: 1.0
+      environmental_taxes: 1.0
+      bank_levies: 1.0
+      nuclear_levy: 1.0
+      other_taxes_production: 1.0
+      other_taxes_income_wealth: 1.0
+      sales: 1.0
+      interest_received: 1.0
+      dividends_received: 1.0
+      rent_other_property_income: 1.0
+      eu_transfers_current: 1.0
+      other_current_transfers: 1.0
+      eu_transfers_capital: 1.0
+      other_capital_transfers: 1.0
+      uncollectible_taxes: 1.0
+    2026:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      interest_received: 0.987
+      dividends_received: 0.987
+      rent_other_property_income: 0.987
+      eu_transfers_current: 0.97
+      other_current_transfers: 0.97
+      eu_transfers_capital: 1.411
+      other_capital_transfers: 1.411
+    2027:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      interest_received: 0.955
+      dividends_received: 0.955
+      rent_other_property_income: 0.955
+      eu_transfers_current: 0.917
+      other_current_transfers: 0.917
+      eu_transfers_capital: 0.487
+      other_capital_transfers: 0.487
+    2028:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      ssc_employee: 0.9858
+      interest_received: 0.95
+      dividends_received: 0.95
+      rent_other_property_income: 0.95
+      eu_transfers_current: 0.843
+      other_current_transfers: 0.843
+      eu_transfers_capital: 0.453
+      other_capital_transfers: 0.453
+    2029:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      ssc_employee: 0.9823
+      interest_received: 0.945
+      dividends_received: 0.945
+      rent_other_property_income: 0.945
+      eu_transfers_current: 0.794
+      other_current_transfers: 0.794
+      eu_transfers_capital: 0.447
+      other_capital_transfers: 0.447
+    2030:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      ssc_employee: 0.9831
+      interest_received: 0.94
+      dividends_received: 0.94
+      rent_other_property_income: 0.94
+      eu_transfers_current: 0.719
+      other_current_transfers: 0.719
+      eu_transfers_capital: 0.441
+      other_capital_transfers: 0.441
+    2031:
+      <<: *linefactor
+      bank_levies: 1.09
+      ssc_employer_private: 0.9981
+      ssc_employee: 0.9839
+      interest_received: 0.936
+      dividends_received: 0.936
+      rent_other_property_income: 0.936
+      eu_transfers_current: 0.694
+      other_current_transfers: 0.694
+      eu_transfers_capital: 0.438
+      other_capital_transfers: 0.438
+
+rev.fpb_alignment_enabled:
+  description: Switch (1 or 0) for rev.fpb_alignment - 0 removes every alignment of the revenue baseline on the Planning Bureau's outlook and leaves the model's own projection (legislation, tax bases and the observed 2025 accounts carried forward). LEVER.
+  unit: flag
+  source: "Modelling choice. Without the alignment general-government revenue is -0.05 / 0.01 / 0.02 / 0.15 / 0.20 / 0.26 point of GDP higher in 2026-2031 and the deficit as much lower (5.8 % of GDP in 2031 instead of 6.05 %; Planning Bureau 6.4 %)."
+  values: {2024: 1}
+
+rev.fpb_alignment:
+  description: Alignment to the Planning Bureau's no-policy-change outlook of June 2026, cause not identified - multiplier on the revenue lines of a category of the Bureau's accounts, by year. The observed 2025 accounts are the starting point and are not overridden - from 2026 only the change of each category since 2025, in points of GDP, is the Bureau's. Categories - household direct taxes and indirect taxes, each for the federal government with social security (_federal), the regions and communities (_regions) and local government (_local); corporate tax; capital_taxes (inheritance and gift tax); contributions (effective social contributions). 1 = no alignment. The 2031 values hold afterwards. Switch off with rev.fpb_alignment_enabled.
+  unit: ratio by category
+  source: "ALIGNMENT, not legislation and not an estimate: alignment to the Planning Bureau's no-policy-change outlook of June 2026, cause not identified. Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableaux D.1, D.2, D.3, D.5 and D.6 (official, fetched 26.11.2026; data/base/revenue_fpb_outlook.csv). Rule - for each category and each year 2026-2031, model ratio to GDP less its observed 2025 ratio = the Bureau's ratio less the Bureau's own 2025 ratio (a line goes with the subsector that receives most of it). The level of the observed 2025 accounts (October 2026 vintage) therefore stays - against the Bureau's June estimate of 2025, counted from 2024, indirect taxes are 0.12 point of GDP higher (mostly VAT, +5.2 % in 2025), household taxes 0.09 lower (federal income tax and other household taxes), capital taxes 0.03 and corporate tax 0.01 higher, contributions 0.01 lower; general-government revenue ends 0.07 to 0.16 point above the Bureau's in 2026-2031 (it was 0.02 to 0.09 when the alignment was counted from 2024 and took the 2025 difference out). No part of those differences was identified as a one-off, so all of it persists (a temporary part would be entered in rev.outturn_persistence). VAT - the one documented timing effect of 2025 goes the other way - the new VAT chain (faster refunds, law of 12 March 2023) lowered cash receipts by an estimated 585 mn in 2025 (Court of Audit, commentary on the 2026 budget, Chamber DOC 56 1279/003) and the budget neutralises it in accrual terms (correction of 1,170 mn, Expose general 2026, DOC 56 1278/001); nothing indicates that the 2025 accounts overstate VAT. Corporate tax and income tax - the temporary factors the Bureau names for 2025 (slower advance payments, pace of assessments) are in its own 2025 and reverse inside its path. What the multipliers stand for, as far as known - household taxes, the Bureau books the cost of the higher allowance on the federal tax in the year (payroll withholding) and on the regional and municipal surcharges when assessed, one to two years later (Court of Audit, DOC 56 1279/003, note 59), the model in the income year at all three levels, hence federal 0.97-0.98 and regions and local 1.03-1.04 from 2029; indirect taxes of the regions grow faster in the model from 2027 (0.95); corporate - the Bureau's tax per euro of net operating surplus drifts down 2 % in 2029-2031; contributions - within 0.4 %; capital taxes - one-off federal receipts in 2026 (1.13). Computed by `uv run python -m belsim.fiscal.revenue.align` on the baseline of 26.11.2026 - when the baseline tax bases change, run it again (tests/test_revenue_align.py fails when the stored values have drifted)."
+  values:
+    2024: {households_federal: 1.0, households_regions: 1.0, households_local: 1.0, indirect_federal: 1.0, indirect_regions: 1.0, indirect_local: 1.0, corporate: 1.0, capital_taxes: 1.0, contributions: 1.0}
+    2026: {households_federal: 1.0021, households_regions: 1.0047, households_local: 1.0015, indirect_federal: 0.9988, indirect_regions: 1.0076, indirect_local: 0.9929, corporate: 1.0002, capital_taxes: 1.1332, contributions: 0.9957}
+    2027: {households_federal: 0.9947, households_regions: 1.0059, households_local: 0.9956, indirect_federal: 1.0088, indirect_regions: 0.9549, indirect_local: 0.9942, corporate: 1.0009, capital_taxes: 1.0305, contributions: 0.9992}
+    2028: {households_federal: 0.9909, households_regions: 1.0162, households_local: 1.0007, indirect_federal: 1.0075, indirect_regions: 0.9523, indirect_local: 0.9912, corporate: 1.0041, capital_taxes: 1.0126, contributions: 1.0011}
+    2029: {households_federal: 0.9719, households_regions: 1.0445, households_local: 1.0305, indirect_federal: 1.0105, indirect_regions: 0.9537, indirect_local: 0.9871, corporate: 0.998, capital_taxes: 0.9978, contributions: 0.9985}
+    2030: {households_federal: 0.9738, households_regions: 1.0378, households_local: 1.037, indirect_federal: 1.0132, indirect_regions: 0.9519, indirect_local: 0.9799, corporate: 0.9881, capital_taxes: 0.9952, contributions: 0.9968}
+    2031: {households_federal: 0.9764, households_regions: 1.03, households_local: 1.0414, indirect_federal: 1.0131, indirect_regions: 0.9482, indirect_local: 0.9735, corporate: 0.9773, capital_taxes: 0.9918, contributions: 0.996}
+# ============================================================== regional attribution and levers
+rev.regional_factor:
+  description: >-
+    Discretionary multiplier by region on the regional and local part of a revenue line without
+    an explicit regional rate (vehicle taxes, regional energy levies, gambling taxes,
+    environmental taxes, local taxes). 1.0 = current policy. A measure for one region is
+    Change(key="<line>.<REGION>"), e.g. key="vehicle_taxes.WAL". The federal and social-security
+    part of a mixed line is not affected (use rev.line_factor for the whole line).
+  unit: ratio
+  source: "Neutral = 1. Regional competences: road and registration taxes on vehicles, gambling and betting taxes, green-certificate and network levies, water / waste / manure taxes (Special Finance Act art. 3-4); municipal and provincial taxes."
+  values:
+    2024:
+      vehicle_taxes: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+      energy_green_levies: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+      gambling_lottery: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+      environmental_taxes: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+      other_taxes_production: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+      other_taxes_income_wealth: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+rev.regional_allocation:
+  description: >-
+    Key used to attribute a national revenue line to the regions when the model has no regional
+    base for it - consumption (disposable income of the residents, from the population of tax
+    units), population, or vehicles (adults x rev.vehicle_tax_relative). Income tax and social
+    contributions are attributed by residence of the taxpayer and property taxes with the
+    regional bases and rates; they are not listed here.
+  unit: key
+  source: "ASSUMPTION - allocation keys. VAT and excise by consumption, itself taken proportional to disposable income by region of residence (no regional household-budget data in the model; ignores cross-border and commuter spending). Regional energy levies and gambling by consumption; environmental and local taxes by population."
+  values:
+    2024:
+      vat: consumption
+      excise_fuel: consumption
+      excise_tobacco: consumption
+      excise_alcohol: consumption
+      excise_energy: consumption
+      excise_beverages_packaging: consumption
+      energy_green_levies: consumption
+      gambling_lottery: consumption
+      vehicle_taxes: vehicles
+      environmental_taxes: population
+      other_taxes_production: population
+      other_taxes_income_wealth: population
+
+rev.vehicle_tax_relative:
+  description: Vehicle taxes (annual road tax, registration tax, kilometre charge) per adult resident, by region, relative to Flanders. Sets the regional split of the line; its level is calibrated.
+  unit: ratio
+  source: "ASSUMPTION - order of magnitude from regional budgets recalled from memory (Flanders about 1.5 bn EUR, Wallonia about 0.75 bn, Brussels about 0.25 bn of road and registration taxes): fewer cars per adult in Brussels, similar yield per adult in Wallonia and Flanders."
+  values: {2024: {FLA: 1.0, WAL: 0.95, BRU: 0.6}}

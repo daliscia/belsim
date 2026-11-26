@@ -1,0 +1,268 @@
+# Parameters of the distributional analysis (belsim/distribution/). Prefix `dist.`.
+# Household counts come from data/base/distribution_reference.csv (Eurostat EU-SILC 2025, incomes
+# of 2024: persons by household type, people in households with very low work intensity) and
+# data/base/distribution_households.csv (Eurostat EU-LFS household statistics 2024: one or two
+# earners, number of children), the consumption structure from
+# data/base/distribution_hbs_structure.csv (Household Budget Survey 2020), the observed
+# indicators the set is compared with and set on from distribution_reference.csv (poverty by
+# household type, activity status, age and poverty line, in-work poverty, median incomes);
+# everything below is legislation or an explicit assumption.
+
+# The household tax rules (marital quotient, supplements for children and single parents, child
+# credit) are in params/revenue.yaml (pit.*): one calculator serves the budget and the households.
+
+# ============================== INCOME LEVELS ==============================
+dist.min_wage_monthly:
+  description: Guaranteed average minimum monthly income (GGMMI / RMMMG) of a full-time worker aged 18+, 2024 average. LEVER.
+  unit: EUR/month
+  source: "ASSUMPTION for the 2024 average (2 048). 2 029.88 EUR from 1 April 2024 - Securex (secondary; https://www.securex.be/nl/lex4you/werkgever/nieuws/wat-beweegt-er-voor-de-koopkracht-in-april-2024, read 25.11.2026). 1 994.18 (January-March) and 2 070.48 (from 1 May 2024, = 2 029.88 x 1.02) could not be verified on an official page."
+  uprate: health_index
+  values:
+    2024: 2048
+
+dist.min_wage_months:
+  description: Months of pay per year of the minimum-wage worker (the guaranteed minimum already includes the year-end premium; double holiday pay comes on top)
+  unit: months
+  source: "ASSUMPTION - 12 months + double holiday pay of 0.92 month"
+  values:
+    2024: 12.92
+
+dist.student_job_earnings:
+  description: Annual gross earnings of the stylised student-job holder
+  unit: EUR/year
+  source: "NSSO annual statistics on student work (official; https://www.rsz.be/stats/jaarstatistieken-over-studentarbeid, read 25.11.2026): average earnings per student in 2024 of 3 271.2 EUR"
+  uprate: wages
+  values:
+    2024: 3271
+
+dist.student_solidarity_rate:
+  description: Solidarity contribution on student jobs within the annual hours quota, instead of ordinary social contributions. LEVER.
+  unit: rate
+  source: "NSSO administrative instructions 2024/4, special contributions - students (official; https://www.socialsecurity.be/employer/instructions/dmfa/nl/2024-4/instructions/special_contributions/students.html, read 25.11.2026): 2.71 % student and 5.42 % employer within the quota of 600 hours (650 from 2025, secondary)"
+  values:
+    2024: {employee: 0.0271, employer: 0.0542}
+
+dist.benefit_reference_wage:
+  description: Wage level (min_wage, p25, median, p75, p90) used as the previous wage of the stylised unemployed and long-term sick households and as the job they could take (participation tax rate)
+  unit: level
+  source: "ASSUMPTION - modelling choice (benefit recipients come from the lower half of the wage distribution; cf. unemp.wage_position 0.8 and disab.wage_position 0.85)"
+  values:
+    2024: p25
+
+dist.assist_category_ratio:
+  description: Integration income of a single person and of a person with a dependent family, relative to the average benefit per recipient (assist.amount)
+  unit: ratio
+  source: "Derived - annual amounts of the integration income from 1 May 2024, single 15 461.53 and with dependent family 20 895.43 EUR (FPS Social Security index sheet, official; https://socialsecurity.belgium.be/sites/default/files/content/docs/nl/sz-in-kaart-brengen/indexering/010524-buiten-index-nl.pdf, read 25.11.2026), divided by assist.amount (14 500)"
+  values:
+    2024: {single: 1.066, family: 1.441}
+
+dist.cohabitant_benefit_ratio:
+  description: Benefit of a recipient living with a working partner, as second adult of a couple without work or as third adult (cohabitant rate), relative to the benefit of the other recipients, for unemployment and for invalidity benefits. The average over all recipients stays the spending per recipient of the budget. LEVER.
+  unit: ratio
+  source: "ASSUMPTION - legal rates recalled, not fetched: invalidity benefit 40 % of the capped wage for a cohabitant against 55 % for a single person (0.73). Unemployment - CALIBRATION, set on fetched data: the legal rates differ only after the first year (cohabitants fall to a flat amount), but with a lower benefit for cohabitants the people living alone on unemployment benefit receive more than the budget average and too few of the unemployed are under the poverty line; with 1 (the same benefit for all, the budget average of 15,700 EUR per unemployed person in 2024) the at-risk-of-poverty rate of the unemployed of the set is 38 % against 40.4 % observed and their median equivalised income 20,500 against 20,324 EUR (Eurostat ilc_li04, ilc_di05, EU-SILC 2025; data/base/distribution_reference.csv)."
+  values:
+    2024: {unemployment: 1.0, disability: 0.73}
+
+dist.one_earner_partner_benefit_share:
+  description: Largest share of the non-working partners of one-earner couples who receive an unemployment or invalidity benefit (the others have no income of their own). The recipients who do not fit in the households without work are placed there first, up to this share; the rest are the third adult of a household of three adults.
+  unit: share
+  source: "ASSUMPTION, anchored on the head counts - the income survey counts 0.5 mn people under 65 in households with very low work intensity without children and 0.5 mn with children (Eurostat ilc_lvhl13n, EU-SILC 2025), which hold about 0.4 mn of the 0.85 mn unemployed and long-term sick of the model; the others live with people in work - about 0.45 mn non-working partners of one-earner couples and the third adults. With 0.85 all of them are placed and the adults without income of their own of the set (0.5 mn) are as many as the other inactive people of working age of the model (0.52 mn); with 0.6 about 0.1 mn recipients were left over and the households without work were scaled up by 13 %."
+  values:
+    2024: 0.85
+
+dist.jobless_couple_second_benefit_share:
+  description: Share of the households of two or three adults without work (not pensioners) in which a second adult receives an unemployment or invalidity benefit; in the others the second adult has no income of their own.
+  unit: share
+  source: "CALIBRATION, set on fetched data - the income survey gives the people living in households with very low work intensity by household type (Eurostat ilc_lvhl13n: 101 thousand in couples under 65, 323 thousand in households of two or more adults with children) but not the incomes of their members. The value is set, together with dist.within_group_dispersion and dist.sole_earner_low_income_ratio, on the at-risk-of-poverty rates by household type (two or more adults with children 10.5 %, two adults 7.6 %, Eurostat ilc_li03) and of the unemployed (40.4 %, ilc_li04), EU-SILC 2025 (data/base/distribution_reference.csv)."
+  values:
+    2024: 0.3
+
+dist.pension_household_rate_ratio:
+  description: Minimum pension at the household rate (one pension for a couple) relative to the single rate
+  unit: ratio
+  source: "ASSUMPTION - not fetched: recalled guaranteed minimum pension from 1 May 2024, household rate 2 216.00 / single rate 1 773.35 EUR per month"
+  values:
+    2024: 1.25
+
+# ============================== POPULATION WEIGHTS ==============================
+dist.wage_level_shares:
+  description: Income groups of employees in the household set - share of employees in each group, from the bottom of the earnings distribution of all employees (private and public, part-time included) to the top (bottom 20 %, 20-37.5 %, 37.5-62.5 %, 62.5-85 %, 85-97 %, top 3 %). The income of a group is its mean in the population of tax units behind the aggregate income tax.
+  unit: share
+  source: "ASSUMPTION - modelling choice (finer at the top, where the tax schedule is steepest)"
+  values:
+    2024: {min_wage: 0.20, p25: 0.175, median: 0.25, p75: 0.225, p90: 0.12, top: 0.03}
+
+dist.self_employed_level_shares:
+  description: Income groups of the self-employed in the household set - share of the self-employed in each group of their income distribution (bottom 25 %, 25-75 %, 75-97 %, top 3 %)
+  unit: share
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: {self_low: 0.25, self_median: 0.50, self_high: 0.22, self_top: 0.03}
+
+dist.sole_earner_low_income_ratio:
+  description: How often a worker of the lowest income group (bottom fifth of employees, bottom quarter of the self-employed) is the only earner of the household - living alone, single parent, partner without work - relative to the average worker (1 = as often; the workers displaced are main earners of households with two earners, so the number of workers in each income group is unchanged). The lowest groups hold part-year and small part-time earnings, typical of second earners and of young adults in their parents' home (the third adults in work of the set are all in the lowest group of employees).
+  unit: ratio
+  source: "CALIBRATION, set on fetched data - with 1 (low earners spread like the others) about a quarter of the single workers of the set are under the poverty line, against an in-work at-risk-of-poverty rate of 6.6 % for people living alone and 8.9 % for single parents (Eurostat ilc_iw02) and at-risk-of-poverty rates of 14.4 % for single people and 20.7 % for single parents (ilc_li03), EU-SILC 2025, incomes of 2024 (data/base/distribution_reference.csv). The value is a compromise between those rates, the rate of two or more adults with children (10.5 %) and the overall rate (10.9 %); one ratio serves employees and self-employed and every type of sole-earner household. A part-year worker of the survey also draws a benefit in the months without work; in the set the earner and the benefit recipient are two people, which is why the lowest group cannot be spread like the others."
+  values:
+    2024: 0.4
+
+dist.pensioner_high_share:
+  description: Share of the pensioner households above the minimum pension (other than civil servants) placed at the top of the pension distribution (their pension is the mean of the same share of pensioners at the top of the distribution of the tax units)
+  unit: share
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: 0.15
+
+dist.pensioner_low_share:
+  description: Share of pensioner households (other than civil servants) placed at the minimum pension, single and couple
+  unit: share
+  source: "ASSUMPTION - modelling choice (roughly the share of pensioners receiving a guaranteed minimum pension); the share of couples is set, with dist.within_group_dispersion, on the at-risk-of-poverty rates of two adults without children (7.6 %) and of people of 65 and over (9.3 %), Eurostat ilc_li03 and ilc_li02, EU-SILC 2025."
+  values:
+    2024: {single: 0.30, couple: 0.28}
+
+# ============================== CONSUMPTION ==============================
+dist.consumption_propensity_wave:
+  description: Survey wave of the propensity to consume by income quintile (data/base/distribution_propensity.csv, Eurostat icw_sr_10 - 1.25 / 1.12 / 0.91 / 0.81 / 0.63 of disposable income in 2015) used to derive each household's consumption
+  unit: year
+  source: "ASSUMPTION - modelling choice: 2015 is the last wave not distorted by the pandemic (2020: 1.19 / 0.92 / 0.74 / 0.63 / 0.50). The data themselves are fetched (Eurostat experimental statistics on income, consumption and wealth)."
+  values:
+    2024: 2015
+
+dist.consumption_propensity_scale:
+  description: Multiplicative factor on the propensity to consume of every quintile. LEVER for sensitivity analysis.
+  unit: factor
+  source: "Neutral = 1"
+  values:
+    2024: 1.0
+
+dist.propensity_includes_imputed_rent:
+  description: Whether the survey propensity to consume counts imputed rents of owner-occupiers as consumption (1) or not (0). If 1, the imputed-rent share of the quintile's basket (Household Budget Survey) is removed to obtain cash consumption.
+  unit: flag
+  source: "ASSUMPTION - the Household Budget Survey totals behind icw_sr_10 include imputed rents (hbs_str_t223 lists CP042); not confirmed in the metadata of the experimental statistics"
+  values:
+    2024: 1
+
+# ============================== INDICATORS ==============================
+dist.equivalence_scale:
+  description: Equivalence scale for household size (modified OECD scale used by Eurostat - first adult 1, other persons aged 14+ 0.5, children under 14 0.3). The children of a household of the set are average children - the share of the under-18s aged 14 to 17 in the population of the year counts as 0.5.
+  unit: weight
+  source: "Eurostat, EU-SILC methodology (modified OECD equivalence scale); the share of children of 14-17 comes from the simulated population (about 23 % in 2024, i.e. 0.35 per child)"
+  values:
+    2024: {first_adult: 1.0, other_adult: 0.5, child: 0.3}
+
+dist.poverty_line_share:
+  description: At-risk-of-poverty line as a share of the median equivalised disposable income
+  unit: share
+  source: "Eurostat definition (60 % of the national median)"
+  values:
+    2024: 0.60
+
+dist.within_group_dispersion:
+  description: Spread of the incomes of the people of one synthetic household around its income (standard deviation of the logarithm of income; 0 = everybody of a household type and income group has exactly its income, so a group is entirely under or entirely above the poverty line). One value for earnings and capital income (market), one for benefits; a household gets the average weighted by the share of market income in its gross income. It enters the poverty rates, the Gini coefficient and the S80/S20 ratio, not the income shares of the tenths or the amounts shown per household.
+  unit: log points
+  source: "CALIBRATION, set on fetched data - the set has about 290 mass points, several holding 1-2 % of the population within a few per cent of the poverty line (minimum pension, unemployment benefit, integration income). The values are chosen so that the at-risk-of-poverty rates at 40, 50, 60 and 70 % of the median are close to the observed 1.8, 5.1, 10.9 and 20.5 % (Eurostat ilc_li02, EU-SILC 2025, incomes of 2024; data/base/distribution_reference.csv, poverty_rate_line40/50/70.age.TOTAL) and the rate of the people of 65 and over to 9.3 % at 60 % (poverty_rate.age.Y_GE65): benefits are legal amounts with little spread (most pensioners are just above the line), earnings within an income group vary much more (part-year work, starters)."
+  values:
+    2024: {market: 0.20, benefits: 0.10}
+
+dist.children_number_spread:
+  description: Number of children the household types stand for where the set does not hold every number. large_family_children is the average number of children of the families with 3 or more - a family of the types with three children counts for that number on the equivalence scale, less the share allowance_offset of the effect of one more child that family allowances make up. For the households of three adults with children (one type, one child) the same two values give the spread of income per equivalent adult that comes from the number of children (1, 2, 3 or more in the household statistics).
+  unit: children, share
+  source: "Number of families by number of children - Eurostat EU-LFS household statistics 2024 (lfst_hhnhtych, data/base/distribution_households.csv: couples with 1 / 2 / 3 or more children 310 / 383 / 156 thousand, other households 188 / 66 / 32 thousand). ASSUMPTION for the two values - 3.4 children on average in families of 3 or more (not published in the table); offset 0.4 - one more child adds about 16 % to the equivalence scale of a couple with two children and about 3,400 EUR of family allowances, 6 % of a net income of 55,000 EUR."
+  values:
+    2024: {large_family_children: 3.4, allowance_offset: 0.4}
+
+dist.marginal_step:
+  description: Increase of gross income used to measure marginal effective tax rates
+  unit: EUR/year
+  source: "Modelling choice"
+  values:
+    2024: 100
+
+# ============================== survey income concept and means-tested top-ups
+dist.three_adults_pensioner_share:
+  description: Share of the households of three adults (two earners and a third adult) whose third adult is a pensioner. In the others the third adult is in work (as many as the main earners and their partners leave of the model's employment, in the lowest income group of employees), unemployed or long-term sick (those who do not fit in the households without work or as partner of a one-earner couple) or has no income of their own. The household type carries the average of these cases and counts for this share of a pensioner when the set is scaled to the number of pensioners.
+  unit: share
+  source: "ASSUMPTION, anchored - the income survey counts 1.57 mn people in households of three or more adults, i.e. about 0.43 mn households of the set (Eurostat ilc_lvps02, EU-SILC 2025; data/base/distribution_reference.csv), and 2.38 mn people in the households of one or two adults with someone of 65 or over, against 2.26 mn retired people in private households in the model (retired less dist.pensioner_institution_share): the pensioners living with two earners are few. 0.15 is about 65 thousand people; no table gives the number."
+  values: {2024: 0.15}
+
+dist.pensioner_institution_share:
+  description: Share of the retired who do not live in a private household (rest and nursing homes, other institutions). The income survey and the household set cover private households only, so the pensioner households are scaled to the retired of the model less this share.
+  unit: share
+  source: "ASSUMPTION, anchored - the population of the model is 11.82 mn in 2024, the population behind the survey's poverty count 11.63 mn (people at risk of poverty / rate, Eurostat ilc_li03, EU-SILC 2025: 1,268 thousand / 10.9 %, rounded figures), i.e. about 0.18 mn people outside private households; taken as 0.15 mn retired people (about 130 thousand residents of rest and nursing homes, recalled, not fetched) out of 2.41 mn retired."
+  values: {2024: 0.062}
+
+dist.pensioner_couple_second_average_share:
+  description: Share of the pensioner couples at the average pension in which both partners draw an average pension (in the others the second pension is a minimum pension).
+  unit: share
+  source: "DERIVED - with 0.7 the pensions of the households of the set add up to the pension spending of the budget less the share paid to people in institutions (dist.pensioner_institution_share): 64.1 against 64.8 bn EUR in 2024 (62.3 bn with 0; tests/test_distribution.py checks that all cash benefits of the set stay within 5 % of the budget). The split of a couple's pensions between the partners is not published."
+  values: {2024: 0.7}
+
+dist.fiscal_dispersion:
+  description: How far the earnings of the income groups follow the dispersion of the tax returns (0 = the model's earnings deciles as they are, 1 = the relative incomes of the groups are those of the tax returns). The taxable income of each group already comes from the fiscal statistics, which hold more low and more high incomes than the model's earnings deciles; with 1 the gross earnings of a group are scaled by its taxable income in the returns relative to the average group, so total earnings are unchanged, the tax is unchanged and the households are as unequal as the returns.
+  unit: share
+  source: "The scaling is data - taxable income of each income group in the Statbel fiscal statistics of income 2024 over what the model's wage gives (belsim.fiscal.revenue.taxunits; e.g. 0.61 for the bottom fifth of employees, 0.82 at the median, 1.01 for the top 3 %). ASSUMPTION that the whole difference is a difference of earnings (part-year and part-time work at the bottom) rather than of untaxed pay."
+  values: {2024: 1.0}
+
+dist.grapa_amounts:
+  description: Income guarantee for the elderly (GRAPA / IGO), guaranteed annual amounts - basic amount (per person sharing a home) and increased amount (person living alone). A household of pensioners receives the guaranteed amount less the counted share of its pensions, at the take-up rate that reproduces the budget line.
+  unit: EUR/year
+  source: "Legal monthly amounts 1,012.67 (basic) and 1,519.01 (increased) until April 2024, 1,032.93 and 1,549.40 from 1 May 2024 - Combat Poverty Service table citing the Federal Pensions Service (https://armoedebestrijding.be/wp-content/uploads/2024/04/240430_minimumuitkeringen-zonder-.pdf, fetched 25.11.2026, also quoted in pension.grapa_amount): 2024 average = (4 x old + 8 x new) x 12 / 12."
+  uprate: health_index
+  values:
+    2024: {basic: 12314, increased: 18471}
+
+dist.grapa_pension_counted:
+  description: Share of a pension counted as means in the income guarantee for the elderly (the rest is exempt). Other means (savings, cadastral income, partner's earnings) are not modelled - the take-up rate fitted on the budget stands for them.
+  unit: share
+  source: "ASSUMPTION - law of 22 March 2001 on the income guarantee for the elderly: pensions are counted for 90 % (from memory, not re-read)."
+  values: {2024: 0.9}
+
+dist.family_social_supplement:
+  description: Income-tested social supplement to family allowances - annual amount per child and ceiling of gross household income below which it is paid. Families under the ceiling get it on top of the basic amount; the basic amount is the budget average per child (family.allowance_per_child) less the average cost of the supplement.
+  unit: EUR/year
+  source: "Flemish Groeipakket, sociale toeslag for families with one or two children: 76.09 EUR a month per child under a family income of 42,020.32 EUR (vlaanderen.be/vlaams-groeipakket/toeslagen/sociale-toeslag, official, amounts in force in November 2026, fetched 26.11.2026), brought back to 2024 with the health index (x 1 / 1.0588): 862 a year, ceiling 39,690. ASSUMPTION that this scale stands for the three regional systems (Wallonia and Brussels pay comparable supplements under their own ceilings; in Brussels 42 % of the children received one in 2024 - Iriscare figures in the press); the higher amounts for large families and the half supplement between the two ceilings are left out."
+  uprate: health_index
+  values:
+    2024: {amount: 862, ceiling: 39690}
+
+dist.family_supplement_child_share:
+  description: Share of children receiving the social supplement (sets how much the basic amount lies below the budget average per child).
+  unit: share
+  source: "DERIVED - share of the children of the household set living under the ceiling of dist.family_social_supplement in the 2024 baseline (tests/test_distribution.py checks that the two stay in line)."
+  values: {2024: 0.22}
+
+dist.other_benefit_recipients:
+  description: Cash benefits of the budget that the household rules do not produce and that the income survey counts - for each expenditure line, the kinds of adults of the household set who share it equally (work = people in work, unemployment, disability = on an invalidity benefit, none = adults without income of their own) and whether it bears income tax (at the household's average rate). The amounts are the budget lines of the year (for social assistance - the line less the integration income the rules already pay to the households of the set).
+  unit: table
+  source: "Amounts - expenditure lines of the model (2024 government accounts by function, COFOG): short-term sickness, work accidents and occupational diseases 3.9 bn EUR, labour-market benefits such as career breaks 1.1 bn, unemployment with company supplement 0.2 bn, allowances for persons with disabilities 3.0 bn, social assistance 3.7 bn of which about 2.4 bn is paid by the rules of the set. ASSUMPTION for who receives them - no table of recipients by household was fetched: sickness and career-break benefits replace wages (people in work), the allowances for persons with disabilities go to people on an invalidity benefit or without income, the integration income not paid to the single people, couples and families of the set goes to adults without income living with others (cohabitant rate)."
+  values:
+    2024:
+      sickness_primary: {kinds: [work], taxed: true}
+      labour_market_benefits: {kinds: [work], taxed: true}
+      rcc_swt: {kinds: [unemployment], taxed: true}
+      disability_allowances: {kinds: [disability, none], taxed: false}
+      social_assistance: {kinds: [none], taxed: false}
+
+dist.capital_income_share:
+  description: Capital and property income of households (interest, dividends, rents received) before withholding tax, as a share of the disposable income of the household set - the amount an income survey records, not the national-accounts total.
+  unit: share
+  source: "ASSUMPTION - income surveys record a few per cent of income as property income (the national accounts show about 12 % of GDP of interest, dividends and rents received by households, most of it imputed, retained in funds or under-reported in surveys). 3 % is a judgement value; no table by income source was fetched."
+  values: {2024: 0.03}
+
+dist.capital_income_by_decile:
+  description: Distribution of capital and property income over the tenths of equivalised disposable income (bottom to top; rescaled to 1).
+  unit: shares
+  source: "ASSUMPTION - concentrated at the top as financial wealth is (the National Bank's household finance survey puts well over half of financial assets with the top tenth of wealth; by income the concentration is lower); no table fetched."
+  values: {2024: [0.01, 0.015, 0.02, 0.03, 0.04, 0.055, 0.07, 0.10, 0.16, 0.50]}
+
+dist.property_tax_household_share:
+  description: Share of the recurrent property tax (precompte immobilier / onroerende voorheffing) paid by households on their own home and deducted from disposable income in the survey concept (the rest is paid by companies and landlords).
+  unit: share
+  source: "ASSUMPTION - no breakdown of the receipts by taxpayer was fetched; dwellings are roughly 60 % of cadastral income."
+  values: {2024: 0.6}
+
+dist.property_tax_by_decile:
+  description: Distribution of the households' recurrent property tax over the tenths of equivalised disposable income (bottom to top; rescaled to 1).
+  unit: shares
+  source: "ASSUMPTION - home ownership and the value of the home rise with income (about 70 % of households own their home); no table fetched."
+  values: {2024: [0.04, 0.05, 0.07, 0.08, 0.09, 0.10, 0.11, 0.13, 0.15, 0.18]}

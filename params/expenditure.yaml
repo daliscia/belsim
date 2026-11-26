@@ -1,0 +1,1109 @@
+# Parameters of the expenditure / balance / debt module (belsim.fiscal.expenditure, belsim.fiscal.balance).
+#
+# Levels of every expenditure line are calibrated to the 2024 accounts (Eurostat gov_10a_exp / gov_10a_main,
+# see data/base/expenditure_lines_2024.csv): line_t = model_t x (actual_2024 / model_2024). Parameters below
+# therefore drive the DYNAMICS and the response to reforms; benefit amounts and shares marked ASSUMPTION are
+# model units whose level error is absorbed by the calibration factor.
+# "ASSUMPTION" = not downloaded from an official source (order of magnitude from memory of official
+# publications, or a modelling choice).
+
+# ============================== PENSIONS ==============================
+pension.scheme_spending_share_2024:
+  description: Split of 2024 old-age + survivors cash pensions (excl. GRAPA) between schemes. Used by the fetch script to split the COFOG total (re-run fetch_expenditure after changing).
+  unit: share
+  source: "SFP annual report 2024, key figures (https://www.sfpd.fgov.be/files/3438/jaarverslag2024-kerncijfers.pdf, fetched 2026-11-25): pensions paid in 2024 - employees 40 200 mn, self-employed 5 593 mn, civil servants 22 451 mn. Shares of the COFOG/ESSPROS total excl. GRAPA (69 049 mn); the difference with the SFP total (about 800 mn - local-authority schemes managed outside the SFP, annuities) is attributed to civil servants. data/base/expenditure_lines_2024.csv was re-carved with these shares on 2026-11-25"
+  values:
+    2024: {employees: 0.5822, self_employed: 0.0810, civil_servants: 0.3368}
+
+pension.scheme_mix_2024:
+  description: Share of pensioners by scheme in 2024, in pension-equivalents (scheme spending / average pension of single-scheme pensioners; people with a mixed career count in each scheme pro rata). Initial stock; then evolves with the job-type mix of workers aged 55-64
+  unit: share
+  source: "Derived - SFP annual report 2024, key figures (https://www.sfpd.fgov.be/files/3438/jaarverslag2024-kerncijfers.pdf, fetched 2026-11-25) spending by scheme divided by pension.avg_pension_2024: 1.998 mn / 0.381 mn / 0.541 mn pension-equivalents (2 626 846 pensioners in January 2024, of whom 34% with a mixed career - PensionStat / Federal Pensions Service data file 2025, sheet Gepensioneerden (https://www.pensionstat.be/nl/kerncijfers/wettelijk-pensioen/gepensioneerden, fetched 2026-11-25))"
+  values:
+    2024: {employees: 0.684, self_employed: 0.131, civil_servants: 0.185}
+
+pension.new_pension_mix_2024:
+  description: Share of each scheme in the pensions starting in 2024, in pension-equivalents (monthly amount of the new rights of the scheme / average new pension of the model). Starting mix of new retirees; it then follows the job-type mix of workers aged 55-64 with the lag pension.scheme_mix_lag_years
+  unit: share
+  source: "Derived - PensionStat / Federal Pensions Service data file 2025, sheet NieuweRechten_uitgave (https://www.pensionstat.be/nl/kerncijfers/wettelijk-pensioen/gepensioneerden, fetched 2026-11-26): rights starting in 2024, January monthly amount x 12, retirement + survivors - employees 2 434 mn (153 777 retirement pensions of 1 142 EUR a month on average), self-employed 330 mn (40 541 of 567 EUR), civil servants 895 mn (23 782 of 2 771 EUR); divided by pension.avg_pension_2024 x pension.new_to_stock_ratio. New civil-servant rights are 4.0% of the scheme's spending against 6.3% for employees - the scheme already shrinks relative to the others"
+  values:
+    2024: {employees: 0.731, self_employed: 0.128, civil_servants: 0.141}
+
+pension.new_pension_mix_drift:
+  description: Annual relative drift of each scheme's weight in the mix of new pensions (pension-equivalents), on top of the job-type mix of older workers. Self-employed - the scheme matures (more people retire with a self-employed career, and with more years in it)
+  unit: rate/year
+  source: "ASSUMPTION - self-employed +1.5% a year over 2025-2050, none afterwards. Observed - the number of new self-employed retirement rights rose from 32 644 (rights starting in 2019) to 40 541 (2024), +4.4% a year against +2.1% for employees (PensionStat / Federal Pensions Service data file 2025, sheet NieuweRechten_uitgave, fetched 2026-11-26). Size and end year set so that the scheme follows the Study Committee on Ageing 2026 (0.9% of GDP in 2025-2031, 1.2% in 2050, 1.4% in 2070 - maturing scheme)"
+  values:
+    2024: {employees: 0.0, self_employed: 0.0, civil_servants: 0.0}
+    2025: {employees: 0.0, self_employed: 0.015, civil_servants: 0.0}
+    2051: {employees: 0.0, self_employed: 0.0, civil_servants: 0.0}
+
+pension.scheme_mix_lag_years:
+  description: Mean lag (years) with which the scheme mix of new pensions follows the job-type mix of workers aged 55-64 (share of self-employed, share of statutory staff among public employees) - pension rights are earned over the whole career and many careers are mixed
+  unit: years
+  source: "ASSUMPTION - 15 years, about the middle of the second half of a career"
+  values:
+    2024: 15
+
+pension.career_years_per_delay_year:
+  description: Career years credited per year by which people start their pension later than under the 2024 retirement pattern (higher legal age, tighter early retirement, later exits). Each credited year adds 1/45 of a full career to new pensions, up to a full career. LEVER (0 = later retirement does not raise new pensions).
+  unit: years per year
+  source: "ASSUMPTION - 1 (years worked or assimilated - unemployment and invalidity before the pension count as career years). Mechanism named by the Study Committee on Ageing, annual report July 2026, section 3.3.a - the benefit ratio rises by about 3% to 2035 mainly because the higher legal age lengthens the average career and so the average pension"
+  values:
+    2024: 1.0
+
+pension.career_income_factor:
+  description: Share of career income that counts in the pension formula, by scheme, for people retiring in the year. Self-employed - the correction coefficient that scaled down their income was abolished for career years from 2021, so the factor rises with the share of post-2020 years in the career of new retirees until the whole 45-year career is at 1 (new pensions of the scheme mature for four decades). LEVER.
+  unit: factor
+  source: "Self-employed - law abolishing the correction coefficient for every career year from 2021, for pensions starting from 1 January 2022 (listed in Study Committee on Ageing, annual report July 2026, annex 3.b, https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26). Path DERIVED - coefficient 0.69 for earlier years (ASSUMPTION for the exact value - single coefficient 0.691542 from memory of the INASTI rules) and 1 for the share (year - 2021) / 45 of the career. Observed maturation - the average new self-employed retirement pension rose from 369 EUR a month for rights starting in 2019 to 567 EUR in 2024 (+54%, employees +19%; PensionStat data file 2025, sheet NieuweRechten_uitgave, fetched 2026-11-26). Employees and civil servants - 1"
+  values:
+    2024: {employees: 1.0, self_employed: 0.7107, civil_servants: 1.0}
+    2025: {employees: 1.0, self_employed: 0.7176, civil_servants: 1.0}
+    2026: {employees: 1.0, self_employed: 0.7244, civil_servants: 1.0}
+    2027: {employees: 1.0, self_employed: 0.7313, civil_servants: 1.0}
+    2028: {employees: 1.0, self_employed: 0.7382, civil_servants: 1.0}
+    2029: {employees: 1.0, self_employed: 0.7451, civil_servants: 1.0}
+    2030: {employees: 1.0, self_employed: 0.752, civil_servants: 1.0}
+    2031: {employees: 1.0, self_employed: 0.7589, civil_servants: 1.0}
+    2032: {employees: 1.0, self_employed: 0.7658, civil_servants: 1.0}
+    2033: {employees: 1.0, self_employed: 0.7727, civil_servants: 1.0}
+    2034: {employees: 1.0, self_employed: 0.7796, civil_servants: 1.0}
+    2035: {employees: 1.0, self_employed: 0.7864, civil_servants: 1.0}
+    2036: {employees: 1.0, self_employed: 0.7933, civil_servants: 1.0}
+    2037: {employees: 1.0, self_employed: 0.8002, civil_servants: 1.0}
+    2038: {employees: 1.0, self_employed: 0.8071, civil_servants: 1.0}
+    2039: {employees: 1.0, self_employed: 0.814, civil_servants: 1.0}
+    2040: {employees: 1.0, self_employed: 0.8209, civil_servants: 1.0}
+    2041: {employees: 1.0, self_employed: 0.8278, civil_servants: 1.0}
+    2042: {employees: 1.0, self_employed: 0.8347, civil_servants: 1.0}
+    2043: {employees: 1.0, self_employed: 0.8416, civil_servants: 1.0}
+    2044: {employees: 1.0, self_employed: 0.8484, civil_servants: 1.0}
+    2045: {employees: 1.0, self_employed: 0.8553, civil_servants: 1.0}
+    2046: {employees: 1.0, self_employed: 0.8622, civil_servants: 1.0}
+    2047: {employees: 1.0, self_employed: 0.8691, civil_servants: 1.0}
+    2048: {employees: 1.0, self_employed: 0.876, civil_servants: 1.0}
+    2049: {employees: 1.0, self_employed: 0.8829, civil_servants: 1.0}
+    2050: {employees: 1.0, self_employed: 0.8898, civil_servants: 1.0}
+    2051: {employees: 1.0, self_employed: 0.8967, civil_servants: 1.0}
+    2052: {employees: 1.0, self_employed: 0.9036, civil_servants: 1.0}
+    2053: {employees: 1.0, self_employed: 0.9104, civil_servants: 1.0}
+    2054: {employees: 1.0, self_employed: 0.9173, civil_servants: 1.0}
+    2055: {employees: 1.0, self_employed: 0.9242, civil_servants: 1.0}
+    2056: {employees: 1.0, self_employed: 0.9311, civil_servants: 1.0}
+    2057: {employees: 1.0, self_employed: 0.938, civil_servants: 1.0}
+    2058: {employees: 1.0, self_employed: 0.9449, civil_servants: 1.0}
+    2059: {employees: 1.0, self_employed: 0.9518, civil_servants: 1.0}
+    2060: {employees: 1.0, self_employed: 0.9587, civil_servants: 1.0}
+    2061: {employees: 1.0, self_employed: 0.9656, civil_servants: 1.0}
+    2062: {employees: 1.0, self_employed: 0.9724, civil_servants: 1.0}
+    2063: {employees: 1.0, self_employed: 0.9793, civil_servants: 1.0}
+    2064: {employees: 1.0, self_employed: 0.9862, civil_servants: 1.0}
+    2065: {employees: 1.0, self_employed: 0.9931, civil_servants: 1.0}
+    2066: {employees: 1.0, self_employed: 1.0, civil_servants: 1.0}
+
+pension.avg_pension_2024:
+  description: Average gross annual pension per pensioner by scheme in 2024 (model unit; the level is calibrated on actual spending)
+  unit: EUR/year
+  source: "PensionStat / Federal Pensions Service data file 2025, sheet Gepensioneerden (https://www.pensionstat.be/nl/kerncijfers/wettelijk-pensioen/gepensioneerden, fetched 2026-11-25): average gross monthly legal pension in January 2024 of pensioners with a single-scheme career - employees 1 677, self-employed 1 222, civil servants 3 456 EUR (x 12; all pensioners 1 997)"
+  values:
+    2024: {employees: 20124, self_employed: 14664, civil_servants: 41472}
+
+pension.new_to_stock_ratio:
+  description: Average pension of new retirees relative to the average pension of the stock, 2024 (longer careers of recent cohorts)
+  unit: ratio
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: {employees: 1.08, self_employed: 1.15, civil_servants: 1.0}
+
+pension.replacement_rate:
+  description: Pension accrual / replacement rate on the (capped) career-average wage for a full career. LEVER.
+  unit: rate
+  source: "Legislation - employees and self-employed 60% single rate (75% household rate ignored): Wikifin/FSMA https://www.wikifin.be/nl/pensioen-en-pensioenvoorbereiding/wettelijk-pensioen/berekening-betaling-en-impact-van-je-0 ; civil servants 1/60 per year of the reference wage, relative maximum 3/4: https://www.sfpd.fgov.be/nl/pensioenbedrag/berekening/maximumpensioen (fetched 2026-11-25)"
+  values:
+    2024: {employees: 0.60, self_employed: 0.60, civil_servants: 0.75}
+
+pension.wage_ceiling:
+  description: Annual wage ceiling for pension accrual (civil servants - wage equivalent of the absolute maximum pension). LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Employees - SFP Loonplafond table, career year 2024: 80 485.32 EUR (https://www.sfpd.fgov.be/nl/pensioenbedrag/berekening/verschillende-soorten-pensioenen/werknemers/lonen/loonplafond). Self-employed - RSVZ/INASTI income ceiling 2024: 75 977.92 EUR (https://www.rsvz.be/nl/cijfers-bedragen-en-grenzen). Civil servants - derived: absolute maximum pension (46 882.74 EUR at pivot index 138.01, about 96 900 EUR on average in 2024; https://www.sfpd.fgov.be/nl/pensioenbedrag/berekening/maximumpensioen) divided by the 75% relative maximum. Fetched 2026-11-25. NOT modelled - the absolute maximum is frozen in nominal terms from 1 July 2025 to end 2029 (programme law of 18 July 2025)"
+  values:
+    2024: {employees: 80485, self_employed: 75978, civil_servants: 129200}
+
+pension.career_fraction:
+  description: Average career fraction (years credited / 45) of new retirees. LEVER (e.g. tighter assimilated periods).
+  unit: fraction
+  source: "ASSUMPTION - modelling choice (average careers ~37-38 years incl. assimilated periods)"
+  values:
+    2024: {employees: 0.82, self_employed: 0.75, civil_servants: 0.85}
+
+pension.min_pension:
+  description: Guaranteed minimum pension for a full career, single rate (applied pro rata of the career fraction). LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Guaranteed minimum pension, full career, single rate, employees and self-employed: 1 738.55 EUR/month from 1 January 2024, 1 773.35 from 1 May 2024, 2024 average 1 761.75 x 12 (RSVZ https://www.rsvz.be/nl/cijfers-bedragen-en-grenzen ; FPS Social Security index sheet 1 January 2024; fetched 2026-11-25). Civil servants - ASSUMPTION, same amount (2024 civil-servant minimum not found on the SFP site)"
+  values:
+    2024: {employees: 21141, self_employed: 21141, civil_servants: 21141}
+
+pension.min_pension_spending_share:
+  description: Share of the pension spending of each scheme that is paid at or near the guaranteed minimum and follows a change of pension.min_pension in proportion (pensions in payment and new pensions alike). A rise of the minimum by 1% raises the spending of the scheme by this share x 1%. No effect while the minimum is the indexed 2024 amount.
+  unit: share of scheme spending
+  source: "ASSUMPTION - calibrated on official costings of rises of the minimum pension. Federal Planning Bureau, DC2024 costing of the 2024 election programmes (https://www.dc2024.be/uploaded/downloads/VB.pdf, measure 301): minimum pension of employees and self-employed +2.96% (EUR 1,738 to 1,790 a month) costs EUR 567 mn in 2025, i.e. EUR 192 mn per 1% on about EUR 43 bn of spending of the two schemes. Split between schemes as in the Court of Audit's comments on the 2021 budget (Chamber DOC 55 1577/002, section 3.2.2, https://www.lachambre.be/FLWB/PDF/55/1577/55K1577002.pdf): cost of the 2021-2024 rise (11% in real terms) EUR 1,278 mn for employees, 446 mn for the self-employed, 95 mn for civil servants (70 / 25 / 5%). Cross-check - the last phase of that rise (2024) cost about EUR 221 mn per 1% for the three schemes (Court of Audit, DOC 55 3272/002, p. 44-45); 997,562 pensioners (41%) received a minimum pension in January 2024 (Federal Pensions Service, annual report 2024). Fetched 2026-11-26"
+  values:
+    2024: {employees: 0.36, self_employed: 0.89, civil_servants: 0.05}
+
+pension.new_pension_factor:
+  description: Multiplicative factor on NEW pensions by scheme (relative to the 2024 rules) for rule changes that are not carried by another parameter - reference-wage period and accrual fractions of civil servants, cap on assimilated periods and limited fictitious wage for employees. LEVER.
+  unit: factor
+  source: "1 until 2026. Civil servants from 2027 - Law of 30 May 2026 on the pension reform (Belgian Official Gazette 1 June 2026; https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming, fetched 2026-11-25): for pensions starting from 2027 the reference wage is lengthened by birth cohort from the last 10 years (born 1962) by one year per birth year to the whole career (45 years, born 1997 or later), and all preferential accrual fractions become 1/60 for service from 1 January 2027. SIZE = ASSUMPTION calibrated on Federal Planning Bureau report 13299 of 13 April 2026, budgetary and social evaluation of the pension reform (https://www.plan.be/sites/default/files/documents/REP_PENSION_13299_NL.pdf, fetched 2026-11-25): replacement rate of new civil-servant pensions -15.2% in 2070 versus no reform, public-sector pensions -0.7 point of GDP in 2070; linear path to 0.85 for the cohort retiring in 2062. Employees - the cap on assimilated periods (law published 31 July 2026, effective 1 July 2027) and the limited fictitious wage for certain assimilated periods (Royal Decree of 18 January 2026, pensions starting from 2027) lower the replacement rate of new employee pensions by 1.4% and 0.5% in 2040, 1.3% and 0.6% in 2050, 0.9% and 0.9% in 2070 (same report 13299, tables 7 and 10, read 2026-11-26) - linear path to 0.981 in 2040, constant afterwards. Self-employed - not quantified (small)"
+  values:
+    2024: {employees: 1.0, self_employed: 1.0, civil_servants: 1.0}
+    2027: {employees: 0.9986, self_employed: 1.0, civil_servants: 0.9958}
+    2028: {employees: 0.9973, self_employed: 1.0, civil_servants: 0.9917}
+    2029: {employees: 0.9959, self_employed: 1.0, civil_servants: 0.9875}
+    2030: {employees: 0.9946, self_employed: 1.0, civil_servants: 0.9833}
+    2031: {employees: 0.9932, self_employed: 1.0, civil_servants: 0.9792}
+    2032: {employees: 0.9919, self_employed: 1.0, civil_servants: 0.9750}
+    2033: {employees: 0.9905, self_employed: 1.0, civil_servants: 0.9708}
+    2034: {employees: 0.9891, self_employed: 1.0, civil_servants: 0.9667}
+    2035: {employees: 0.9878, self_employed: 1.0, civil_servants: 0.9625}
+    2036: {employees: 0.9864, self_employed: 1.0, civil_servants: 0.9583}
+    2037: {employees: 0.9851, self_employed: 1.0, civil_servants: 0.9542}
+    2038: {employees: 0.9837, self_employed: 1.0, civil_servants: 0.9500}
+    2039: {employees: 0.9824, self_employed: 1.0, civil_servants: 0.9458}
+    2040: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9417}
+    2041: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9375}
+    2042: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9333}
+    2043: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9292}
+    2044: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9250}
+    2045: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9208}
+    2046: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9167}
+    2047: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9125}
+    2048: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9083}
+    2049: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9042}
+    2050: {employees: 0.981, self_employed: 1.0, civil_servants: 0.9000}
+    2051: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8958}
+    2052: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8917}
+    2053: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8875}
+    2054: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8833}
+    2055: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8792}
+    2056: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8750}
+    2057: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8708}
+    2058: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8667}
+    2059: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8625}
+    2060: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8583}
+    2061: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8542}
+    2062: {employees: 0.981, self_employed: 1.0, civil_servants: 0.8500}
+
+pension.bonus_malus:
+  description: Average net adjustment of NEW pensions from a bonus (+) / malus (-) not expressed per year, as a fraction. LEVER. The legislated malus/bonus is in pension.bonus_malus_per_year
+  unit: fraction
+  source: "ASSUMPTION - 0 in the baseline"
+  values:
+    2024: 0.0
+
+pension.bonus_malus_per_year:
+  description: Pension bonus/malus per year of later/earlier retirement, as a fraction of the pension (e.g. 0.05 = 5% per year). LEVER - changes the retirement incentive seen by the behaviour module and, through pension.bonus_malus_exposure_years, the average new pension.
+  unit: fraction per year
+  source: "Law of 30 May 2026 on the pension reform (Belgian Official Gazette 1 June 2026; https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming, fetched 2026-11-25); https://www.sfpd.fgov.be/nl/pensioenbedrag/berekening/pensioenmalus : for pensions starting from 2027 a permanent malus per year of anticipation before the legal age of 2% (born 1961-1965), 4% (born 1966-1974), 5% (born 1975 or later), and a bonus per year worked after the legal age of 2% (born up to 1962), 4% (1963-1972), 5% (1973 or later); no malus with 35 career years of at least 156 days and 7 020 days in total. Dated by the years in which those cohorts reach the early-retirement ages (approximation - birth cohorts mapped to retirement years). Fetched 2026-11-25. The 2024 pension bonus (law of 25 April 2024) stopped accruing on 31 December 2025 (law of 18 December 2025) and is not modelled"
+  values:
+    2024: 0.0
+    2027: 0.02
+    2031: 0.04
+    2040: 0.05
+
+pension.bonus_malus_exposure_years:
+  description: Average number of years by which new retirees of a scheme are exposed to the bonus/malus per year (negative = early retirement dominates), averaged over all new retirees of the scheme (a scalar is accepted and applies to the three schemes)
+  unit: years
+  source: "DERIVED, partly ASSUMPTION - Federal Planning Bureau report 13299 of 13 April 2026, budgetary and social evaluation of the pension reform (https://www.plan.be/sites/default/files/documents/REP_PENSION_13299_NL.pdf, fetched 2026-11-26), table 1 (Federal Pensions Service data) - share of early retirees who do not meet the 35-year effective-work condition - employees 37% of women and 14% of men, civil servants 8% / 2%, self-employed 4% / 0%; share of retirements after the legal age that meet the condition of the bonus - employees 38% / 66%, self-employed 14% / 43%, civil servants 74% / 88%. ASSUMPTION - about half of new retirees leave before the legal age, on average 2.5 years early, and about one in twenty after it - employees 0.47 x 25% x 2.5 years = 0.29 year of malus less 0.03 year of bonus; civil servants 0.06 less 0.03; self-employed nil. The malus does not apply to people who met the conditions for early retirement before 1 January 2027 (same report, section 2.1.1), so a third of the exposure in 2027, two thirds in 2028. The postponement of retirement induced by the malus is carried by the behaviour module"
+  values:
+    2024: {employees: -0.25, self_employed: 0.0, civil_servants: -0.03}
+    2027: {employees: -0.08, self_employed: 0.0, civil_servants: -0.01}
+    2028: {employees: -0.17, self_employed: 0.0, civil_servants: -0.02}
+    2029: {employees: -0.25, self_employed: 0.0, civil_servants: -0.03}
+
+pension.postponement_pension_ratio:
+  description: Pension of the people who postpone (or advance) retirement in response to a financial incentive (behavioural retirement response of a scenario), relative to the average new pension. The pension spending saved per person-year of postponement is this ratio x the average new pension. No effect in the baseline.
+  unit: ratio
+  source: "ASSUMPTION - 0.76, set with the behaviour module on Federal Planning Bureau report 13299 (https://www.plan.be/sites/default/files/documents/REP_PENSION_13299_NL.pdf, fetched 2026-11-26), table 2 - the bonus-malus lowers pension spending by 228 / 463 / 677 / 641 / 794 mn (2024 prices) in 2027-2031, about EUR 2.8 bn per year of average postponement, against 3.7 bn when the people postponing are valued at the average new pension of the model (about 125 000 a year); table 1 of the report - the malus bears on early retirees who do not meet the 35-year effective-work condition (37% of women and 14% of men in the employees scheme), whose careers and pensions are shorter than average"
+  values:
+    2024: 0.76
+
+pension.capital_bonus:
+  description: Pension bonus of the law of 25 April 2024, paid as a capital at retirement - average amount per NEW retiree (all new retirees, with or without a bonus), EUR of 2024, indexed with the health index by the model. The right was built up per day worked after the earliest possible retirement date, for at most three years (EUR 3 775, 7 550 and 11 325 for the first, second and third year, or 11 325 a year with a career of 43 years or more, index of July 2023). Accrual stopped on 31 December 2025 - the baseline pays out the rights built up between 1 July 2024 and that date. LEVER - 4 600 from 2029 (3 000 in 2027, 4 000 in 2028) restores the bonus as it would have matured.
+  unit: EUR
+  source: "Law of 25 April 2024 on the pension reform (amounts as in Study Committee on Ageing, annual report July 2024, table 16, https://www.plan.be/sites/default/files/documents/FOR_VERG2024_13023_NL.pdf, fetched 2026-11-26); accrual stopped by the law of 18 December 2025 (https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming). Level at maturity DERIVED from the same report, section 3.3 and table 18 - the bonus raises pension spending by 0.1 point of GDP in 2040, mostly windfall for people who would have worked on anyway - 0.1% of GDP of 2024 (EUR 620 mn) over about 135 000 new retirees a year = EUR 4 600. ASSUMPTION - time profile - first payments in 2025 (at most one year of accrual), rights built up over at most 18 months paid out as their holders retire in 2026-2029. With these values the abolition lowers pension spending by about EUR 0.25 / 0.45 / 0.6 bn in 2027 / 2028 / 2029 at 2024 prices, the bulk of the EUR 0.23 / 0.46 / 0.68 bn of Planning Bureau report 13299, table 2 (abolition of this bonus, new bonus-malus and retirement behaviour together)"
+  values:
+    2024: 0.0
+    2025: 600.0
+    2026: 1700.0
+    2027: 1000.0
+    2028: 500.0
+    2029: 200.0
+    2030: 0.0
+
+pension.welfare_adjustment:
+  description: Annual real uprating of pensions in payment on top of health-index indexation (welfare envelope), by scheme - employees and self-employed (civil-servant pensions follow the perequation parameters; a scalar is accepted and applies to both schemes). LEVER.
+  unit: rate/year
+  source: "Study Committee on Ageing, annual report July 2026 (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-25), Tableau 2: no welfare adjustment 2025-2029 (the welfare envelope of the Generation Pact law of 23 December 2005 is not allocated during the legislature), then under unchanged legislation 0.5% a year for non-flat-rate benefits and 1% a year for flat-rate benefits and minima. DERIVED weights - share of the scheme's spending going to people with a minimum pension in 2024, PensionStat / Federal Pensions Service data file 2025, sheet MinP_jaaruitgave (fetched 2026-11-26): employees 14 694 of 38 370 mn (38%), self-employed 4 990 of 5 588 mn (89%), hence 0.69% and 0.95% a year (2024 - 0.5% for both, as before). The successor mechanism announced by the government is not agreed. NOT modelled - envelope for vulnerable groups of 25/50/75/100 mn EUR in 2026-2029"
+  values:
+    2024: {employees: 0.005, self_employed: 0.005}
+    2025: {employees: 0.0, self_employed: 0.0}
+    2030: {employees: 0.0069, self_employed: 0.0095}
+
+pension.perequation_share:
+  description: Share of the real growth of public-sector wages passed on to civil-servant pensions in payment (perequation), before the cap pension.perequation_cap. LEVER (0 = no real uprating of civil-servant pensions).
+  unit: share
+  source: "Perequation every two years until 2024 (https://www.sfpd.fgov.be/nl/kenniscentrum/perequatie). Law of 25 April 2024 - cost capped from 2025 (see pension.perequation_cap); Law of 30 May 2026 on the pension reform (Belgian Official Gazette 1 June 2026; https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming, fetched 2026-11-25) - perequation abolished from 1 July 2026 and to be folded into a new welfare envelope that is not yet agreed. Convention of the Study Committee on Ageing, annual report July 2026, section 1.3.1.c (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26), followed here - no perequation at all over 2025-2029, then a return to the mechanism in force before the government agreement (perequation capped at 0.6% per two years) for want of a defined successor. Until this revision the model had 0 for ever, which is the letter of the law but made civil-servant pensions fall about twice as much as in the Planning Bureau evaluation of the reform"
+  values:
+    2024: 1.0
+    2025: 0.0
+    2030: 1.0
+
+pension.perequation_cap:
+  description: Ceiling on the yearly real uprating of civil-servant pensions in payment through perequation (null = no ceiling). LEVER.
+  unit: rate/year
+  source: "Law of 25 April 2024 on the pension reform - from 2025 the two-yearly perequation is limited overall to 0.6% of the spending on retirement and survivors' pensions, i.e. 0.3% a year (Study Committee on Ageing, annual report July 2026, section 1.3.1.b, https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26)"
+  values:
+    2024:
+    2025: 0.003
+
+pension.exit_rate:
+  description: Annual exit rate of the stock of pensions by scheme, in pension-equivalents (deaths weighted by the pension lost; a scalar is accepted and applies to the three schemes). Used to derive the inflow of new retirees from the change of the stock
+  unit: rate/year
+  source: "Derived, partly ASSUMPTION - from the identity real growth of the scheme's spending = new rights - exits + real uprating, with PensionStat / Federal Pensions Service data file 2025 (sheets Jaaruitgave and NieuweRechten_uitgave, fetched 2026-11-26): spending 2019-2025 +33% (civil servants), +49% (employees), +47% (self-employed) for a health index up about 21%; new rights of a year about 3.8-4.0% of the scheme's spending for civil servants, 6.3-7.0% for employees and 5.4-5.9% for the self-employed. The real uprating of pensions in payment over the period (perequation, welfare adjustments, higher minimum pensions) is approximated, so the three rates are judgement values inside the ranges this gives (civil servants 2.7-3.5%, employees 4-4.5%, self-employed about 4.5%), chosen so that the public-sector and employees schemes follow the Study Committee on Ageing 2026 to 2050; their average weighted by pension.scheme_mix_2024 is the 4% used before (about the mortality of pensioners). Civil-servant pensions leave the stock more slowly - their holders live longer and the pensions of the oldest are not much lower than the average"
+  values:
+    2024: {employees: 0.0415, self_employed: 0.045, civil_servants: 0.034}
+
+pension.career_wage_lag_years:
+  description: Mean lag (years) with which new pensions follow real wages (career average for employees/self-employed, last ten years for civil servants)
+  unit: years
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: {employees: 20, self_employed: 20, civil_servants: 5}
+
+pension.past_real_wage_growth:
+  description: Average annual real wage growth over the decades before 2024 (initialises the lagged career-wage index)
+  unit: rate/year
+  source: "ASSUMPTION - approx. 0.5%/yr"
+  values:
+    2024: 0.005
+
+pension.level_factor:
+  description: Multiplicative factor on pension spending by scheme (all pensions in payment). LEVER for across-the-board changes.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {employees: 1.0, self_employed: 1.0, civil_servants: 1.0, grapa: 1.0}
+
+pension.grapa_takeup:
+  description: Beneficiaries of the income guarantee for the elderly (GRAPA/IGO) as a share of the population at or above the legal pension age (65 and over in 2024; the guarantee opens at the legal age, so the rise to 66 and 67 removes a cohort each time). LEVER.
+  unit: share
+  source: "2024 - Eurostat spr_pns_ben 2024 (116 051 means-tested old-age beneficiaries) / population 65+ (2.357 mn). Cross-check: 116 629 IGO/GRAPA beneficiaries in January 2024 in the PensionStat data file (https://www.pensionstat.be/nl/kerncijfers/wettelijk-pensioen/igo, fetched 2026-11-25). 2025-2031 - DERIVED from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau D.7, line 'Garantie de revenus aux personnes agees' (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - 1 015 mn in 2024, then 1 025 / 1 034 / 1 065 / 1 091 / 1 107 / 1 100 / 1 151 - divided by indexation and the population at or above the legal age (new cohorts have longer careers and fewer of them need the guarantee). ASSUMPTION - 2031 share held afterwards"
+  values:
+    2024: 0.049
+    2025: 0.0487
+    2026: 0.0483
+    2027: 0.0473
+    2028: 0.0466
+    2029: 0.0455
+    2030: 0.0444
+    2031: 0.0458
+
+pension.grapa_amount:
+  description: Average annual GRAPA/IGO benefit per beneficiary. LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Eurostat spr_exp_pens / spr_pns_ben 2024: 1 010.6 mn / 116 051. Legal amounts for reference - basic 1 012.67 and increased (single) 1 519.01 EUR/month until April 2024, 1 032.93 / 1 549.40 from 1 May 2024 (Combat Poverty Service table citing the SFP, https://armoedebestrijding.be/wp-content/uploads/2024/04/240430_minimumuitkeringen-zonder-.pdf ; PensionStat; fetched 2026-11-25)"
+  values:
+    2024: 8708
+
+# ============================== UNEMPLOYMENT ==============================
+unemp.replacement_rate:
+  description: Average replacement rate of unemployment benefit over the spell (65% first 3 months, 60% then degressive). LEVER.
+  unit: rate
+  source: "ASSUMPTION for the average. Legal scale verified (ONEM https://www.onem.be/page/comment-est-calcule-le-montant-de-votre-allocation-apres-une-occupation- , fetched 2026-11-25): 65% months 1-3, 60% months 4-12, then 60% (head of household) / 55% (single) / 40% (cohabitant) of lower ceilings, degressive to a flat rate from month 49 at the latest. From 1 March 2026 (programme law of 18 July 2025): 65% months 1-3, 60% months 4-12, flat rate months 13-24. Average benefit actually paid to benefit-receiving job-seekers in 2024: 1 429 EUR/month (ONEM annual report 2025, vol. 2)"
+  values:
+    2024: 0.58
+
+unemp.wage_ceiling:
+  description: Annual wage ceiling for unemployment benefit (average over the spell). LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Derived, partly ASSUMPTION - upper ceiling 3 365.16 EUR/month from 1 May 2024 (CSC amounts sheet 1 May 2024, secondary; consistent with the ONEM maximum of 84.13 EUR/day at 65%); middle and lower ceilings about 3 136 and 2 931 EUR/month (derived from the daily maxima - the ONEM 2024 scale page is no longer online). Average over a spell weighted by the ONEM 2024 duration distribution, about 3 100 EUR/month x 12, 2024 average. Fetched 2026-11-25. NOT modelled - new regime from 1 March 2026 with a higher upper ceiling (about 4 266 EUR/month in months 1-3) and a lower one in months 7-12"
+  values:
+    2024: 37000
+
+unemp.min_benefit:
+  description: Minimum annual unemployment benefit (average over household types). LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Derived - unweighted average of the daily minima from 1 May 2024 x 312, corrected to the 2024 average: head of household 66.89, single 54.21, cohabitant 52.18 (first periods) and 28.13 (flat rate) EUR/day (ONEM annual report 2024 vol. 2, table 3.1.I, https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/4fc80cb39b3e4b9c61f6a640edc63cbbc31fb137/2024-vol2-fr.pdf ; fetched 2026-11-25). The weights of the household types are an ASSUMPTION"
+  values:
+    2024: 15600
+
+unemp.generosity_factor:
+  description: Multiplicative factor on unemployment benefits. LEVER.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: 1.0
+
+unemp.wage_position:
+  description: Previous wage of the unemployed relative to the private-sector wage distribution
+  unit: ratio
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: 0.8
+
+unemp.coverage_rate:
+  description: Share of the model's unemployed (labour-force-survey concept) who receive a benefit, relative to 2024. LEVER (stricter eligibility without a change of status; a measure sets the level, so compare with the baseline path). The time limit of 12 to 24 months legislated in 2025 is modelled by the labour module (labour.unemp_benefit_max_years), which moves the excluded out of the unemployed status - it is NOT repeated here; the baseline path below covers the unemployed who search without a benefit.
+  unit: share (2024 = 1)
+  source: "ASSUMPTION fitted on the Planning Bureau outlook of June 2026, Tableau 11 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - unemployment spending (benefits, RCC, time credit) +2.5% in 2025, -20.5% in 2026, -8.6% in 2027, -1.7% in 2028, then about +1% a year in nominal terms, while the survey unemployment rate rises from 5.7% to 6.7% - more of the unemployed have no benefit (people after the time limit who keep searching, entrants). 0.93 in 2025 and 0.75 from 2026 reproduce that path and bring the line to 0.6-0.7% of GDP in 2030 (Study Committee on Ageing 2026 - 0.6%; 0.8% before this revision). The unemployed without a benefit claim social assistance at the rate assist.unemp_spillover"
+  values:
+    2024: 1.0
+    2025: 0.93
+    2026: 0.75
+
+unemp.temporary_rate:
+  description: Temporary-unemployment benefits as a share of the private wage bill (model unit)
+  unit: share
+  source: "ONEM annual report 2024: temporary unemployment 593.6 mn EUR in 2024 (126 985 units, 349 126 different workers; https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/0a3b9c23877b75794d24393cd1f2440a054660eb/rajv-2024-ppt-fr.pdf , fetched 2026-11-25) / private wage bill of the model in 2024 (173 084 mn)"
+  values:
+    2024: 0.00343
+
+unemp.temporary_gap_sensitivity:
+  description: Semi-elasticity of temporary unemployment to the demand gap (a gap of -1% raises it by this many %)
+  unit: ratio
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: 10.0
+
+unemp.rcc_beneficiaries:
+  description: Beneficiaries of unemployment with company supplement (RCC/SWT). FALLBACK only - used when the labour module does not provide labour["rcc_beneficiaries"] (lever there - labour.rcc_stock_factor).
+  unit: persons
+  source: "2024 - ONEM annual report 2024 vol. 2, table 2.4.III: 10 351 (annual average; Eurostat spr_pns_ben ERLM 10 350). 2025 - ONEM annual report 2025 vol. 2: 8 502. Later years - ASSUMPTION, run-off of the stock: Royal Decree of 5 September 2025 (Official Gazette 15 September 2025) closes the scheme to people dismissed after 30 June 2025 except the medical scheme (CCT 177/178 until 30 June 2029); same path as labour.rcc_stock_factor. Fetched 2026-11-25"
+  values:
+    2024: 10350
+    2025: 8502
+    2026: 6210
+    2027: 4140
+    2028: 2588
+    2029: 1035
+    2030: 0
+
+unemp.rcc_avg_benefit:
+  description: Average annual RCC/SWT unemployment benefit (public part)
+  unit: EUR/year
+  uprate: health_index
+  source: "Eurostat spr_exp_pens / spr_pns_ben 2024 (ERLM): 200.0 mn / 10 350. Cross-check ONEM annual report 2024 vol. 2: 199.1 mn / 10 351 (fetched 2026-11-25)"
+  values:
+    2024: 19325
+
+# ============================== SICKNESS & DISABILITY ==============================
+disab.replacement_rate:
+  description: Average replacement rate of invalidity benefit (65% with dependants, 55% single, 40% cohabiting). LEVER.
+  unit: rate
+  source: "ASSUMPTION for the average. Legal rates verified (INAMI, https://www.inami.fgov.be/fr/themes/incapacite-de-travail/montants-et-plafonds-des-indemnites/salaries-chomeurs/montant-maximal-de-votre-indemnite-en-periode-d-invalidite , fetched 2026-11-25): primary incapacity 60%; invalidity 65% with dependants, 55% single, 40% cohabitant. Average invalidity benefit paid in 2024: 60.83 EUR/day (employees), i.e. about 19 000 EUR/year"
+  values:
+    2024: 0.55
+
+disab.wage_ceiling:
+  description: Annual wage ceiling for sickness / invalidity benefit. LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "INAMI, daily wage ceiling for incapacities starting in 2024: 176.0204 EUR until 30 April, 179.5442 from 1 May 2024 (x 312 days, 2024 average; https://www.inami.fgov.be/fr/themes/incapacite-de-travail/montants-et-plafonds-des-indemnites/salaries-chomeurs/votre-plafond-salarial , fetched 2026-11-25)"
+  values:
+    2024: 55650
+
+disab.min_benefit:
+  description: Minimum annual invalidity benefit (regular worker, single rate). LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "INAMI, minimum daily benefit of a regular worker, single: 60.56 EUR until 30 April, 61.77 from 1 May 2024 (x 312, 2024 average); with dependants 76.42 / 77.95, cohabitant 51.93 / 52.97 (https://www.inami.fgov.be/fr/themes/incapacite-de-travail/montants-et-plafonds-des-indemnites/salaries-chomeurs/montant-minimal-de-votre-indemnite-d-incapacite-de-travail , fetched 2026-11-25)"
+  values:
+    2024: 19150
+
+disab.generosity_factor:
+  description: Multiplicative factor on invalidity benefits. LEVER.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: 1.0
+
+disab.wage_position:
+  description: Previous wage of invalidity beneficiaries relative to the private-sector wage distribution
+  unit: ratio
+  source: "ASSUMPTION - modelling choice"
+  values:
+    2024: 0.85
+
+disab.sickness_factor:
+  description: Multiplicative factor on short-term sickness benefits, work accidents and occupational diseases (follow the wage bill). LEVER (e.g. shift of sick pay to employers).
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: 1.0
+
+disab.allowance_recipients_share:
+  description: Recipients of means-tested disability allowances (ARR/AI, regional care allowances) as a share of the population aged 18+. LEVER.
+  unit: share
+  source: "2024 - Eurostat spr_pns_ben 2024 (247 918 means-tested disability beneficiaries) / population 18+ (~9.5 mn). 2025-2031 - DERIVED from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau D.7, 'Allocations aux personnes handicapees' of the federal government and of the communities and regions (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - 3 449 mn in 2024, then 3 584 / 3 760 / 3 978 / 4 208 / 4 377 / 4 588 / 4 714 - divided by indexation and the adult population (the number of recipients keeps rising). ASSUMPTION - 2031 share held afterwards"
+  values:
+    2024: 0.0262
+    2025: 0.02632
+    2026: 0.02661
+    2027: 0.02715
+    2028: 0.02801
+    2029: 0.02846
+    2030: 0.02886
+    2031: 0.02872
+
+disab.allowance_amount:
+  description: Average annual disability allowance per recipient. LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "Eurostat spr_exp_pens / spr_pns_ben 2024: 2 965.7 mn / 247 918"
+  values:
+    2024: 11962
+
+# ============================== FAMILY ==============================
+family.allowance_per_child:
+  description: Average annual family allowance per entitled child by region (basic amount + supplements; regional competence). LEVER per region.
+  unit: EUR/year
+  uprate: health_index
+  source: "Derived budgets / entitled children. Flanders - Opgroeien: about 4.6 bn EUR (2023) and 4.7 bn (2025) for 1.63 mn children, i.e. about 2 850 EUR in 2024 (basic amount 176.66 EUR/month from September 2023; https://www.opgroeien.be/kennis/cijfers-en-onderzoek/vlaams-groeipakket). Brussels - Iriscare spending review: 1 037 mn EUR net benefits forecast for 2024 / 308 815 children (https://admin.be.brussels/en/bhg/document/download/1914). Wallonia - ASSUMPTION (budget and children not found; basic amount about 185-189 EUR/month in 2024, between the two others once supplements are included). Fetched 2026-11-25"
+  values:
+    2024: {FLA: 2850, WAL: 2950, BRU: 3360}
+
+family.student_share:
+  description: Share of the population aged 18-24 still entitled to family allowances
+  unit: share
+  source: "ASSUMPTION - approx. share in education"
+  values:
+    2024: 0.45
+
+# ============================== SOCIAL ASSISTANCE ==============================
+assist.takeup_rate:
+  description: Social-assistance recipients (leefloon / RIS and equivalent) as a share of the inactive population aged 18-64. LEVER.
+  unit: share
+  source: "SPP Integration sociale statistics portal (https://stat.mi-is.be/fr/line/ris_classiques/belgium.json and ase_genre, fetched 2026-11-25): monthly average 2024 of 166 256 recipients of the integration income and 31 515 of the equivalent aid, divided by the inactive population aged 18-64 of the model in 2024 (439 446)"
+  values:
+    2024: 0.45
+
+assist.amount:
+  description: Average annual social-assistance benefit per recipient. LEVER.
+  unit: EUR/year
+  uprate: health_index
+  source: "ASSUMPTION for the average. Legal monthly amounts of the integration income from 1 May 2024: cohabitant 858.97, single 1 288.46, with dependent family 1 741.29 EUR (CSC amounts sheet 1 May 2024, secondary; SPP IS publishes only current amounts - 911.56 / 1 367.34 / 1 847.89 on 1 September 2026, no real increase since July 2023). Distribution of recipients by category and total spending not found; fetched 2026-11-25"
+  values:
+    2024: 14500
+
+assist.generosity_factor:
+  description: Multiplicative factor on social-assistance benefits. LEVER.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: 1.0
+
+assist.unemp_spillover:
+  description: Share of the people excluded from unemployment benefits and not working (labour["unemp_excluded_to_inactive"], or unemp.coverage_rate < 1) who claim social assistance. LEVER.
+  unit: share
+  source: "SPP Integration sociale, people excluded from unemployment benefits, January-September 2026 (https://www.mi-is.be/fr/etudes-publications-statistiques/exclus-du-chomage , page of 30 October 2026): 59 089 of 137 130 excluded obtained the integration income (43.1%); divided by the share neither working nor in sickness (1 - labour.unemp_exclusion_to_employment - labour.unemp_exclusion_to_disability = 0.73). Fetched 2026-11-25"
+  values:
+    2024: 0.59
+
+# ============================== HEALTH & LONG-TERM CARE ==============================
+health.profile_ages:
+  description: Lower bounds of the age bands of the health-care cost profile
+  unit: age
+  source: "Modelling choice"
+  values:
+    2024: [0, 1, 5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
+
+health.profile_cost:
+  description: Relative per-capita public health-care cost of men by age band (shape only; the level is calibrated)
+  unit: relative
+  source: "ASSUMPTION - stylised profile in the spirit of the EC Ageing Report age-cost profiles. Tried 2026-11-25 without finding a numeric Belgian profile: IMA-AIM atlas (interactive only), INAMI statistics, KCE performance report, 2024 Ageing Report (profiles published only for EU aggregates)"
+  values:
+    2024: [1.3, 0.55, 0.4, 0.45, 0.55, 0.7, 0.95, 1.4, 2.1, 3.1, 3.9, 4.2]
+
+health.profile_female_ratio:
+  description: Per-capita health-care cost of women relative to men by age band
+  unit: ratio
+  source: "ASSUMPTION - stylised (maternity ages higher, old ages slightly lower); not downloaded"
+  values:
+    2024: [0.9, 0.9, 0.95, 1.3, 1.45, 1.15, 1.0, 0.93, 0.9, 0.95, 1.0, 1.0]
+
+health.growth_norm:
+  description: Legal real growth norm of the federal health-care budget (above health-index indexation). LEVER.
+  unit: rate/year
+  source: "INAMI budget documents and Chamber doc 56 0963/025 (https://www.dekamer.be/FLWB/PDF/56/0963/56K0963025.pdf ; https://www.inami.fgov.be/SiteCollectionDocuments/INAMI_CGSS_2025.pdf ; fetched 2026-11-25): real growth norm 2% in 2024 (one-off cut from 2.5%), 2.5% in 2025, 2% in 2026 and 2027, 2.6% in 2028, 3% in 2029 (law of 18 December 2025, miscellaneous provisions). From 2030 - ASSUMPTION, the last legislated norm (3%) is kept (until this revision 2.5%, the norm of 2022-2023; the Planning Bureau notes that the 3% norm of 2029 no longer binds the spontaneous growth of care use). NOT modelled - correction measures inside the norm (2026: 471 mn) and the 2027 budget, not yet fixed (INAMI General Council of 19 October 2026 did not approve the proposal)"
+  values:
+    2024: 0.02
+    2025: 0.025
+    2026: 0.02
+    2028: 0.026
+    2029: 0.03
+
+health.norm_room_spent:
+  description: Share of the room between need-driven growth and the growth norm that is spent when need grows less than the norm (0 = the norm is a ceiling only and unused room is not spent, 1 = the norm is the growth of the budget and the budget is spent, so that a norm above need-driven growth raises spending). Acts with health.norm_enforcement. LEVER - a proposal of the kind "a growth norm of x%" is the pair health.growth_norm = x and this parameter = 1.
+  unit: share
+  source: "ASSUMPTION - 0 in the baseline: the norm is a ceiling. Evidence (fetched 2026-11-26): INAMI annual reports 2010-2013 - booked spending 2.5 to 7% below the budget objective under the 4.5% norm, the unused room being returned to the social-security balance (1,093 mn in 2011) rather than spent; Federal Planning Bureau, Article 23 of September 2025 (https://www.plan.be/sites/default/files/documents/ART_023_13210_FR_2.pdf): with generous norms spending was sometimes below the means provided, the norm never played a significant role in its projections; its April 2026 PROMES projection has 2.6% real growth a year, below the 3% norm of 2029. The Bureau's costing of the 2024 election programmes did treat the proposed norms as budgets: the party's norm applied to all benefits of the 2024 budget, against the PROMES growth of 3.3% (DC2024, fiches 401 of PS, Les Engages and Groen, 402 of Open Vld)"
+  values:
+    2024: 0.0
+
+health.norm_enforcement:
+  description: Degree to which the growth norm caps need-driven growth (1 = spending growth never exceeds the norm, 0 = norm ignored). LEVER.
+  unit: share
+  source: "ASSUMPTION - modelling choice (norm treated as binding ceiling)"
+  values:
+    2024: 1.0
+
+health.indexation_lag_share:
+  description: Share of a deviation of the health index from the baseline (a scenario that moves consumer prices, e.g. a VAT change) that reaches health-care spending only a year later - the health-insurance budget and its fees are set before the year starts. No effect in the baseline.
+  unit: share
+  source: "ASSUMPTION - 1 (fees and the budget objective of year t are indexed on the index known in year t-1; law on compulsory health insurance coordinated on 14 July 1994, art. 40). Order of magnitude checked by the behaviour module against the HERMES VAT variant (benefits +1.09% in the first year against +1.34% with full indexation within the year)"
+  values:
+    2024: 1.0
+
+health.income_elasticity:
+  description: Elasticity of age-adjusted real health spending per capita to real GDP per capita
+  unit: elasticity
+  source: "ASSUMPTION - 1.0, in line with EC Ageing Report reference scenario (1.1 converging to 1)"
+  values:
+    2024: 1.0
+
+health.excess_cost_growth:
+  description: Annual real growth of age-adjusted health spending per capita in excess of GDP per capita (technology, Baumol). LEVER.
+  unit: rate/year
+  source: "ASSUMPTION - 0.9% a year over 2025-2031: need-driven real growth of about 2.6% a year as in the Planning Bureau's PROMES projection (2.6% over 2026-2031, outlook of June 2026, section 4.4.1.2) and acute care rising by about 0.5 point of GDP over 2025-2031 as in the Study Committee on Ageing report. None over 2032-2040 and 0.1% a year afterwards, so that acute care rises by 0.3 point of GDP over 2031-2050 and 0.4 point over 2050-2070 as in the Committee's report of July 2026 (the Committee's long-run model has care use rising little faster than income once ageing is accounted for; 0.3% a year before this revision gave +1.1 and +1.0 point). The legal growth norm caps actual growth in the baseline. The Planning Bureau's baseline for the 2024 election programmes was higher (3.3%), so norm costings against it come out lower here. See data/reference/validation.yaml"
+  values:
+    2024: 0.003
+    2025: 0.009
+    2032: 0.0
+    2041: 0.001
+
+health.healthy_ageing_share:
+  description: Share of the years of life expectancy gained since 2024 that are spent in good health for acute care - the age profile of health-care costs moves to older ages by that many years (0 = costs at a given age never change, 1 = all gained years are healthy years). LEVER.
+  unit: share
+  source: "ASSUMPTION - 0.5, the convention of the reference scenario of the EC Ageing Report (half of the gains in life expectancy spent in good health)"
+  values:
+    2024: 0.5
+
+health.ltc_healthy_ageing_share:
+  description: Same for long-term care - share of the years of life expectancy gained since 2024 that are spent without dependency (the age profile of care needs moves to older ages by that many years). LEVER.
+  unit: share
+  source: "ASSUMPTION fitted on the Study Committee on Ageing, annual report July 2026 - long-term care rises from 1.9% of GDP in 2025 to 2.6% in 2040 and 2.9% in 2050 with the population aged 80 and over, then stays at 2.9% to 2070 although that population still grows by a sixth - none until 2035, then rising linearly to 0.4 in 2070 (the EC Ageing Report reference scenario uses 0.5 throughout)"
+  values:
+    2024: 0.0
+    2036: 0.0114
+    2037: 0.0229
+    2038: 0.0343
+    2039: 0.0457
+    2040: 0.0571
+    2041: 0.0686
+    2042: 0.08
+    2043: 0.0914
+    2044: 0.1029
+    2045: 0.1143
+    2046: 0.1257
+    2047: 0.1371
+    2048: 0.1486
+    2049: 0.16
+    2050: 0.1714
+    2051: 0.1829
+    2052: 0.1943
+    2053: 0.2057
+    2054: 0.2171
+    2055: 0.2286
+    2056: 0.24
+    2057: 0.2514
+    2058: 0.2629
+    2059: 0.2743
+    2060: 0.2857
+    2061: 0.2971
+    2062: 0.3086
+    2063: 0.32
+    2064: 0.3314
+    2065: 0.3429
+    2066: 0.3543
+    2067: 0.3657
+    2068: 0.3771
+    2069: 0.3886
+    2070: 0.4
+
+health.copayment_share:
+  description: Share of covered health-care costs paid by patients (co-payments / remgeld). LEVER (public spending scales with 1 - share).
+  unit: share
+  source: "Eurostat hlth_sha11_hf: household out-of-pocket payments 21.78% of current health expenditure in Belgium in 2024 (22.08% in 2023; https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_sha11_hf?geo=BE&unit=PC_CHE , fetched 2026-11-25). Proxy - the share of official co-payments in INAMI-covered care is lower (not found)"
+  values:
+    2024: 0.218
+
+health.ltc_from_health_2024:
+  description: Long-term care recorded under health (COFOG 07) in 2024 and moved to the long-term care line, by paying entity - residential care for the elderly paid by the Communities and Regions since the sixth state reform (rest homes, rest-and-care homes, psychiatric care homes) and home nursing reimbursed by the federal health insurance. With the in-kind disability and elderly benefits of COFOG 10.1-10.2 (5 026 mn) the line is 11 728 mn, 1.89% of GDP - the perimeter of the Study Committee on Ageing (1.9% of GDP in 2025, of which 1.5% paid by the Communities and Regions and 0.4% by the federal level and social security). Used by the fetch script (re-run fetch_expenditure after changing).
+  unit: EUR mn
+  source: "regions_communities - Eurostat gov_10a_exp 2024, S1312, COFOG 07.3 (hospital, nursing and convalescent home services), social transfers in kind D632: 4 109 mn (data/base/expenditure_cofog_2024.csv). social_security - Eurostat hlth_sha11_hchf 2024, home-based long-term care (HC.3.4) financed by compulsory health insurance (HF.1.2): 2 589.9 mn (fetched 2026-11-26; same table - public long-term care HC.3 in total 12 945.5 mn, 2.09% of GDP, of which government schemes 9 747 mn and compulsory insurance 3 198 mn; public current health spending 50 384 mn, 8.13% of GDP). Perimeter - Study Committee on Ageing, annual report July 2026, Tableaux 3 and 6 (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26)"
+  values:
+    2024: {regions_communities: 4109.0, social_security: 2589.9}
+
+health.ltc_profile_ages:
+  description: Lower bounds of the age bands of the long-term-care cost profile
+  unit: age
+  source: "Modelling choice"
+  values:
+    2024: [0, 65, 75, 80, 85, 90, 95]
+
+health.ltc_profile_cost:
+  description: Relative per-capita long-term-care cost by age band (under 65 - disability care and psychiatric care homes)
+  unit: relative
+  source: "ASSUMPTION - stylised profile, steep above 80 (residential care and home nursing); Belgian age-specific dependency rates are not published in the 2024 Ageing Report (tried 2026-11-25). Shape set with health.ltc_healthy_ageing_share so that the line follows the Study Committee on Ageing 2026 (1.9% of GDP in 2025, 2.0% in 2031, 2.6% in 2040, 2.9% in 2050 and 2070). Other benchmark - 2024 Ageing Report country table for Belgium (https://economy-finance.ec.europa.eu/document/download/971dd209-41c2-425d-94f8-e3c3c3459af9_en?filename=ip279_en.pdf): long-term care 2.3% of GDP in 2022, 3.5% in 2050, 4.1% in 2070"
+  values:
+    2024: [0.05, 0.6, 2.5, 7.0, 15.0, 26.0, 32.0]
+
+health.ltc_real_cost_growth:
+  description: Annual real growth of long-term-care cost per dependent person on top of its wage/price index. LEVER.
+  unit: rate/year
+  source: "ASSUMPTION - 0"
+  values:
+    2024: 0.0
+
+health.ltc_wage_share:
+  description: Weight of the wage index (vs CPI) in the long-term-care price index
+  unit: share
+  source: "ASSUMPTION - 1: care is labour, and the Study Committee on Ageing lets the cost per dependent person follow wages"
+  values:
+    2024: 1.0
+
+# ============================== EDUCATION ==============================
+educ.enrolment:
+  description: Enrolment rate by level (primary = ages 3-11, secondary = 12-17, tertiary = 18-24). LEVER.
+  unit: share
+  source: "ASSUMPTION - approx. Eurostat/UOE enrolment rates; not downloaded"
+  values:
+    2024: {primary: 0.99, secondary: 0.98, tertiary: 0.47}
+
+educ.cost_per_pupil:
+  description: Public cost per pupil by level, 2024 prices (other = per inhabitant aged 3-24). Moves with public wages and prices in the model. LEVER.
+  unit: EUR/year (2024)
+  source: "Derived - COFOG GF0901-GF0908 2024 (gov_10a_exp) / population of the age group x enrolment (approximate; the level is calibrated)"
+  values:
+    2024: {primary: 10600, secondary: 18900, tertiary: 13000, other: 2000}
+
+educ.real_cost_growth:
+  description: Annual real growth of the cost per pupil on top of wages/prices (class size, staffing norms). LEVER.
+  unit: rate/year
+  source: "ASSUMPTION - 0"
+  values:
+    2024: 0.0
+
+# ============================== PUBLIC WAGE BILL & OPERATING COSTS ==============================
+pubwage.staffing_factor:
+  description: Multiplicative factor on the wage bill (staff numbers) by function. LEVER. Applies on top of labour's public wage bill; education = factor on cost per pupil.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {general: 1.0, order: 1.0, economic: 1.0, environment: 1.0, housing: 1.0, culture: 1.0, social: 1.0, health: 1.0, education: 1.0}
+
+pubwage.employer_contribution_rate:
+  description: Employer social contributions (actual + imputed, incl. pension charges) per euro of public wages. LEVER.
+  unit: rate
+  source: "Eurostat gov_10a_main 2024: D12PAY / D11PAY of S13 (25 167 / 52 188)"
+  values:
+    2024: 0.4822
+
+exp.function_factor:
+  description: Multiplicative factor on total operating spending by function (wages, purchases, current transfers). LEVER for across-the-board cuts or increases.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {general: 1.0, order: 1.0, economic: 1.0, environment: 1.0, housing: 1.0, culture: 1.0, social: 1.0, health: 1.0}
+
+exp.intermediate_gdp_elasticity:
+  description: Elasticity of the volume of intermediate consumption (purchases of goods and services) to real GDP
+  unit: elasticity
+  source: "ASSUMPTION - constant share of GDP at unchanged policy (as in Study Committee on Ageing projections)"
+  values:
+    2024: 1.0
+
+exp.intermediate_volume_growth_extra:
+  description: Additional annual volume growth of intermediate consumption (growth norm; negative = efficiency savings). LEVER.
+  unit: rate/year
+  source: "Policy lever, neutral = 0"
+  values:
+    2024: 0.0
+
+exp.other_gdp_elasticity:
+  description: Elasticity to nominal GDP of other current transfers and non-driver spending inside functional lines
+  unit: elasticity
+  source: "ASSUMPTION - constant share of GDP at unchanged policy"
+  values:
+    2024: 1.0
+
+# ============================== DEFENCE ==============================
+defence.target_pct_gdp:
+  description: Defence spending as recorded in the government accounts (COFOG GF02, ESA - military equipment counts when it is delivered, pensions of the military are in the pension lines) as % of GDP. LEVER.
+  unit: "% of GDP"
+  source: "2024 - Eurostat gov_10a_exp GF02 (7 946 mn / GDP; NATO definition 1.27%). Government decisions - 2% of GDP in the NATO definition from 2025 and 2.5% from 2034 (defence budget plan of 11 April 2025; Strategic Vision of 24 June 2025; Strategic Level Report of February 2026, https://news.belgium.be/fr/node/42876/pdf ; bill on military programming 2026-2034, Chamber doc 56 1143/001); NATO estimates 2.00% for 2025 and 2026 (https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2026-en.pdf). Status - government decision, not law. PATH 2025-2029 = ASSUMPTION on the ESA recording - the NATO effort of 2025 was largely pre-financing of equipment, booked in the accounts at delivery and until then in the debt (stock-flow adjustment 2.4% of GDP in 2025, see debt.stock_flow_adjustment_pct_gdp): general-government expenditure in 2025 was 348.8 bn (Eurostat gov_10a_main), 4 bn less than with defence at 2% of GDP, and compensation of employees, purchases and investment of general government grew by 4-5%. The Planning Bureau outlook of June 2026 (Tableau 9, https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) has federal investment at 0.7% of GDP in 2024-2025, 0.9% in 2026-2027, 1.0% in 2028 and 1.1% from 2029 'according to the delivery schedule of the Strategic Visions', and federal operating costs at 3.2 / 3.3 / 3.4% of GDP in 2024 / 2025 / 2026-2029 despite savings elsewhere. Until this revision the line jumped to 2.0% in 2025. The NATO pledge of June 2025 (3.5% core by 2035) is NOT included - no national path decided. Fetched 2026-11-25"
+  values:
+    2024: 1.28363
+    2025: 1.40
+    2026: 1.70
+    2027: 1.75
+    2028: 1.85
+    2029: 2.0
+    2034: 2.5
+
+# ============================== INVESTMENT ==============================
+invest.public_pct_gdp:
+  description: Public investment excluding defence (gross capital formation, all levels) as % of GDP. LEVER.
+  unit: "% of GDP"
+  source: "Eurostat gov_10a_exp 2024: OP5ANP excl. GF02 / GDP"
+  values:
+    2024: 2.87118
+
+invest.capital_transfers_pct_gdp:
+  description: Investment grants and other capital transfers (excl. defence) as % of GDP. LEVER.
+  unit: "% of GDP"
+  source: "2024 - Eurostat gov_10a_exp: D9 excl. GF02 / GDP. 2025 - outturn, Eurostat gov_10a_main D9PAY 6 189 mn against 6 061 mn in 2024 (-0.01 point of GDP). 2026-2031 - change of 'other capital expenditure' of general government in the Federal Planning Bureau outlook of June 2026, Tableau 6 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): 1.0% of GDP in 2024-2025, 0.9% in 2026, 0.7% in 2027, 0.6% in 2028-2030 and 0.7% in 2031 - the recovery plans end (those of the Regions financed from own funds, the European facility in 2026) and the one-off investment aid of 2025 (railways, nuclear dismantling) drops out. ASSUMPTION - 2031 level held afterwards. Until this revision the 2024 share was held, which kept expenditure about 0.3 point of GDP too high from 2027"
+  values:
+    2024: 0.87304
+    2025: 0.86
+    2026: 0.77
+    2027: 0.57
+    2028: 0.47
+    2031: 0.57
+
+# ============================== SUBSIDIES ==============================
+subsidy.service_vouchers_2024:
+  description: Public cost of service vouchers in 2024 (carved out of COFOG GF0401 subsidies by the fetch script; re-run fetch_expenditure after changing)
+  unit: EUR mn
+  source: "ASSUMPTION - approx. sum of regional budgets. Only verified point: Flanders gross cost 1 343 mn EUR in 2022 (Jaarrapport dienstencheques 2022, https://publicaties.vlaanderen.be/view-file/72418); 2024 costs of the three regions not found (tried 2026-11-25)"
+  values:
+    2024: 2000
+
+subsidy.factor:
+  description: Multiplicative factor on subsidies by type (wage = targeted contribution reductions and withholding-tax exemptions recorded as subsidies). LEVER.
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {wage: 1.0, service_vouchers: 1.0, transport: 1.0, energy_environment: 1.0, other: 1.0}
+
+subsidy.gdp_elasticity:
+  description: Elasticity of transport, energy/environment and other subsidies to nominal GDP
+  unit: elasticity
+  source: "ASSUMPTION - constant share of GDP at unchanged policy"
+  values:
+    2024: 1.0
+
+# ============================== INTEREST & DEBT ==============================
+debt.avg_maturity_years:
+  description: Average maturity of the long-term debt - each year 1/maturity of it is refinanced at the current 10-year rate
+  unit: years
+  source: "Belgian Debt Agency, Review 2025 - Outlook 2026 (https://www.debtagency.be/sites/default/files/content/download/files/review_outlook_2025_2026.pdf , fetched 2026-11-25): average life of the federal debt portfolio 10.44 years at end 2023, 10.38 at end 2024, 9.98 at end 2025 (10.10 in October 2026). Average interest rate on the federal debt 1.95% at end 2024, 2.01% at end 2025"
+  values:
+    2024: 10.4
+
+debt.short_term_share:
+  description: Share of the debt at short maturity (repriced every year at the short-term rate)
+  unit: share
+  source: "Eurostat gov_10q_ggdebt 2024-Q4: (deposits + short-term securities + short-term loans) / Maastricht debt"
+  values:
+    2024: 0.0833
+
+debt.stock_flow_adjustment_pct_gdp:
+  description: Stock-flow adjustment added to the debt each year (financial transactions, pre-financing, privatisations < 0), % of GDP. LEVER.
+  unit: "% of GDP"
+  source: "2025 - outturn, Eurostat gov_10dd_edpt1 (data/base/expenditure_scalars.csv): debt 692 832 mn at end 2025 against 644 027 mn at end 2024 and a deficit of 33 423 mn, i.e. 15 382 mn or 2.4% of GDP (defence spending recorded at delivery, the Flemish stake in Brussels Airport, operations of the Debt Agency). 2026-2031 - deficit-debt adjustment of the Federal Planning Bureau outlook of June 2026, Tableau 7 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): 0.5 / 0.5 / 0.4 / 0.0 / 0.0 / 0.1% of GDP. ASSUMPTION - zero afterwards. The National Bank (June 2026) has a higher debt in 2026-2028 (111.3 / 112.9 / 114.8% of GDP against 109.9 / 111.8 / 114.0 for the Planning Bureau); its adjustments are not published in the table read"
+  values:
+    2024: 0.0
+    2025: 2.4
+    2026: 0.5
+    2028: 0.4
+    2029: 0.0
+    2031: 0.1
+    2032: 0.0
+
+# ============================== INTER-GOVERNMENTAL TRANSFERS ==============================
+transfer.default_revenue_split:
+  description: Fallback attribution of a revenue line to entities when the revenue module gives no entity_shares
+  unit: share
+  source: "Derived from Eurostat gov_10a_main 2024: own (consolidated) revenue of each subsector"
+  values:
+    2024: {federal: 0.4923, social_security: 0.2762, regions_communities: 0.1625, local: 0.0690}
+
+transfer.ss_altfin_vat_share:
+  description: Share of the 2024 federal -> social security transfer that is alternative financing from VAT (grows with VAT revenue)
+  unit: share
+  source: "ASSUMPTION - approx. 13-14 bn of ~50 bn (ONSS/RSZ global management, from memory)"
+  values:
+    2024: 0.27
+
+transfer.ss_altfin_pit_share:
+  description: Share of the 2024 federal -> social security transfer that is alternative financing from withholding taxes (grows with PIT revenue)
+  unit: share
+  source: "ASSUMPTION - approx. 5 bn of ~50 bn (from memory)"
+  values:
+    2024: 0.10
+
+transfer.ss_grant_real_growth:
+  description: Annual real growth (above health index) of the remaining state grants to social security. LEVER.
+  unit: rate/year
+  source: "ASSUMPTION - 0 (grants are indexed)"
+  values:
+    2024: 0.0
+
+transfer.ss_balancing_share:
+  description: Share of any change in the social-security balance (vs its 2024 level in % of GDP) covered by the federal balancing grant (dotation d'equilibre). LEVER (0 = social security keeps its own deficit).
+  unit: share
+  source: "Legislation - balancing grant renewed each year; full balancing assumed"
+  values:
+    2024: 1.0
+
+transfer.sfa_real_growth_link:
+  description: Share of real GDP growth passed on to the federal grants to Communities and Regions under the Special Financing Act (the grants are fully CPI-indexed). LEVER.
+  unit: share
+  source: "ASSUMPTION - weighted average of the Special Financing Act rules (VAT grant 91%, PIT grants 55-100% of real growth, some grants with no growth link)"
+  values:
+    2024: 0.75
+
+transfer.sfa_demography_weight:
+  description: Weight of the growth of the population under 18 in the federal grants to Communities (VAT grant key)
+  unit: share
+  source: "ASSUMPTION - VAT grant is roughly a quarter to a third of the transfers"
+  values:
+    2024: 0.25
+
+transfer.fed_local_assistance_reimbursement:
+  description: Share of local social-assistance benefits reimbursed by the federal government. LEVER.
+  unit: share
+  source: "ASSUMPTION for the average over all local social assistance. Legal rates verified (law of 26 May 2002, art. 32 - https://www.ejustice.just.fgov.be/eli/loi/2002/05/26/2002022559/justel , fetched 2026-11-25): 55% of the integration income, 65% for centres with at least 500 beneficiaries, 70% with at least 1 000; 100% for some categories. NOT modelled - law of 17 November 2025: for people excluded from unemployment benefits, 100% in 2026, 90% in 2027, 80% in 2028, 75% from 2029 (applications of the first half of 2026) and +15 points for later applications"
+  values:
+    2024: 0.55
+
+transfer.gdp_elasticity:
+  description: Elasticity to nominal GDP of the other transfers between entities (municipal funds, social security -> regions, ...)
+  unit: elasticity
+  source: "ASSUMPTION - constant share of GDP"
+  values:
+    2024: 1.0
+
+transfer.adjustment:
+  description: Discretionary change of a transfer between entities (EUR mn of the year, positive = more paid by the first entity). LEVER.
+  unit: EUR mn
+  source: "Policy lever, neutral = 0"
+  values:
+    2024: {fed_to_ss: 0.0, fed_to_regions: 0.0, fed_to_local: 0.0, regions_to_local: 0.0}
+
+transfer.level_factor:
+  description: Level of a transfer between entities relative to its rule (1 = the rule - Financing Act mechanisms, social-assistance reimbursement, education spending and nominal GDP for the grants of the regions and communities to local authorities). The baseline carries the path of the grants of the regions and communities to local authorities in the official outlook. LEVER.
+  unit: factor
+  source: "regions_to_local 2025-2031 - DERIVED from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau D.3 line c 'Transferts aux administrations publiques' (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - 15 974 mn in 2024, then 16 274 / 16 081 / 16 282 / 16 717 / 17 094 / 17 508 / 17 905 - divided by what the rule gives (education spending and nominal GDP) - the capital part falls from 1 461 mn in 2024 (take-over of the debt of Flemish municipalities, a one-off) to 726 mn in 2027 and the current grants (municipal funds) grow by 2.3% a year, less than GDP. ASSUMPTION - 2031 level held afterwards. Other flows - neutral"
+  values:
+    2024: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 1.0}
+    2025: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.985}
+    2026: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.943}
+    2027: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.923}
+    2028: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.922}
+    2029: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.919}
+    2030: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.918}
+    2031: {fed_to_ss: 1.0, fed_to_regions: 1.0, fed_to_local: 1.0, regions_to_local: 0.917}
+
+# ============================== CROSS-CUTTING ==============================
+exp.welfare_adjustment:
+  description: Annual real increase of the ceilings and minima of replacement incomes and of assistance benefits (welfare envelope). LEVER.
+  unit: rate/year
+  source: "Study Committee on Ageing, annual report July 2026 (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-25), annex on hypotheses: no welfare adjustment 2025-2029 (welfare envelope not allocated), then 1%/yr for flat-rate benefits and minima and 1.25%/yr for wage ceilings under unchanged legislation (1% used for both; same hypotheses in the 2024 and 2025 reports)"
+  values:
+    2024: 0.01
+    2025: 0.0
+    2030: 0.01
+
+exp.benefit_indexation_factor:
+  description: Share of the yearly health-index increase passed on to social benefits in payment (1 = full indexation, 0 in one year = index jump). LEVER.
+  unit: share
+  source: "Legislation - automatic indexation (1). 2026 and 2028 - programme law voted 28-29 May 2026 (budget agreement of 24 November 2025): for the second index adjustment of 2026 (1 September 2026) and the first of 2028 the 2% applies only to the first 2 000 EUR gross per month of a social benefit (https://www.sfpd.fgov.be/nl/pensioenbedrag/berekening/indexering , fetched 2026-11-25). SIZE = ASSUMPTION - about 10% of the mass of social benefits lies above 2 000 EUR/month (mostly civil-servant pensions; derived from the PensionStat averages by scheme). NOT modelled - indexation of benefits delayed to the third month after the pivot index is exceeded (from 1 July 2025); capped indexation of pensions above about 5 200 EUR/month (1 July 2025 - end 2029)"
+  values:
+    2024: 1.0
+    2026: 0.9
+    2027: 1.0
+    2028: 0.9
+    2029: 1.0
+
+exp.eu_contribution_pct_gni:
+  description: VAT- and GNI-based contribution to the EU budget as % of GNI. LEVER.
+  unit: "% of GNI"
+  source: "2024 - Eurostat gov_10a_main D76PAY (4 406.6 mn) / gov_10dd_edpt1 GNI (630 007 mn). 2025 - 2024 value x growth of the national contribution in % of GNI in European Commission, EU budget spending and revenue 2000-2025 (VAT + GNI + rebates + plastics: 4 331 mn = 0.698% of GNI in 2024, 4 709 mn = 0.723% in 2025; https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en , fetched 2026-11-25). 2026-2031 - Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau D.2 line 'Contribution RNB et TVA a l'UE' (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - 5 912 / 6 853 / 7 345 / 7 593 / 5 867 / 6 089 mn, divided by the GDP of the outlook x the 2024 ratio of GNI to GDP (DERIVED) - the contribution rises to the end of the 2021-2027 framework and its payment tail and falls back in 2030. ASSUMPTION - 2031 value held afterwards (the 2028-2034 framework is not decided)"
+  values:
+    2024: 0.69945
+    2025: 0.725
+    2026: 0.876
+    2027: 0.98
+    2028: 1.016
+    2029: 1.018
+    2030: 0.762
+    2031: 0.769
+
+exp.eu_funded_pct_gdp:
+  description: Expenditure financed by EU transfers (excluded from the EU net-expenditure indicator), % of GDP
+  unit: "% of GDP"
+  source: "Eurostat gov_10a_main 2024: (D7REC_S212 + D9REC_S212) / GDP"
+  values:
+    2024: 0.25868
+
+exp.cyclical_unemployment_semi_elasticity:
+  description: Semi-elasticity of unemployment benefits to the output gap, used to remove cyclical unemployment spending from the net-expenditure indicator
+  unit: ratio
+  source: "ASSUMPTION - Okun coefficient ~0.4 over an unemployment rate of ~5.5%"
+  values:
+    2024: 7.0
+
+exp.budget_semi_elasticity:
+  description: Semi-elasticity of the budget balance to the output gap (structural balance = balance - elasticity x gap)
+  unit: ratio
+  source: "European Commission semi-elasticity for Belgium (~0.6)"
+  values:
+    2024: 0.6
+
+# ============================== REGIONAL / COMMUNITY LEVERS ==============================
+# Factors keyed by region {FLA, WAL, BRU} or by Community {flemish_community, french_community}
+# on spending that is a competence of the Regions / Communities. A measure for one region is a
+# Change with key="WAL" (or key="french_community"). Neutral values: exactly no effect.
+educ.community_cost_factor:
+  description: Multiplier on the public cost per pupil (all levels) by Community. The French Community figure covers Wallonia (incl. the German-speaking Community, not modelled separately) and the French-language schools of Brussels; the Flemish Community covers Flanders and the Dutch-language schools of Brussels (split regional.brussels_dutch_share). COMMUNITY LEVER - Change(..., key="french_community").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {flemish_community: 1.0, french_community: 1.0}
+
+educ.community_enrolment_factor:
+  description: Multiplier on enrolment rates (all levels) by Community; pupils and, at an unchanged pupil-teacher ratio, teaching staff move in proportion. COMMUNITY LEVER - Change(..., key="flemish_community").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {flemish_community: 1.0, french_community: 1.0}
+
+family.childcare_factor:
+  description: Multiplier on the Communities' spending on childcare and family services (Opgroeien / Kind en Gezin, ONE) by Community; applies to the regions-and-communities share of the line. COMMUNITY LEVER - Change(..., key="french_community").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {flemish_community: 1.0, french_community: 1.0}
+
+health.ltc_regional_factor:
+  description: Multiplier on regional long-term care spending (residential elderly care, home care, care budgets; regional competence since the sixth state reform) for the residents of each region. REGIONAL LEVER - Change(..., key="FLA").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+subsidy.service_voucher_factor:
+  description: Multiplier on the regional subsidy per service voucher (titres-services / dienstencheques, regional since 2015) by region; multiplies subsidy.factor[service_vouchers]. Budget shares of the regions - regional.service_voucher_shares. REGIONAL LEVER - Change(..., key="BRU").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+subsidy.target_group_factor:
+  description: Multiplier on the regional target-group reductions of employer contributions and other regional wage subsidies (the regions-and-communities share of the wage-subsidy line, spread over regions by private employees residing there); multiplies subsidy.factor[wage]. Budgetary effect only (no labour-demand response is modelled for this lever). REGIONAL LEVER - Change(..., key="WAL").
+  unit: factor
+  source: "Policy lever, neutral = 1"
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+invest.regional_extra_pct_gdp:
+  description: Additional public investment of the governments of a region, in % of the GDP of that region, on top of invest.public_pct_gdp (all levels, % of national GDP). REGIONAL LEVER - Change(..., key="FLA").
+  unit: "% of regional GDP"
+  source: "Policy lever, neutral = 0"
+  values:
+    2024: {FLA: 0.0, WAL: 0.0, BRU: 0.0}
+
+# ============================== SPENDING PATHS BY ENTITY ==============================
+# Level factors (1 = unchanged policy: the drivers of the lines) on the spending of one entity in
+# one ESA category - see belsim/fiscal/expenditure/model.py. They replace the former allocation
+# regional.entity_consolidation_pct_gdp: the savings of each entity now lower its spending lines.
+entity.staff_cost_factor:
+  description: Level factor on compensation of employees (D1) of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - on top of the general path of public employment and pay (labour.public_employment_growth, labour.wage_drift, labour.public_wage_link), the selective replacement of leavers and linear savings of the federal government (1.8% a year on staff 2025-2029 gives 0.913 by 2029), the Brussels hiring freeze, the partial replacement in the Walloon administration. LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Federal and social security - one factor for staff, purchases, other current transfers and investment together (the growth of defence, on its own path, cannot be split by category). Compensation of employees 2024 -> 2031, EUR mn - federal 13 810 -> 16 743, social security 2 028 -> 2 331, communities and regions 36 888 -> 43 667, local 24 616 -> 29 559. ASSUMPTION - 2031 level held afterwards"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 0.981, social_security: 0.992, flemish_community: 1.006, walloon_region: 0.996, french_community: 0.99, brussels_region: 1.0, local: 0.997}
+    2026: {federal: 0.963, social_security: 0.978, flemish_community: 1.002, walloon_region: 1.012, french_community: 0.993, brussels_region: 0.966, local: 0.997}
+    2027: {federal: 0.956, social_security: 0.956, flemish_community: 1.0, walloon_region: 0.985, french_community: 0.995, brussels_region: 0.97, local: 0.998}
+    2028: {federal: 0.92, social_security: 0.939, flemish_community: 1.006, walloon_region: 0.983, french_community: 0.996, brussels_region: 0.918, local: 0.998}
+    2029: {federal: 0.896, social_security: 0.923, flemish_community: 1.011, walloon_region: 0.979, french_community: 0.996, brussels_region: 0.894, local: 1.0}
+    2030: {federal: 0.857, social_security: 0.898, flemish_community: 1.012, walloon_region: 0.96, french_community: 1.001, brussels_region: 0.904, local: 1.001}
+    2031: {federal: 0.826, social_security: 0.891, flemish_community: 1.013, walloon_region: 0.961, french_community: 1.006, brussels_region: 0.885, local: 1.001}
+
+entity.purchases_factor:
+  description: Level factor on purchases of goods and services (P2) and taxes paid of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - limited or no indexation of operating budgets (Flemish budget 2025-2026, Walloon and Brussels plans, federal linear savings). LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Purchases 2024 -> 2031, EUR mn - federal 6 197 -> 7 538 (8 671 in 2029), social security 1 304 -> 1 363, communities and regions 12 158 -> 14 036, local 7 326 -> 8 212, against consumer prices +17.5%. ASSUMPTION - 2031 level held afterwards"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 0.981, social_security: 0.992, flemish_community: 0.994, walloon_region: 0.984, french_community: 0.978, brussels_region: 0.988, local: 0.986}
+    2026: {federal: 0.963, social_security: 0.978, flemish_community: 0.986, walloon_region: 0.996, french_community: 0.977, brussels_region: 0.951, local: 0.954}
+    2027: {federal: 0.956, social_security: 0.956, flemish_community: 0.954, walloon_region: 0.939, french_community: 0.949, brussels_region: 0.925, local: 0.948}
+    2028: {federal: 0.92, social_security: 0.939, flemish_community: 0.955, walloon_region: 0.934, french_community: 0.946, brussels_region: 0.872, local: 0.944}
+    2029: {federal: 0.896, social_security: 0.923, flemish_community: 0.973, walloon_region: 0.943, french_community: 0.959, brussels_region: 0.861, local: 0.942}
+    2030: {federal: 0.857, social_security: 0.898, flemish_community: 0.968, walloon_region: 0.918, french_community: 0.958, brussels_region: 0.865, local: 0.936}
+    2031: {federal: 0.826, social_security: 0.891, flemish_community: 0.963, walloon_region: 0.914, french_community: 0.957, brussels_region: 0.842, local: 0.931}
+
+entity.subsidies_factor:
+  description: Level factor on subsidies (D3 - wage subsidies, service vouchers, transport, energy and other) of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - phasing out of Flemish target-group reductions and subsidy cuts of the 2026 budget, reduction of the Walloon employment aid (APE), end of the tax deductibility of service vouchers in Brussels; new federal labour-cost measures raise federal subsidies. LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Subsidies 2024 -> 2031, EUR mn - federal 6 746 -> 9 243, social security 3 538 -> 4 294, communities and regions 11 132 -> 12 002, local 372 -> 464. ASSUMPTION - 2031 level held afterwards"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 0.987, social_security: 1.003, flemish_community: 1.024, walloon_region: 1.02, french_community: 0.989, brussels_region: 0.987, local: 0.976}
+    2026: {federal: 1.074, social_security: 0.943, flemish_community: 0.879, walloon_region: 0.989, french_community: 0.932, brussels_region: 0.925, local: 0.958}
+    2027: {federal: 1.063, social_security: 0.917, flemish_community: 0.851, walloon_region: 0.946, french_community: 0.899, brussels_region: 0.886, local: 0.957}
+    2028: {federal: 1.021, social_security: 0.894, flemish_community: 0.825, walloon_region: 0.932, french_community: 0.87, brussels_region: 0.85, local: 0.957}
+    2029: {federal: 1.04, social_security: 0.878, flemish_community: 0.809, walloon_region: 0.916, french_community: 0.842, brussels_region: 0.814, local: 0.96}
+    2030: {federal: 1.088, social_security: 0.864, flemish_community: 0.797, walloon_region: 0.893, french_community: 0.826, brussels_region: 0.794, local: 0.96}
+    2031: {federal: 1.077, social_security: 0.848, flemish_community: 0.782, walloon_region: 0.879, french_community: 0.878, brussels_region: 0.761, local: 0.96}
+
+entity.current_transfers_factor:
+  description: Level factor on other current transfers (D7 - to households, non-profit institutions, firms and the rest of the world, excl. the EU contribution) of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - cuts in grants to non-profit bodies and in development cooperation. LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Current transfers to households, non-profit institutions, firms and the rest of the world 2024 -> 2031, EUR mn - communities and regions 2 575 -> 2 600, local 776 -> 771, federal excl. the EU contribution 3 080 -> 2 586 (local - one factor for subsidies and transfers). ASSUMPTION - 2031 level held afterwards"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 0.981, social_security: 0.992, flemish_community: 0.947, walloon_region: 0.943, french_community: 0.914, brussels_region: 0.912, local: 0.976}
+    2026: {federal: 0.963, social_security: 0.978, flemish_community: 0.811, walloon_region: 0.912, french_community: 0.86, brussels_region: 0.853, local: 0.958}
+    2027: {federal: 0.956, social_security: 0.956, flemish_community: 0.793, walloon_region: 0.881, french_community: 0.838, brussels_region: 0.825, local: 0.957}
+    2028: {federal: 0.92, social_security: 0.939, flemish_community: 0.778, walloon_region: 0.88, french_community: 0.821, brussels_region: 0.802, local: 0.957}
+    2029: {federal: 0.896, social_security: 0.923, flemish_community: 0.788, walloon_region: 0.893, french_community: 0.82, brussels_region: 0.793, local: 0.96}
+    2030: {federal: 0.857, social_security: 0.898, flemish_community: 0.782, walloon_region: 0.876, french_community: 0.811, brussels_region: 0.779, local: 0.96}
+    2031: {federal: 0.826, social_security: 0.891, flemish_community: 0.758, walloon_region: 0.852, french_community: 0.851, brussels_region: 0.738, local: 0.96}
+
+entity.capital_transfers_factor:
+  description: Level factor on capital transfers (D9 - investment grants and other) of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - distribution between entities of the general path invest.capital_transfers_pct_gdp (end of the Walloon and Flemish recovery plans, Brussels switch from investment grants to loans, one-off federal aid to the railways and for nuclear dismantling). LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Capital transfers 2024 -> 2031, EUR mn - federal 1 760 -> 1 908, communities and regions 3 473 -> 2 540 (2 397 in 2027); local authorities and social security not adjusted (small amounts). ASSUMPTION - 2031 level held afterwards"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 1.104, social_security: 1.0, flemish_community: 0.944, walloon_region: 1.252, french_community: 1.06, brussels_region: 0.779, local: 1.0}
+    2026: {federal: 1.092, social_security: 1.0, flemish_community: 0.925, walloon_region: 1.409, french_community: 1.014, brussels_region: 1.074, local: 1.0}
+    2027: {federal: 0.976, social_security: 1.0, flemish_community: 0.99, walloon_region: 1.033, french_community: 1.056, brussels_region: 0.731, local: 1.0}
+    2028: {federal: 1.242, social_security: 1.0, flemish_community: 1.205, walloon_region: 1.012, french_community: 1.027, brussels_region: 0.835, local: 1.0}
+    2029: {federal: 1.061, social_security: 1.0, flemish_community: 1.228, walloon_region: 0.971, french_community: 1.018, brussels_region: 0.801, local: 1.0}
+    2030: {federal: 1.179, social_security: 1.0, flemish_community: 1.268, walloon_region: 0.948, french_community: 1.023, brussels_region: 0.78, local: 1.0}
+    2031: {federal: 1.165, social_security: 1.0, flemish_community: 1.038, walloon_region: 0.736, french_community: 0.991, brussels_region: 0.605, local: 1.0}
+
+entity.investment_factor:
+  description: Level factor on investment (gross capital formation and other acquisitions of non-financial assets, excl. defence equipment) of one entity relative to unchanged policy (1 = the drivers of the expenditure lines), keyed by entity - federal, social_security, flemish_community, walloon_region (incl. the German-speaking Community), french_community, brussels_region (incl. the community commissions), local. Applies to the entity's share of every line (2024 accounts; federated entities - their weight in the regions-and-communities part of the line) x the share of this category in the line; not to interest, defence, the EU contribution and social benefits. The baseline carries the adopted budgets and multi-year plans as the official outlook has them - end of the recovery plans of the Regions, local electoral cycle (peak in 2024 and 2030). LEVER - one entity with Change(..., key="walloon_region").
+  unit: factor
+  source: "DERIVED 2025-2031 from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26): factor = 1 + (official change since 2024 of the entity's spending in this category, % of GDP, minus the change the unchanged-policy lines give) / unchanged-policy amount. Official figures - Tableaux D.2 (federal), D.6 (social security), D.5 (local) and D.3 (communities and regions together) by ESA category; the four federated entities share the D.3 path of a category in proportion to the growth of the corresponding group in their own table (Tableaux 13 to 16, EUR bn with one decimal - operating costs, other current primary spending, investment, other capital spending). Investment 2024 -> 2031, EUR mn - communities and regions 9 687 -> 10 758, local 5 321 -> 5 402 (4 532 in 2027, 6 014 in 2030), federal 4 538 -> 8 390 (defence deliveries, on the defence line). ASSUMPTION - 2031 level held afterwards; local authorities - from 2032 the average of the 2025-2031 cycle"
+  values:
+    2024: {federal: 1.0, social_security: 1.0, flemish_community: 1.0, walloon_region: 1.0, french_community: 1.0, brussels_region: 1.0, local: 1.0}
+    2025: {federal: 0.981, social_security: 0.992, flemish_community: 0.947, walloon_region: 1.151, french_community: 0.95, brussels_region: 0.916, local: 0.952}
+    2026: {federal: 0.963, social_security: 0.978, flemish_community: 1.002, walloon_region: 1.188, french_community: 1.008, brussels_region: 0.707, local: 0.813}
+    2027: {federal: 0.956, social_security: 0.956, flemish_community: 0.899, walloon_region: 1.011, french_community: 0.985, brussels_region: 0.89, local: 0.769}
+    2028: {federal: 0.92, social_security: 0.939, flemish_community: 0.897, walloon_region: 0.978, french_community: 0.984, brussels_region: 0.861, local: 0.77}
+    2029: {federal: 0.896, social_security: 0.923, flemish_community: 0.913, walloon_region: 0.951, french_community: 0.987, brussels_region: 0.732, local: 0.837}
+    2030: {federal: 0.857, social_security: 0.898, flemish_community: 0.936, walloon_region: 0.855, french_community: 1.029, brussels_region: 0.739, local: 0.927}
+    2031: {federal: 0.826, social_security: 0.891, flemish_community: 0.943, walloon_region: 0.849, french_community: 1.051, brussels_region: 0.733, local: 0.809}
+    2032: {federal: 0.826, social_security: 0.891, flemish_community: 0.943, walloon_region: 0.849, french_community: 1.051, brussels_region: 0.733, local: 0.84}
+

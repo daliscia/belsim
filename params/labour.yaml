@@ -1,0 +1,582 @@
+# Labour-market parameters (prefix labour.). Policy levers first, then projection assumptions,
+# then calibration choices for the 2024 base. Data tables are in data/base/labour_*.csv
+# (belsim/data/fetch_labour.py); anything not downloaded is marked ASSUMPTION.
+
+# ----------------------------------------------------------------------------- retirement
+labour.legal_pension_age:
+  description: Legal pension age. The status-by-age profile at and above the calibration age (65) is shifted by the change x labour.pension_age_passthrough.
+  unit: years
+  source: "Law of 10 August 2015: 66 from 1 February 2025, 67 from 1 February 2030"
+  values:
+    2024: 65
+    2025: 66
+    2030: 67
+
+labour.pension_age_first_year_share:
+  description: Share of a change in the legal pension age that is effective in its first year, in annual averages (the new age applies to people reaching the old age from 1 February, so the people held back accumulate over the year)
+  unit: share
+  source: "Derived from the law of 10 August 2015 (66 for pensions starting from 1 February 2025, 67 from 1 February 2030) - about half of a full year's effect in the first year. Consistent with 2025 outturns - cash social benefits kept pace with GDP (Eurostat gov_10a_main D62PAY +3.5%) and the Study Committee on Ageing 2026 has pension spending at 11.3% of GDP in 2025 as in 2024"
+  values:
+    2024: 0.5
+
+labour.pension_age_passthrough:
+  description: Years of shift of the status profile at ages >= 65 per year of increase in the legal pension age (1 = when the age rises by one year, people aged 65 behave like 64-year-olds did, for work)
+  unit: years per year
+  source: "ASSUMPTION - partial pass-through: at 65-66 most people meet the career condition for early retirement, unlike today's 63-64-year-olds. Order of magnitude consistent with the 2025 LFS (activity rate 65-69 up from 8.1% to 10.7% after the rise to 66). The share drawing a pension shifts more - labour.pension_age_benefit_passthrough"
+  values:
+    2024: 0.6
+
+labour.pension_age_benefit_passthrough:
+  description: Years of shift of the share of people drawing a pension at the ages between 65 and the legal age, per year of increase in the legal pension age - first and second year of increase (a scalar applies to every year). Higher than labour.pension_age_passthrough - people who do not work longer and may not retire yet wait in unemployment, invalidity or without a benefit (same mix as the people one year younger). An age is held back only by the years the legal age has moved past it - the step from 66 to 67 does not change the 65-year-olds.
+  unit: years per year
+  source: "ASSUMPTION fitted on two official sources. First year (65 to 66) - 0.9, on the Planning Bureau costing of the 2024 election programmes (DC2024, PVDA-PTB measure 301 - keeping the legal age at 65 costs EUR 1.7 bn of pensions in 2027 and 2.2 bn in 2029 at 2024 prices; see data/reference/validation.yaml dc2024_pension_age_65; the model gives 2.0 and 2.0) and on the pensions of the private-sector schemes in the Planning Bureau outlook of June 2026, Tableau D.7 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26 - index 2024 = 100 - 103.8 / 107.6 / 112.6 / 117.2 / 121.5 in 2025-2029, model 103.7 / 107.9 / 113.1 / 117.9 / 122.6). Second year (66 to 67) - 0.75 - the same table has those pensions growing by 4.4% in 2030 and 3.8% in 2031 (126.8 / 131.6, model 127.0 / 131.2), no slower than before - at 66 more people meet the 42-year career condition for early retirement than at 65, and the Study Committee on Ageing 2026 has pension spending at 11.5% of GDP in 2030 and 2031. (0.75 for both years until this revision, with the whole exit-age trend added on top for pensions too, which made pension spending dip by 0.13 point of GDP in 2030-2031.)"
+  values:
+    2024: [0.9, 0.75]
+
+labour.early_retirement_age:
+  description: Minimum age for early retirement with the standard career condition
+  unit: years
+  source: "63 with 42 career years since 2019 (exceptions 60/44, 61-62/43). Law of 30 May 2026 on the pension reform (Official Gazette 1 June 2026; https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming , fetched 2026-11-25): ages unchanged; additional route from 2027 at 60 with 42 years of at least 234 effectively worked days (NOT modelled - small group)"
+  values:
+    2024: 63
+
+labour.early_retirement_career_years:
+  description: Career years required for early retirement at the minimum age (proxy for the career condition)
+  unit: years
+  source: "42 years since 2019. 43 from 2027 = ASSUMPTION / proxy for the law of 30 May 2026 (Official Gazette 1 June 2026): from 1 January 2027 a career year counts for early retirement only with 156 worked or assimilated days instead of 104 (people born before 1966 retire at most one year later than under the old rules, born in 1966 at most two years - https://www.sfpd.fgov.be/nl/veranderingen/pensioenhervorming), and the malus of 2-5% per year of anticipation delays retirement. Size checked against Federal Planning Bureau report 13299 (April 2026, whole reform): employment rate 18-66 +0.2 point in 2040 and +0.3 in 2050-2070, GDP +0.3 to +0.4%, pension spending -0.2 to -0.8 bn EUR (2024 prices) in 2027-2031 from the bonus-malus; in the model one year gives +0.16 point of employment, +0.27% of GDP and -0.4 bn of pensions. Fetched 2026-11-25"
+  values:
+    2024: 42
+    2027: 43
+
+labour.early_retirement_passthrough:
+  description: Years of shift of the status profile at ages 63-64 (tapering to zero at 58) per year of increase in the early-retirement age
+  unit: years per year
+  source: "ASSUMPTION - partial pass-through because part of the cohort does not meet the career condition anyway"
+  values:
+    2024: 0.6
+
+labour.early_retirement_career_effect:
+  description: Years of shift of the status profile at ages 63-64 per additional career year required for early retirement
+  unit: years per year
+  source: "ASSUMPTION - about a quarter of early retirees are constrained by a one-year stricter career condition"
+  values:
+    2024: 0.25
+
+labour.exit_age_trend_per_year:
+  description: Annual increase in the effective exit age at 63-64 (tapering to zero at 58) from maturing past reforms and cohort effects - later labour-market entry makes the 42-year career condition bind for younger cohorts, and each cohort of women has longer careers. The yearly values cumulate (a change from year t leaves the level reached before t).
+  unit: years per year
+  source: "ASSUMPTION fitted on two official sources. 2025-2031 - 0.28 a year (0.20 until the revision of the legal-age window, which no longer moves the 65-year-olds when the age goes from 66 to 67) continues the observed rise of the employment rate at 60-64 with unchanged retirement rules (Eurostat lfsa_pganws, data/base/labour_lfs_status.csv - women 27.7% in 2019, 42.5% in 2025; men 38.0% and 51.2%, about 2.3 points a year, i.e. a quarter of a year of age a year on the slope of the age profile) and matches the Planning Bureau outlook of June 2026 (employment +250 000 over 2025-2031, employment rate 55-66 from 55.8% to 65.2% in the Study Committee on Ageing report 2026, annex table 9 - the model gives +8.8 points for +9.4). 2032-2045 - 0.02 a year, so that the employment rate 55-66 rises by 14 points over 2025-2050 as the Committee's (55.8% to 69.5%). The Committee's path includes the 2025-2026 reforms (malus, 156-day career years, end of early-exit schemes), of which the model carries the career condition (labour.early_retirement_career_years) and the end of RCC separately"
+  values:
+    2024: 0.04
+    2025: 0.28
+    2032: 0.02
+
+labour.exit_age_trend_end_year:
+  description: Last year in which labour.exit_age_trend_per_year still accumulates
+  unit: year
+  source: "ASSUMPTION - reforms fully matured when the cohorts that entered after 2000 reach 63"
+  values:
+    2024: 2045
+
+labour.exit_age_trend_pension_share:
+  description: Share of the exit-age trend (labour.exit_age_trend_per_year) that also delays the start of the pension; the rest is employment gained from unemployment, invalidity and inactivity before the pension
+  unit: share
+  source: "DERIVED - 0.17. Over 2019-2024, with unchanged retirement rules, the employment rate at 60-64 rose by 11.5 points (Eurostat lfsa_pganws) while the retirement pensioners aged 60-64 went from 226 600 to 224 000 (PensionStat / Federal Pensions Service data file 2025, sheet Gepensioneerden, January counts incl. pensions paid abroad, fetched 2026-11-26), about 2 points less of the age group, i.e. 2 / 11.5 - the rest came from early-exit schemes (RCC), unemployment and inactivity. (0.3 was assumed before, on the judgement that the career condition would bind more for later cohorts.)"
+  values:
+    2024: 0.17
+
+labour.exit_age_trend_late_share:
+  description: Share of the cumulated exit-age trend that also applies between 65 and the legal pension age (those ages are an early-retirement window once the legal age is 66 or 67)
+  unit: share
+  source: "ASSUMPTION - 0.5; with it the employment rate at 65-66 reaches about 45% by 2050 under a legal age of 67, in line with the 55-66 employment rate of the Study Committee on Ageing 2026 (69.5% in 2050)"
+  values:
+    2024: 0.5
+
+labour.rcc_beneficiaries_2024:
+  description: Beneficiaries of unemployment with company supplement (RCC/SWT) in 2024, counted as retired at ages 60-64
+  unit: persons
+  source: "ONEM annual report 2024, vol. 2, table 2.4.III: 10 351 beneficiaries (annual average; https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/4fc80cb39b3e4b9c61f6a640edc63cbbc31fb137/2024-vol2-fr.pdf , fetched 2026-11-25); Eurostat spr_pns_ben 2024 (ESSPROS): 10 350"
+  values:
+    2024: 10350
+
+labour.rcc_stock_factor:
+  description: RCC/SWT stock relative to 2024 (0 = scheme extinct); leavers go to work or unemployment
+  unit: fraction
+  source: "2025 - ONEM annual report 2025, vol. 2: 8 502 beneficiaries (-17.8%). Royal Decree of 5 September 2025 (Official Gazette 15 September 2025): no entry for people dismissed after 30 June 2025, except the medical scheme (CCT 177/178, until 30 June 2029); people already admitted keep their right (https://emploi.belgique.be/fr/themes/chomage-et-retour-au-travail/chomage-avec-complement-dentreprise , fetched 2026-11-25). 2026 and later - ASSUMPTION, run-off as beneficiaries reach the pension age"
+  values:
+    2024: 1.0
+    2025: 0.82
+    2026: 0.6
+    2027: 0.4
+    2028: 0.25
+    2029: 0.1
+    2030: 0.0
+
+labour.rcc_exit_to_employment:
+  description: Share of the people no longer entering RCC/SWT who stay in private employment (rest unemployed)
+  unit: fraction
+  source: "ASSUMPTION"
+  values:
+    2024: 0.3
+
+# ----------------------------------------------------------------------------- unemployment
+labour.nairu:
+  description: Structural unemployment rate (ILO, share of the labour force) by region towards which unemployment converges. REGIONAL LEVER - one region with Change(..., key="WAL").
+  unit: fraction
+  source: "2024 - ASSUMPTION, structural rates by region set near the 2024 observed rates (the near-term path is in labour.nairu_cyclical_factor). From 2042 - DERIVED from the structural unemployment rate of the Study Committee on Ageing, annual report July 2026, Tableau 2 and annex table 9 (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26) - 5.7% of the labour force in the administrative definition from 2042 against 8.6% in 2031, i.e. two thirds of its 2031 level; the same proportion of the model's 2031 rate (6.0%, ILO) is 4.0%, 0.94 times the 2024 structural rates"
+  values:
+    2024:
+      BRU: 0.105
+      FLA: 0.035
+      WAL: 0.07
+    2041:
+      BRU: 0.1019
+      FLA: 0.034
+      WAL: 0.0679
+    2042:
+      BRU: 0.0987
+      FLA: 0.0329
+      WAL: 0.0658
+
+labour.hidden_unemployment_ratio:
+  description: Registered job-seekers who are not unemployed in the ILO definition (inactive in the model), per unemployed person in 2024. When the structural unemployment rate of a region falls below its 2024 level, the same proportion of them as of the unemployed moves from inactivity into work (nothing happens while unemployment is at or above its 2024 level).
+  unit: ratio
+  source: "DERIVED - Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau B.1 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - 553 600 job-seekers in the administrative definition in 2025 against 335 000 unemployed in the model (ILO rate of 6.2% of the same outlook), i.e. 0.65 more. The Study Committee on Ageing lowers administrative unemployment from 8.6% of the labour force in 2031 to 5.7% from 2042 (about 170 000 people, all into employment) - the ILO unemployed alone account for about 110 000 of them"
+  values:
+    2024: 0.65
+
+labour.activation_factor:
+  description: Activation effort of the regional employment service (VDAB, Forem, Actiris) relative to its own 2024 level, by region. Above 1 lowers the structural unemployment rate of the region (elasticity labour.activation_nairu_elasticity) and raises in proportion the share of people excluded by the federal time limit who find work. REGIONAL LEVER - one region with Change(..., key="BRU").
+  unit: factor
+  source: "Policy lever, neutral = 1 (2024 effort of each region)"
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+labour.activation_nairu_elasticity:
+  description: Elasticity of a region's structural unemployment rate to its activation effort (structural rate x factor ^ -elasticity)
+  unit: elasticity
+  source: "ASSUMPTION - 0.3: a 25% stronger effort lowers structural unemployment by about 6.5%; order of magnitude of meta-analyses of active labour-market programmes (Card, Kluve, Weber 2018: job-search assistance raises employment probabilities by 1-3 points in the short run), not estimated on Belgian regional data"
+  values:
+    2024: 0.3
+
+labour.nairu_convergence_speed:
+  description: Share of the gap between regional unemployment and its structural rate closed each year
+  unit: fraction per year
+  source: "ASSUMPTION"
+  values:
+    2024: 0.5
+
+labour.unemp_benefit_max_years:
+  description: Maximum duration of unemployment benefits in years (0 = unlimited)
+  unit: years
+  source: "Programme law of 18 July 2025 (Official Gazette 29 July 2025), new rules for claims from 1 March 2026: 12 months plus 1 month per 104 days of career, maximum 24 months (ONEM sheet T202, https://www.onem.be/citoyens/chomage-complet/reforme-de-la-reglementation-du-chomage/jai-demande-des-allocations-de-chomage-apres-le-28.02.2026.-mes-allocations-vont-elles-etre-limitees-dans-le-temps- , fetched 2026-11-25). 1.5 = ASSUMPTION, mid-point of the legal 12-24 months; with it the model excludes about as many people as ONEM expected (about 173 000 at the end of their right)"
+  values:
+    2024: 0
+    2026: 1.5
+
+labour.unemp_time_limit_enforcement:
+  description: Share of the benefit recipients beyond the time limit who are actually excluded (phase-in of the waves)
+  unit: fraction
+  source: "Derived from the legal calendar and the observed ends of right - ONEM/RVA with FPB, NBB, SPP IS and INAMI, monitoring of the time limit, situation at 30 June 2026 (https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/2b2c7c4ebafdd33d1efc40b4f6c310de0206ab52/monitoringfr202606.pdf , fetched 2026-11-25): transitional waves on 1 January 2026 (20+ years and insertion allowances), 1 March (8-20 years), 1 April (under 8 years in the flat-rate period), 1 July 2026 (second period; first period with a career under 5 years) and 1 July 2027 (first period, career of 5 years or more); 99 144 ends of right January-June 2026, 137 130 January-September (SPP IS). Constitutional Court ruling of 10 September 2026: 41 043 people of the first three waves recover some months of benefit. Person-years excluded in 2026 about half of the final number; about 0.9 in 2027"
+  values:
+    2024: 0.0
+    2026: 0.5
+    2027: 0.9
+    2028: 1.0
+
+labour.unemp_time_limit_max_age:
+  description: Age from which the unemployed are exempt from the time limit
+  unit: years
+  source: "Programme law of 18 July 2025: no time limit for people aged 55 or more with a career of 30 years in 2025, rising by one year per year to 35 years in 2030 (ONEM sheets T202 / T33, fetched 2026-11-25). Approximated by age only (the career condition, and the other exemptions - arts workers, port workers, part-time workers with income guarantee, RCC - are not modelled)"
+  values:
+    2024: 55
+
+labour.unemp_duration_survival:
+  description: Share of benefit recipients whose spell is longer than x years - list of [years, share]
+  unit: fraction
+  source: "ONEM annual report 2025, vol. 2, table 4.2.VI - benefit-receiving fully unemployed job-seekers, 2024 average: 284 859, of whom 63.3% for 1 year or more and 46.3% for 2 years or more (https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/d0cc3aedd037472d49088ecae89f13874c6f220e/rajv2025-vol2-fr.pdf). 8 and 20 years - ONEM monitoring, payments of December 2025 by wave: 19.9% with 8 years or more, 3.5% with 20 years or more. 3 and 5 years - ASSUMPTION (interpolated; finer bands not published). Fetched 2026-11-25"
+  values:
+    2024: [[0, 1.0], [1, 0.63], [2, 0.46], [3, 0.42], [5, 0.32], [8, 0.20], [20, 0.035], [45, 0.0]]
+
+labour.unemp_exclusion_to_employment:
+  description: Share of people excluded by the time limit who find work (private employees)
+  unit: fraction
+  source: "ASSUMPTION informed by ONEM/RVA with FPB, NBB, SPP IS and INAMI, monitoring of the time limit, situation at 30 June 2026 (https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/2b2c7c4ebafdd33d1efc40b4f6c310de0206ab52/monitoringfr202606.pdf , fetched 2026-11-25): 13.5% of the 99 144 people who reached the end of their right in January-June 2026 were in salaried work the month after (5% of the first wave, 17% of the April wave, 28-30% of the ends of right in May-June); 0.20 allows for later hiring and the shorter-duration waves of July 2026 and July 2027. From 2030 - 0.33, the share in work at cruising speed in the Planning Bureau's LASER simulation of the reform (33% work, 39% social assistance or incapacity, 28% other inactivity; quoted by the Court of Audit, see data/reference/validation.yaml unemployment_time_limit), reached linearly from 2027"
+  values:
+    2024: 0.2
+    2028: 0.25
+    2029: 0.29
+    2030: 0.33
+
+labour.unemp_exclusion_to_disability:
+  description: Share of people excluded by the time limit who move to sickness / invalidity
+  unit: fraction
+  source: "ONEM/RVA with FPB, NBB, SPP IS and INAMI, monitoring of the time limit, situation at 30 June 2026 (https://www.onem.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/2b2c7c4ebafdd33d1efc40b4f6c310de0206ab52/monitoringfr202606.pdf , fetched 2026-11-25): 7.1% of the people who reached the end of their right in January-June 2026 received sickness benefits the month after"
+  values:
+    2024: 0.07
+
+labour.target_group_employment_elasticity:
+  description: Long-run response of private employment of a region to a change in its target-group reductions (subsidy.target_group_factor relative to the baseline) - % of private employment per % of private labour cost taken over by the subsidy
+  unit: elasticity
+  source: "ASSUMPTION - 0.5, the order of the model's response of employment to employer labour cost in the Planning Bureau HERMES variants (see params/behaviour.yaml); target-group reductions aimed at low wages or older workers may do more per euro, not estimated here"
+  values:
+    2024: 0.5
+
+labour.target_group_adjustment_speed:
+  description: Share of the remaining gap to the long-run response of labour.target_group_employment_elasticity closed each year
+  unit: fraction per year
+  source: "ASSUMPTION - 0.5, as the labour-demand channel of the behaviour module (beh.lambda.labour_demand)"
+  values:
+    2024: 0.5
+
+labour.okun_coefficient:
+  description: Percentage response of private-sector employees to a 1% demand gap
+  unit: elasticity
+  source: "ASSUMPTION - short-run employment elasticity to output of about 0.5 (NBB / FPB model properties)"
+  values:
+    2024: 0.5
+
+labour.demand_shock_to_unemployment:
+  description: Share of a labour-demand change in private employment that is matched by unemployment (rest by inactivity)
+  unit: fraction
+  source: "ASSUMPTION"
+  values:
+    2024: 0.7
+
+# ----------------------------------------------------------------------------- other status levers
+labour.public_employment_growth:
+  description: Headcount growth norm of general-government employment, on top of the population link and of the baseline path labour.public_employment_outlook_growth, by region of residence of the public employees (all levels of government; a scalar is accepted and applies to the three regions). REGIONAL LEVER - one region with Change(..., key="BRU").
+  unit: fraction per year
+  source: "Policy lever, neutral = 0 (ASSUMPTION - no autonomous growth beyond the baseline path)"
+  values:
+    2024: {FLA: 0.0, WAL: 0.0, BRU: 0.0}
+
+labour.public_employment_outlook_growth:
+  description: Baseline growth of general-government employment on top of the population link, all regions - the staffing decisions of the governments for 2025-2031 as the official outlook has them (selective replacement in the federal and Walloon administrations, the Brussels hiring freeze, Flemish staff savings). The lever labour.public_employment_growth comes on top.
+  unit: fraction per year
+  source: "2025-2031 DERIVED from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026), Tableau B.1 (https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - public-sector employees 943.0 thousand in 2024, then 950.3 / 951.8 / 950.0 / 949.7 / 947.6 / 948.6 / 949.6 in 2025-2031; value = that growth minus the population growth of the model (labour.public_employment_pop_elasticity = 1). ASSUMPTION - from 2032 none (constant public employment per inhabitant)"
+  values:
+    2024: 0.0
+    2025: 0.0021
+    2026: -0.0046
+    2027: -0.0049
+    2028: -0.0032
+    2029: -0.0051
+    2030: -0.0019
+    2031: -0.0018
+    2032: 0.0
+
+labour.public_employment_pop_elasticity:
+  description: Elasticity of general-government employment to total population (1 = constant public employment per inhabitant; set to 0 with labour.public_employment_growth for a pure headcount norm)
+  unit: elasticity
+  source: "ASSUMPTION - constant-policy convention"
+  values:
+    2024: 1.0
+
+labour.disability_rate_factor:
+  description: Multiplier on the age-specific share of people in invalidity relative to 2024, by region of residence (return-to-work policy is a regional competence; a scalar is accepted and applies to the three regions). REGIONAL LEVER - one region with Change(..., key="WAL").
+  unit: factor
+  source: "ASSUMPTION - constant age-specific rates in the baseline (invalidity still rises with ageing and the pension age)"
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+labour.disability_trend_factor:
+  description: Baseline trend of the age-specific share of people in invalidity relative to 2024, all regions (multiplies labour.disability_rate_factor, the regional lever, which stays relative to this path)
+  unit: factor
+  source: "2025 - INAMI/RIZIV: 549 996 invalids at 31 December 2024 and 576 643 at 31 December 2025 (provisional), 526 507 at end 2023 - the 2025 average is 4.7% above the 2024 average (same documents as labour.disabled_2024, fetched 2026-11-25). 2026 and later - ASSUMPTION - the rise slows with the fourth wave of the return-to-work plan and levels off at +11% from 2028, so that spending on incapacity for work grows by about 1% a year in real terms over 2026-2031 as in the Planning Bureau outlook of June 2026 (section 4.4.1.2) and stays near the Study Committee on Ageing 2026 path (2.3% of GDP in 2025, 2.4% in 2031, 2.2% in 2050-2070). The end of the sickness pension of civil servants (entries closed from 1 July 2026) and the higher pension age add invalids as well; the latter is modelled by the shift of the age profile"
+  values:
+    2024: 1.0
+    2025: 1.047
+    2026: 1.075
+    2027: 1.095
+    2028: 1.11
+
+labour.disability_offset_employment:
+  description: Share of a change in invalidity that comes from / goes to employment (rest inactivity)
+  unit: fraction
+  source: "ASSUMPTION"
+  values:
+    2024: 0.5
+
+labour.student_rate_factor:
+  description: Multiplier on the share of non-working students at ages 18+ relative to 2024
+  unit: factor
+  source: "ASSUMPTION - constant enrolment in the baseline"
+  values:
+    2024: 1.0
+
+labour.school_leaving_age:
+  description: Compulsory school age; below it every non-disabled person is a student
+  unit: years
+  source: "Law of 29 June 1983: compulsory education until 18"
+  values:
+    2024: 18
+
+labour.cohort_effect_strength:
+  description: Strength of cohort effects on activity rates (0 = constant age-specific rates, 1 = the 2018/19-2023/24 gains of each cohort are fully carried to older ages)
+  unit: factor
+  source: "ASSUMPTION - cohort method in the spirit of the Ageing Report cohort simulation model, computed on Eurostat lfsa_pganws; raised to 1.5 from 2025 for the same reason as labour.exit_age_trend_per_year"
+  values:
+    2024: 1.0
+    2025: 1.5
+
+# ----------------------------------------------------------------------------- wages
+labour.indexation_factor:
+  description: Share of health-index inflation passed into wages by automatic indexation (1 = full, 0 = index jump)
+  unit: factor
+  source: "Law of 2 August 1971 and sector agreements: full automatic indexation"
+  values:
+    2024: 1.0
+
+labour.indexation_lag_weight:
+  description: Weight of the previous year's health-index growth in this year's wage indexation
+  unit: fraction
+  source: "ASSUMPTION - indexation mechanisms (smoothed index, yearly January indexation in many joint committees) lag inflation by about half a year"
+  values:
+    2024: 0.5
+
+labour.wage_norm_real_cap:
+  description: Maximum real growth of wages above indexation (wage norm, law of 26 July 1996); null = no cap
+  unit: fraction per year
+  source: "Wage norm 2025-2026: 0% (Royal Decree 2025); ASSUMPTION - not binding afterwards"
+  values:
+    2024: 0.0
+    2027:
+
+labour.wage_drift:
+  description: Annual wage growth wedge by job type on top of the wage index (for public employees - on top of the mix of wage index and health index set by labour.public_wage_link). The yearly values cumulate (a change from year t leaves the level reached before t).
+  unit: fraction per year
+  source: "Private employees and self-employed - ASSUMPTION, none. Public employees 2025-2031 - DERIVED from the Federal Planning Bureau, Perspectives economiques 2026-2031 (June 2026; https://www.plan.be/sites/default/files/documents/FOR_MIDTERM_2631_13322_FR.pdf, fetched 2026-11-26) - compensation of employees of general government (Tableau D.1 - 77 342 mn in 2024, then 80 236 / 82 828 / 85 464 / 87 402 / 88 617 / 90 526 / 92 300) per public-sector employee (Tableau B.1) grows by 2.9 / 3.1 / 3.4 / 2.3 / 1.6 / 2.0 / 1.9%, i.e. the health index of the same outlook (2.6 / 3.2 / 3.1 / 2.2 / 1.8 / 1.8 / 1.7%) plus the values below (scale and seniority drift net of the two capped indexations of 2026 and 2028 and of the limited indexation in the Flemish budget). ASSUMPTION - none from 2032"
+  values:
+    2024: {emp_private: 0.0, emp_public: 0.0, self_employed: 0.0}
+    2025: {emp_private: 0.0, emp_public: 0.0034, self_employed: 0.0}
+    2026: {emp_private: 0.0, emp_public: -0.0013, self_employed: 0.0}
+    2027: {emp_private: 0.0, emp_public: 0.0027, self_employed: 0.0}
+    2028: {emp_private: 0.0, emp_public: 0.0010, self_employed: 0.0}
+    2029: {emp_private: 0.0, emp_public: -0.0018, self_employed: 0.0}
+    2030: {emp_private: 0.0, emp_public: 0.0025, self_employed: 0.0}
+    2031: {emp_private: 0.0, emp_public: 0.0015, self_employed: 0.0}
+    2032: {emp_private: 0.0, emp_public: 0.0, self_employed: 0.0}
+
+labour.public_wage_link:
+  description: Share of the growth of the wage index (private wage formation - indexation plus real increases) passed on to public pay per head; the rest follows the health index only (automatic indexation of the pay scales). 1 = public pay follows private wages. A difference between the wage index of a scenario and of the baseline is always passed on in full.
+  unit: share
+  source: "2025-2031 - 0, public pay scales are indexed and not renegotiated in the budgets and plans embodied in the Federal Planning Bureau outlook of June 2026 (see labour.wage_drift - compensation per public employee = health index + 0.1% a year, against +0.3% a year of real growth of the private wage index). ASSUMPTION - 1 from 2032, the long-run convention of the Study Committee on Ageing (public wages follow private wages)"
+  values:
+    2024: 1.0
+    2025: 0.0
+    2032: 1.0
+
+labour.wage_dispersion_factor:
+  description: Exponent applied to the relative earnings-by-tenth profile of private employees (SES 2022) to obtain the profile of each job type
+  unit: exponent
+  source: "ASSUMPTION - pay scales compress public earnings; self-employed incomes are more dispersed (INASTI income classes). Private profile from Eurostat earn_ses_annual 2022 (D1, median, D9, mean)"
+  values:
+    2024: {emp_private: 1.0, emp_public: 0.75, self_employed: 1.6}
+
+# ----------------------------------------------------------------------------- sectors
+labour.sector_share_drift:
+  description: Initial annual drift of each sector's share in private and self-employed employment (decays with labour.sector_drift_half_life)
+  unit: fraction per year
+  source: "ASSUMPTION - continuation of 2014-2024 national-accounts trends (nama_10_a64_e): manufacturing and finance shrink, ICT and business services grow"
+  values:
+    2024: {A: -0.010, C: -0.008, K: -0.008, G: -0.004, J: 0.010, M: 0.006, N: 0.004}
+
+labour.sector_drift_half_life:
+  description: Half-life of the sector share drift
+  unit: years
+  source: "ASSUMPTION - keeps sector shares stable in the long run"
+  values:
+    2024: 12
+
+labour.care_demand_age_weights:
+  description: Relative demand for health and long-term care per person by age - list of [age, weight], linear in between
+  unit: relative
+  source: "ASSUMPTION - shape of the age profiles of public health and long-term care spending (2024 Ageing Report)"
+  values:
+    2024: [[0, 1.0], [50, 1.0], [65, 2.0], [80, 5.0], [90, 9.0], [100, 9.0]]
+
+labour.care_employment_elasticity:
+  description: Elasticity of health and social-work employment to the care-weighted population
+  unit: elasticity
+  source: "ASSUMPTION - less than 1 because of healthy ageing and productivity in care"
+  values:
+    2024: 0.6
+
+labour.care_employment_max_share:
+  description: Ceiling on the share of private employees working in health and social work
+  unit: fraction
+  source: "ASSUMPTION - numerical safeguard"
+  values:
+    2024: 0.30
+
+labour.education_employment_elasticity:
+  description: Elasticity of the education share of public employment to the share of the population aged 3-22
+  unit: elasticity
+  source: "ASSUMPTION"
+  values:
+    2024: 0.7
+
+# ----------------------------------------------------------------------------- other indicators
+labour.hours_growth:
+  description: Annual growth of hours worked per worker
+  unit: fraction per year
+  source: "ASSUMPTION - constant (level 2024 from Eurostat nama_10_a64_e hours / persons)"
+  values:
+    2024: 0.0
+
+labour.part_time_share:
+  description: Share of part-time workers in employment, age 20-64
+  unit: fraction
+  source: "Eurostat lfsa_eppga 2024: 23.2%"
+  values:
+    2024: 0.232
+
+labour.blue_collar_share:
+  description: Share of blue-collar workers (ouvriers/arbeiders) among private-sector employees
+  unit: fraction
+  source: "ONSS/RSZ, detailed quarterly employment statistics, table 2, 2024 Q4: 1 197 975 blue-collar and 1 795 938 white-collar workers in the private sector (https://www.onss.be/stats/analyse-du-marche-de-lemploi-donnees-trimestrielles-detaillees , fetched 2026-11-25)"
+  values:
+    2024: 0.4
+
+labour.blue_collar_share_trend:
+  description: Annual change of the blue-collar share
+  unit: fraction per year
+  source: "ASSUMPTION - trend decline of roughly 0.2 point a year"
+  values:
+    2024: -0.002
+
+labour.statutory_share:
+  description: Share of statutory (tenured) civil servants among general-government employees
+  unit: fraction
+  source: "ONSS/RSZ, detailed quarterly employment statistics, table 2, 2024 Q4: 541 881 statutory staff among 1 099 321 public-sector workers incl. subsidised education and federal public enterprises (49.3%; 49.3% as well without the public enterprises) (https://www.onss.be/stats/analyse-du-marche-de-lemploi-donnees-trimestrielles-detaillees , fetched 2026-11-25)"
+  values:
+    2024: 0.49
+
+labour.statutory_share_trend:
+  description: Annual change of the statutory share (the yearly values cumulate)
+  unit: fraction per year
+  source: "ASSUMPTION - contractual hiring replaces statutory appointments at about 0.4 point a year until 2035 (local authorities and public enterprises, where statutory recruitment has mostly stopped), then a stable share (education, federal and regional administrations, police and justice keep appointing). With an endless decline public-sector pensions fell to 2.5% of GDP in 2070 against 3.2% in the Study Committee on Ageing report 2026"
+  values:
+    2024: -0.004
+    2036: 0.0
+
+labour.flexi_jobs:
+  description: People with a flexi-job, at the 2024 level of private employment
+  unit: persons
+  source: "ONSS/RSZ flexi-job statistics: average of the four quarters of 2024 (131 349 / 146 919 / 155 722 / 158 484 workers); 229 423 different people over the year; 2025 quarterly average 173 700 (https://www.onss.be/stats/flexijobs , fetched 2026-11-25)"
+  values:
+    2024: 148100
+
+labour.student_jobs:
+  description: Students with a student job during the year, at the 2024 number of students
+  unit: persons
+  source: "ONSS/RSZ annual student statistics: 640 608 students with a student job in 2024 (632 672 in 2023, 649 055 in 2025) (https://www.onss.be/stats/donnees-annuelles-des-etudiants , fetched 2026-11-25)"
+  values:
+    2024: 640600
+
+labour.service_voucher_workers:
+  description: Service-voucher workers, at the 2024 level of private employment
+  unit: persons
+  source: "ONSS/RSZ, employment in the service-voucher system: average of the four quarters of 2024 (144 815 / 144 205 / 144 037 / 143 512 workers) (https://www.onss.be/stats/emploi-via-le-systeme-des-titres-services , fetched 2026-11-25)"
+  values:
+    2024: 144100
+
+labour.cross_border_out:
+  description: Residents working abroad, at the 2024 level of employment
+  unit: persons
+  source: "Eurostat lfst_r_lfe2ecomm 2024 (employed residents aged 15-64 working in a foreign country): 124 100. Administrative count for comparison - INAMI/RIZIV cross-border statistics, 30 June 2024: 86 056 residents insured as frontier workers in LU, NL, FR, DE (https://www.inami.fgov.be/SiteCollectionDocuments/statistiques_travailleurs_frontaliers_2024.pdf , fetched 2026-11-25)"
+  values:
+    2024: 124100
+
+labour.cross_border_in:
+  description: Non-residents working in Belgium, at the 2024 level of employment
+  unit: persons
+  source: "INAMI/RIZIV cross-border statistics, 30 June 2024: 51 581 frontier workers living in FR (39 252), NL (10 917), DE (904), LU (508) and working in Belgium (https://www.inami.fgov.be/SiteCollectionDocuments/statistiques_travailleurs_frontaliers_2024.pdf , fetched 2026-11-25); excludes staff of international institutions"
+  values:
+    2024: 51600
+
+# ----------------------------------------------------------------------------- 2024 calibration
+labour.public_share_by_sector:
+  description: Share of each sector's employees working for general government (S13); missing sector = 0
+  unit: fraction
+  source: "ASSUMPTION - no employment-by-institutional-sector table in Eurostat; shares chosen so that the public wage bill reproduces S13 compensation of employees (gov_10a_main D1 2024: EUR 77.4bn). Education is almost entirely S13 (subsidised schools included), hospitals mostly not"
+  values:
+    2024: {O: 1.0, P: 0.96, Q: 0.10, RSTU: 0.12, H: 0.04, M: 0.03, BDE: 0.05, J: 0.02}
+
+labour.disabled_2024:
+  description: People in invalidity (incapacity for work of more than one year) in 2024
+  unit: persons
+  source: "INAMI/RIZIV statistics of invalidity: 526 507 invalids at 31 December 2023 and 549 996 at 31 December 2024 (employees and unemployed 493 681 / 514 551, self-employed 32 826 / 35 445); average of the two dates (https://www.inami.fgov.be/SiteCollectionDocuments/3_2025_Salari%C3%A9s_cas.pdf and 4_2025_Ind%C3%A9pendants_cas.pdf , fetched 2026-11-25). 576 643 at end 2025 (provisional)"
+  values:
+    2024: 538250
+
+labour.disability_age_profile:
+  description: Relative invalidity rate by age for men - list of [age, relative rate]; scaled to labour.disabled_2024
+  unit: relative
+  source: "Derived - INAMI/RIZIV invalids at 31 December 2024 by age group, men, employees + self-employed (https://www.riziv.fgov.be/SiteCollectionDocuments/stat_si2024_1_invalidite.pdf and stat_si2024_1_invalidite_independant.pdf , fetched 2026-11-25) divided by the male population of the age group: 1.3 per 1000 under 25, 9.1 at 25-29, 20.2 at 30-34, 34.4 at 35-39, 50.0 at 40-44, 70.9 at 45-49, 94.9 at 50-54, 135.9 at 55-59, 147.6 at 60-64; knots at the mid-points of the groups (per cent)"
+  values:
+    2024: [[18, 0.0], [21.5, 0.13], [27.5, 0.91], [32.5, 2.02], [37.5, 3.44], [42.5, 5.0], [47.5, 7.09], [52.5, 9.49], [57.5, 13.59], [62.5, 14.76], [65, 14.76]]
+
+labour.disability_female_ratio:
+  description: Invalidity rate of women relative to men of the same age
+  unit: ratio
+  source: "INAMI/RIZIV invalids at 31 December 2024: 330 356 women and 219 640 men (60.1% women), for male and female populations of almost equal size at 18-64; the ratio falls with age (2.2 at 25-34, 1.25 at 60-64 - not modelled) (same documents as labour.disability_age_profile, fetched 2026-11-25)"
+  values:
+    2024: 1.5
+
+labour.early_retired_age_profile:
+  description: Relative share of retired people by age below the legal pension age - list of [age, relative share]; scaled to the EU-SILC share of retired among 18-64 (ilc_lvhl02 2024, men 4.1%, women 3.0%)
+  unit: relative
+  source: "ASSUMPTION - early retirement possible from 60 (44 career years) and mostly at 63; special schemes (military, police, railways) before 60"
+  values:
+    2024: [[54, 0.0], [55, 0.02], [58, 0.05], [60, 0.20], [61, 0.35], [62, 0.50], [63, 0.85], [64, 1.0], [65, 1.0]]
+
+labour.calibration_legal_pension_age:
+  description: Legal pension age embodied in the 2024 observed status profiles (reference for labour.legal_pension_age; not a lever)
+  unit: years
+  source: "Legal pension age in 2024"
+  values:
+    2024: 65
+
+labour.calibration_early_retirement_age:
+  description: Early-retirement age embodied in the 2024 observed status profiles (reference; not a lever)
+  unit: years
+  source: "Early-retirement age in 2024"
+  values:
+    2024: 63
+
+labour.calibration_early_retirement_career_years:
+  description: Career condition embodied in the 2024 observed status profiles (reference; not a lever)
+  unit: years
+  source: "Career condition in 2024"
+  values:
+    2024: 42
+
+labour.cohort_start_age:
+  description: Youngest 5-year age group whose activity rate receives cohort effects
+  unit: years
+  source: "ASSUMPTION - below 40 the 2021 LFS break dominates the 5-year changes"
+  values:
+    2024: 40
+
+labour.cohort_last_age:
+  description: Oldest 5-year age group (lower bound) whose activity rate receives cohort effects
+  unit: years
+  source: "ASSUMPTION - above 64 the recent increases reflect pension reforms, modelled separately"
+  values:
+    2024: 60
+
+labour.cohort_ratio_bounds:
+  description: Bounds on the 5-year change in a group's activity rate carried over as a cohort effect [min, max]
+  unit: ratio
+  source: "ASSUMPTION - limits the effect of sampling noise and period effects. The lower bound is 1 (no negative cohort effect) - the small declines measured for some groups of women aged 40-54 between 2018-19 and 2023-24 sit within the sampling error and the 2021 break of the survey, and the 2025 survey reverses them (women 40-44 - 79.1% in 2024, 80.6% in 2025; 45-49 - 76.8% and 79.3%; Eurostat lfsa_pganws); carried forward they made female employment at 40-54 fall, against every official projection"
+  values:
+    2024: [1.0, 1.10]
+
+labour.nairu_cyclical_factor:
+  description: Temporary multiplier on the structural unemployment rates of all regions, used to follow the official near-term outlook. Kept apart from labour.nairu so that a measure setting a region's structural rate is not mixed up with the near-term cycle.
+  unit: factor
+  source: "ASSUMPTION - path set so the national unemployment rate follows the Planning Bureau outlook of June 2026 (6.2% in 2025, 6.7% in 2027, 6.0% in 2031), back to 1 by 2040; see data/reference/validation.yaml"
+  values: {2024: 1.0, 2025: 1.2, 2026: 1.46, 2027: 1.53, 2028: 1.53, 2029: 1.50, 2030: 1.44, 2031: 1.34, 2034: 1.25, 2037: 1.12, 2040: 1.0}
+

@@ -1,0 +1,1453 @@
+{
+ "common": {
+  "baseline": "Référence",
+  "scenario": "Scénario",
+  "baseline_total": "Total de référence",
+  "year": "Année",
+  "total": "Total",
+  "other_n": "Autres ({n})",
+  "value": "Valeur",
+  "loading": "Chargement…",
+  "unit": "Unité",
+  "all": "Tous",
+  "belgium": "Belgique",
+  "vs_baseline": "vs référence",
+  "delta_vs_baseline": "Δ vs référence",
+  "pts": "pt",
+  "pts_gdp": "pt de PIB",
+  "points_gdp": "points de PIB",
+  "points": "points",
+  "thousand": "milliers",
+  "million": "millions",
+  "current_prices": "prix courants",
+  "prices_of": "prix de {year}",
+  "in_prices_of": "aux prix de {year}",
+  "not_provided": "pas encore fourni par le modèle",
+  "remove": "Retirer",
+  "change": "Variation",
+  "in_scenario": "Dans le scénario",
+  "add_to_scenario": "Ajouter au scénario",
+  "measure": "Mesure",
+  "units": "unités",
+  "server_unreachable": "Le serveur est injoignable. Démarrez-le avec : {cmd}",
+  "n_measures": {
+   "one": "{n} mesure",
+   "other": "{n} mesures"
+  },
+  "n_changes": {
+   "one": "{n} modification",
+   "other": "{n} modifications"
+  },
+  "list_sep": ", ",
+  "colon": " : ",
+  "per_year": "par an",
+  "all_regions": "Les trois Régions",
+  "region": "Région",
+  "skip": "Aller au contenu",
+  "still_computing": "Le serveur calcule encore ce résultat ; réessayez dans une minute."
+ },
+ "unit": {
+  "bn": "Mrd €",
+  "bn_real": "Mrd €, prix de {year}",
+  "pct_gdp": "% du PIB",
+  "pct_gdp_short": "% PIB",
+  "eur_real": "€, prix de {year}",
+  "thousand_persons": "milliers de personnes",
+  "persons": "personnes",
+  "k": "k",
+  "index": "indice, {year} = 1",
+  "years": "ans",
+  "y": "a",
+  "eur_per_year": "€ par an",
+  "million_persons": "millions"
+ },
+ "fmt": {
+  "pct": "{v} %",
+  "eur": "{v} €",
+  "eur_bn": "{v} Mrd €"
+ },
+ "nav": {
+  "tagline": "Belgique, économie et finances publiques",
+  "aria": "Vues",
+  "group": {
+   "projection": "Projection",
+   "policy": "Politiques",
+   "trust": "Fiabilité"
+  },
+  "overview": {
+   "title": "Vue d'ensemble",
+   "nav": "Vue d'ensemble"
+  },
+  "budget": {
+   "title": "Budget",
+   "nav": "Budget"
+  },
+  "regions": {
+   "title": "Régions",
+   "nav": "Régions"
+  },
+  "population": {
+   "title": "Population",
+   "nav": "Population"
+  },
+  "labour": {
+   "title": "Marché du travail",
+   "nav": "Travail"
+  },
+  "economy": {
+   "title": "Économie",
+   "nav": "Économie"
+  },
+  "explorer": {
+   "title": "Explorateur",
+   "nav": "Toutes les séries"
+  },
+  "measures": {
+   "title": "Mesures",
+   "nav": "Mesures"
+  },
+  "compare": {
+   "title": "Comparer des scénarios",
+   "nav": "Comparer"
+  },
+  "balance": {
+   "title": "Équilibrer le budget",
+   "nav": "Équilibrer le budget"
+  },
+  "distribution": {
+   "title": "Qui gagne, qui perd",
+   "nav": "Redistribution"
+  },
+  "payslip": {
+   "title": "Fiche de paie",
+   "nav": "Fiche de paie"
+  },
+  "validation": {
+   "title": "Le modèle face aux chiffres officiels",
+   "nav": "Validation"
+  },
+  "active_measures": {
+   "one": "{n} mesure active",
+   "other": "{n} mesures actives"
+  },
+  "kept_scenarios": {
+   "one": "{n} scénario conservé pour la comparaison",
+   "other": "{n} scénarios conservés pour la comparaison"
+  },
+  "model_size": "{series} séries, {params} paramètres",
+  "assumptions": {
+   "one": "{n} paramètre est une hypothèse",
+   "other": "{n} paramètres sont des hypothèses"
+  },
+  "reload": "Recharger le modèle",
+  "parties": {
+   "title": "Programmes des partis (chiffrage 2024)",
+   "nav": "Programmes des partis"
+  },
+  "methodology": "Méthodologie"
+ },
+ "bar": {
+  "units_aria": "Montants affichés en",
+  "lang_aria": "Langue",
+  "year_aria": "Année sélectionnée",
+  "play": "Faire défiler les années",
+  "prev_year": "Année précédente",
+  "next_year": "Année suivante",
+  "scenario_n": "Scénario ({n})",
+  "light_theme": "Thème clair",
+  "dark_theme": "Thème sombre",
+  "refused": "Le scénario a été refusé.",
+  "run_again": "Relancer",
+  "simulating": "Simulation du scénario…",
+  "stale_run": "Le scénario a changé depuis la dernière simulation : les chiffres ci-dessous sont ceux de la simulation précédente.",
+  "stale_never": "Le scénario contient des mesures qui n'ont pas encore été simulées : les chiffres ci-dessous sont ceux du scénario de référence.",
+  "run": "Simuler le scénario",
+  "boot_failed": "Le modèle n'a pas pu être chargé",
+  "try_again": "Réessayer",
+  "view_failed": "La vue « {view} » n'a pas pu être affichée",
+  "loading_model": "Chargement du modèle…",
+  "params_failed": "Les paramètres n'ont pas pu être chargés : {error}"
+ },
+ "chart": {
+  "aria": "graphique",
+  "empty_series": "Le modèle ne fournit pas encore cette série.",
+  "empty_series_plural": "Le modèle ne fournit pas encore ces séries.",
+  "empty_values": "Le modèle ne fournit pas encore ces valeurs.",
+  "dashed_baseline": "Pointillés : référence",
+  "range": "{lo} à {hi}",
+  "pyramid_aria": "Pyramide des âges",
+  "age": "{age} ans"
+ },
+ "cmp": {
+  "show_chart": "Afficher le graphique",
+  "show_table": "Afficher le tableau",
+  "download_csv": "Télécharger en CSV",
+  "static": "Statique (sans réaction comportementale)",
+  "band_name": "Fourchette des réactions comportementales, ×0,5 à ×1,5 (pas un intervalle de confiance)",
+  "name_baseline": "{name}, référence",
+  "col_baseline": "{name} (référence)",
+  "col_scenario": "{name} (scénario)",
+  "missing": "Pas encore fourni par le modèle : {keys}.",
+  "not_available": "Pas encore disponible.",
+  "server_missing": "Le serveur ne fournit pas encore cette information.",
+  "check_again": "Vérifier à nouveau",
+  "compute_failed": "Le calcul n'a pas abouti",
+  "try_again": "Réessayer",
+  "display_failed": "La réponse du serveur n'a pas pu être affichée",
+  "sort_by": "Trier par {label}"
+ },
+ "panel": {
+  "aria": "Construction du scénario",
+  "default_name": "Mon scénario",
+  "measure_n": "Mesure {n}",
+  "skipped": {
+   "one": "({n} mesure désactivée ou vide non reprise)",
+   "other": "({n} mesures désactivées ou vides non reprises)"
+  },
+  "compare": {
+   "none": "Ce scénario ne contient aucune mesure active à comparer.",
+   "updated": "« {name} » mis à jour dans la comparaison.",
+   "full": "La comparaison contient au maximum {max} scénarios. Retirez-en d'abord un.",
+   "kept": "« {name} » conservé pour la comparaison."
+  },
+  "import": {
+   "measure": "Mesure « {name} » ajoutée.",
+   "scenario": "Scénario « {name} » chargé.",
+   "measures": {
+    "one": "{n} mesure ajoutée.",
+    "other": "{n} mesures ajoutées."
+   },
+   "not_scenario": "Ce fichier n'est ni un scénario ni une mesure (« measures » ou « changes » attendu).",
+   "failed": "Impossible d'importer {file} : {error}",
+   "button": "Importer un fichier"
+  },
+  "err": {
+   "no_value": "Indiquez une valeur.",
+   "not_number": "« {text} » n'est pas un nombre.",
+   "start_outside": "L'année de début est en dehors de la simulation."
+  },
+  "change": {
+   "unknown_title": "Ce paramètre n'existe pas dans le modèle",
+   "unknown": "Paramètre inconnu : la simulation sera refusée.",
+   "remove": "Retirer cette modification",
+   "operation": "Opération",
+   "from": "de",
+   "to": "à",
+   "from_aria": "Année de début",
+   "to_aria": "Année de fin",
+   "open": "sans fin",
+   "phase_in": "progressif sur",
+   "phase_aria": "Années de mise en œuvre progressive"
+  },
+  "op": {
+   "set": "fixer à",
+   "add": "ajouter",
+   "mul": "multiplier par"
+  },
+  "measure": {
+   "include_title": "Inclure cette mesure dans la simulation",
+   "include": "Inclure {name}",
+   "name": "Nom de la mesure",
+   "remove_title": "Retirer cette mesure",
+   "remove": "Retirer {name}",
+   "empty": "Aucune modification pour l'instant. Choisissez un paramètre dans Mesures et ajoutez une modification à cette mesure."
+  },
+  "lib": {
+   "regional": "Régionales",
+   "unknown_params": "Paramètres inconnus : {list}",
+   "needs_update": "à mettre à jour",
+   "added_toast": "« {name} » ajoutée. Simulez le scénario pour voir son effet.",
+   "added": "Ajoutée",
+   "add": "Ajouter",
+   "title": "Mesures prédéfinies ({n})",
+   "none_match": "Aucune mesure prédéfinie pour cette sélection.",
+   "empty": "Aucune mesure prédéfinie pour l'instant. Les fichiers de scenarios/ et de belsim/measures/library/ apparaissent ici.",
+   "scenarios": "Scénarios prédéfinis"
+  },
+  "load": "Charger",
+  "saved": {
+   "loaded": "« {name} » chargé.",
+   "delete_title": "Supprimer ce scénario enregistré",
+   "delete": "Supprimer {name}",
+   "title": "Scénarios enregistrés ({n})",
+   "empty": "Rien d'enregistré pour l'instant. « Enregistrer » sauvegarde le scénario dans un fichier YAML sous scenarios/user/.",
+   "saved_to": "Enregistré dans {file}",
+   "saved_but": "Enregistré, mais : {problem}",
+   "in_browser": "conservé dans ce navigateur",
+   "empty_browser": "Rien d'enregistré pour l'instant. « Enregistrer » conserve le scénario dans ce navigateur uniquement ; utilisez les boutons d'export pour l'emporter ailleurs.",
+   "saved_browser": "Enregistré dans ce navigateur.",
+   "browser_failed": "Le navigateur a refusé de stocker le scénario ; exportez-le plutôt dans un fichier."
+  },
+  "status": {
+   "simulating": "Simulation en cours…",
+   "failed": "La dernière simulation a échoué",
+   "none": "Aucune mesure active : le scénario de référence est affiché",
+   "edited": "Modifié depuis la dernière simulation",
+   "not_run": "Pas encore simulé",
+   "current": "Les résultats sont à jour"
+  },
+  "hide": "Masquer",
+  "name_aria": "Nom du scénario",
+  "running": "Simulation…",
+  "band": {
+   "title": "Simule le scénario trois fois de plus : réactions comportementales multipliées par 0,5 et 1,5, puis désactivées. Ce n'est pas un intervalle de confiance.",
+   "label": "Afficher le chiffrage statique et la fourchette des réactions comportementales",
+   "computing": "(calcul en cours…)",
+   "failed": "(échec : {error})"
+  },
+  "refused": "Le scénario a été refusé",
+  "empty": {
+   "lead": "Aucune mesure pour l'instant.",
+   "rest": "Choisissez un paramètre et ajoutez une modification, ou ajoutez une mesure prédéfinie ci-dessous."
+  },
+  "add_change": "Ajouter une modification",
+  "new_measure": "Nouvelle mesure vide",
+  "clear_confirm": "Retirer toutes les mesures de ce scénario ?",
+  "clear": "Tout retirer",
+  "keep_title": "Conserver ce scénario, sous son nom, dans la vue Comparer",
+  "in_comparison": "Dans la comparaison",
+  "keep": "Conserver pour comparer",
+  "save": "Enregistrer",
+  "export": "Exporter en {format}",
+  "exported": "Export {format} effectué",
+  "results_csv": "Résultats en CSV"
+ },
+ "impact": {
+  "title": "Impact des mesures",
+  "sub": "{name} moins le scénario de référence",
+  "sub_stale": "(scénario modifié depuis cette simulation)",
+  "change_vs_baseline": "Écart par rapport à la référence",
+  "group": {
+   "budget": "Budget",
+   "economy": "Économie"
+  },
+  "row": {
+   "revenue": "Recettes",
+   "expenditure": "Dépenses",
+   "balance": "Solde",
+   "debt": "Dette",
+   "gdp_nominal": "PIB nominal",
+   "gdp_real": "PIB réel",
+   "employment": "Emploi",
+   "employment_rate": "Taux d'emploi 20-64 ans",
+   "unemployment_rate": "Taux de chômage"
+  },
+  "years": "Années",
+  "years_aria": "Années affichées dans le tableau d'impact",
+  "years_error": "Indiquez des années entre {first} et {last}.",
+  "breakdown": {
+   "interaction": "Interaction entre les mesures",
+   "all": "Toutes les mesures ensemble",
+   "sub": "Effet sur le solde de chaque mesure simulée isolément, {unit}",
+   "loading": "Simulation de chaque mesure…",
+   "button": "Ventiler par mesure"
+  },
+  "regions": {
+   "title": "Par Région",
+   "toggle": "Par Région",
+   "entities_note": "Le modèle ne fournit pas de solde public par territoire : le solde affiché est celui de chaque communauté et région en tant qu'institution."
+  },
+  "band": {
+   "title": "Chiffrage statique et fourchette des réactions comportementales",
+   "failed": "Les simulations de sensibilité ont échoué : {error}",
+   "loading": "Simulation du scénario à quatre reprises…",
+   "run_first": "Simulez le scénario pour calculer la fourchette.",
+   "run": {
+    "static": "Statique : sans réaction comportementale",
+    "low": "Réaction faible (×0,5)",
+    "central": "Central (×1)",
+    "high": "Réaction forte (×1,5)"
+   },
+   "notice": "Il ne s'agit pas d'un intervalle de confiance statistique. La fourchette présente le même scénario avec toutes les élasticités comportementales et tous les multiplicateurs budgétaires multipliés par 0,5 et par 1,5 ; la ligne statique les désactive (effet mécanique seul). Les paramètres comportementaux sont des hypothèses : l'écart indique dans quelle mesure le résultat en dépend.",
+   "toggle_title": "Simule le scénario avec les réactions comportementales multipliées par 0,5 et 1,5, et sans celles-ci",
+   "toggle": "Chiffrage statique et fourchette"
+  },
+  "empty": {
+   "run_lead": "Simulez le scénario",
+   "run_rest": "pour voir son effet sur les recettes, les dépenses, le solde, la dette, le PIB et l'emploi.",
+   "add_lead": "Ajoutez une mesure",
+   "add_rest": "dans le panneau du scénario, puis simulez-le. L'impact sur le budget et l'économie s'affiche ici."
+  }
+ },
+ "overview": {
+  "gdp": "PIB",
+  "growth": "Croissance du PIB réel",
+  "population": "Population",
+  "employment_rate": "Taux d'emploi, 20-64 ans",
+  "unemployment_rate": "Taux de chômage",
+  "revenue": "Recettes",
+  "expenditure": "Dépenses",
+  "balance": "Solde",
+  "debt": "Dette",
+  "baseline": "référence",
+  "balance_title": "Solde budgétaire",
+  "deficit_limit": "Seuil de déficit, −3 % du PIB",
+  "debt_title": "Dette publique",
+  "debt_ref": "Valeur de référence, 60 % du PIB",
+  "rev_exp_title": "Recettes et dépenses",
+  "about": {
+   "title": "La méthode en bref",
+   "what": "Une simulation annuelle de la Belgique jusqu'en 2070 : population, marché du travail, économie et chaque ligne de recettes et de dépenses des administrations publiques. Le scénario de référence suit le Bureau fédéral du Plan jusqu'en 2031 et le Comité d'étude sur le vieillissement ensuite ; une mesure est une modification de paramètres et son effet est l'écart par rapport à ce scénario de référence.",
+   "limits_lead": "Ni chiffrage officiel, ni prévision.",
+   "limits": "Les résultats sont des ordres de grandeur. La vue Validation montre où le modèle rejoint les chiffres officiels et où il s'en écarte ; aucun expert indépendant ne l'a encore examiné.",
+   "link": "Lire la méthodologie"
+  }
+ },
+ "budget": {
+  "side": {
+   "revenue": "Recettes",
+   "expenditure": "Dépenses"
+  },
+  "tab_entities": "Par niveau de pouvoir",
+  "unclassified": "Non classé",
+  "n_groups": {
+   "one": "{n} groupe",
+   "other": "{n} groupes"
+  },
+  "n_lines": {
+   "one": "{n} poste",
+   "other": "{n} postes"
+  },
+  "tree": {
+   "title": "{side} en {year}",
+   "sub": "{groups}, {lines}. Cliquez sur une ligne pour la représenter ; cliquez sur la flèche pour replier un groupe.",
+   "fold_group": "Replier {group}",
+   "total_revenue": "Total des recettes",
+   "total_expenditure": "Total des dépenses",
+   "unfold_all": "Tout déplier",
+   "fold_all": "Tout replier",
+   "col_line": "Poste et code SEC",
+   "col_share": "Part, %",
+   "gap": "La somme des postes est de {sum}, mais {key} indique {reported} en {year}."
+  },
+  "detail": {
+   "by_line": "{group}, par poste"
+  },
+  "by_group": "{side} par groupe",
+  "empty_revenue": "Le modèle ne fournit pas encore de postes de recettes.",
+  "empty_expenditure": "Le modèle ne fournit pas encore de postes de dépenses.",
+  "measure": {
+   "revenue": "Recettes",
+   "expenditure": "Dépenses",
+   "balance": "Solde",
+   "debt": "Dette"
+  },
+  "entities": {
+   "title": "Niveaux de pouvoir en {year}",
+   "sub": "{unit}, après transferts entre niveaux de pouvoir",
+   "col_entity": "Entité",
+   "general_government": "Administrations publiques",
+   "derived": "* Estimé à partir de la répartition de chaque poste entre entités, avant transferts entre niveaux de pouvoir : le modèle ne fournit pas encore ce chiffre par entité.",
+   "fed_note": "Les communautés et régions sont détaillées sous « Communautés et régions ». La ligne de consolidation n'est pas un pouvoir public : c'est l'écart entre leur somme et le sous-secteur consolidé.",
+   "missing": "Pas encore fourni par entité par le modèle : {list}.",
+   "chart_balance": "Solde par niveau de pouvoir",
+   "chart_debt": "Dette par niveau de pouvoir",
+   "chart_revenue": "Recettes par niveau de pouvoir",
+   "chart_expenditure": "Dépenses par niveau de pouvoir",
+   "fed_chart_balance": "Solde des communautés et régions",
+   "fed_chart_debt": "Dette des communautés et régions",
+   "fed_chart_revenue": "Recettes des communautés et régions",
+   "fed_chart_expenditure": "Dépenses des communautés et régions"
+  }
+ },
+ "regions": {
+  "delta": {
+   "employment": "Emploi",
+   "gdp": "PIB",
+   "gov_balance": "Solde des entités fédérées",
+   "entity_balance": "Solde des communautés et régions"
+  },
+  "empty": {
+   "lead": "Pas encore de chiffres par Région.",
+   "rest": "Cette vue se remplit dès que le modèle publie des séries par Région."
+  },
+  "intro": "Scénario de référence en {year}. Déplacez le curseur pour changer d'année.",
+  "intro_run": "« {name} » en {year}, avec l'écart par rapport au scénario de référence.",
+  "mode": {
+   "levels": "Niveaux",
+   "delta": "Écart par rapport à la référence"
+  },
+  "table": {
+   "metric": "Indicateur",
+   "title": "Les trois Régions en {year}",
+   "sub": {
+    "one": "{n} indicateur publié par le modèle régional",
+    "other": "{n} indicateurs publiés par le modèle régional"
+   },
+   "other_title": "Autres séries par Région, {year}",
+   "other_sub": "Publiées par les modules démographie et marché du travail",
+   "revenue_title": "Recettes par Région, {year}",
+   "expenditure_title": "Dépenses par Région, {year}",
+   "lines_sub": "Postes budgétaires selon la Région où ils naissent"
+  },
+  "chart": {
+   "baseline_of": "{region}, référence",
+   "delta_sub": "Écart par rapport à la référence, {unit}"
+  },
+  "entities_hint": "Budgets des communautés et régions en tant qu'institutions :",
+  "entities_pending": "Budgets par niveau de pouvoir :",
+  "entities_link": "Budget, par niveau de pouvoir"
+ },
+ "population": {
+  "pyramid": {
+   "loading": "Chargement de la population par âge…",
+   "no_data": "Pas de données de population pour {year}.",
+   "hint": "{total} millions d'habitants au 1er janvier {year}. Utilisez le curseur des années ou ▶ dans la barre supérieure pour parcourir le temps.",
+   "load_error": "Impossible de charger la pyramide des âges : {error}",
+   "title": "Population par âge et sexe, {year}",
+   "sub": "Personnes par année d'âge"
+  },
+  "dependency": {
+   "title": "Taux de dépendance des âgés",
+   "sub": "Personnes de 67 ans et plus par personne de 18 à 66 ans",
+   "sub_computed": "Personnes de 67 ans et plus par personne de 18 à 66 ans (calculé à partir des groupes d'âge)"
+  },
+  "flows": {
+   "title": "Naissances, décès et solde migratoire",
+   "births": "Naissances",
+   "deaths": "Décès",
+   "net_migration": "Solde migratoire"
+  },
+  "age_groups": {
+   "title": "Population par groupe d'âge",
+   "over_67": "67 ans et plus"
+  },
+  "total_title": "Population totale",
+  "by_region_title": "Population par Région",
+  "migration": {
+   "title": "Immigration et émigration",
+   "immigration": "Immigration",
+   "emigration": "Émigration"
+  },
+  "tfr": {
+   "title": "Indice conjoncturel de fécondité",
+   "sub": "Enfants par femme"
+  },
+  "life": {
+   "title": "Espérance de vie à la naissance",
+   "men": "Hommes",
+   "women": "Femmes"
+  }
+ },
+ "labour": {
+  "load_error": "Impossible de charger les données de {year} : {error}",
+  "cause": {
+   "unemp_exclusion": "Exclusion du chômage",
+   "pension_age": "Âge de la pension",
+   "structural_unemployment": "Chômage structurel",
+   "labour_supply": "Offre de travail",
+   "labour_demand": "Demande de travail",
+   "cyclical": "Conjoncture"
+  },
+  "causes": {
+   "total": "Variation totale de l'emploi",
+   "title": "Pourquoi l'emploi s'écarte de la référence",
+   "sub": "Milliers de personnes, par cause telle que rapportée par le modèle",
+   "aria": "Emploi par rapport à la référence, par cause",
+   "none": "Ce scénario ne modifie pas l'emploi."
+  },
+  "population": "Population",
+  "sector": "Secteur",
+  "all_sectors": "Tous les secteurs",
+  "avg_gross_earnings": "Salaire brut moyen",
+  "decile": "Décile {n}",
+  "per_age": "Personnes par année d'âge",
+  "thousand_persons": "Milliers de personnes",
+  "status": {
+   "title": "Population par statut"
+  },
+  "status_age": {
+   "title": "Statut par âge, {year}"
+  },
+  "employment_rate": "Taux d'emploi, 20-64 ans",
+  "unemployment_rate": "Taux de chômage",
+  "employment": "Emploi",
+  "activity_rate": "Taux d'activité, 20-64 ans",
+  "by_sector": {
+   "title": "Emploi par secteur et type d'emploi, {year}"
+  },
+  "table": {
+   "title": "Tableau de l'emploi, {year}"
+  },
+  "wages": {
+   "title": "Salaire brut moyen par secteur, {year}",
+   "sub": "€ par travailleur et par an, {prices}"
+  },
+  "deciles": {
+   "title": "Salaires par décile, {year}",
+   "sub": "Salaire brut annuel moyen de chaque dixième des travailleurs, €, {prices}"
+  },
+  "avg_earnings": {
+   "title": "Revenus professionnels moyens",
+   "private": "Salariés du privé",
+   "public": "Salariés du public",
+   "self_employed": "Indépendants"
+  },
+  "special_title": "Formes d'emploi particulières",
+  "wage_bill": {
+   "title": "Masse salariale et revenus des indépendants",
+   "private": "Masse salariale du privé",
+   "public": "Masse salariale du public",
+   "self_employed": "Revenus des indépendants"
+  }
+ },
+ "economy": {
+  "va": {
+   "title": "Valeur ajoutée par secteur",
+   "empty": "Le modèle ne fournit pas encore la valeur ajoutée par secteur.",
+   "title_year": "Valeur ajoutée par secteur, {year}",
+   "value": "Valeur ajoutée"
+  },
+  "gdp_current": "PIB, prix courants",
+  "gdp_share_hint": "Affiché en part de lui-même ; passez en Mrd €",
+  "gdp_volume": "PIB, volume",
+  "growth": "Croissance du PIB réel",
+  "components": {
+   "title": "Composantes du PIB, optique dépenses",
+   "households": "Consommation des ménages",
+   "government": "Consommation publique",
+   "investment": "Investissements",
+   "exports": "Exportations",
+   "imports": "Importations"
+  },
+  "cons_title": "Consommation des ménages par catégorie",
+  "prices": {
+   "title": "Prix et indice des salaires",
+   "cpi": "Prix à la consommation",
+   "health_index": "Indice santé",
+   "wage_index": "Indice des salaires",
+   "gdp_deflator": "Déflateur du PIB"
+  },
+  "inflation": "Inflation",
+  "rates": {
+   "title": "Taux d'intérêt",
+   "bond_10y": "Obligation d'État à 10 ans (OLO)",
+   "short": "Court terme"
+  },
+  "income": {
+   "title": "Composantes du revenu",
+   "compensation": "Rémunération des salariés",
+   "gos": "Excédent brut d'exploitation",
+   "mixed": "Revenu mixte"
+  },
+  "tax_bases": "Bases imposables",
+  "productivity": "Croissance de la productivité",
+  "demand_gap": "Écart de demande dû à l'impulsion budgétaire"
+ },
+ "explorer": {
+  "section": {
+   "fiscal": "Finances publiques",
+   "revenue": "Lignes de recettes",
+   "expenditure": "Lignes de dépenses",
+   "macro": "Économie",
+   "labour": "Marché du travail",
+   "demo": "Démographie",
+   "pop": "Population",
+   "status": "Statut de la population",
+   "emp": "Emploi",
+   "va": "Valeur ajoutée",
+   "regional": "Régions"
+  },
+  "no_match": "Aucune série ne correspond à « {q} ».",
+  "search_placeholder": "Rechercher une série, p. ex. pension, tva, dette",
+  "mode": {
+   "level": "Niveaux",
+   "delta": "Écart par rapport à la référence"
+  },
+  "remove_aria": "Retirer {label}",
+  "delta_sub": "{key}, écart en {unit}",
+  "delta_series": "Scénario moins référence",
+  "run_first": "Lancez un scénario pour voir les écarts par rapport à la référence.",
+  "all": {
+   "title": "Toutes les séries",
+   "sub": {
+    "one": "{n} série scalaire produite par le modèle",
+    "other": "{n} séries scalaires produites par le modèle"
+   }
+  },
+  "selected": {
+   "one": "{n} sélectionnée",
+   "other": "{n} sélectionnées"
+  },
+  "selected_capped": {
+   "one": "{n} sélectionnée, les {max} premières en graphique",
+   "other": "{n} sélectionnées, les {max} premières en graphique"
+  },
+  "download": "Télécharger la sélection en CSV",
+  "clear": "Effacer",
+  "none": {
+   "title": "Aucune sélection",
+   "lead": "Cochez une ou plusieurs séries",
+   "rest": "à gauche pour comparer la référence et le scénario. Toutes les clés produites par le modèle sont listées, y compris celles qu'aucune autre vue n'affiche."
+  }
+ },
+ "measures": {
+  "tab": {
+   "params": "Paramètres",
+   "impact": "Tableau d'impact"
+  },
+  "list_of": {
+   "one": "liste de {n}",
+   "other": "liste de {n}"
+  },
+  "n_keys": {
+   "one": "{n} clé",
+   "other": "{n} clés"
+  },
+  "by_region": "par Région",
+  "n_params": {
+   "one": "{n} paramètre",
+   "other": "{n} paramètres"
+  },
+  "n_files": {
+   "one": "{n} fichier",
+   "other": "{n} fichiers"
+  },
+  "filter": {
+   "all": "Tous {n}",
+   "assumptions": "Hypothèses {n}",
+   "regional": "Compétence régionale {n}",
+   "changed": "Dans le scénario {n}"
+  },
+  "tag": {
+   "assumption": "hypothèse",
+   "regional": "par Région",
+   "regional_title": "Compétence régionale : une valeur par Région, une mesure peut donc ne viser qu'une seule Région",
+   "wage_linked": "lié aux salaires",
+   "wage_linked_title": "Suit la croissance des salaires réels (core.tax_threshold_wage_link)",
+   "in_scenario": "dans le scénario"
+  },
+  "no_description": "Pas de description",
+  "no_match": "Aucun paramètre ne correspond à cette recherche.",
+  "no_params": "Le modèle ne définit pas encore de paramètres. Ils apparaissent ici dès que des fichiers params/*.yaml existent.",
+  "search": "Rechercher un nom, une description, une unité ou une source",
+  "params_title": "Paramètres",
+  "params_sub": "{params} dans {files}. Les valeurs affichées sont celles de {year}.",
+  "form": {
+   "title": "Ajouter une modification",
+   "sub": "Les valeurs s'expriment dans l'unité du paramètre ; les taux sont des fractions (0.25 = 25 %).",
+   "op": {
+    "set": "Fixer à",
+    "add": "Ajouter",
+    "mul": "Multiplier par"
+   },
+   "region_now": "{region}  (actuellement {value})",
+   "whole_region": "Valeur entière de la Région",
+   "whole_value": "Valeur entière",
+   "element_now": "{path}  (actuellement {value})",
+   "value_placeholder": "nombre, ou JSON pour la valeur entière",
+   "all_territories": "Toutes",
+   "permanent": "permanent",
+   "new_measure": "Nouvelle mesure",
+   "new_name": "Nom de la nouvelle mesure",
+   "new_name_placeholder": "p. ex. {example}",
+   "added": "Modification ajoutée. Simulez le scénario pour voir son effet.",
+   "added_n": {
+    "one": "{n} modification ajoutée. Simulez le scénario pour voir son effet.",
+    "other": "{n} modifications ajoutées, une par Région. Simulez le scénario pour voir leur effet."
+   },
+   "operation": "Opération",
+   "element": "Élément",
+   "value_unit": "Valeur, {unit}",
+   "from_year": "À partir de",
+   "until_year": "Jusqu'en",
+   "phase_in": "Mise en œuvre progressive, années",
+   "add_to": "Ajouter à",
+   "submit": "Ajouter la modification au scénario"
+  },
+  "err": {
+   "no_value": "Indiquez une valeur pour la modification.",
+   "bad_json": "La valeur n'est pas du JSON valide.",
+   "not_number": "« {text} » n'est pas un nombre.",
+   "start_range": "L'année de début doit être comprise entre {first} et {last}.",
+   "end_before_start": "L'année de fin précède l'année de début.",
+   "need_element": "Ce paramètre contient plusieurs valeurs : choisissez l'élément à modifier, ou donnez la valeur entière en JSON."
+  },
+  "preview": {
+   "becomes": "{from} devient {to}{unit}",
+   "from": "à partir de {start}",
+   "from_to": "de {start} à {end}",
+   "phased": {
+    "one": "mise en œuvre progressive sur {n} an",
+    "other": "mise en œuvre progressive sur {n} ans"
+   },
+   "uprated": "(valeur de {year} ; les années suivantes sont indexées sur {index})"
+  },
+  "index": {
+   "cpi": "les prix à la consommation",
+   "health_index": "l'indice santé",
+   "wages": "les salaires"
+  },
+  "indexation": {
+   "uprated": "indexé chaque année sur {index}",
+   "wage_link": "suit aussi la croissance des salaires réels dans la mesure fixée par {param}",
+   "wage_link_generic": "le lien salarial du modèle",
+   "none": "aucune (reste à sa valeur légale)"
+  },
+  "struct": {
+   "element": "Élément",
+   "first": "Premier",
+   "second": "Second",
+   "key": "Clé",
+   "empty": "Vide dans le scénario de référence."
+  },
+  "choose": {
+   "title": "Choisissez un paramètre",
+   "lead": "Sélectionnez un paramètre",
+   "rest": "à gauche pour voir sa définition et sa trajectoire de référence, puis décrivez comment la mesure le modifie : fixer une nouvelle valeur, y ajouter un montant ou le multiplier, à partir d'une année de début."
+  },
+  "assumption_note": "Cette valeur est une hypothèse, non un chiffre officiel. Interprétez avec prudence les résultats qui en dépendent.",
+  "not_stated": "non précisé",
+  "kv": {
+   "source": "Source",
+   "indexation": "Indexation",
+   "defined_in": "Défini dans",
+   "legislated": "Valeurs légales"
+  },
+  "baseline_by_year": "Valeur de référence par année",
+  "value_in": "Valeur en {year}",
+  "address_region": "Choisissez la Région à modifier avec « Région » ci-dessous.",
+  "address_element": "Ciblez un élément avec « Élément » ci-dessous.",
+  "already_changed": "Déjà modifié par : {list}.",
+  "load_failed": "Les paramètres n'ont pas pu être chargés."
+ },
+ "compare": {
+  "being_edited": "{name} (en cours d'édition)",
+  "metric": {
+   "balance": "Solde",
+   "revenue": "Recettes",
+   "expenditure": "Dépenses",
+   "gdp_real": "PIB réel",
+   "employment": "Emploi",
+   "debt": "Dette"
+  },
+  "set": {
+   "add_aria": "Ajouter un scénario à la comparaison",
+   "add": "Ajouter un scénario…",
+   "saved": "Scénarios enregistrés",
+   "prebuilt": "Scénarios prédéfinis",
+   "one_measure": "Une mesure prédéfinie isolée",
+   "replace_confirm": "Remplacer le scénario en cours d'édition (« {current} ») par « {name} » ? Il n'est pas conservé dans la comparaison.",
+   "now_in_panel": "« {name} » est maintenant le scénario du panneau latéral.",
+   "in_panel": "dans le panneau latéral",
+   "edit": "Modifier",
+   "remove_title": "Retirer de la comparaison",
+   "remove": "Retirer {name} de la comparaison",
+   "title": "Scénarios comparés",
+   "sub": "Jusqu'à {max} scénarios nommés, chacun par rapport au même scénario de référence. « Conserver pour comparer », dans le panneau latéral, enregistre sous son nom le scénario en cours d'édition.",
+   "remove_all_confirm": "Retirer tous les scénarios de la comparaison ?",
+   "remove_all": "Tout retirer",
+   "empty_lead": "Rien à comparer pour l'instant.",
+   "empty_rest": "Construisez un scénario dans le panneau latéral et choisissez « Conserver pour comparer », ou ajoutez un scénario enregistré ou prédéfini via le menu ci-dessus. Modifiez ensuite le scénario et conservez-le à nouveau sous un autre nom."
+  },
+  "refused": "Refusé : {error}",
+  "head": {
+   "debt_end": "Δ Dette en {year}, {unit}",
+   "debt_end_title": "Variation du taux d'endettement la dernière année simulée",
+   "title": "Principaux résultats en {year}",
+   "sub": "Chaque scénario moins le scénario de référence. Déplacez le curseur pour changer d'année ; cliquez sur une colonne pour trier."
+  },
+  "regions": {
+   "title": "Par Région en {year}",
+   "sub": "Chaque scénario moins le scénario de référence, dans chaque Région"
+  },
+  "years": {
+   "title": "Écart par rapport au scénario de référence, par année"
+  },
+  "chart": {
+   "balance": "Solde budgétaire",
+   "debt": "Dette publique",
+   "employment": "Emploi",
+   "diff_sub": "Écart par rapport à la référence, {unit}"
+  },
+  "mode": {
+   "levels": "Niveaux",
+   "delta": "Écart par rapport à la référence"
+  },
+  "simulating": {
+   "one": "Simulation de {n} scénario…",
+   "other": "Simulation de {n} scénarios…"
+  },
+  "some_refused": "Certains scénarios ont été refusés par le modèle et sont absents des graphiques :",
+  "charts_show": "Les graphiques montrent"
+ },
+ "balance": {
+  "kind": {
+   "deficit": "Plafond de déficit",
+   "debt": "Taux d'endettement stable"
+  },
+  "target": "Objectif",
+  "deficit_at_most": "un déficit d'au plus",
+  "debt_rule": "un solde qui maintient la dette, en pourcentage du PIB, à son niveau de l'année précédente",
+  "in_year": "en",
+  "measured_on": "Mesuré sur « {name} »",
+  "measured_on_baseline": "Mesuré sur le scénario de référence : aucun scénario n'a été simulé",
+  "spare": "{v} de marge",
+  "gap": {
+   "balance_scenario": "Solde dans le scénario",
+   "balance_baseline": "Solde dans le scénario de référence",
+   "target": "Solde visé",
+   "to_close": "Écart à combler",
+   "title": "Écart entre le solde et l'objectif",
+   "sub": "Positif = effort encore nécessaire pour atteindre l'objectif",
+   "debt_note": "Solde stabilisant = −(dette de l'année précédente × croissance du PIB nominal) / PIB. Il évolue avec la dette et la croissance de la simulation et ne tient pas compte des ajustements stock-flux."
+  },
+  "series": {
+   "target_deficit": "Objectif : déficit de {v} du PIB",
+   "target_debt": "Objectif : solde qui stabilise le taux d'endettement"
+  },
+  "verdict": {
+   "none": "Pas de chiffre pour {year}.",
+   "miss_scenario": "En {year}, le scénario manque l'objectif de {pts} points de PIB : {amount}{prices} à trouver.",
+   "miss_baseline": "En {year}, le scénario de référence manque l'objectif de {pts} points de PIB : {amount}{prices} à trouver.",
+   "meet_scenario": "En {year}, le scénario atteint l'objectif, avec une marge de {pts} points de PIB ({amount}).",
+   "meet_baseline": "En {year}, le scénario de référence atteint l'objectif, avec une marge de {pts} points de PIB ({amount})."
+  },
+  "chart": {
+   "title": "Solde et objectif"
+  },
+  "rank": {
+   "loading": {
+    "one": "Simulation de la mesure prédéfinie isolément…",
+    "other": "Simulation de chacune des {n} mesures prédéfinies isolément…"
+   },
+   "loading_detail": "Une dizaine de secondes la première fois ; en cache ensuite.",
+   "no_region": "Sans détail régional",
+   "measures_for": "Mesures",
+   "effect_in": "Effet en",
+   "col_measure": "Mesure isolée",
+   "failed": "N'a pas pu être simulée : {error}",
+   "col_balance": "Δ solde, {unit}",
+   "col_share": "Part de l'écart",
+   "col_share_title": "Variation du solde en part de l'écart à combler l'année choisie",
+   "col_employment": "Δ emploi, milliers",
+   "col_gdp": "Δ PIB réel, %",
+   "added": "« {name} » ajoutée. Simulez le scénario pour voir le nouvel écart.",
+   "no_year": "Le classement ne contient pas de chiffres pour {year}.",
+   "note": "Chaque mesure est simulée seule par rapport au scénario de référence, avec réactions comportementales, à l'ampleur inscrite dans la bibliothèque. Les effets de plusieurs mesures ne s'additionnent pas exactement (elles interagissent), et une mesure déjà présente dans votre scénario ne rapporterait pas deux fois le même montant : ajoutez des mesures, simulez le scénario et lisez le nouvel écart ci-dessus.",
+   "title": "Ce que change chaque mesure prédéfinie en {year}",
+   "sub": "Classées selon l'effet sur le solde ; cliquez sur une colonne pour trier.",
+   "filter": "Filtrer les mesures"
+  },
+  "unavailable": "Le modèle ne fournit pas encore le solde en pourcentage du PIB."
+ },
+ "distribution": {
+  "read_first": "À lire d'abord : comment ces chiffres sont établis.",
+  "income_measured": "Revenu mesuré.",
+  "indicator": {
+   "gini": "Coefficient de Gini",
+   "s80s20": "Rapport interquintile S80/S20",
+   "poverty_rate": "Taux de risque de pauvreté"
+  },
+  "indicator_change": "{name}, variation",
+  "model_levels": "Modèle : {baseline} dans le scénario de référence, {scenario} dans le scénario",
+  "observed": "Observé : {value}",
+  "observed_year": "Observé : {value} en {year}",
+  "read_change_hint": "Lisez la variation, pas le niveau : le modèle applique les règles à quelques ménages types, ce qui comprime les inégalités bien en deçà des statistiques observées.",
+  "tile": {
+   "gaining": "Ménages gagnants",
+   "gaining_sub": "revenu disponible en hausse, après variation des prix",
+   "losing": "Ménages perdants",
+   "losing_sub": "revenu disponible en baisse, après variation des prix",
+   "avg": "Variation moyenne par ménage",
+   "avg_sub": "{pct} du revenu disponible",
+   "all": "Ensemble des ménages",
+   "all_sub": "variation du revenu disponible"
+  },
+  "a_year": "par an",
+  "decile": {
+   "name": "Décile",
+   "title": "Variation du revenu disponible par décile",
+   "title_year": "Variation du revenu disponible par décile, {year}",
+   "none": "Le serveur n'a renvoyé aucun décile.",
+   "sub": "Dixièmes des ménages, du revenu le plus bas (1) au plus élevé (10) ; variation en % par rapport au scénario de référence, nette de l'effet sur les prix",
+   "flat_run": "Ce scénario ne modifie le revenu disponible dans aucun décile.",
+   "flat_norun": "Lancez un scénario pour voir qui gagne et qui perd.",
+   "series": "Variation du revenu disponible, %",
+   "tip_change": "Variation du revenu disponible",
+   "baseline_income": "Revenu de référence",
+   "head": {
+    "baseline_income_eur": "Revenu de référence, €",
+    "change_eur": "Variation, €",
+    "change_pct": "Variation, %",
+    "gaining": "Gagnants",
+    "losing": "Perdants"
+   }
+  },
+  "cause": {
+   "wages": "Salaires",
+   "benefits": "Allocations",
+   "contributions": "Cotisations",
+   "direct_taxes": "Impôts directs",
+   "indirect_taxes_prices": "Impôts indirects et prix"
+  },
+  "of_which": "dont {cause}",
+  "of_which_eur": "dont {cause}, €",
+  "due_to": "Part de la variation du revenu net liée au poste « {cause} »",
+  "hh": {
+   "title": "Ménages types",
+   "title_year": "Ménages types, {year}",
+   "none": "Le serveur n'a renvoyé aucun ménage.",
+   "sub": {
+    "one": "{shown} cas sur {n}. € par an ; « Variation » est nette de l'effet du scénario sur les prix. Cliquez sur une colonne pour trier.",
+    "other": "{shown} cas sur {n}. € par an ; « Variation » est nette de l'effet du scénario sur les prix. Cliquez sur une colonne pour trier."
+   },
+   "filter": "Filtrer les ménages"
+  },
+  "col": {
+   "household": "Ménage",
+   "households": "Ménages",
+   "households_title": "Nombre de ménages que ce cas représente",
+   "gross": "Brut, €",
+   "net_baseline": "Net, référence, €",
+   "net_scenario": "Net, scénario, €",
+   "change_before_prices": "Variation avant prix, €",
+   "change_before_prices_title": "Variation nominale du revenu disponible, avant l'effet du scénario sur les prix à la consommation",
+   "change_eur": "Variation, €",
+   "change_eur_title": "Variation du revenu disponible, nette de l'effet du scénario sur les prix à la consommation",
+   "change_pct": "Variation, %",
+   "avg": "Taux moyen",
+   "avg_title": "Impôts et cotisations en part du revenu brut",
+   "marg": "Taux marginal",
+   "marg_title": "Part d'un euro supplémentaire de revenu brut absorbée par les impôts, les cotisations et la perte d'allocations",
+   "part": "Taux de participation",
+   "part_title": "Part du salaire brut perdue en impôts et en allocations retirées lors de la reprise d'un emploi (piège à l'emploi)",
+   "in_scenario_note": "{title} (dans le scénario)"
+  },
+  "hint_scenario": "« {name} » par rapport au scénario de référence en {year}. Déplacez le curseur des années pour changer d'année.",
+  "hint_scenario_stale": "« {name} » par rapport au scénario de référence en {year} (le scénario tel qu'il figure maintenant dans le panneau latéral, pas la dernière simulation). Déplacez le curseur des années pour changer d'année.",
+  "hint_baseline": "Aucune mesure active : les chiffres décrivent le scénario de référence en {year}. Ajoutez une mesure dans le panneau latéral pour voir qui gagne et qui perd.",
+  "loading": "Calcul de l'effet sur les ménages…",
+  "missing": "Le modèle des ménages (POST /api/distribution) ne fait pas encore partie de ce serveur. Cette vue se remplira dès qu'il sera disponible.",
+  "unexpected": "réponse inattendue : {answer}",
+  "poverty": {
+   "title": "Risque de pauvreté par type de ménage et par activité",
+   "sub": "Part des personnes sous 60 % du revenu équivalent médian. L'ensemble de ménages est stylisé : lisez la variation plutôt que le niveau.",
+   "by_household": "Par type de ménage",
+   "by_activity": "Par statut d'activité (adultes)",
+   "share": "Part du groupe",
+   "observed": "Observé",
+   "change": "Variation, points"
+  }
+ },
+ "payslip": {
+  "form": {
+   "kind": "Type de revenu",
+   "household": "Ménage",
+   "region": "Région (impôts locaux et régionaux)",
+   "gross_min": "Brut à partir de, € par an",
+   "gross_max": "Brut jusqu'à, € par an",
+   "at": "Détail à, € par an"
+  },
+  "ref": {
+   "min_wage": "Salaire minimum",
+   "p25": "Premier quartile",
+   "median": "Médiane",
+   "p75": "Troisième quartile",
+   "p90": "90e centile",
+   "top": "Sommet"
+  },
+  "ref_bar": "Placer le détail sur un salaire de référence de {year} :",
+  "ref_button": "{name}, {amount}",
+  "breakdown": {
+   "title": "Détail",
+   "none": "Le serveur n'a renvoyé aucun détail.",
+   "title_at": "Détail pour un revenu brut de {amount} par an",
+   "sub": "€ par an, sauf pour les taux.",
+   "sub_nearest": "Point calculé le plus proche de {amount}. € par an, sauf pour les taux.",
+   "item": "Poste"
+  },
+  "item": {
+   "gross": "Revenu brut",
+   "employer_cost": "Coût salarial",
+   "ssc_employer": "Cotisations patronales",
+   "ssc_employee": "Cotisations personnelles",
+   "taxable_income": "Revenu imposable",
+   "tax_federal": "Impôt fédéral",
+   "tax_regional": "Impôt régional",
+   "tax_local": "Additionnels communaux",
+   "tax_child_credit": "Crédit d'impôt pour enfants à charge",
+   "tax_total": "Impôt des personnes physiques, total",
+   "allowances_tax_free_allowance": "Quotité exemptée d'impôt",
+   "allowances_marital_quotient": "Quotient conjugal",
+   "allowances_family_allowance": "Allocations familiales",
+   "household_gross": "Revenu brut du ménage",
+   "net": "Revenu net",
+   "net_earner_only": "Revenu net, titulaire seul",
+   "marginal_rate": "Taux marginal",
+   "average_rate": "Taux moyen",
+   "participation_rate": "Taux de participation",
+   "federal": "Impôt fédéral",
+   "regional": "Impôt régional",
+   "local": "Additionnels communaux",
+   "child_credit": "Crédit d'impôt pour enfants à charge",
+   "income_tax": "Impôt des personnes physiques",
+   "tax_free_allowance": "Quotité exemptée d'impôt",
+   "marital_quotient": "Quotient conjugal",
+   "family_allowance": "Allocations familiales",
+   "benefits": "Allocations",
+   "market_income": "Revenu primaire",
+   "indirect_taxes": "Impôts indirects"
+  },
+  "no_grid": "réponse inattendue : pas de grille",
+  "same": "Le scénario ne modifie pas cette fiche de paie : le scénario de référence et le scénario coïncident.",
+  "net": {
+   "title": "Revenu net en fonction du revenu brut",
+   "sub": "€ par an, {year}. Cliquez sur le graphique pour déplacer le détail.",
+   "head_baseline": "Net, référence",
+   "head_scenario": "Net, scénario"
+  },
+  "gross": "Brut",
+  "gross_prefix": "Brut, € : ",
+  "marg": {
+   "title": "Taux marginal en fonction du revenu brut",
+   "sub": "Part d'un euro supplémentaire de revenu brut qui n'atteint pas le revenu net, %",
+   "head_baseline": "Taux marginal, référence, %",
+   "head_scenario": "Taux marginal, scénario, %"
+  },
+  "options_loading": "Chargement des options de la fiche de paie…",
+  "options_missing": "Le calculateur de fiche de paie (GET /api/payslip/options, POST /api/payslip) ne fait pas encore partie de ce serveur. Cette vue se remplira dès qu'il sera disponible.",
+  "whose": "La fiche de paie de qui",
+  "whose_sub_scenario": "Règles de {year} (déplacez le curseur des années), scénario de référence comparé à « {name} »",
+  "whose_sub_baseline": "Règles de {year} (déplacez le curseur des années), scénario de référence seul : aucune mesure active",
+  "loading": "Calcul de la fiche de paie…",
+  "missing": "Le calculateur de fiche de paie (POST /api/payslip) ne fait pas encore partie de ce serveur."
+ },
+ "validation": {
+  "bucket": {
+   "b0": "à moins de 5 %",
+   "b1": "5 à 10 %",
+   "b2": "10 à 25 %",
+   "b3": "25 à 50 %",
+   "b4": "plus de 50 %"
+  },
+  "bucket_count": "{count} {label}",
+  "bucket_legend": "{label} ({count})",
+  "source": "Source",
+  "confidence": {
+   "high": "élevée",
+   "medium": "moyenne",
+   "low": "faible"
+  },
+  "confidence_title": "Fiabilité du chiffre de référence : {level}",
+  "sum": {
+   "baseline_compared": {
+    "one": "{n} chiffre du scénario de référence comparé",
+    "other": "{n} chiffres du scénario de référence comparés"
+   },
+   "costing_compared": {
+    "one": "{n} chiffre de chiffrage comparé",
+    "other": "{n} chiffres de chiffrage comparés"
+   },
+   "median": ", écart médian de {gap} du chiffre officiel",
+   "no_equivalent": {
+    "one": "{n} n'a pas d'équivalent dans le modèle",
+    "other": "{n} n'ont pas d'équivalent dans le modèle"
+   },
+   "zero_ref": {
+    "one": "{n} a une référence nulle (pas d'écart relatif)",
+    "other": "{n} ont une référence nulle (pas d'écart relatif)"
+   }
+  },
+  "filter": {
+   "any_confidence": "Toute fiabilité",
+   "high": "Élevée",
+   "medium": "Moyenne",
+   "low": "Faible",
+   "by_reference": "Par référence",
+   "largest_gaps": "Plus grands écarts d'abord",
+   "institution": "Institution",
+   "any_institution": "Toute institution",
+   "only_compared": "Comparés uniquement",
+   "search": "Chercher une description, une source ou une unité"
+  },
+  "status": {
+   "no_model_equivalent": "pas d'équivalent dans le modèle"
+  },
+  "variant": {
+   "static": "statique",
+   "behavioural": "avec réactions comportementales",
+   "unspecified": "méthode non précisée"
+  },
+  "col": {
+   "when": "Année ou période",
+   "official": "Officiel",
+   "model": "Modèle",
+   "gap": "Écart",
+   "gap_pct": "Écart, % de l'officiel",
+   "figure": "Chiffre",
+   "model_static": "Modèle, statique",
+   "model_behavioural": "Modèle, comportemental",
+   "reference": "Référence",
+   "searched": "Où elle a été cherchée"
+  },
+  "base": {
+   "title": "Projection de référence face aux projections officielles",
+   "sub": {
+    "one": "{shown} chiffre affiché sur {n}. Écart = modèle moins officiel.",
+    "other": "{shown} chiffres affichés sur {n}. Écart = modèle moins officiel."
+   },
+   "empty": "Aucune référence ne correspond à ces filtres."
+  },
+  "meas": {
+   "title": "Mesures face aux chiffrages officiels",
+   "sub": {
+    "one": "{shown} chiffre affiché sur {n}. L'écart compare le chiffre officiel à la simulation du modèle de même nature (statique lorsque le chiffrage officiel est statique, sinon avec réactions comportementales) : cette colonne est marquée.",
+    "other": "{shown} chiffres affichés sur {n}. L'écart compare le chiffre officiel à la simulation du modèle de même nature (statique lorsque le chiffrage officiel est statique, sinon avec réactions comportementales) : cette colonne est marquée."
+   },
+   "empty": "Aucun chiffrage ne correspond à ces filtres.",
+   "official_costing": "Chiffrage officiel : {institution}",
+   "added": "« {name} » ajoutée au scénario.",
+   "add": "Ajouter cette mesure au scénario",
+   "model_year": "{ref} (modèle {model})"
+  },
+  "rest": {
+   "not_found_title": "Références recherchées et non trouvées",
+   "not_found_sub": "Chiffres officiels qui seraient utiles mais n'ont pas pu être localisés",
+   "none": "Aucune.",
+   "problems_title": "Références qui n'ont pas pu être évaluées",
+   "problems_none": "Toutes les références ayant un équivalent dans le modèle ont été évaluées."
+  },
+  "loading": "Confrontation du modèle aux chiffres de référence officiels…",
+  "loading_detail": "Chaque mesure chiffrée est simulée deux fois (avec et sans réactions comportementales). Environ une minute la première fois, puis mis en cache jusqu'à ce que les paramètres changent.",
+  "missing": "Le serveur n'a pas de fichier de références de validation.",
+  "tab": {
+   "baseline": "Référence ({n})",
+   "measures": "Chiffrages de mesures ({n})",
+   "not_found": "Non trouvées ou non évaluées ({n})"
+  },
+  "how_title": "Comment lire ceci.",
+  "how_text": "Chaque ligne met un chiffre publié par un organisme officiel en regard de ce que le modèle donne pour la même grandeur. De petits écarts sur une ligne proche de votre question sont une raison de se fier au résultat ; de grands écarts indiquent que le modèle répond mal à ce type de question. La fiabilité porte sur le chiffre de référence : élevée = lu dans le document officiel, moyenne = source secondaire fiable ou calcul simple à partir d'un tableau officiel, faible = moins solide.",
+  "retrieved": "Références consultées le {date}",
+  "computed_in": "Calculé en {seconds} s."
+ },
+ "parties": {
+  "title": "Programmes des partis (chiffrage 2024)",
+  "none": "Aucun scénario de parti n'est disponible sur ce serveur.",
+  "caveat_lead": "À lire d'abord.",
+  "source_link": "Bureau du Plan : DC2024",
+  "method_title": "Comment les mesures ont été traduites",
+  "group": {
+   "nl": "Partis néerlandophones",
+   "fr": "Partis francophones",
+   "national": "Parti national"
+  },
+  "keep": "Comparer",
+  "details": "Détails",
+  "load_long": "Charger comme scénario actif",
+  "keep_long": "Ajouter à la comparaison",
+  "load_title": "Faire des mesures de {name} le scénario du panneau latéral",
+  "keep_title": "Ajouter les mesures de {name} aux scénarios comparés",
+  "panel_title": "Programmes des partis, chiffrage 2024 ({n})",
+  "panel_line": "{n} mesures, dont {with} avec changements",
+  "list_sub": "Les mesures que chaque parti a soumises au Bureau fédéral du Plan en 2024, traduites dans ce modèle. Par communauté linguistique, puis par ordre alphabétique.",
+  "coverage_aria": "Couverture de {name} : {text}",
+  "cov_short": "{m} modélisé, {p} en partie",
+  "col": {
+   "party": "Parti",
+   "measures": "Chiffrées / soumises",
+   "measures_title": "Mesures chiffrées par le Bureau parmi les mesures soumises",
+   "coverage": "Part de l'impulsion ex ante par statut",
+   "impulse": "Impulsion ex ante officielle {year}, millions d'euros",
+   "impulse_title": "Somme des impulsions ex ante du Bureau pour les mesures chiffrées du parti (prix et quantités de 2024, positif = améliore le solde) ; addition propre"
+  },
+  "status": {
+   "modelled": "Modélisée",
+   "partly_modelled": "Partiellement modélisée",
+   "not_modelled": "Non modélisée",
+   "already_in_baseline": "Déjà dans le scénario de référence"
+  },
+  "method": {
+   "pinned": "Valeur reprise de la fiche ; le chiffrage du modèle peut différer de celui du Bureau.",
+   "sized": "Paramètre calibré sur l'impulsion ex ante du Bureau.",
+   "proxy": "Portée par une ligne budgétaire plus large, calibrée sur l'impulsion du Bureau : le montant est reproduit, pas la conception de la mesure.",
+   "increment": "Adoptée en partie depuis 2024 : seul ce qui va au-delà de la loi est ajouté.",
+   "reversal": "Annule une réforme adoptée depuis 2024.",
+   "baseline": "Adoptée depuis 2024 ({what}) : dans le scénario de référence, rien n'est ajouté.",
+   "not_costed": "Non chiffrée par le Bureau du Plan : pas d'impulsion publiée.",
+   "zero_impulse": "Impulsion ex ante nulle dans le chiffrage (mesure neutre budgétairement ou structurelle).",
+   "no_lever": "Pas de paramètre adéquat dans le modèle.",
+   "residual": "Le paramètre ne peut pas porter toute l'impulsion (il manque {gap} millions d'euros).",
+   "missing": "Levier manquant : {lever}."
+  },
+  "baseline": {
+   "unemp_limit": "limitation dans le temps des allocations de chômage",
+   "rcc": "fin du chômage avec complément d'entreprise",
+   "welfare_freeze": "pas de revalorisation réelle des allocations en 2025-2029",
+   "pension_bonus": "fin du bonus de pension",
+   "perequation": "péréquation des pensions des fonctionnaires limitée",
+   "defence": "défense à 2 % du PIB en 2029 et 2,5 % en 2034",
+   "replacement_reductions": "réductions d'impôt abaissées pour les allocations de chômage et les pensions élevées"
+  },
+  "lever": {
+   "new_tax": "une nouvelle taxe propre (numérique, aviation, banques, péage routier…)",
+   "wealth_tax": "un impôt sur le patrimoine net",
+   "capital_income": "l'imposition progressive des revenus du capital",
+   "rental_income": "la taxation des loyers réels",
+   "cit_base": "la base de l'impôt des sociétés (déductions, exonérations)",
+   "alt_remuneration": "le traitement fiscal des voitures de société, chèques et stock-options",
+   "targeted_tax_credit": "un crédit d'impôt ciblé sur les bas et moyens salaires",
+   "pit_brackets": "plus de quatre tranches d'imposition",
+   "pit_expenditure": "des déductions spécifiques à l'impôt des personnes physiques",
+   "targeted_reductions": "les réductions groupes cibles de cotisations et de précompte",
+   "benefit_structure": "les règles des allocations par type de ménage, les plafonds et les conditions d'accès",
+   "health_envelope": "des budgets et prix spécifiques des soins de santé",
+   "programme_spending": "un programme de dépenses propre",
+   "asylum_migration": "les dépenses d'asile et de migration",
+   "asset_sales": "la vente de participations publiques (produit et affectation)",
+   "energy_policy": "la politique énergétique (centrales nucléaires, soutiens, tarifs)",
+   "institutional": "le coût des institutions politiques et des organismes payeurs",
+   "activation": "les politiques d'activation et de retour au travail",
+   "regulation": "la régulation des marchés et la simplification administrative",
+   "labour_regulation": "le droit du travail (salaire minimum, flexi-jobs, heures supplémentaires, démission)",
+   "excise_structure": "la structure des accises (remboursements, glissements entre énergies)",
+   "vat_item": "le taux de TVA d'un produit",
+   "local_finance": "les transferts aux pouvoirs locaux"
+  },
+  "detail": {
+   "title": "{name} : mesures soumises en 2024",
+   "sub": "{full} · {n} mesures, dont {costed} chiffrées par le Bureau. Chaque mesure est simulée seule.",
+   "pick": "Parti",
+   "pick_one": "Choisir un parti…",
+   "none_title": "Un parti en détail",
+   "none": "Choisissez un parti pour voir ses mesures, leur statut, l'impulsion du Bureau et l'effet dans ce modèle.",
+   "loading": "Simulation de chaque mesure de {name}…",
+   "source": "Fiches (PDF)",
+   "workbook": "Classeur de résultats du Bureau",
+   "title_in_fiche": "Titre dans la fiche",
+   "filter": {
+    "all": "Toutes les mesures",
+    "changes": "Avec changements",
+    "none": "Sans changement"
+   },
+   "year_note": "L'année {T} du programme est lue dans l'année {y} du modèle. Utilisez le sélecteur d'année ci-dessus (effets jusqu'en {max}).",
+   "scaled": "≈ {v} en {year}",
+   "package": "Ensemble du paquet",
+   "package_sub": "Toutes les mesures avec changements ensemble (les effets ne s'additionnent pas exactement)",
+   "official_results": "Résultats du Bureau pour le paquet, {year}",
+   "model_results": "Ce modèle, {year}",
+   "units": "Colonnes du modèle : variation du solde hors intérêts, en millions d'euros de l'année ; emploi en milliers de personnes. En petits caractères sous l'impulsion officielle : la même part du PIB en euros de l'année du modèle.",
+   "col": {
+    "fiche": "Fiche",
+    "measure": "Mesure",
+    "status": "Statut et méthode",
+    "official": "Impulsion officielle {year}, millions d'euros de 2024",
+    "official_title": "Impulsion budgétaire ex ante publiée par le Bureau pour l'année {T} du programme, aux prix et quantités de 2024 (positif = améliore le solde)",
+    "static": "Modèle, statique, {year}",
+    "behav": "Modèle, avec comportements, {year}",
+    "model_title": "Variation du solde primaire en {year} (millions d'euros) quand cette mesure seule est ajoutée au scénario de référence",
+    "employment": "Δ Emploi, {year}"
+   }
+  },
+  "all": {
+   "button": "Comparer tous les partis",
+   "hide": "Masquer la comparaison",
+   "title": "Tous les partis côte à côte, {year}",
+   "sub": "Chaque paquet par rapport au même scénario de référence. En petits caractères : le résultat du Bureau du Plan pour l'année {oyear} des programmes.",
+   "loading": "Simulation des {n} programmes de partis…",
+   "note": "Les deux séries de chiffres diffèrent par le modèle, par le scénario de référence et par la couverture : seules les mesures avec changements entrent dans le résultat de ce modèle, et les réformes adoptées depuis 2024 sont dans son scénario de référence. La barre de couverture montre quelle part de chaque paquet est modélisée.",
+   "model": "Ce modèle",
+   "bureau": "Bureau",
+   "col": {
+    "balance": "Δ Solde {year}, points de PIB",
+    "employment": "Δ Emploi {year}, milliers",
+    "gdp": "Δ PIB réel {year}, %",
+    "debt": "Δ Dette {year}, points de PIB"
+   },
+   "chart": {
+    "balance": "Variation du solde budgétaire, {year}",
+    "debt": "Variation du taux d'endettement, {year}",
+    "employment": "Variation de l'emploi, {year}",
+    "gdp": "Variation du PIB réel, {year}"
+   },
+   "chart_unit": {
+    "balance": "points de PIB",
+    "debt": "points de PIB",
+    "employment": "milliers de personnes",
+    "gdp": "%"
+   },
+   "dist_button": "Afficher l'effet par décile de revenu (environ une demi-minute)",
+   "dist_hide": "Masquer",
+   "dist_title": "Revenu disponible par décile de revenu, {year}",
+   "dist_sub": "Variation du revenu disponible des ménages par dixième de ménages, en %. Deuxième ligne : l'impact direct calculé par le Bureau, lorsqu'il existe.",
+   "dist_loading": "Calcul de la distribution pour {n} partis…",
+   "decile": "D{n}"
+  }
+ },
+ "meta": {
+  "description": "Un simulateur libre et ouvert de l'économie et des finances publiques belges, 2024-2070 : modifiez impôts, prestations et dépenses et voyez l'effet sur le budget, l'emploi et les ménages. Un modèle exploratoire, pas un chiffrage officiel."
+ },
+ "foot": {
+  "disclaimer": "Modèle exploratoire — pas un chiffrage officiel.",
+  "source": "Code source (AGPL-3.0)",
+  "method": "Comment il a été construit et jusqu'où s'y fier",
+  "build": "Version {commit}, {date}"
+ },
+ "wp": {
+  "doc_title": "Méthodologie — belsim",
+  "meta_description": "Comment le simulateur belsim des finances publiques belges a été construit, d'où viennent ses chiffres, dans quelle mesure ils concordent avec les chiffres officiels et à quoi il ne doit pas servir.",
+  "contents": "Sommaire",
+  "open_app": "Ouvrir le simulateur",
+  "print": "Imprimer ou enregistrer en PDF",
+  "na": "non disponible",
+  "pending": "En cours de calcul sur le serveur",
+  "live_failed": "Certains chiffres calculés en direct n'ont pas pu être chargés depuis le serveur ; ils portent la mention « non disponible » dans le texte.",
+  "build": {
+   "commit": "Version (commit git)",
+   "date": "Date de la version",
+   "params": "Paramètres",
+   "assumptions": "dont hypothèses",
+   "tests": "Tests automatisés",
+   "dirty": "avec des modifications non validées",
+   "unknown": "La version n'a pas pu être identifiée."
+  },
+  "params": {
+   "caption": "Paramètres et hypothèses par fichier de paramètres",
+   "file": "Fichier",
+   "count": "Paramètres",
+   "assumptions": "Hypothèses",
+   "share": "Part"
+  },
+  "base": {
+   "caption": "Scénario de référence (à politique inchangée), années choisies"
+  },
+  "val": {
+   "computing": "La comparaison avec les chiffres officiels est en cours de calcul sur le serveur (environ une minute la première fois). Cette section se complète d'elle-même.",
+   "failed": "La comparaison avec les chiffres officiels n'a pas pu être chargée ; elle est disponible dans la vue Validation du simulateur.",
+   "group": {
+    "base": "Projection de référence",
+    "ind": "Chiffrages et évaluations de mesures"
+   },
+   "line": "{n} chiffres, dont {compared} comparés : {w10} à moins de 10 % du chiffre officiel, {w25} à moins de 25 %, {w50} à moins de 50 %.",
+   "caption": "Le modèle face aux chiffres officiels : une sélection",
+   "col": {
+    "what": "Référence",
+    "official": "Officiel",
+    "model": "Modèle",
+    "gap": "Écart"
+   },
+   "sec": {
+    "near": "Scénario de référence jusqu'en 2031",
+    "long": "Long terme",
+    "static": "Fiscalité, chiffrage statique",
+    "dynamic": "Réponses dynamiques",
+    "measures": "Mesures adoptées ou chiffrées"
+   }
+  },
+  "sources": {
+   "caption": "{n} documents dans le fichier de référence",
+   "institution": "Institution",
+   "document": "Document",
+   "date": "Date",
+   "refs": "Références"
+  },
+  "dist": {
+   "caption": "Ménages synthétiques face à l'enquête sur les revenus, scénario de référence {year}",
+   "gini": "Coefficient de Gini du revenu disponible",
+   "s80": "Rapport interquintile de revenu (S80/S20)",
+   "poverty": "Taux de risque de pauvreté",
+   "by_type": "Taux de risque de pauvreté par type de ménage",
+   "observed": "Enquête (EU-SILC {year})"
+  }
+ }
+}

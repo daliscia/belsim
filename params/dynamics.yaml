@@ -1,0 +1,392 @@
+# Cross-module dynamics (prefix dyn.), owner: labour + macro + behaviour.
+#
+# Feedback channels that all work on the DIFFERENCE between a scenario and the baseline run
+# (they are exactly neutral in the baseline and in a scenario without measures):
+#   1. marginal workers: jobs gained or lost through a measure carry their own productivity and
+#      wage, not the average (belsim/labour, belsim/macro.output);
+#   2. real wage cost: wage-level changes move private labour demand and, in the short run, net
+#      exports (belsim/macro.prices publishes the index, belsim/behaviour reacts), and are
+#      passed on to prices;
+#   3. indirect taxes are passed into consumer prices and, through the health index, into
+#      automatic indexation (belsim/macro.prices);
+#   4. staffing levers of the expenditure side move public employment (belsim/labour);
+#   5. wage bargaining: gross wages react to changes in the tax wedge on labour and to the
+#      demand gap (belsim/macro.prices);
+#   6. prices and indexation: speed of indexation of a tax-induced price shift, weights of the
+#      consumer price index.
+# Every value is a lever. Values that are judgements are marked ASSUMPTION with their reference.
+
+# ------------------------------------------------------------------ 1. marginal workers
+dyn.marginal_productivity:
+  description: >-
+    Output per worker, relative to the average of the job type, of the jobs a scenario adds to
+    or removes from the baseline, by origin of the change. unemp_exclusion = people who work
+    because of the time limit on unemployment benefits; pension_age = legal / early retirement
+    age, RCC phase-out and the behavioural retirement response; structural_unemployment =
+    change in the regional structural unemployment rates; labour_supply = behavioural
+    participation response; labour_demand = response of private employment to labour cost;
+    cyclical = Okun response to the output gap (0 because the output effect of the gap is
+    already applied to GDP directly: the jobs follow output, they do not add to it). Any other
+    origin (population, public headcount, disability, schooling) counts as an average worker.
+  unit: ratio to average output per worker
+  source: >-
+    ASSUMPTION - unemp_exclusion: re-employed long-term unemployed start at 50-60% of the
+    average wage (NBB Economic Review 2020 and High Council for Employment 2019-2023 reports on
+    the long-term unemployed: mostly low-educated, re-entry in low-wage and part-time jobs;
+    Federal Planning Bureau 2025 assessment of the benefit time limit uses low-wage entry
+    jobs). pension_age: workers aged 60+ earn at or above the average but with more part-time
+    (Statbel Structure of Earnings Survey; Study Committee on Ageing uses average
+    productivity). labour_supply / structural_unemployment: participation responses are
+    concentrated in the lower deciles (Immervoll et al. 2007; same profile as
+    beh.ext.elasticity_by_decile, whose response-weighted mean wage is about 0.7 of the
+    average). labour_demand: 0.1, calibrated on the Federal Planning Bureau HERMES variants (WP 4
+    DC2024, table 12, and WP 10-18; see data/reference/validation.yaml): a change in relative
+    labour cost mostly substitutes labour for capital and intermediate inputs at a given output
+    (employer contributions +0.5% of GDP: 23 thousand jobs lost for 0.11% of GDP; -0.5% of GDP:
+    +22 thousand jobs for +0.13% of GDP; 2015 index jump: +28 thousand jobs, no GDP effect),
+    and the output effect is mostly demand: the lost wages, prices and dividends lower the real
+    income of households (beh.demand.mult_transfers), labour cost moves net exports. 0.2 until
+    household income entered the demand block. cyclical: model convention,
+    see description.
+  values:
+    2024:
+      unemp_exclusion: 0.55
+      pension_age: 0.95
+      structural_unemployment: 0.7
+      labour_supply: 0.7
+      labour_demand: 0.1
+      cyclical: 0.0
+dyn.marginal_wage:
+  description: >-
+    Gross wage (or self-employed income), relative to the average of the job type, of the jobs
+    a scenario adds to or removes from the baseline, by origin (same keys as
+    dyn.marginal_productivity). Drives the wage bill, the average wage and the wage deciles
+    that revenue taxes.
+  unit: ratio to average earnings
+  source: >-
+    ASSUMPTION - same references as dyn.marginal_productivity (wages equal to relative
+    productivity, so factor shares are unchanged), except cyclical: jobs lost or gained over
+    the cycle are paid about 80% of the average (temporary, young and low-tenure workers are
+    over-represented; OECD Employment Outlook 2020 ch. 1), and labour_demand: 1 - a change in
+    the cost of labour as a whole adds or removes jobs across the wage distribution like the
+    existing ones; where the cost changes more in some deciles, behaviour moves the jobs to
+    those deciles (adjust.labour_demand_decile_shift). Check on the HERMES variants (WP 10-18;
+    see tests/test_validation_tolerances_dynamics.py): budget cost after four years of a
+    general cut in employer contributions of 0.5% of GDP -0.24 point of GDP (model -0.24), of
+    a cut targeted at low wages -0.26 (model -0.26; -0.17 when its jobs were spread evenly at
+    0.8 of the average wage)
+  values:
+    2024:
+      unemp_exclusion: 0.55
+      pension_age: 0.95
+      structural_unemployment: 0.70
+      labour_supply: 0.70
+      labour_demand: 1.0
+      cyclical: 0.80
+
+dyn.marginal_wage_decile_profile:
+  description: >-
+    Where people who enter work from non-employment land in the wage distribution: relative
+    number of entrants in each of the ten wage deciles of their job type (1 = lowest), before
+    the tilt that brings their mean wage to the relative wage of their origin
+    (dyn.marginal_wage). Used for the origins listed in dyn.marginal_job_entrant_origins; the
+    jobs of the other origins start from a flat profile. The jobs a scenario adds to or removes
+    from each decile of private employees are published as
+    labour.scenario_jobs_private_by_decile; wage deciles, average wage and wage bill follow.
+  unit: relative weight
+  source: >-
+    ASSUMPTION - entrants from unemployment and inactivity are concentrated around the 10th to
+    25th percentile of earnings and thin out towards the top (NBB Economic Review 2020 and High
+    Council for Employment 2019-2023 on the re-employment of the long-term unemployed; Statbel
+    Structure of Earnings Survey by seniority). Same values as the earlier quantile-shift
+    profile of this parameter, now read as a distribution of heads
+  values:
+    2024: [2.0, 3.6, 2.4, 1.8, 1.4, 1.1, 0.95, 0.8, 0.65, 0.5]
+
+dyn.marginal_job_entrant_origins:
+  description: >-
+    Origins of an employment difference with the baseline (keys of dyn.marginal_wage) whose
+    jobs are spread over the wage deciles starting from the profile of entrants
+    (dyn.marginal_wage_decile_profile): people who work because of the time limit on
+    unemployment benefits, a lower structural unemployment rate (activation) or a
+    labour-supply response. The other origins start from a flat profile: postponed retirement
+    (near the average wage), the labour-cost response (which behaviour moves towards the
+    deciles whose employer cost changed, adjust.labour_demand_decile_shift) and the cycle.
+  unit: list of origins
+  source: "ASSUMPTION - model classification, same references as dyn.marginal_wage"
+  values:
+    2024: [unemp_exclusion, structural_unemployment, labour_supply]
+
+# ------------------------------------------------------------------ 2. real wage cost
+dyn.wage_cost.labour_demand_weight:
+  description: >-
+    Weight of the real-unit-labour-cost gap (wage index over underlying prices and warranted
+    productivity, scenario relative to baseline) in the labour-demand response. The gap is
+    multiplied by the mean of beh.ld.elasticity_by_decile and phased in with
+    beh.lambda.labour_demand. 1 = a wage-level change acts like an equal change in employer
+    cost, both measured against prices; 0 switches the channel off.
+  unit: factor
+  source: >-
+    ASSUMPTION - 1 for consistency: employer contributions and wages are the same labour cost.
+    Check (see data/reference/validation.yaml and tests/test_validation_tolerances_dynamics.py):
+    a 2% index jump spread as in 2015-2017 gives about +12 / +25 / +28 thousand jobs after two,
+    four and six years (Federal Planning Bureau 2015: +11 / +23 / +28.5 thousand; National Bank:
+    private employment +0.8% after five years, here +0.8%)
+  values:
+    2024: 1.0
+
+dyn.wage_cost.net_export_output_elasticity:
+  description: >-
+    Short-run effect on output of a change in labour cost per unit of output relative to the
+    baseline (wages and employer contributions, against prices and productivity) through
+    competitiveness (net exports), net of the loss of household purchasing power: output gap =
+    - elasticity x log gap. It fades with beh.demand.persistence; the lasting effect comes from
+    labour demand. LEVER and main model uncertainty on wage-cost measures: 0.05 is the Federal
+    Planning Bureau's (HERMES) reading, 0.30 the National Bank's (set this value to run the
+    "National Bank" variant: the 2015 index jump then raises GDP by 0.5% after five years and a
+    cut in employer contributions of 0.22% of GDP by 0.2% after four, as in the Bank's
+    evaluations, but the HERMES contribution variants are overshot three to four times).
+  unit: elasticity
+  source: >-
+    ASSUMPTION - Federal Planning Bureau HERMES variants (WP 4 DC2024: hourly labour cost +0.9
+    to +1.6% after a rise in VAT or in employee or employer contributions lowers exports by
+    0.04 to 0.08%, i.e. about 0.05% of GDP per 1%; evaluation of the 2015 index jump: no GDP
+    effect). The National Bank's quarterly model has a much stronger export response (Chamber
+    DOC 54 0913/001: index jump, GDP +0.5% for labour cost -3.1%; 2016 contribution cut of EUR
+    960 mn, GDP +0.3%; see data/reference/validation.yaml): reproduced with 0.30 (GDP +0.50%
+    and +0.20%), not used as central value
+  values: {2024: 0.05}
+
+# ------------------------------------------------------------------ 3. indirect taxes -> prices
+dyn.indirect_tax_price_passthrough:
+  description: >-
+    Global multiplier on the pass-through of indirect-tax changes (VAT, excise) into the
+    consumer price index. The price change of a category is beh.cons.pass_through x the change
+    in (1 + tax rate); categories are weighted with their 2024 share in household consumption.
+    0 = prices and indexation do not react (the model's behaviour before this channel existed).
+    Not applied in static costing (beh.enabled = 0).
+  unit: factor
+  source: "ASSUMPTION - model switch; the category pass-through rates are in beh.cons.pass_through"
+  values: {2024: 1.0}
+
+dyn.health_index_excluded_categories:
+  description: Consumption categories that are not in the health index (their tax changes move the CPI but not automatic indexation)
+  unit: list of categories
+  source: "Royal Decree of 24 December 1993: the health index excludes tobacco, alcoholic beverages, petrol and diesel"
+  values:
+    2024: [alcohol, tobacco, fuel]
+
+# ------------------------------------------------------------------ 4. public staffing
+dyn.public_employment.function_weights:
+  description: >-
+    Share of general-government employment by function, used to translate
+    pubwage.staffing_factor (one factor per function) into public headcount: headcount factor =
+    1 + sum of weight x (factor - 1). Defence staff (4.6%) is not covered by a staffing factor.
+  unit: share of public employment
+  source: >-
+    Derived - compensation of employees (D1) by function in data/base/expenditure_lines_2024.csv
+    (Eurostat gov_10a_exp 2024, total EUR 77.4bn); ASSUMPTION - headcount shares equal
+    wage-bill shares
+  values:
+    2024: {general: 0.163, order: 0.110, economic: 0.101, environment: 0.022, housing: 0.007, culture: 0.033, social: 0.075, health: 0.027, education: 0.415}
+
+dyn.public_employment.education_level_weights:
+  description: >-
+    Share of education staff by level. A change of an enrolment rate (educ.enrolment) relative
+    to the baseline changes education staff of that level in proportion (unchanged
+    pupil-teacher ratio); "other" does not react.
+  unit: share of education employment
+  source: >-
+    Derived - compensation of employees of the four education lines in
+    data/base/expenditure_lines_2024.csv (primary 11.0, secondary 13.7, tertiary 4.3, other
+    3.2 EUR bn); ASSUMPTION - staff follows pupils one for one
+  values:
+    2024: {primary: 0.342, secondary: 0.425, tertiary: 0.134}
+
+dyn.public_employment.reabsorption_speed:
+  description: >-
+    Share of the people displaced by a cut in public employment relative to the baseline (or of
+    the vacancies a public hiring wave leaves in the private sector) that the private sector
+    absorbs each year; the rest are unemployed or inactive meanwhile
+    (labour.demand_shock_to_unemployment). 1 = immediate one-for-one offset (the model's
+    behaviour before this channel existed).
+  unit: fraction per year
+  source: >-
+    ASSUMPTION - full crowding-out in the long run (Algan, Cahuc & Zylberberg 2002, Economic
+    Policy; Behar & Mok 2013, IMF WP 13/146), reached over about three years as in the
+    labour-demand adjustment (beh.lambda.labour_demand)
+  values: {2024: 0.35}
+
+dyn.wage_cost.price_passthrough:
+  description: Long-run change in consumer prices, relative to the baseline, per 1% gap in unit labour costs relative to the baseline (wage moderation lowers prices; an indexation-driven wage rise lifts them). The price change feeds back into wages through automatic indexation. LEVER (0 = prices do not react to wage costs).
+  unit: elasticity
+  source: "ASSUMPTION - calibrated on the National Bank's evaluation of the 2015 index jump (labour cost -3.1%, consumer prices -1.1%), see data/reference/validation.yaml"
+  values: {2024: 0.3}
+
+dyn.wage_cost.price_adjustment_speed:
+  description: Share of the remaining gap between consumer prices and their wage-cost target closed each year. The target includes the wage changes of the year that are known in advance (bargained shift, indexation of a tax-induced price shift, skipped indexation)
+  unit: fraction per year
+  source: "ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, table 12: consumer prices +0.29 / +0.31 / +0.26% at t / t+2 / t+4 after a rise in employer contributions; WP 10-18: -0.17 / -0.23 / -0.21% after a cut) and the National Bank's evaluations of the 2015 index jump and the 2016 contribution cut (prices follow labour cost within the year); see data/reference/validation.yaml"
+  values: {2024: 0.7}
+
+dyn.wage_cost.deflator_ratio:
+  description: Reaction of the price of market output (GDP deflator before the revaluation of government output at its pay cost) to wage costs, relative to that of consumer prices once these have adjusted. Domestic output prices carry more domestic labour cost than the consumer basket, part of which is imported, but export prices are set on world markets. With government output revalued at cost, the GDP deflator as a whole moves 1.1 to 1.3 times consumer prices after a wage shock; in the first year output prices run ahead (dyn.wage_cost.deflator_lead).
+  unit: ratio
+  source: "ASSUMPTION - Federal Planning Bureau HERMES variants: GDP deflator over consumer prices 1.2 at t+2 and t+4 after a rise in employer contributions (WP 4 DC2024, table 12: +0.38 / +0.31% against +0.31 / +0.26%), 1.3 after a cut (WP 10-18), 1.3 / 1.1 after a rise in employee contributions (WP 4 DC2024, table 14: +0.21 / +0.18% against +0.16 / +0.16%). A higher value (1.15 to 1.3) fits the contribution variants better but takes away the budget gain of the 2015 index jump in the Planning Bureau's evaluation (government revenue; see data/reference/validation.yaml and tests/test_validation_tolerances_dynamics.py)"
+  values: {2024: 1.0}
+
+dyn.wage_cost.deflator_lead:
+  description: >-
+    How far output prices run ahead of consumer prices after a change in wage costs: share of
+    the distance between the consumer-price effect reached so far and its target
+    (dyn.wage_cost.price_passthrough x the wage-cost gap) that the price of domestic output has
+    already covered. 1 = producers reprice at once and consumer prices follow at
+    dyn.wage_cost.price_adjustment_speed; 0 = both move together. It sets how much of a
+    wage-cost shock profits (and corporate tax) carry in the first year.
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the first year of the Federal Planning Bureau HERMES variants:
+    GDP deflator +0.45% against consumer prices +0.29% after a rise in employer contributions
+    (WP 4 DC2024, tables 12-13; corporate tax -0.06% of GDP; model +0.30% and -0.09%, against
+    +0.20% and -0.11% without the lead), -0.30% against -0.17% after a cut (WP 10-18; model
+    -0.30%), about +0.5% net of the tax itself after a VAT rise (table 10-11; corporate tax
+    -0.05% of GDP, model -0.09% against -0.11%). Skipped indexation has its own lead
+    (dyn.wage_cost.deflator_lead_indexation); see data/reference/validation.yaml
+  values: {2024: 1.0}
+
+dyn.wage_cost.deflator_lead_indexation:
+  description: >-
+    The same lead as dyn.wage_cost.deflator_lead for the part of a wage-cost change that comes
+    from indexation skipped or added relative to the baseline (index jump): 0 = producers pass
+    wage moderation into their prices no faster than consumer prices fall, so margins (and
+    corporate tax) carry the difference in the first years; 1 = as for taxes.
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau's evaluation of the 2015 index jump
+    (Chamber DOC 54 0913/001, HERMES report, table 1): with hourly labour cost 1.5 / 2.3 / 2.4%
+    lower in the second to fourth year the consumption deflator is only 0.2 / 0.3 / 0.4% lower
+    and the gross operating surplus of firms 0.4 / 0.6 / 0.5 point higher; budget gain 0.19 /
+    0.15 / 0.17% of GDP. Price cuts after a fall in costs come through competition, not through
+    an immediate repricing as after a tax rise. See data/reference/validation.yaml
+  values: {2024: 0.0}
+
+dyn.prices.demand_gap_sensitivity:
+  description: >-
+    Change in the level of consumer prices (and of the price of domestic output), relative to
+    the baseline, per point of demand gap of the previous year: slack lowers margins and wage
+    drift, so prices drift down for as long as output stays below its supply-side level (and up
+    in a boom). The price change reaches wages and benefits through automatic indexation. LEVER
+    (0 = prices do not react to slack).
+  unit: "% of price level per point of gap, per year"
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, tables
+    4, 6 and 8): consumer prices -0.01 / -0.06 / -0.12% at t / t+2 / t+4 after a cut in public
+    consumption (GDP -0.28 / -0.28 / -0.25%), -0.01 / -0.05 / -0.13% after a cut in public
+    investment (GDP -0.25 / -0.31 / -0.34%), -0.01 / -0.03 / -0.07% after a cut in social
+    benefits (GDP -0.08 / -0.12 / -0.13%): about 0.1% a year per point of gap, of which the
+    wage-price loop of this model adds a part itself
+  values: {2024: 0.1}
+
+dyn.wage_cost.employer_contribution_weight:
+  description: Weight of a change in employer contributions (labour cost per euro of gross wage) in the wage-cost gap that feeds consumer prices. Below 1 because part of a contribution change is absorbed in margins and in later wage bargaining rather than passed into prices.
+  unit: weight
+  source: "ASSUMPTION - calibrated on the Planning Bureau HERMES variants (employer contributions +0.5% of GDP: consumer prices +0.3% after two to four years) and the National Bank's evaluation of the 2016 contribution cut; see data/reference/validation.yaml"
+  values: {2024: 0.6}
+
+
+# ------------------------------------------------------------------ 5. wage bargaining
+dyn.wage_bargaining.worker_share_employer_contributions:
+  description: >-
+    Share of a change in employer contributions (labour cost per euro of gross wage) that
+    workers end up bearing once wages have been renegotiated: after a rise, gross wages fall by
+    this share of the rise in labour cost. The shift of the wage index moves labour demand,
+    prices and competitiveness through the real-unit-labour-cost channel. LEVER (0 = gross
+    wages do not react to employer contributions).
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, table
+    12, and WP 10-18; see data/reference/validation.yaml): employer contributions +0.5% of GDP
+    (labour cost +1.45% ex ante): hourly labour cost +1.62 / +1.54 / +1.38% at t / t+2 / t+4
+    with consumer prices +0.3%, i.e. gross wages 0.2% lower after two years and 0.3% after four
+  values: {2024: 0.25}
+
+dyn.wage_bargaining.compensation_employee_taxes:
+  description: >-
+    Share of a loss in net wage caused by employee contributions or income tax (at unchanged
+    gross wage) that workers recoup in their gross wage once wages have been renegotiated; it
+    raises labour cost, so the jobs are lost through labour demand rather than labour supply.
+    LEVER (0 = taxes on workers never reach labour cost).
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, tables
+    14-17; see data/reference/validation.yaml): employee contributions +0.5% of GDP (net wages
+    about -1.3% after the fall in income tax): hourly labour cost +0.88% after two years and
+    +0.99% after four (ratio about 0.65, net of the induced price rise); income tax +0.5% of
+    GDP (net wages about -2% on average, less for the typical worker): +0.72 / +0.84%. One
+    value for both taxes, applied to the mean loss over the wage deciles.
+  values: {2024: 0.65}
+
+dyn.wage_bargaining.worker_share_indirect_taxes:
+  description: >-
+    Share of a consumer-price rise caused by indirect taxes that wages lose again through
+    bargaining after automatic indexation has first compensated it in full (wages cannot stay
+    ahead of the prices firms receive, which exclude the tax).
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, table
+    10; see data/reference/validation.yaml): VAT +0.5% of GDP (consumer prices +1.2%): hourly
+    labour cost +1.33% in the first year, +1.04% after two years, +0.80% after four (model
+    +1.08 / +0.90 / +0.83%; 0.4 until the jobs lost through labour cost were counted at the
+    average wage, which took a composition effect out of the average labour cost)
+  values: {2024: 0.3}
+
+dyn.wage_bargaining.speed:
+  description: >-
+    Share of the remaining gap between the bargained wage shift and its target closed each
+    year. The target is last year's tax wedge and demand gap, so wages do not react in the
+    year of the measure (running agreements).
+  unit: fraction per year
+  source: >-
+    ASSUMPTION - calibrated on the HERMES variants (WP 4 DC2024): no reaction of gross wages in
+    the first year of an income-tax or employee-contribution rise, most of it after two years
+    (two-yearly interprofessional agreements)
+  values: {2024: 0.55}
+
+dyn.wage_bargaining.activity_weight:
+  description: >-
+    Long-run reaction of bargained wages to the demand gap of the previous year (per cent of
+    wage per per cent of output gap): wages follow the cyclical loss or gain in productivity
+    and the state of the labour market. Phased in with dyn.wage_bargaining.speed and reversed
+    when the gap closes.
+  unit: elasticity
+  source: >-
+    ASSUMPTION - calibrated on the HERMES variants (WP 4 DC2024, tables 4, 6 and 8): after a cut
+    in public consumption of 0.5% of GDP (GDP -0.28%) hourly labour cost is 0.10 / 0.23 / 0.33%
+    lower at t / t+2 / t+4, of which 0.01 / 0.06 / 0.12 points through lower prices
+  values: {2024: 0.8}
+
+# ------------------------------------------------------------------ 6. prices and indexation
+dyn.indexation.tax_shift_lag_weight:
+  description: >-
+    Weight of the previous year in the indexation of wages on a consumer-price shift caused by
+    an indirect-tax change (the rest is indexed in the year of the change). Lower than
+    labour.indexation_lag_weight, which applies to inflation building up during the year: a
+    tax change in force on 1 January lifts the whole year's index and the indexation
+    mechanisms (pivot index, smoothed health index) catch up within months. 0 = indexed in
+    full in the year of the change.
+  unit: fraction
+  source: >-
+    ASSUMPTION - calibrated on the HERMES VAT variants (Federal Planning Bureau WP 4 DC2024,
+    table 10, and WP 10-18): consumer prices +1.23% and hourly labour cost +1.33% in the year
+    of a VAT rise, -1.09% and -1.19% after a cut (model +1.12% and -1.12%; +1.02% with 0.1)
+  values: {2024: 0.0}
+
+dyn.cpi.imputed_rent_share_of_housing:
+  description: >-
+    Share of imputed rents of owner-occupiers in the consumption category "housing" (actual and
+    imputed rents). Imputed rents are part of household consumption in the national accounts
+    but not of the consumer price index, so they are left out of the weights with which
+    indirect-tax changes move the CPI and the health index.
+  unit: share
+  source: "Eurostat nama_10_cp18 2024, Belgium: CP042 imputed rentals 36,791 / (CP041 actual rentals 18,442 + CP042) EUR mn"
+  values: {2024: 0.666}

@@ -1,0 +1,72 @@
+key,value,source
+part_time_share_T,0.23199999999999998,"Eurostat lfsa_eppga 2024, age 20-64"
+part_time_share_M,0.106,"Eurostat lfsa_eppga 2024, age 20-64"
+part_time_share_F,0.373,"Eurostat lfsa_eppga 2024, age 20-64"
+weekly_hours_EMP_TOTAL,36.5,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_EMP_PT,24.6,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_EMP_FT,40.1,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SAL_TOTAL,35.3,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SAL_PT,24.9,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SAL_FT,38.7,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SELF_TOTAL,45.0,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SELF_PT,21.5,"Eurostat lfsa_ewhun2 2024, age 20-64"
+weekly_hours_SELF_FT,47.7,"Eurostat lfsa_ewhun2 2024, age 20-64"
+na_POP_NC_ths,11850.3,Eurostat nama_10_pe 2024
+na_EMP_NC_ths,5185.6,Eurostat nama_10_pe 2024
+na_EMP_DC_ths,5105.1,Eurostat nama_10_pe 2024
+na_SAL_NC_ths,4290.6,Eurostat nama_10_pe 2024
+na_SAL_DC_ths,4210.2,Eurostat nama_10_pe 2024
+na_SELF_NC_ths,894.9,Eurostat nama_10_pe 2024
+na_SELF_DC_ths,894.9,Eurostat nama_10_pe 2024
+commuting_FOR_ths,124.1,"Eurostat lfst_r_lfe2ecomm 2024, age 15-64"
+commuting_INR_ths,3829.0,"Eurostat lfst_r_lfe2ecomm 2024, age 15-64"
+commuting_OUTR_ths,1028.1,"Eurostat lfst_r_lfe2ecomm 2024, age 15-64"
+s13_P3_meur,147435.7,"Eurostat gov_10a_main 2024, S13"
+s13_D1PAY_meur,77355.4,"Eurostat gov_10a_main 2024, S13"
+silc_EMP_Y18-64_M,0.701,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_EMP_Y18-64_F,0.642,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_EMP_Y_GE65_M,0.021,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_EMP_Y_GE65_F,0.01,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_UNE_Y18-64_M,0.040999999999999995,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_UNE_Y18-64_F,0.037000000000000005,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_UNE_Y_GE65_M,0.0,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_UNE_Y_GE65_F,0.001,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_RET_Y18-64_M,0.040999999999999995,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_RET_Y18-64_F,0.03,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_RET_Y_GE65_M,0.975,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_RET_Y_GE65_F,0.9209999999999999,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_INAC_OTH_Y18-64_M,0.213,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_INAC_OTH_Y18-64_F,0.28800000000000003,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_INAC_OTH_Y_GE65_M,0.004,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+silc_INAC_OTH_Y_GE65_F,0.067,"Eurostat ilc_lvhl02 2024, most frequent activity status, share of population"
+pension_beneficiaries_AOLD_F,43494.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_AOLD_M,137082.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_AOLD_T,180576.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_DIS_F,565452.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_DIS_M,446359.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_DIS_T,1011811.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERLM_F,2729.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERLM_M,7621.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERLM_T,10350.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERRC_F,52.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERRC_M,137.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_ERRC_T,189.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_OLD_F,1128090.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_OLD_M,1232072.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_OLD_T,2360162.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_SRV_F,469441.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_SRV_M,33848.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_SRV_T,503289.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_TOTAL_F,1735959.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_TOTAL_M,1560795.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+pension_beneficiaries_TOTAL_T,3296754.0,Eurostat spr_pns_ben 2024 (ESSPROS)
+unemployed_duration_TOTAL_ths,306.2,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M_LT1_ths,34.1,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M1-2_ths,65.4,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M3-5_ths,45.9,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M6-11_ths,46.3,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M12-17_ths,34.2,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M18-23_ths,12.8,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M24-47_ths,32.2,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_M_GE48_ths,30.4,"Eurostat lfsa_ugad 2024, age 15-74"
+unemployed_duration_NRP_ths,5.0,"Eurostat lfsa_ugad 2024, age 15-74"

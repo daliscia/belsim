@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Methodology — belsim</title>
+<meta name="description" content="How the belsim simulator of Belgium's public finances was built, where its numbers come from, how far they agree with official figures, and what it should not be used for.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="belsim">
+<meta property="og:title" content="belsim — how this simulator was built, and why you can and cannot rely on it">
+<meta property="og:description" content="Model, data, baseline conventions, behavioural calibration, validation against official figures, and limits of an open simulator of Belgium's public finances.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chart titled “Belgium's budget, simulated”: public debt with no policy change, rising from 2024 to 2070, in % of GDP.">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="fr_BE">
+<meta property="og:locale:alternate" content="nl_BE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="belsim — methodology">
+<meta name="twitter:description" content="How an open simulator of Belgium's public finances was built, and how far to trust it.">
+<meta name="twitter:image" content="og.png">
+<meta name="twitter:image:alt" content="Chart titled “Belgium's budget, simulated”: public debt with no policy change, rising from 2024 to 2070, in % of GDP.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="js/theme-init.js"></script>
+<link rel="stylesheet" href="css/whitepaper.css">
+</head>
+<body>
+<a class="skip" id="skip" href="#paper"></a>
+<header id="top">
+  <a class="brand" href="./"><span class="brand-name">belsim</span><span class="brand-sub" id="top-sub"></span></a>
+  <div class="top-controls">
+    <div class="seg" id="lang-seg" role="group"></div>
+    <button type="button" class="btn quiet" id="theme-btn"></button>
+    <button type="button" class="btn quiet" id="print-btn"></button>
+    <a class="btn primary" id="app-link" href="./"></a>
+  </div>
+</header>
+<noscript>
+  <div class="nojs">
+    <p>This page assembles its text and its live figures with JavaScript. Without it, the text alone can be read here: <a href="wp/en.html">English</a>, <a href="wp/fr.html" lang="fr">français</a>, <a href="wp/nl.html" lang="nl">Nederlands</a> (figures computed by the model are left blank).</p>
+  </div>
+</noscript>
+<div id="layout">
+  <nav id="toc" aria-labelledby="toc-title">
+    <details id="toc-box" open>
+      <summary id="toc-title"></summary>
+      <ol id="toc-list"></ol>
+    </details>
+  </nav>
+  <main id="paper" tabindex="-1">
+    <div id="notice" role="status" hidden></div>
+    <article id="article"><div class="boot"><span class="bar"></span></div></article>
+    <footer id="paper-foot"></footer>
+  </main>
+</div>
+<script type="module" src="js/whitepaper.js"></script>
+</body>
+</html>

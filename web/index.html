@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>belsim — Belgium budget and economy simulator</title>
+<meta name="description" content="A free, open simulator of Belgium's economy and public finances, 2024-2070: change taxes, benefits and spending and see the effect on the budget, jobs and households. An exploratory model, not an official costing.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="belsim">
+<meta property="og:title" content="belsim — Belgium budget and economy simulator">
+<meta property="og:description" content="Change taxes, benefits and spending and see the effect on Belgium's budget, jobs and households, 2024-2070. An exploratory model, not an official costing.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chart titled “Belgium's budget, simulated”: public debt with no policy change, rising from 2024 to 2070, in % of GDP.">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="fr_BE">
+<meta property="og:locale:alternate" content="nl_BE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="belsim — Belgium budget and economy simulator">
+<meta name="twitter:description" content="Change taxes, benefits and spending and see the effect on Belgium's budget, jobs and households. An exploratory model, not an official costing.">
+<meta name="twitter:image" content="og.png">
+<meta name="twitter:image:alt" content="Chart titled “Belgium's budget, simulated”: public debt with no policy change, rising from 2024 to 2070, in % of GDP.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="js/theme-init.js"></script>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<a class="skip" id="skip" href="#view"></a>
+<noscript class="nojs">
+  <p><b>belsim</b> needs JavaScript: the charts and the simulations are drawn in your browser from the model's results. Nothing else is loaded: no tracker, no external script.</p>
+  <p lang="fr">belsim a besoin de JavaScript : les graphiques et les simulations sont dessinés dans votre navigateur à partir des résultats du modèle. Rien d'autre n'est chargé : ni traceur, ni script externe.</p>
+  <p lang="nl">belsim heeft JavaScript nodig: de grafieken en de simulaties worden in uw browser getekend op basis van de resultaten van het model. Er wordt niets anders geladen: geen tracker, geen extern script.</p>
+</noscript>
+<div id="app">
+  <nav id="rail">
+    <a class="brand" href="#/overview">
+      <span class="brand-name">belsim</span>
+      <span class="brand-sub" id="brand-sub"></span>
+    </a>
+    <ul id="nav"></ul>
+    <div class="rail-foot">
+      <a class="rail-link" id="method-link" href="whitepaper"></a>
+      <div id="model-note"></div>
+      <button id="theme-btn" type="button" class="ghost-dark"></button>
+    </div>
+  </nav>
+
+  <div id="main">
+    <header id="bar">
+      <h1 id="view-title"></h1>
+      <div class="bar-controls">
+        <div class="seg" id="unit-seg" role="group"></div>
+        <div class="yearctl" role="group">
+          <button id="year-play" type="button" class="icon">▶</button>
+          <button id="year-prev" type="button" class="icon">‹</button>
+          <input id="year-range" type="range">
+          <button id="year-next" type="button" class="icon">›</button>
+          <output id="year-out"></output>
+        </div>
+        <div class="seg lang" id="lang-seg" role="group"></div>
+        <button id="panel-btn" type="button" class="btn"></button>
+      </div>
+    </header>
+    <div id="status-strip" role="status" hidden></div>
+    <main id="view" tabindex="-1"><div class="boot"><div class="progress-bar"><span></span></div></div></main>
+    <footer id="foot">
+      <span id="foot-disclaimer"></span>
+      <a id="foot-method" href="whitepaper"></a>
+      <a id="foot-source" href="https://github.com/daliscia/belsim" rel="noopener"></a>
+      <span class="sep"></span>
+      <span id="foot-build" class="noprint"></span>
+    </footer>
+  </div>
+
+  <aside id="panel"></aside>
+</div>
+<div id="tip" role="tooltip" hidden></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

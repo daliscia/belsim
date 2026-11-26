@@ -1,0 +1,6542 @@
+{
+ "_source": "Federal Planning Bureau, DC2024 workbooks https://www.dc2024.be/uploaded/downloads/<PARTY>_nl.xlsx (sheets \"Maatregelen per categorie\", \"HERMES\", \"EXPEDITION\"), read on 2026-11-26. impulse: ex-ante budgetary impulse per year, EUR mn, prices and quantities of 2024 (positive = improves the balance). fpb_status SIMUL = costed in the models, FICHE = described but not costed. hermes: differences with the reference scenario 2025-2029.",
+ "cdv": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Digitale belasting vanaf 2025",
+    "impulse": {
+     "2025": 70.0,
+     "2026": 70.0,
+     "2027": 70.0,
+     "2028": 70.0,
+     "2029": 70.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik sociale werkbonus",
+    "impulse": {
+     "2025": -400.0,
+     "2026": -500.0,
+     "2027": -600.0,
+     "2028": -600.0,
+     "2029": -600.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik uitdoving bijzondere bijdrage sociale zekerheid",
+    "impulse": {
+     "2025": -617.0,
+     "2026": -1234.0,
+     "2027": -1234.0,
+     "2028": -1234.0,
+     "2029": -1234.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik hervorming belastingschijven",
+    "impulse": {
+     "2025": -4417.0,
+     "2026": -4873.0,
+     "2027": -5649.0,
+     "2028": -5649.0,
+     "2029": -5649.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "De opheffing van het Belgische binnenlands bankgeheim",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Een duidelijk kader voor het gebruik van onrechtmatig verkregen bewijsmateriaal",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Datamining toestaan op het CAP om fraude vlugger te ontdekken",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Beperking langdurige werkloosheidsuitkering",
+    "impulse": {
+     "2025": 1596.0,
+     "2026": 1596.0,
+     "2027": 1596.0,
+     "2028": 1596.0,
+     "2029": 1596.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Vrije instroom in sociale economie (extra arbeidsplaatsen)",
+    "impulse": {
+     "2025": -28.0,
+     "2026": -56.0,
+     "2027": -84.0,
+     "2028": -112.0,
+     "2029": -140.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Versterking geestelijke gezondheidszorg",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -50.0,
+     "2027": -75.0,
+     "2028": -75.0,
+     "2029": -100.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Versterking re-integratie langdurig zieken",
+    "impulse": {
+     "2025": 243.0,
+     "2026": 305.0,
+     "2027": 383.0,
+     "2028": 474.0,
+     "2029": 574.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Versterking inkomensgerelateerde kinderopvang",
+    "impulse": {
+     "2025": -73.0,
+     "2026": -145.0,
+     "2027": -218.0,
+     "2028": -382.0,
+     "2029": -730.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Sociale akkoorden op federaal niveau in de gezondheidssector",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -40.0,
+     "2027": -80.0,
+     "2028": -120.0,
+     "2029": -160.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Sociale akkoorden op Vlaams niveau in de gezondheidssector",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -80.0,
+     "2027": -160.0,
+     "2028": -240.0,
+     "2029": -320.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Investering in O&O: onderzoeksinfrastructuur, Einsteintelescoop,…",
+    "impulse": {
+     "2025": -250.0,
+     "2026": -300.0,
+     "2027": -350.0,
+     "2028": -450.0,
+     "2029": -500.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Beperken van het aantal opvangplaatsen voor asielzoekers",
+    "impulse": {
+     "2025": 185.0,
+     "2026": 451.0,
+     "2027": 451.0,
+     "2028": 451.0,
+     "2029": 451.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Efficiëntere overheid",
+    "impulse": {
+     "2025": 240.0,
+     "2026": 240.0,
+     "2027": 240.0,
+     "2028": 240.0,
+     "2029": 240.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Defensie: lokale verankering in Federale Participatie- en Investeringsmaatschappij",
+    "impulse": {
+     "2025": -167.0,
+     "2026": -167.0,
+     "2027": -167.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Overheidsinvesteringen in infrastructuur: ziekenhuizen en scholenbouw",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -100.0,
+     "2027": -150.0,
+     "2028": -250.0,
+     "2029": -300.0
+    }
+   },
+   {
+    "id": 703,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Investeringen in het kader van de modal shift (openbaar vervoer, fietsinfrastructuur, voetpaden,…)",
+    "impulse": {
+     "2025": -300.0,
+     "2026": -300.0,
+     "2027": -300.0,
+     "2028": -300.0,
+     "2029": -300.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Stimuleren van burgers om te investeren in hernieuwbare energiebronnen e.d. (uitbreiding Mijn VerbouwLening)",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -100.0,
+     "2027": -150.0,
+     "2028": -150.0,
+     "2029": -150.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Stimuleren van burgers om te investeren in hernieuwbare energiebronnen e.d. (hervorming sociaal tarief maar breder)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Investering in klimaatadaptatie en versnelde transitie naar een energiezuinig gebouwenpark om klimaatdoelstellingen te halen",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 804,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "In samenwerking met PMV zetten we innovatieve financieringsmechanismes en waarborgregelingen op. We werken een steunformule van “contracts for difference” uit die de competitiviteitstrijd met de buurlanden aangaat. Dit moet investeringen in hernieuwbare energie aantrekken.",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 805,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Inzetten op groene obligatieleningen door Fluvius (cfr. staatsbon)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.6,
+    0.84,
+    1.06,
+    1.16,
+    1.23
+   ],
+   "Privé-consumptie": [
+    0.99,
+    1.4,
+    1.73,
+    1.87,
+    1.95
+   ],
+   "Overheidsconsumptie": [
+    -0.19,
+    -0.23,
+    -0.14,
+    0.01,
+    0.3
+   ],
+   "Investeringen": [
+    1.15,
+    1.62,
+    2.01,
+    2.17,
+    2.31
+   ],
+   "Uitvoer": [
+    0.26,
+    0.35,
+    0.43,
+    0.44,
+    0.44
+   ],
+   "Invoer": [
+    0.42,
+    0.6,
+    0.75,
+    0.82,
+    0.88
+   ],
+   "Consumptieprijsindex": [
+    0.09,
+    -0.01,
+    -0.13,
+    -0.14,
+    -0.07
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.19,
+    -0.68,
+    -1.83,
+    -2.35,
+    -2.54
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    1.64,
+    2.04,
+    2.29,
+    2.31,
+    2.35
+   ],
+   "Werkgelegenheid": [
+    17860.0,
+    41430.0,
+    68610.0,
+    88370.0,
+    103520.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.26,
+    0.6,
+    0.99,
+    1.27,
+    1.49
+   ],
+   "Werkloosheidsgraad": [
+    -0.51,
+    -0.75,
+    -1.04,
+    -1.24,
+    -1.35
+   ],
+   "Vorderingensaldo van de overheid": [
+    -0.41,
+    -0.58,
+    -0.74,
+    -0.75,
+    -0.79
+   ],
+   "Overheidsschuld": [
+    -0.4,
+    0.12,
+    0.82,
+    1.41,
+    1.93
+   ],
+   "Broeikasgasemissies": [
+    0.49,
+    0.62,
+    0.75,
+    0.81,
+    0.86
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    -32.0,
+    -1.99
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    13.0,
+    0.61
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    74.0,
+    3.27
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    95.0,
+    3.49
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    131.0,
+    4.0
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    159.0,
+    4.25
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    174.0,
+    4.05
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    203.0,
+    4.08
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    219.0,
+    3.83
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    238.0,
+    2.76
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    127.0,
+    3.2
+   ]
+  ]
+ },
+ "defi": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter la progressivité de l'impôt en modifiant les tranches d'imposition",
+    "impulse": {
+     "2025": -10176.0,
+     "2026": -10176.0,
+     "2027": -10176.0,
+     "2028": -10176.0,
+     "2029": -10176.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer progressivement les niches fiscales à l'IPP (voitures de société, écochèques et chèques-repas)",
+    "impulse": {
+     "2025": 238.0,
+     "2026": 476.0,
+     "2027": 1663.0,
+     "2028": 2910.0,
+     "2029": 4459.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter la majoration de la quotité exemptée d'impôt pour chaque enfant à charge de 2 500 euros",
+    "impulse": {
+     "2025": -3521.0,
+     "2026": -3521.0,
+     "2027": -3521.0,
+     "2028": -3521.0,
+     "2029": -3521.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer progressivement par année le quotient conjugal",
+    "impulse": {
+     "2025": 98.0,
+     "2026": 196.0,
+     "2027": 294.0,
+     "2028": 392.0,
+     "2029": 491.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globalisation des revenus financiers et taxation des loyers réels",
+    "impulse": {
+     "2025": 6369.0,
+     "2026": 6369.0,
+     "2027": 6369.0,
+     "2028": 6369.0,
+     "2029": 6369.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter le seuil de rémunération du dirigeant d'entreprise (60 000 euros)",
+    "impulse": {
+     "2025": 13.0,
+     "2026": 13.0,
+     "2027": 13.0,
+     "2028": 13.0,
+     "2029": 13.0
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Allonger le congé de maternité à 21 semaines",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -716.0,
+     "2028": -716.0,
+     "2029": -716.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Suppression du délai de 7 jours en cas d'incapacité de travail (indépendants)",
+    "impulse": {
+     "2025": -16.0,
+     "2026": -16.0,
+     "2027": -16.0,
+     "2028": -16.0,
+     "2029": -16.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Prolonger la mesure des heures supplémentaires de relance exonérées de cotisations sociales et de précompte professionnel",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "FICHE",
+    "title": "Doubler le nombre de chômeurs en formation",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer le statut du cohabitant",
+    "impulse": {
+     "2025": -2045.0,
+     "2026": -2045.0,
+     "2027": -2045.0,
+     "2028": -2045.0,
+     "2029": -2045.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter le budget prévention en soins de santé à hauteur de 3 % contre 1,7 % actuellement à partir de 2025",
+    "impulse": {
+     "2025": -464.0,
+     "2026": -464.0,
+     "2027": -464.0,
+     "2028": -464.0,
+     "2029": -464.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "FICHE",
+    "title": "Créer un mécanisme d'intervention majorée lié aux revenus (pas de paiement de ticket modérateur)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Exonérer à 85 % le précompte professionnel pour les chercheurs pour stimuler la R&D",
+    "impulse": {
+     "2025": -92.0,
+     "2026": -92.0,
+     "2027": -92.0,
+     "2028": -92.0,
+     "2029": -92.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter le remboursement de l'Etat fédéral à hauteur de 95% du RIS pour le financement des CPAS",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Prise en charge à hauteur de 30 % par l'Etat fédéral pour les zones de secours",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Transfert budgétaire d'une clé 50/50 (au lieu de 60/40) pour les investissements SNCB",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Rénovation complète des établissements pénitentiaires",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -65.0,
+     "2027": -65.0,
+     "2028": -65.0,
+     "2029": -65.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Prolongement de l'exploitation des réacteurs nucléaires actuellement en service et ce dans la limite du possible",
+    "impulse": {
+     "2025": -185.0,
+     "2026": -185.0,
+     "2027": -185.0,
+     "2028": -185.0,
+     "2029": -185.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.62,
+    0.87,
+    0.96,
+    0.94,
+    0.84
+   ],
+   "Privé-consumptie": [
+    1.52,
+    1.95,
+    2.09,
+    2.0,
+    1.75
+   ],
+   "Overheidsconsumptie": [
+    0.33,
+    0.32,
+    0.33,
+    0.34,
+    0.36
+   ],
+   "Investeringen": [
+    0.7,
+    1.27,
+    1.44,
+    1.46,
+    1.37
+   ],
+   "Uitvoer": [
+    0.17,
+    0.15,
+    0.19,
+    0.07,
+    0.04
+   ],
+   "Invoer": [
+    0.66,
+    0.75,
+    0.82,
+    0.67,
+    0.57
+   ],
+   "Consumptieprijsindex": [
+    0.12,
+    -0.11,
+    -0.26,
+    -0.21,
+    -0.1
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.33,
+    -1.22,
+    -2.32,
+    -2.44,
+    -2.23
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    3.13,
+    2.98,
+    2.67,
+    2.3,
+    1.83
+   ],
+   "Werkgelegenheid": [
+    10290.0,
+    35180.0,
+    56160.0,
+    64940.0,
+    65910.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.14,
+    0.5,
+    0.81,
+    0.93,
+    0.95
+   ],
+   "Werkloosheidsgraad": [
+    0.25,
+    -0.17,
+    -0.51,
+    -0.65,
+    -0.65
+   ],
+   "Vorderingensaldo van de overheid": [
+    -1.32,
+    -1.3,
+    -1.19,
+    -0.98,
+    -0.76
+   ],
+   "Overheidsschuld": [
+    0.43,
+    1.83,
+    3.08,
+    3.86,
+    4.39
+   ],
+   "Broeikasgasemissies": [
+    0.75,
+    0.45,
+    0.51,
+    0.38,
+    0.32
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    80.0,
+    4.95
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    103.0,
+    4.71
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    118.0,
+    5.26
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    176.0,
+    6.46
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    232.0,
+    7.07
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    287.0,
+    7.67
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    353.0,
+    8.2
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    393.0,
+    7.91
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    407.0,
+    7.12
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    284.0,
+    3.29
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    243.0,
+    6.2
+   ]
+  ]
+ },
+ "ecolo": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Augmentation des bas et moyens salaires jusqu’à 350 euros nets",
+    "impulse": {
+     "2025": -3018.0,
+     "2026": -3018.0,
+     "2027": -3018.0,
+     "2028": -3018.0,
+     "2029": -3018.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globalisation des revenus du travail et du capital",
+    "impulse": {
+     "2025": 6369.0,
+     "2026": 6369.0,
+     "2027": 6369.0,
+     "2028": 6369.0,
+     "2029": 6369.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Contribution des gros patrimoines nets supérieurs à 1 million d’euros",
+    "impulse": {
+     "2025": 3658.0,
+     "2026": 3658.0,
+     "2027": 3658.0,
+     "2028": 3658.0,
+     "2029": 3658.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Imposition des plus-values sur revente d’actions",
+    "impulse": {
+     "2025": 1754.0,
+     "2026": 1754.0,
+     "2027": 1754.0,
+     "2028": 1754.0,
+     "2029": 1754.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Suppression de l’avantage fiscal lié à la voiture salaire et à la carte carburant",
+    "impulse": {
+     "2025": 3410.0,
+     "2026": 4039.0,
+     "2027": 4595.0,
+     "2028": 4684.0,
+     "2029": 5213.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Instauration d’un prélèvement kilométrique intelligent en Belgique",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Imposition des géants du numérique",
+    "impulse": {
+     "2025": 140.0,
+     "2026": 140.0,
+     "2027": 140.0,
+     "2028": 140.0,
+     "2029": 140.0
+    }
+   },
+   {
+    "id": 108,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Glissement fiscal des accises vers les produits énergétiques polluants",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 109,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Taxation du kérosène",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 110,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Donner plus de moyens à l’administration fiscale et à la justice",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 111,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Garantir la transparence et l’accès aux informations pour rendre la lutte contre la fraude fiscale plus efficace et en particulier vis-à-vis des paradis fiscaux",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 112,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Lutter plus efficacement contre la fraude à la TVA et d’autres pratiques spécifiques",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Baisse des cotisations sociales ciblée sur les bas et moyens salaires",
+    "impulse": {
+     "2025": -2000.0,
+     "2026": -2000.0,
+     "2027": -2000.0,
+     "2028": -2000.0,
+     "2029": -2000.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Augmentation du salaire minimum fixé à 60% du salaire médian",
+    "impulse": {
+     "2025": -29.0,
+     "2026": -29.0,
+     "2027": -29.0,
+     "2028": -29.0,
+     "2029": -29.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Augmentation du salaire minimum fixé à 60% du salaire médian : volet bonus à l'emploi",
+    "impulse": {
+     "2025": -2382.0,
+     "2026": -1948.0,
+     "2027": -1795.0,
+     "2028": -1795.0,
+     "2029": -1795.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "FICHE",
+    "title": "Réduction collective et concertée du temps de travail",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Individualisation des droits sociaux via la suppression du statut de cohabitant",
+    "impulse": {
+     "2025": -2045.0,
+     "2026": -2045.0,
+     "2027": -2045.0,
+     "2028": -2045.0,
+     "2029": -2045.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Augmentation des allocations sociales à 110% du seuil de pauvreté",
+    "impulse": {
+     "2025": -2043.0,
+     "2026": -2942.0,
+     "2027": -3392.0,
+     "2028": -3392.0,
+     "2029": -4303.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Revalorisation des salaires du personnel soignant",
+    "impulse": {
+     "2025": -350.0,
+     "2026": -350.0,
+     "2027": -350.0,
+     "2028": -350.0,
+     "2029": -350.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Soutien complémentaire au développement de l’économie circulaire",
+    "impulse": {
+     "2025": -200.0,
+     "2026": -200.0,
+     "2027": -200.0,
+     "2028": -200.0,
+     "2029": -200.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Renforcement de la déduction fiscale pour investissements verts",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -100.0,
+     "2027": -100.0,
+     "2028": -100.0,
+     "2029": -100.0
+    }
+   },
+   {
+    "id": 503,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Réduction supplémentaire du précompte professionnel pour les chercheurs (R&D)",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -100.0,
+     "2027": -100.0,
+     "2028": -100.0,
+     "2029": -100.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction de 30% de la rémunération des députés et des ministres",
+    "impulse": {
+     "2025": 10.0,
+     "2026": 10.0,
+     "2027": 10.0,
+     "2028": 10.0,
+     "2029": 10.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Augmentation de l’efficacité des services publics et de l’administration",
+    "impulse": {
+     "2025": 190.0,
+     "2026": 190.0,
+     "2027": 190.0,
+     "2028": 190.0,
+     "2029": 190.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Investissements dans la police et la justice",
+    "impulse": {
+     "2025": -350.0,
+     "2026": -350.0,
+     "2027": -350.0,
+     "2028": -350.0,
+     "2029": -350.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Programme d’investissements publics : Rénovation et isolation du bâti",
+    "impulse": {
+     "2025": -1200.0,
+     "2026": -1200.0,
+     "2027": -1200.0,
+     "2028": -1200.0,
+     "2029": -1200.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Création de 5.000 places d’accueil supplémentaires pour la petite enfance",
+    "impulse": {
+     "2025": -59.0,
+     "2026": -70.0,
+     "2027": -81.0,
+     "2028": -92.0,
+     "2029": -104.0
+    }
+   },
+   {
+    "id": 703,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "FICHE",
+    "title": "Programme d’investissements publics : Investissements pour la mobilité (SNCB, INFRABEL, STIB, TEC)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Programme d’investissements publics : Énergies renouvelables",
+    "impulse": {
+     "2025": -821.0,
+     "2026": -821.0,
+     "2027": -821.0,
+     "2028": -821.0,
+     "2029": -821.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Gratuité ciblée SNCB (Jeunes, BIM, Seniors)",
+    "impulse": {
+     "2025": -215.0,
+     "2026": -215.0,
+     "2027": -215.0,
+     "2028": -215.0,
+     "2029": -215.0
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Offrir un entretien vélo gratuit par an à l’ensemble des citoyens",
+    "impulse": {
+     "2025": -150.0,
+     "2026": -150.0,
+     "2027": -150.0,
+     "2028": -150.0,
+     "2029": -150.0
+    }
+   },
+   {
+    "id": 804,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Suppression de la TVA sur les transports publics",
+    "impulse": {
+     "2025": -77.0,
+     "2026": -77.0,
+     "2027": -77.0,
+     "2028": -77.0,
+     "2029": -77.0
+    }
+   },
+   {
+    "id": 805,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Lutte contre le gaspillage alimentaire",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.47,
+    0.5,
+    0.49,
+    0.43,
+    0.39
+   ],
+   "Privé-consumptie": [
+    -0.01,
+    -0.05,
+    -0.25,
+    -0.44,
+    -0.55
+   ],
+   "Overheidsconsumptie": [
+    0.05,
+    0.06,
+    0.08,
+    0.1,
+    0.11
+   ],
+   "Investeringen": [
+    3.25,
+    3.08,
+    3.08,
+    2.97,
+    2.88
+   ],
+   "Uitvoer": [
+    0.04,
+    0.09,
+    0.09,
+    0.05,
+    0.03
+   ],
+   "Invoer": [
+    0.42,
+    0.35,
+    0.26,
+    0.16,
+    0.09
+   ],
+   "Consumptieprijsindex": [
+    0.23,
+    0.1,
+    0.06,
+    0.13,
+    0.22
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    1.15,
+    0.09,
+    -0.55,
+    -0.57,
+    -0.49
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    -0.87,
+    -0.74,
+    -0.98,
+    -1.12,
+    -1.12
+   ],
+   "Werkgelegenheid": [
+    1190.0,
+    13450.0,
+    23450.0,
+    26620.0,
+    27710.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.01,
+    0.19,
+    0.33,
+    0.38,
+    0.4
+   ],
+   "Werkloosheidsgraad": [
+    0.28,
+    0.08,
+    -0.07,
+    -0.12,
+    -0.11
+   ],
+   "Vorderingensaldo van de overheid": [
+    0.82,
+    0.48,
+    0.49,
+    0.54,
+    0.55
+   ],
+   "Overheidsschuld": [
+    -1.81,
+    -1.92,
+    -2.21,
+    -2.71,
+    -3.27
+   ],
+   "Broeikasgasemissies": [
+    -0.34,
+    -0.62,
+    -0.96,
+    -1.32,
+    -1.68
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    244.0,
+    15.04
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    186.0,
+    8.48
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    124.0,
+    5.52
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    166.0,
+    6.12
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    184.0,
+    5.6
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    195.0,
+    5.21
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    181.0,
+    4.2
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    168.0,
+    3.38
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    141.0,
+    2.46
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    76.0,
+    0.88
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    167.0,
+    4.2
+   ]
+  ]
+ },
+ "groen": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Welvaartsgarantie - een bescherming tegen armoede en een bonus voor werkenden",
+    "impulse": {
+     "2025": -9026.0,
+     "2026": -9026.0,
+     "2027": -9026.0,
+     "2028": -9026.0,
+     "2029": -9026.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik hogere en bredere sociale werkbonus",
+    "impulse": {
+     "2025": -1281.0,
+     "2026": -824.0,
+     "2027": -1913.0,
+     "2028": -1934.0,
+     "2029": -1934.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik afschaffing bijzondere bijdrage sociale zekerheid (bbsz)",
+    "impulse": {
+     "2025": -1234.0,
+     "2026": -1234.0,
+     "2027": -1234.0,
+     "2028": -1234.0,
+     "2029": -1234.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lastenverlaging op arbeid - luik verhoging belastingvrije som",
+    "impulse": {
+     "2025": -3007.0,
+     "2026": -3007.0,
+     "2027": -3007.0,
+     "2028": -3007.0,
+     "2029": -4016.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Een miljonairsbelasting op grote vermogens",
+    "impulse": {
+     "2025": 2013.0,
+     "2026": 2013.0,
+     "2027": 2013.0,
+     "2028": 2013.0,
+     "2029": 2013.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Een meer rechtvaardige bijdrage op vermogenswinsten",
+    "impulse": {
+     "2025": 11265.0,
+     "2026": 11265.0,
+     "2027": 11265.0,
+     "2028": 11265.0,
+     "2029": 11265.0
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Hogere belasting op de gokindustrie",
+    "impulse": {
+     "2025": 33.0,
+     "2026": 34.0,
+     "2027": 34.0,
+     "2028": 35.0,
+     "2029": 36.0
+    }
+   },
+   {
+    "id": 108,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Billijke bijdrage van tech giganten",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 140.0,
+     "2027": 140.0,
+     "2028": 140.0,
+     "2029": 140.0
+    }
+   },
+   {
+    "id": 109,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Minder uitzonderingsregimes in de vennootschapsbelasting",
+    "impulse": {
+     "2025": 1050.0,
+     "2026": 1050.0,
+     "2027": 1050.0,
+     "2028": 1050.0,
+     "2029": 1050.0
+    }
+   },
+   {
+    "id": 110,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Aanpassing fiscale en parafiscale behandeling van componenten van alternatieve verloning: deel personenbelasting",
+    "impulse": {
+     "2025": 1427.0,
+     "2026": 1852.0,
+     "2027": 2281.0,
+     "2028": 2737.0,
+     "2029": 3414.0
+    }
+   },
+   {
+    "id": 111,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Aanpassing fiscale en parafiscale behandeling van componenten van alternatieve verloning: deel werknemersbijdragen",
+    "impulse": {
+     "2025": 422.0,
+     "2026": 411.0,
+     "2027": 481.0,
+     "2028": 551.0,
+     "2029": 730.0
+    }
+   },
+   {
+    "id": 112,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Aanpassing fiscale en parafiscale behandeling van componenten van alternatieve verloning: deel werkgeversbijdragen",
+    "impulse": {
+     "2025": 780.0,
+     "2026": 756.0,
+     "2027": 877.0,
+     "2028": 997.0,
+     "2029": 1308.0
+    }
+   },
+   {
+    "id": 113,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Beperking gunstregime profvoetbalclubs",
+    "impulse": {
+     "2025": 137.0,
+     "2026": 137.0,
+     "2027": 137.0,
+     "2028": 137.0,
+     "2029": 137.0
+    }
+   },
+   {
+    "id": 114,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Aanwervingssubsidie eerste werknemer beperken in de tijd en hoogte degressief maken",
+    "impulse": {
+     "2025": 495.0,
+     "2026": 495.0,
+     "2027": 495.0,
+     "2028": 495.0,
+     "2029": 495.0
+    }
+   },
+   {
+    "id": 115,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Gerichte verlaging van de werkgeversbijdragen",
+    "impulse": {
+     "2025": -1280.0,
+     "2026": -1256.0,
+     "2027": -1377.0,
+     "2028": -1497.0,
+     "2029": -1808.0
+    }
+   },
+   {
+    "id": 116,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Meer slagkracht voor fraudebestrijding bij de bevoegde diensten",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 117,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Meer transparantie legt fiscale en sociale fraude bloot",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 118,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "We dichten fiscale lekken naar belastingparadijzen",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Hogere minimumlonen",
+    "impulse": {
+     "2025": -12.0,
+     "2026": -12.0,
+     "2027": -29.0,
+     "2028": -29.0,
+     "2029": -29.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Responsabiliseringsbijdrage die bedrijven met disproportioneel veel langdurig zieken stimuleert om in te zetten op werkbaar werk",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Meer solidariteit tussen de allerhoogste en lagere pensioenen",
+    "impulse": {
+     "2025": 167.0,
+     "2026": 167.0,
+     "2027": 167.0,
+     "2028": 157.0,
+     "2029": 157.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Behoud van wettelijke groeinorm van 2,5% op de begroting van de ziekteverzekering (RIZIV)",
+    "impulse": {
+     "2025": -67.0,
+     "2026": 260.0,
+     "2027": 623.0,
+     "2028": 953.0,
+     "2029": 1244.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Ziektebriefje afschaffen bij kort ziekteverzuim tot 3 dagen",
+    "impulse": {
+     "2025": 40.0,
+     "2026": 40.0,
+     "2027": 40.0,
+     "2028": 40.0,
+     "2029": 40.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Extra investeringen in O&O",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -100.0,
+     "2027": -150.0,
+     "2028": -200.0,
+     "2029": -200.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Administratieve vereenvoudiging voor bedrijven",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 503,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Transitie naar een circulaire economie: een verlaagd btw-tarief op herstellingen",
+    "impulse": {
+     "2025": -29.0,
+     "2026": -29.0,
+     "2027": -29.0,
+     "2028": -29.0,
+     "2029": -29.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Hervorming van de partijfinanciering en  vereenvoudiging federale en regionale structuren  (o.a. Senaat, Brussel, provincies en intercommunales)",
+    "impulse": {
+     "2025": 55.0,
+     "2026": 58.0,
+     "2027": 61.0,
+     "2028": 64.0,
+     "2029": 67.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Efficiënte overheid",
+    "impulse": {
+     "2025": 240.0,
+     "2026": 240.0,
+     "2027": 240.0,
+     "2028": 240.0,
+     "2029": 240.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Grootschalig sociaal investeringsprogramma voor energiezuinige woningen",
+    "impulse": {
+     "2025": -1400.0,
+     "2026": -1400.0,
+     "2027": -1400.0,
+     "2028": -1400.0,
+     "2029": -1400.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Stroomversnelling naar een hernieuwbaar elektriciteitssysteem",
+    "impulse": {
+     "2025": -471.0,
+     "2026": -471.0,
+     "2027": -471.0,
+     "2028": -471.0,
+     "2029": -471.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Accijnshervorming die elektriciteit goedkoper maakt",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Nultarief voor btw op openbaar vervoer en quasi gratis openbaar vervoer voor jongeren, ouderen en mensen die moeilijk rondkomen",
+    "impulse": {
+     "2025": -292.0,
+     "2026": -292.0,
+     "2027": -292.0,
+     "2028": -292.0,
+     "2029": -292.0
+    }
+   },
+   {
+    "id": 804,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Afbouwen van fossiele subsidies transportsector en vlottere mobiliteit dankzij een sturende verkeersfiscaliteit",
+    "impulse": {
+     "2025": 706.0,
+     "2026": 706.0,
+     "2027": 981.0,
+     "2028": 981.0,
+     "2029": 1256.0
+    }
+   },
+   {
+    "id": 805,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke bijdrage van de luchtvaart: diverse taksen",
+    "impulse": {
+     "2025": 245.0,
+     "2026": 245.0,
+     "2027": 245.0,
+     "2028": 245.0,
+     "2029": 245.0
+    }
+   },
+   {
+    "id": 806,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke bijdrage van de luchvaart: zakenreizen",
+    "impulse": {
+     "2025": 52.0,
+     "2026": 52.0,
+     "2027": 52.0,
+     "2028": 52.0,
+     "2029": 52.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.5,
+    0.51,
+    0.46,
+    0.43,
+    0.41
+   ],
+   "Privé-consumptie": [
+    0.19,
+    0.19,
+    0.16,
+    0.08,
+    0.02
+   ],
+   "Overheidsconsumptie": [
+    -0.21,
+    -0.45,
+    -0.69,
+    -0.91,
+    -1.1
+   ],
+   "Investeringen": [
+    2.88,
+    2.83,
+    2.84,
+    2.82,
+    2.74
+   ],
+   "Uitvoer": [
+    0.11,
+    0.13,
+    0.12,
+    0.12,
+    0.13
+   ],
+   "Invoer": [
+    0.39,
+    0.33,
+    0.28,
+    0.2,
+    0.13
+   ],
+   "Consumptieprijsindex": [
+    0.39,
+    0.31,
+    0.42,
+    0.41,
+    0.4
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    1.04,
+    0.04,
+    0.03,
+    -0.61,
+    -1.09
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    0.14,
+    -0.06,
+    -0.07,
+    -0.25,
+    -0.31
+   ],
+   "Werkgelegenheid": [
+    -7830.0,
+    5220.0,
+    8610.0,
+    17010.0,
+    24480.0
+   ],
+   "Werkgelegenheidsgraad": [
+    -0.12,
+    0.07,
+    0.12,
+    0.24,
+    0.35
+   ],
+   "Werkloosheidsgraad": [
+    0.6,
+    0.37,
+    0.35,
+    0.21,
+    0.13
+   ],
+   "Vorderingensaldo van de overheid": [
+    0.65,
+    0.56,
+    0.62,
+    0.63,
+    0.67
+   ],
+   "Overheidsschuld": [
+    -1.97,
+    -2.22,
+    -2.92,
+    -3.34,
+    -3.86
+   ],
+   "Broeikasgasemissies": [
+    -0.06,
+    -0.45,
+    -0.85,
+    -1.18,
+    -1.69
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    777.0,
+    47.91
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    244.0,
+    11.14
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    184.0,
+    8.2
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    191.0,
+    7.03
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    168.0,
+    5.12
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    174.0,
+    4.64
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    186.0,
+    4.32
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    197.0,
+    3.97
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    198.0,
+    3.47
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    146.0,
+    1.69
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    248.0,
+    6.3
+   ]
+  ]
+ },
+ "le": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Bonus bosseur : instauration d’un ‘bonus bosseur’ en Wallonie et à Bruxelles",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -1821.0,
+     "2028": -1821.0,
+     "2029": -1821.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Suppression des droits de succession / introduction une taxe de 4-5% sur toutes les transmissions",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Taxation du capital (plus-value)",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 2889.0,
+     "2028": 2889.0,
+     "2029": 2889.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Engagement de 3000 agents supplémentaires pour lutter contre la fraude fiscale",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Réduction du taux de cotisation patronale par un élargissement de son assiette aux amortissements",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Droit à la démission",
+    "impulse": {
+     "2025": -41.0,
+     "2026": 45.0,
+     "2027": 61.0,
+     "2028": 61.0,
+     "2029": 61.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Crèches : Augmentation des places d’accueil",
+    "impulse": {
+     "2025": -489.0,
+     "2026": -568.0,
+     "2027": -647.0,
+     "2028": -726.0,
+     "2029": -805.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "100 heures d’aides à domicile à la naissance",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -144.0,
+     "2028": -144.0,
+     "2029": -144.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Réintégration des malades de longue durée",
+    "impulse": {
+     "2025": 14.0,
+     "2026": 77.0,
+     "2027": 155.0,
+     "2028": 245.0,
+     "2029": 346.0
+    }
+   },
+   {
+    "id": 205,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "FICHE",
+    "title": "Droit à l’emploi",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Individualisation des droits sociaux",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -390.0,
+     "2028": -390.0,
+     "2029": -390.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Allocations familiales à 300 euros : Réforme de l’exonération fiscale pour les enfants à charge",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 1341.0,
+     "2027": 1561.0,
+     "2028": 1773.0,
+     "2029": 1983.0
+    }
+   },
+   {
+    "id": 303,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Allocations familiales à 300 euros - Wallonie",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -347.0,
+     "2027": -403.0,
+     "2028": -461.0,
+     "2029": -521.0
+    }
+   },
+   {
+    "id": 304,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Allocations familiales à 300 euros - Bruxelles",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -166.0,
+     "2027": -189.0,
+     "2028": -212.0,
+     "2029": -233.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Norme de croissance santé : 3.5%",
+    "impulse": {
+     "2025": -438.0,
+     "2026": -504.0,
+     "2027": -558.0,
+     "2028": -669.0,
+     "2029": -845.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Fin des quota Inami",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Doubler la part allouée à la promotion de la santé et prévention dans le PIB",
+    "impulse": {
+     "2025": -107.0,
+     "2026": -268.0,
+     "2027": -537.0,
+     "2028": -1073.0,
+     "2029": -1073.0
+    }
+   },
+   {
+    "id": 404,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Assurance autonomie",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -85.0,
+     "2027": -225.0,
+     "2028": -295.0,
+     "2029": -295.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Justice : remplir les cadres",
+    "impulse": {
+     "2025": -4.0,
+     "2026": -8.0,
+     "2027": -12.0,
+     "2028": -16.0,
+     "2029": -20.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Police : 3684 engagements",
+    "impulse": {
+     "2025": -4.0,
+     "2026": -60.0,
+     "2027": -114.0,
+     "2028": -169.0,
+     "2029": -238.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réforme des pouvoirs locaux: Indexation automatique des dotations aux zones de secours",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 604,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réforme des pouvoirs locaux: Amener à un seuil 50/50 le financement fédéral/local des zones de secours (dotations)",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 605,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Budget base zéro : pouvoir fédéral",
+    "impulse": {
+     "2025": 100.0,
+     "2026": 100.0,
+     "2027": 100.0,
+     "2028": 100.0,
+     "2029": 100.0
+    }
+   },
+   {
+    "id": 606,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Budget base zéro : Région de Bruxelles-Capitale et Commissions communautaires",
+    "impulse": {
+     "2025": 15.0,
+     "2026": 15.0,
+     "2027": 15.0,
+     "2028": 15.0,
+     "2029": 15.0
+    }
+   },
+   {
+    "id": 607,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Budget base zéro : Région wallonne",
+    "impulse": {
+     "2025": 20.0,
+     "2026": 20.0,
+     "2027": 20.0,
+     "2028": 20.0,
+     "2029": 20.0
+    }
+   },
+   {
+    "id": 608,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Budget base zéro : Communauté française",
+    "impulse": {
+     "2025": 50.0,
+     "2026": 50.0,
+     "2027": 50.0,
+     "2028": 50.0,
+     "2029": 50.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Barème enseignant 401 et augmentation du temps de travail",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -12.0,
+     "2028": -25.0,
+     "2029": -40.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Pool remplaçants",
+    "impulse": {
+     "2025": -13.0,
+     "2026": -13.0,
+     "2027": -13.0,
+     "2028": -13.0,
+     "2029": -13.0
+    }
+   },
+   {
+    "id": 703,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Refinancement enseignement supérieur",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -100.0,
+     "2027": -150.0,
+     "2028": -200.0,
+     "2029": -250.0
+    }
+   },
+   {
+    "id": 704,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Isolation  : Forfait 'Trois zéros'",
+    "impulse": {
+     "2025": -101.0,
+     "2026": -339.0,
+     "2027": -570.0,
+     "2028": -793.0,
+     "2029": -1010.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Maintien des 4GW de nucléaire dans le mix énergétique",
+    "impulse": {
+     "2025": -185.0,
+     "2026": -185.0,
+     "2027": -185.0,
+     "2028": -185.0,
+     "2029": -185.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Mix énergétique  : développement des 'quatre quarts'",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Taxation du kérosène et fiouls lourds (avions et bateaux)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.22,
+    0.44,
+    0.67,
+    0.89,
+    1.0
+   ],
+   "Privé-consumptie": [
+    0.07,
+    0.0,
+    -0.02,
+    0.01,
+    -0.01
+   ],
+   "Overheidsconsumptie": [
+    0.38,
+    0.8,
+    1.24,
+    1.84,
+    2.09
+   ],
+   "Investeringen": [
+    1.05,
+    1.54,
+    2.01,
+    2.44,
+    2.81
+   ],
+   "Uitvoer": [
+    0.05,
+    0.02,
+    0.1,
+    0.04,
+    0.06
+   ],
+   "Invoer": [
+    0.24,
+    0.17,
+    0.22,
+    0.22,
+    0.27
+   ],
+   "Consumptieprijsindex": [
+    0.01,
+    0.03,
+    0.06,
+    0.09,
+    0.14
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.04,
+    0.04,
+    -0.05,
+    -0.35,
+    -0.5
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    0.15,
+    0.01,
+    -0.04,
+    -0.01,
+    -0.03
+   ],
+   "Werkgelegenheid": [
+    5670.0,
+    16920.0,
+    38870.0,
+    55450.0,
+    68690.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.08,
+    0.24,
+    0.55,
+    0.79,
+    0.98
+   ],
+   "Werkloosheidsgraad": [
+    0.04,
+    0.06,
+    0.02,
+    -0.12,
+    -0.18
+   ],
+   "Vorderingensaldo van de overheid": [
+    -0.09,
+    0.06,
+    0.18,
+    0.15,
+    0.18
+   ],
+   "Overheidsschuld": [
+    -0.18,
+    -0.48,
+    -0.96,
+    -1.35,
+    -1.69
+   ],
+   "Broeikasgasemissies": [
+    0.26,
+    -0.16,
+    -0.19,
+    -0.46,
+    -0.72
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    21.0,
+    1.3
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    31.0,
+    1.4
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    17.0,
+    0.77
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    26.0,
+    0.97
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    32.0,
+    0.96
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    36.0,
+    0.97
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    34.0,
+    0.8
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    32.0,
+    0.64
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    24.0,
+    0.41
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    10.0,
+    0.12
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    26.0,
+    0.7
+   ]
+  ]
+ },
+ "mr": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Rehausser la quotité exemptée d’impôt au niveau du revenu d’intégration sociale (RIS)",
+    "impulse": {
+     "2025": -1979.0,
+     "2026": -4063.0,
+     "2027": -6110.0,
+     "2028": -8158.0,
+     "2029": -10210.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Une augmentation des salaires nets grâce à la suppression de la cotisation spéciale de sécurité sociale",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -1234.0,
+     "2028": -1234.0,
+     "2029": -1234.0
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Des allocations de chômage limitées à deux ans",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 1478.0,
+     "2027": 1478.0,
+     "2028": 1478.0,
+     "2029": 1478.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Extension de l'application des titres-services à la garde et au transport des enfants en Région wallonne",
+    "impulse": {
+     "2025": -33.0,
+     "2026": -33.0,
+     "2027": -33.0,
+     "2028": -33.0,
+     "2029": -33.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Extension de l'application des titres-services à la garde et au transport des enfants en Région de Bruxelles-Capitale",
+    "impulse": {
+     "2025": -13.0,
+     "2026": -13.0,
+     "2027": -13.0,
+     "2028": -13.0,
+     "2029": -13.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Bonus d’activité pour tous les travailleurs qui gagnent moins de 4.500 € brut par mois",
+    "impulse": {
+     "2025": -509.0,
+     "2026": -990.0,
+     "2027": -1452.0,
+     "2028": -1895.0,
+     "2029": -2298.0
+    }
+   },
+   {
+    "id": 205,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Extension du cadre des flexi-jobs à l'ensemble des secteurs de l'économie",
+    "impulse": {
+     "2025": 107.0,
+     "2026": 107.0,
+     "2027": 107.0,
+     "2028": 107.0,
+     "2029": 107.0
+    }
+   },
+   {
+    "id": 206,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Un droit encadré à un soutien en cas de démission",
+    "impulse": {
+     "2025": 20.0,
+     "2026": 145.0,
+     "2027": 169.0,
+     "2028": 169.0,
+     "2029": 169.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "La revalorisation des pensions des indépendants",
+    "impulse": {
+     "2025": -1.0,
+     "2026": -2.0,
+     "2027": -3.0,
+     "2028": -4.0,
+     "2029": -6.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "L’instauration d’une pension à mi-temps",
+    "impulse": {
+     "2025": -16.0,
+     "2026": -31.0,
+     "2027": -31.0,
+     "2028": -31.0,
+     "2029": -31.0
+    }
+   },
+   {
+    "id": 303,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Une revalorisation du travail effectif dans le calcul de la pension minimum",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 1.0,
+     "2029": 1.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Une valorisation des capacités des malades de longue durée",
+    "impulse": {
+     "2025": 38.0,
+     "2026": 75.0,
+     "2027": 113.0,
+     "2028": 151.0,
+     "2029": 190.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "La revalorisation de la médecine générale, à travers la reconnaissance de l’importance du temps passé avec le patient",
+    "impulse": {
+     "2025": -18.0,
+     "2026": -18.0,
+     "2027": -18.0,
+     "2028": -18.0,
+     "2029": -18.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Une réduction de l’impôt des sociétés pour les PME",
+    "impulse": {
+     "2025": -710.0,
+     "2026": -710.0,
+     "2027": -710.0,
+     "2028": -710.0,
+     "2029": -710.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Un soutien à l’embauche dans les PME à travers un amortissement du capital humain",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 503,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "FICHE",
+    "title": "La réduction du taux facial des cotisations patronales à 20 % pour les salaires les plus bas au sein de chaque entreprise",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction des frais de fonctionnement du Pouvoir fédéral et de la Sécurité sociale",
+    "impulse": {
+     "2025": 20.0,
+     "2026": 40.0,
+     "2027": 60.0,
+     "2028": 80.0,
+     "2029": 100.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction des frais de fonctionnement de la Région de Bruxelles-Capitale et des commissions communautaires",
+    "impulse": {
+     "2025": 3.0,
+     "2026": 6.0,
+     "2027": 9.0,
+     "2028": 12.0,
+     "2029": 15.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction des frais de fonctionnement de la Région wallonne",
+    "impulse": {
+     "2025": 4.0,
+     "2026": 8.0,
+     "2027": 12.0,
+     "2028": 16.0,
+     "2029": 20.0
+    }
+   },
+   {
+    "id": 604,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction des frais de fonctionnement de la Communauté française",
+    "impulse": {
+     "2025": 10.0,
+     "2026": 20.0,
+     "2027": 30.0,
+     "2028": 40.0,
+     "2029": 50.0
+    }
+   },
+   {
+    "id": 605,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Un renforcement des moyens humains et financiers de la police",
+    "impulse": {
+     "2025": -20.0,
+     "2026": -40.0,
+     "2027": -60.0,
+     "2028": -80.0,
+     "2029": -100.0
+    }
+   },
+   {
+    "id": 606,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction du nombre de mandataires à tous les niveaux de pouvoir",
+    "impulse": {
+     "2025": 18.0,
+     "2026": 18.0,
+     "2027": 18.0,
+     "2028": 18.0,
+     "2029": 18.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "La rénovation de nos palais de justice",
+    "impulse": {
+     "2025": -40.0,
+     "2026": -40.0,
+     "2027": -40.0,
+     "2028": -40.0,
+     "2029": -40.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Accroissement des dépenses de Défense afin d'atteindre 2% du PIB dans un horizon de 10 ans",
+    "impulse": {
+     "2025": -277.0,
+     "2026": -554.0,
+     "2027": -831.0,
+     "2028": -1108.0,
+     "2029": -1385.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "La prolongation de nos réacteurs nucléaires",
+    "impulse": {
+     "2025": -185.0,
+     "2026": -185.0,
+     "2027": -185.0,
+     "2028": -185.0,
+     "2029": -185.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Un soutien fiscal pour soutenir l’amélioration de la performance énergétique du logement",
+    "impulse": {
+     "2025": -1354.0,
+     "2026": -1354.0,
+     "2027": -1354.0,
+     "2028": -1354.0,
+     "2029": -1354.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.32,
+    0.91,
+    1.22,
+    1.5,
+    1.72
+   ],
+   "Privé-consumptie": [
+    0.53,
+    1.24,
+    2.03,
+    2.69,
+    3.33
+   ],
+   "Overheidsconsumptie": [
+    0.07,
+    0.12,
+    0.21,
+    0.31,
+    0.43
+   ],
+   "Investeringen": [
+    0.61,
+    1.51,
+    1.96,
+    2.4,
+    2.77
+   ],
+   "Uitvoer": [
+    0.14,
+    0.29,
+    0.36,
+    0.33,
+    0.36
+   ],
+   "Invoer": [
+    0.26,
+    0.43,
+    0.75,
+    0.93,
+    1.2
+   ],
+   "Consumptieprijsindex": [
+    0.02,
+    0.01,
+    -0.01,
+    -0.1,
+    -0.11
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.03,
+    -0.39,
+    -1.1,
+    -2.27,
+    -3.09
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    1.1,
+    1.9,
+    3.1,
+    3.87,
+    4.61
+   ],
+   "Werkgelegenheid": [
+    9850.0,
+    39470.0,
+    63260.0,
+    92140.0,
+    118320.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.04,
+    0.47,
+    0.81,
+    1.23,
+    1.6
+   ],
+   "Werkloosheidsgraad": [
+    0.12,
+    -0.52,
+    -0.74,
+    -1.06,
+    -1.33
+   ],
+   "Vorderingensaldo van de overheid": [
+    -0.69,
+    -0.73,
+    -1.28,
+    -1.68,
+    -2.06
+   ],
+   "Overheidsschuld": [
+    0.52,
+    0.66,
+    1.58,
+    3.02,
+    4.71
+   ],
+   "Broeikasgasemissies": [
+    0.48,
+    0.44,
+    0.67,
+    0.75,
+    0.93
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    8.0,
+    0.49
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    45.0,
+    2.04
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    121.0,
+    5.4
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    177.0,
+    6.51
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    236.0,
+    7.19
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    287.0,
+    7.67
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    339.0,
+    7.88
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    381.0,
+    7.65
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    384.0,
+    6.72
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    345.0,
+    3.99
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    232.0,
+    5.9
+   ]
+  ]
+ },
+ "nva": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We vergroten het verschil werken en niet-werken door de belasting op arbeid te verlagen",
+    "impulse": {
+     "2025": -1234.0,
+     "2026": -1234.0,
+     "2027": -1234.0,
+     "2028": -1234.0,
+     "2029": -1234.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "De aftrek voor kinderopvang gaat naar 100%",
+    "impulse": {
+     "2025": -22.0,
+     "2026": -131.0,
+     "2027": -241.0,
+     "2028": -241.0,
+     "2029": -241.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We verhogen de taks op nationaliteitsverkrijging",
+    "impulse": {
+     "2025": 136.0,
+     "2026": 136.0,
+     "2027": 136.0,
+     "2028": 136.0,
+     "2029": 136.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We ondersteunen zelfstandigen met een ondernemersaftrek en een hogere investeringsaftrek",
+    "impulse": {
+     "2025": -220.0,
+     "2026": -240.0,
+     "2027": -260.0,
+     "2028": -280.0,
+     "2029": -400.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We schrappen belastingaftrekken voor niet-actieven",
+    "impulse": {
+     "2025": 458.0,
+     "2026": 458.0,
+     "2027": 458.0,
+     "2028": 458.0,
+     "2029": 458.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We verlagen de subsidies voor fossiele brandstoffen",
+    "impulse": {
+     "2025": 40.0,
+     "2026": 80.0,
+     "2027": 120.0,
+     "2028": 160.0,
+     "2029": 200.0
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We harmoniseren het loonbegrip van aandelenopties via een bijdrage",
+    "impulse": {
+     "2025": 120.0,
+     "2026": 120.0,
+     "2027": 120.0,
+     "2028": 120.0,
+     "2029": 120.0
+    }
+   },
+   {
+    "id": 108,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We hervormen de DBI-aftrek",
+    "impulse": {
+     "2025": 410.0,
+     "2026": 410.0,
+     "2027": 410.0,
+     "2028": 410.0,
+     "2029": 410.0
+    }
+   },
+   {
+    "id": 109,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "We streven naar betaalbaar wonen door de BTW op sloop- en heropbouw te verlagen",
+    "impulse": {
+     "2025": -234.0,
+     "2026": -234.0,
+     "2027": -234.0,
+     "2028": -234.0,
+     "2029": -234.0
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "We schaffen de inschakelingsuitkeringen geleidelijk af",
+    "impulse": {
+     "2025": 25.0,
+     "2026": 25.0,
+     "2027": 25.0,
+     "2028": 25.0,
+     "2029": 25.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "We schaffen het Stelsel van Werkloosheid met Bedrijfstoeslag (SWT) geleidelijk af",
+    "impulse": {
+     "2025": 32.0,
+     "2026": 67.0,
+     "2027": 83.0,
+     "2028": 99.0,
+     "2029": 95.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "We beperken de werkloosheidsuitkering in de tijd",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 2490.0,
+     "2027": 2490.0,
+     "2028": 2490.0,
+     "2029": 2490.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "We voorzien een bijdrage van de allerhoogste pensioenen",
+    "impulse": {
+     "2025": 276.0,
+     "2026": 532.0,
+     "2027": 817.0,
+     "2028": 817.0,
+     "2029": 841.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "We schrappen de pensioenbonus",
+    "impulse": {
+     "2025": 80.0,
+     "2026": 237.0,
+     "2027": 249.0,
+     "2028": 328.0,
+     "2029": 359.0
+    }
+   },
+   {
+    "id": 303,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "We besteden alleen het gedeelte van pensioenen uit de welvaartsenveloppe",
+    "impulse": {
+     "2025": 243.0,
+     "2026": 487.0,
+     "2027": 732.0,
+     "2028": 983.0,
+     "2029": 1240.0
+    }
+   },
+   {
+    "id": 304,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "We hervormen het leefloon zodat de kloof tussen werken en niet-werken groter wordt",
+    "impulse": {
+     "2025": 412.0,
+     "2026": 441.0,
+     "2027": 458.0,
+     "2028": 485.0,
+     "2029": 507.0
+    }
+   },
+   {
+    "id": 305,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "De verblijfsvoorwaarden en de controle om aanspraak te maken op IGO worden opnieuw verstrengd",
+    "impulse": {
+     "2025": 9.0,
+     "2026": 9.0,
+     "2027": 9.0,
+     "2028": 9.0,
+     "2029": 9.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "We brengen de uitgaven gezondheidszorg meer in lijn met de economische groei",
+    "impulse": {
+     "2025": 675.0,
+     "2026": 1767.0,
+     "2027": 2918.0,
+     "2028": 3719.0,
+     "2029": 4537.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "We schaffen het stelsel van verplicht ziektepensioen voor statutaire ambtenaren af",
+    "impulse": {
+     "2025": 52.0,
+     "2026": 107.0,
+     "2027": 158.0,
+     "2028": 207.0,
+     "2029": 252.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "We willen langdurige arbeidsongeschiktheid vermijden en de re-integratie van langdurig zieken/invaliden in de arbeidsmarkt bevorderen",
+    "impulse": {
+     "2025": 292.0,
+     "2026": 432.0,
+     "2027": 562.0,
+     "2028": 684.0,
+     "2029": 796.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "We verhogen de productiviteit van de economie door het versoepelen van de regels rond e-commerce, openingsuren/zondagsopening, flexi-jobs,…",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We verminderen subsidies op federaal niveau en bouwen taken af",
+    "impulse": {
+     "2025": 824.0,
+     "2026": 821.0,
+     "2027": 887.0,
+     "2028": 989.0,
+     "2029": 1291.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Besparing op de werkingskosten van de overheid",
+    "impulse": {
+     "2025": 151.0,
+     "2026": 191.0,
+     "2027": 240.0,
+     "2028": 291.0,
+     "2029": 349.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We passen ontwikkelingssamenwerking binnen een bredere economische en veiligheidsagenda",
+    "impulse": {
+     "2025": 1432.0,
+     "2026": 1432.0,
+     "2027": 1432.0,
+     "2028": 1432.0,
+     "2029": 1432.0
+    }
+   },
+   {
+    "id": 604,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We besparen op de werkingskosten van het politiek apparaat",
+    "impulse": {
+     "2025": 233.0,
+     "2026": 233.0,
+     "2027": 234.0,
+     "2028": 235.0,
+     "2029": 236.0
+    }
+   },
+   {
+    "id": 605,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We hervormen de uitbetaling van de werkloosheidsuitkeringen: deel administratiekosten",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 200.0,
+     "2027": 204.0,
+     "2028": 210.0,
+     "2029": 214.0
+    }
+   },
+   {
+    "id": 606,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We maken de vakbondspremies belastbaar",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 99.0,
+     "2027": 99.0,
+     "2028": 99.0,
+     "2029": 99.0
+    }
+   },
+   {
+    "id": 607,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We beperken de instroom inzake migratie",
+    "impulse": {
+     "2025": 293.0,
+     "2026": 508.0,
+     "2027": 528.0,
+     "2028": 548.0,
+     "2029": 548.0
+    }
+   },
+   {
+    "id": 608,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "We voorzien een structurele verhoging van het budget voor de kerntaak veiligheid",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -200.0,
+     "2027": -300.0,
+     "2028": -400.0,
+     "2029": -500.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "We voorzien een tijdelijke investeringsimpuls voor defensie, digitalisering en de energietransitie (SMR, …)",
+    "impulse": {
+     "2025": -1500.0,
+     "2026": -1000.0,
+     "2027": -500.0,
+     "2028": -250.0,
+     "2029": -50.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "We verkopen niet-strategische overheidsparticipaties: we spreiden de opbrengst gelijkmatig in schuldafbouw en extra investeringen (defensie en energie)",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 10000.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "We verlengen maximaal de levensduur van zoveel mogelijk kerncentrales",
+    "impulse": {
+     "2025": -185.0,
+     "2026": -185.0,
+     "2027": -185.0,
+     "2028": -185.0,
+     "2029": -185.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.05,
+    0.31,
+    0.21,
+    0.19,
+    0.12
+   ],
+   "Privé-consumptie": [
+    -0.16,
+    -0.13,
+    -0.41,
+    -0.63,
+    -0.84
+   ],
+   "Overheidsconsumptie": [
+    -0.8,
+    -1.82,
+    -2.54,
+    -3.06,
+    -3.57
+   ],
+   "Investeringen": [
+    1.17,
+    1.16,
+    0.83,
+    0.59,
+    0.28
+   ],
+   "Uitvoer": [
+    0.09,
+    0.3,
+    0.35,
+    0.32,
+    0.35
+   ],
+   "Invoer": [
+    0.04,
+    -0.32,
+    -0.6,
+    -0.92,
+    -1.12
+   ],
+   "Consumptieprijsindex": [
+    0.04,
+    0.05,
+    0.07,
+    0.02,
+    0.01
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.11,
+    -0.16,
+    -0.54,
+    -1.35,
+    -1.76
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    -0.17,
+    -0.77,
+    -0.95,
+    -1.13,
+    -1.27
+   ],
+   "Werkgelegenheid": [
+    1420.0,
+    22990.0,
+    33140.0,
+    47060.0,
+    57320.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.02,
+    0.36,
+    0.52,
+    0.73,
+    0.88
+   ],
+   "Werkloosheidsgraad": [
+    0.22,
+    -0.91,
+    -0.85,
+    -0.84,
+    -0.76
+   ],
+   "Vorderingensaldo van de overheid": [
+    0.47,
+    1.31,
+    1.58,
+    1.75,
+    1.97
+   ],
+   "Overheidsschuld": [
+    -0.54,
+    -2.01,
+    -3.37,
+    -4.85,
+    -8.11
+   ],
+   "Broeikasgasemissies": [
+    0.28,
+    0.12,
+    0.1,
+    -0.05,
+    -0.09
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    -122.0,
+    -7.5
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    -63.0,
+    -2.87
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    6.0,
+    0.28
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    9.0,
+    0.34
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    39.0,
+    1.18
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    53.0,
+    1.41
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    70.0,
+    1.63
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    94.0,
+    1.89
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    96.0,
+    1.68
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    112.0,
+    1.3
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    29.0,
+    0.7
+   ]
+  ]
+ },
+ "openvld": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Werken meer laten lonen door de afschaffing van de 45%-schijf.",
+    "impulse": {
+     "2025": -578.0,
+     "2026": -1156.0,
+     "2027": -1734.0,
+     "2028": -2312.0,
+     "2029": -2312.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Werken meer laten lonen door de verbreding en verdieping van de Vlaamse jobbonus.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -581.0,
+     "2027": -581.0,
+     "2028": -581.0,
+     "2029": -581.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Single-korting op de onroerende voorheffing voor alleenstaanden.",
+    "impulse": {
+     "2025": -164.0,
+     "2026": -164.0,
+     "2027": -164.0,
+     "2028": -164.0,
+     "2029": -164.0
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Het verschil tussen werken en niet-werken vergroten. Werken stimuleren door de werkloosheid in de tijd te beperken tot 2 jaar",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 216.0,
+     "2028": 539.0,
+     "2029": 757.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Mensen aanmoedigen om zo snel mogelijk weer aan de slag te gaan door de degressiviteit van de werkloosheidsuitkering te versterken.",
+    "impulse": {
+     "2025": 6.0,
+     "2026": 28.0,
+     "2027": 37.0,
+     "2028": 37.0,
+     "2029": 37.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Uitbreiding van de flexi-jobs naar alle sectoren en naar zelfstandigen.",
+    "impulse": {
+     "2025": 148.0,
+     "2026": 148.0,
+     "2027": 148.0,
+     "2028": 148.0,
+     "2029": 148.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken stimuleren door transitietrajecten voor werknemers (vóór ontslag) mogelijk te maken.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 205,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken stimuleren door transitietrajecten voor langdurig arbeidsongeschikten mogelijk te maken.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -4.0,
+     "2027": 2.0,
+     "2028": 15.0,
+     "2029": 34.0
+    }
+   },
+   {
+    "id": 206,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken stimuleren door de OCMW’s financieel te responsabiliseren voor de uitstroom van gerechtigden op (equivalent) leefloon naar werk.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 16.0,
+     "2027": 33.0,
+     "2028": 49.0,
+     "2029": 65.0
+    }
+   },
+   {
+    "id": 207,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken stimuleren via de responsabilisering van ziekenfondsen op basis van de effectieve uitstroom naar werk.",
+    "impulse": {
+     "2025": 20.0,
+     "2026": 77.0,
+     "2027": 134.0,
+     "2028": 191.0,
+     "2029": 248.0
+    }
+   },
+   {
+    "id": 208,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken stimuleren via het uitbreiden en permanent maken van 240 relance-overuren per jaar (bovenop de 100 vrijwillige overuren).",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 209,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "De welvaartsenveloppe wordt hervormd om er voor te zorgen dat werken of gewerkt hebben altijd meer loont dan niet werken of niet-gewerkt hebben.",
+    "impulse": {
+     "2025": 396.0,
+     "2026": 790.0,
+     "2027": 1182.0,
+     "2028": 1577.0,
+     "2029": 1969.0
+    }
+   },
+   {
+    "id": 210,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Geen nieuwe instroom meer voor SWT",
+    "impulse": {
+     "2025": 32.0,
+     "2026": 67.0,
+     "2027": 83.0,
+     "2028": 99.0,
+     "2029": 95.0
+    }
+   },
+   {
+    "id": 211,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "FICHE",
+    "title": "Invoering van een (peri)menopauze-beleid om de kans op uitval/burn-out te verminderen en de positie van vrouwen op de arbeidsmarkt te versterken.",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 212,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "FICHE",
+    "title": "Systematische controles op onvrijwillig karakter van werkloosheid bij SWT",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "De perequatie van de ambtenarenpensioenen wordt afgeschaft.",
+    "impulse": {
+     "2025": 24.0,
+     "2026": 24.0,
+     "2027": 48.0,
+     "2028": 48.0,
+     "2029": 72.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "FICHE",
+    "title": "Misbruiken van de detacheringsrichtlijn op vlak van uitzendarbeid beter opsporen en bestraffen",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "We beperken de overhead in de sociale zekerheid door de administratiekosten van de verzekeringsinstellingen onder controle te houden.",
+    "impulse": {
+     "2025": 51.0,
+     "2026": 91.0,
+     "2027": 140.0,
+     "2028": 191.0,
+     "2029": 249.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "We maken onze gezondheidszorg financieel houdbaar op lange termijn door de groeinorm te verlagen naar 1,5% (boven op de index).",
+    "impulse": {
+     "2025": 304.0,
+     "2026": 1018.0,
+     "2027": 1782.0,
+     "2028": 2529.0,
+     "2029": 3253.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "FICHE",
+    "title": "Opsporen en aanpakken van overmatig voorschrijven van afwezigheidsattesten",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Loonkosten drukken tot de loonkloof gedicht is.",
+    "impulse": {
+     "2025": -1000.0,
+     "2026": -1000.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Invoering van een fiscale korting voor personeel bij bedrijven die innovatie en kennis verspreiden.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 503,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Steun voor bedrijven die aan hoogtechnologische serieproductie doen in strategische en toekomstgerichte industriële sectoren.",
+    "impulse": {
+     "2025": -68.0,
+     "2026": -68.0,
+     "2027": -68.0,
+     "2028": -68.0,
+     "2029": -68.0
+    }
+   },
+   {
+    "id": 504,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Wegwerken van de energiekostenhandicap van de industrie door transmissienettarieven voor grootverbruikers te verlagen tot het niveau van de buren.",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -100.0,
+     "2027": -100.0,
+     "2028": -120.0,
+     "2029": -120.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Afschaffen van de Senaat",
+    "impulse": {
+     "2025": 45.0,
+     "2026": 45.0,
+     "2027": 45.0,
+     "2028": 45.0,
+     "2029": 45.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Afbouw van de subsidies voor erediensten",
+    "impulse": {
+     "2025": 33.0,
+     "2026": 45.0,
+     "2027": 56.0,
+     "2028": 66.0,
+     "2029": 75.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Halvering van de kabinetten",
+    "impulse": {
+     "2025": 51.0,
+     "2026": 51.0,
+     "2027": 51.0,
+     "2028": 51.0,
+     "2029": 51.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.15,
+    0.23,
+    0.26,
+    0.34,
+    0.37
+   ],
+   "Privé-consumptie": [
+    0.13,
+    0.31,
+    0.34,
+    0.42,
+    0.38
+   ],
+   "Overheidsconsumptie": [
+    -0.32,
+    -0.84,
+    -1.39,
+    -1.92,
+    -2.42
+   ],
+   "Investeringen": [
+    0.16,
+    0.29,
+    0.4,
+    0.5,
+    0.57
+   ],
+   "Uitvoer": [
+    0.14,
+    0.22,
+    0.29,
+    0.37,
+    0.44
+   ],
+   "Invoer": [
+    0.0,
+    -0.01,
+    -0.09,
+    -0.15,
+    -0.25
+   ],
+   "Consumptieprijsindex": [
+    -0.05,
+    -0.06,
+    -0.01,
+    -0.02,
+    -0.04
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    -0.52,
+    -0.78,
+    -0.8,
+    -1.25,
+    -1.77
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    0.38,
+    0.66,
+    0.58,
+    0.6,
+    0.44
+   ],
+   "Werkgelegenheid": [
+    3330.0,
+    13060.0,
+    21260.0,
+    34070.0,
+    47610.0
+   ],
+   "Werkgelegenheidsgraad": [
+    -0.07,
+    0.07,
+    0.18,
+    0.36,
+    0.56
+   ],
+   "Werkloosheidsgraad": [
+    0.2,
+    0.25,
+    0.26,
+    0.17,
+    0.09
+   ],
+   "Vorderingensaldo van de overheid": [
+    -0.11,
+    -0.09,
+    0.15,
+    0.28,
+    0.47
+   ],
+   "Overheidsschuld": [
+    0.04,
+    0.05,
+    -0.22,
+    -0.53,
+    -0.96
+   ],
+   "Broeikasgasemissies": [
+    0.24,
+    0.38,
+    0.48,
+    0.63,
+    0.73
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    -118.0,
+    -7.25
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    -72.0,
+    -3.3
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    -24.0,
+    -1.08
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    -16.0,
+    -0.57
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    10.0,
+    0.32
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    31.0,
+    0.82
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    57.0,
+    1.33
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    86.0,
+    1.74
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    111.0,
+    1.94
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    131.0,
+    1.52
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    20.0,
+    0.5
+   ]
+  ]
+ },
+ "ps": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globaliser les revenus",
+    "impulse": {
+     "2025": 5649.0,
+     "2026": 5649.0,
+     "2027": 5649.0,
+     "2028": 5649.0,
+     "2029": 5649.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Taxer le patrimoine",
+    "impulse": {
+     "2025": 7558.0,
+     "2026": 7558.0,
+     "2027": 7558.0,
+     "2028": 7558.0,
+     "2029": 7558.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Taxer les plus-values",
+    "impulse": {
+     "2025": 2889.0,
+     "2026": 2889.0,
+     "2027": 2889.0,
+     "2028": 2889.0,
+     "2029": 2889.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer le régime fiscal favorable des stock-options: partie impôt des personnes physiques",
+    "impulse": {
+     "2025": -324.0,
+     "2026": -324.0,
+     "2027": -324.0,
+     "2028": -324.0,
+     "2029": -324.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer le régime fiscal favorable des stock-options: partie contributions personnelles",
+    "impulse": {
+     "2025": 208.0,
+     "2026": 208.0,
+     "2027": 208.0,
+     "2028": 208.0,
+     "2029": 208.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Supprimer le régime fiscal favorable des stock-options: partie contributions patronales",
+    "impulse": {
+     "2025": 397.0,
+     "2026": 397.0,
+     "2027": 397.0,
+     "2028": 397.0,
+     "2029": 397.0
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Renforcer la facturation TVA numérique dans tous les secteurs afin de réduire l'écart TVA (TVA GAP)",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 108,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Renforcer le personnel à l’Inspection Spéciale des Impôts",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 109,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Lutter contre l'économie souterraine et le blanchiment d'argent",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Augmenter les bas et moyens salaires via un crédit d'impôt",
+    "impulse": {
+     "2025": -7880.0,
+     "2026": -7880.0,
+     "2027": -7880.0,
+     "2028": -7880.0,
+     "2029": -7880.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Offrir un repas chaud gratuit de qualité à tous les élèves de l’enseignement fondamental",
+    "impulse": {
+     "2025": -20.0,
+     "2026": -41.0,
+     "2027": -61.0,
+     "2028": -82.0,
+     "2029": -102.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Elargir la base de perception des cotisations patronales à toutes les formes de rémunérations alternatives",
+    "impulse": {
+     "2025": 1496.0,
+     "2026": 1748.0,
+     "2027": 2066.0,
+     "2028": 2043.0,
+     "2029": 2055.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Assurer une norme de croissance des soins de santé de 3%",
+    "impulse": {
+     "2025": -449.0,
+     "2026": -535.0,
+     "2027": -625.0,
+     "2028": -764.0,
+     "2029": -942.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Rendre gratuit les soins de base en supprimant les tickets modérateurs pour toutes les prestations des médecins généralistes et les soins préventifs, conservatoires et réparateurs chez les dentistes",
+    "impulse": {
+     "2025": -175.0,
+     "2026": -175.0,
+     "2027": -175.0,
+     "2028": -175.0,
+     "2029": -175.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Objectiver la manière de calculer les prix des médicaments et la rendre transparente",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 100.0,
+     "2027": 200.0,
+     "2028": 300.0,
+     "2029": 400.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Renforcer les moyens de la Justice",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -100.0,
+     "2027": -200.0,
+     "2028": -300.0,
+     "2029": -400.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Rendre la Justice plus accessible pour les personnes les plus précarisées en mettant en place des bureaux d'avocats dédiés à l'aide juridique dans chacun des 27 sièges des (anciens) arrondissements du pays",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -5.0,
+     "2027": -10.0,
+     "2028": -15.0,
+     "2029": -20.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Renforcer les moyens de la police",
+    "impulse": {
+     "2025": -50.0,
+     "2026": -125.0,
+     "2027": -225.0,
+     "2028": -350.0,
+     "2029": -500.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Créer plus de logements publics",
+    "impulse": {
+     "2025": -130.0,
+     "2026": -130.0,
+     "2027": -130.0,
+     "2028": -130.0,
+     "2029": -130.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Rénovation de logements publics",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -315.0,
+     "2027": -315.0,
+     "2028": -315.0,
+     "2029": -315.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Rendre gratuits les transport publics : SNCB",
+    "impulse": {
+     "2025": -179.0,
+     "2026": -179.0,
+     "2027": -179.0,
+     "2028": -179.0,
+     "2029": -179.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Rendre gratuits les transports publics : TEC/STIB",
+    "impulse": {
+     "2025": -34.0,
+     "2026": -34.0,
+     "2027": -315.0,
+     "2028": -315.0,
+     "2029": -315.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.08,
+    0.06,
+    0.08,
+    0.09,
+    0.1
+   ],
+   "Privé-consumptie": [
+    -0.11,
+    -0.53,
+    -0.82,
+    -1.05,
+    -1.22
+   ],
+   "Overheidsconsumptie": [
+    0.5,
+    0.62,
+    0.78,
+    1.0,
+    1.25
+   ],
+   "Investeringen": [
+    0.16,
+    0.15,
+    0.17,
+    0.18,
+    0.19
+   ],
+   "Uitvoer": [
+    0.0,
+    0.05,
+    0.1,
+    0.11,
+    0.11
+   ],
+   "Invoer": [
+    0.02,
+    -0.11,
+    -0.2,
+    -0.27,
+    -0.31
+   ],
+   "Consumptieprijsindex": [
+    0.24,
+    0.07,
+    -0.1,
+    -0.19,
+    -0.24
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    1.02,
+    -0.09,
+    -1.0,
+    -1.48,
+    -1.7
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    -2.15,
+    -2.34,
+    -2.42,
+    -2.47,
+    -2.48
+   ],
+   "Werkgelegenheid": [
+    -14690.0,
+    -5010.0,
+    6620.0,
+    15020.0,
+    20750.0
+   ],
+   "Werkgelegenheidsgraad": [
+    -0.21,
+    -0.07,
+    0.1,
+    0.22,
+    0.3
+   ],
+   "Werkloosheidsgraad": [
+    0.26,
+    0.1,
+    -0.1,
+    -0.24,
+    -0.34
+   ],
+   "Vorderingensaldo van de overheid": [
+    1.44,
+    1.25,
+    1.15,
+    1.12,
+    1.12
+   ],
+   "Overheidsschuld": [
+    -1.91,
+    -2.7,
+    -3.5,
+    -4.38,
+    -5.33
+   ],
+   "Broeikasgasemissies": [
+    0.05,
+    -0.06,
+    -0.16,
+    -0.26,
+    -0.34
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    28.0,
+    1.71
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    51.0,
+    2.3
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    52.0,
+    2.3
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    90.0,
+    3.3
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    132.0,
+    4.02
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    186.0,
+    4.97
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    224.0,
+    5.2
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    223.0,
+    4.48
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    203.0,
+    3.54
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    110.0,
+    1.27
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    130.0,
+    3.3
+   ]
+  ]
+ },
+ "pvda-ptb": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Taxe des millionnaires | miljonairsbelasting",
+    "impulse": {
+     "2025": 3907.0,
+     "2026": 3907.0,
+     "2027": 3907.0,
+     "2028": 3907.0,
+     "2029": 3907.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Suppression de la TVA sur les produits alimentaires | Afschaffing van de btw op voedingsmiddelen",
+    "impulse": {
+     "2025": -2093.0,
+     "2026": -2093.0,
+     "2027": -2093.0,
+     "2028": -2093.0,
+     "2029": -2093.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Imposition des plus-values financières | Belasting op de financiële meerwaarde",
+    "impulse": {
+     "2025": 3772.0,
+     "2026": 3772.0,
+     "2027": 3772.0,
+     "2028": 3772.0,
+     "2029": 3772.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Taxe sur les surprofits bancaires | Overwinstbelasting voor de banken",
+    "impulse": {
+     "2025": 640.0,
+     "2026": 640.0,
+     "2027": 640.0,
+     "2028": 640.0,
+     "2029": 640.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Lutte contre fraude fiscale | Bestrijding van belastingfraude",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Retour de l'âge légal de la pension à 65 ans | Wettelijke pensioenleeftijd terug naar 65 jaar",
+    "impulse": {
+     "2025": -751.0,
+     "2026": -1233.0,
+     "2027": -1663.0,
+     "2028": -2083.0,
+     "2029": -2232.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Le prix des médicaments sous brevets est ramené à un niveau raisonnable | De prijs van gepatenteerde geneesmiddelen wordt verlaagd tot een redelijk niveau",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 100.0,
+     "2027": 200.0,
+     "2028": 300.0,
+     "2029": 400.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Les médicaments hors brevet moins chers via le modèle kiwi | Medicijnen waarvan het octrooi is verlopen goedkoper volgens het kiwimodel",
+    "impulse": {
+     "2025": 250.0,
+     "2026": 250.0,
+     "2027": 250.0,
+     "2028": 250.0,
+     "2029": 250.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Consultation chez le médecin généraliste sans argent en poche | Raadpleging bij een huisarts zonder geld op zak",
+    "impulse": {
+     "2025": -149.0,
+     "2026": -149.0,
+     "2027": -149.0,
+     "2028": -149.0,
+     "2029": -149.0
+    }
+   },
+   {
+    "id": 404,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "FICHE",
+    "title": "Paiement à tous les spécialistes dans les hôpitaux d’un revenu fixe | Betaling van een vast salaris aan alle specialisten in ziekenhuizen",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Hausse du budget dans la recherche publique pour arriver à un budget de la recherche publique à 1 % du PIB | Het budget voor publiek wetenschappelijk onderzoek verhogen tot 1% van het BBP",
+    "impulse": {
+     "2025": -550.0,
+     "2026": -550.0,
+     "2027": -550.0,
+     "2028": -550.0,
+     "2029": -550.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Le taux d'intérêt sur l’épargne minimum est relevé et le taux hypothécaire est abaissé : fixation d'un écart légal de maximum 2 points de pourcentage entre les deux | De minimum spaarrente wordt verhoogd en de hypotheekrente verlaagd: een wettelijk maximaal verschil van 2 procentpunten tussen beide",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Suppression des indemnités de sortie pour les députés des Chambres fédérales | Afschaffing van de uittredingsvergoedingen voor leden van de federale kamers",
+    "impulse": {
+     "2025": 6.0,
+     "2026": 1.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 6.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Suppression des indemnités de sortie pour les députés du Parlement flamand | Afschaffing van de uittredingsvergoedingen voor leden van het Vlaams Parlement",
+    "impulse": {
+     "2025": 5.0,
+     "2026": 1.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 5.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Suppression des indemnités de sortie pour les députés du Parlement wallon | Afschaffing van de uittredingsvergoedingen voor leden van het Waals Parlement",
+    "impulse": {
+     "2025": 2.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 2.0
+    }
+   },
+   {
+    "id": 604,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Suppression des indemnités de sortie pour les députés du Parlement bruxellois | Stopzetting van de maandelijkse uittredingsvergoedingen voor leden van het Brussels Parlement",
+    "impulse": {
+     "2025": 2.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 2.0
+    }
+   },
+   {
+    "id": 605,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Réduction de moitié des dotations publiques pour les partis | Halvering van de partijdotaties",
+    "impulse": {
+     "2025": 39.0,
+     "2026": 39.0,
+     "2027": 39.0,
+     "2028": 39.0,
+     "2029": 39.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Système tiers-payant pour l’isolation et la rénovation des logements avec création d’une Banque publique d’investissement | Derdebetalerssysteem voor woningisolatie en -renovatie met de oprichting van een openbare investeringsbank",
+    "impulse": {
+     "2025": -1000.0,
+     "2026": -1000.0,
+     "2027": -1000.0,
+     "2028": -1000.0,
+     "2029": -1000.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Gratuité des transports publics (bus, tram et métro) | Gratis openbaar vervoer (bus, tram en metro)",
+    "impulse": {
+     "2025": -232.0,
+     "2026": -232.0,
+     "2027": -232.0,
+     "2028": -232.0,
+     "2029": -232.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Gratuité des transports publics (bus, tram et métro) | Gratis openbaar vervoer (bus, tram en metro)",
+    "impulse": {
+     "2025": -98.0,
+     "2026": -98.0,
+     "2027": -98.0,
+     "2028": -98.0,
+     "2029": -98.0
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Gratuité des transports publics (bus, tram et métro) | Gratis openbaar vervoer (bus, tram en metro)",
+    "impulse": {
+     "2025": -217.0,
+     "2026": -217.0,
+     "2027": -217.0,
+     "2028": -217.0,
+     "2029": -217.0
+    }
+   },
+   {
+    "id": 804,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Annulation de l'augmentation des accises sur l’électricité et le gaz | Ongedaan maken van de accijnsverhoging op elektriciteit en aardgas",
+    "impulse": {
+     "2025": -835.0,
+     "2026": -837.0,
+     "2027": -838.0,
+     "2028": -839.0,
+     "2029": -840.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.29,
+    0.04,
+    -0.12,
+    -0.25,
+    -0.33
+   ],
+   "Privé-consumptie": [
+    0.39,
+    0.15,
+    -0.01,
+    -0.13,
+    -0.26
+   ],
+   "Overheidsconsumptie": [
+    0.03,
+    0.07,
+    0.07,
+    0.07,
+    0.07
+   ],
+   "Investeringen": [
+    1.81,
+    1.39,
+    1.28,
+    1.13,
+    1.03
+   ],
+   "Uitvoer": [
+    -0.01,
+    -0.14,
+    -0.24,
+    -0.32,
+    -0.34
+   ],
+   "Invoer": [
+    0.41,
+    0.3,
+    0.25,
+    0.21,
+    0.17
+   ],
+   "Consumptieprijsindex": [
+    -1.33,
+    -1.31,
+    -1.2,
+    -1.14,
+    -1.15
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    -1.52,
+    -1.36,
+    -0.64,
+    -0.21,
+    -0.04
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    -0.69,
+    -0.96,
+    -0.95,
+    -0.98,
+    -1.08
+   ],
+   "Werkgelegenheid": [
+    20830.0,
+    13170.0,
+    50.0,
+    -12420.0,
+    -20790.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.48,
+    0.6,
+    0.52,
+    0.46,
+    0.4
+   ],
+   "Werkloosheidsgraad": [
+    -0.64,
+    -0.86,
+    -0.83,
+    -0.82,
+    -0.78
+   ],
+   "Vorderingensaldo van de overheid": [
+    0.76,
+    0.81,
+    0.8,
+    0.75,
+    0.75
+   ],
+   "Overheidsschuld": [
+    -0.08,
+    -0.71,
+    -1.55,
+    -2.21,
+    -2.78
+   ],
+   "Broeikasgasemissies": [
+    -0.01,
+    -0.41,
+    -0.74,
+    -1.11,
+    -1.45
+   ]
+  },
+  "expedition_deciles": []
+ },
+ "vb": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Koopkracht versterken door de verhoging van de belastingvrije som tot 13000 euro",
+    "impulse": {
+     "2025": -5349.0,
+     "2026": -5349.0,
+     "2027": -5349.0,
+     "2028": -5349.0,
+     "2029": -5349.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Koopkracht versterken door de verlaging van de belastingschijf van 40% naar 30%",
+    "impulse": {
+     "2025": -6545.0,
+     "2026": -6545.0,
+     "2027": -6545.0,
+     "2028": -6545.0,
+     "2029": -6545.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Koopkracht versterken door de verlaging van de belastingschijf van 45% naar 40%.",
+    "impulse": {
+     "2025": -2312.0,
+     "2026": -2312.0,
+     "2027": -2312.0,
+     "2028": -2312.0,
+     "2029": -2312.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Koopkracht versterken door de verhoging van de ondergrens van de belastingschijf van 50%",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": -552.0,
+     "2028": -552.0,
+     "2029": -552.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Fiscale fraude aanpakken door een correcte en betere controle op vennootschapsbelasting van kmo's en mno's",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Fiscale fraude aanpakken door de correcte inning van de belasting op toegevoegde waarde",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Fiscale fraude aanpakken door een doorgedreven controle op belastings- en accijnsfraude in nachtwinkels.",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken aanmoedigen door de sociale beperking van de werkloosheidsuitkering tot 2 jaar.",
+    "impulse": {
+     "2025": 1426.0,
+     "2026": 1426.0,
+     "2027": 1426.0,
+     "2028": 1426.0,
+     "2029": 1426.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Werken aanmoedigen door de verhoging van het minimumloon met 5%",
+    "impulse": {
+     "2025": -5.0,
+     "2026": -10.0,
+     "2027": -10.0,
+     "2028": -10.0,
+     "2029": -10.0
+    }
+   },
+   {
+    "id": 203,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Gezinnen steunen door de invoering van een deeltijds opvoedersinkomen voor de ouder die kiest om deeltijds te werken en deeltijds voor de kinderen te zorgen.",
+    "impulse": {
+     "2025": -492.0,
+     "2026": -492.0,
+     "2027": -492.0,
+     "2028": -492.0,
+     "2029": -492.0
+    }
+   },
+   {
+    "id": 204,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke parafiscaliteit door de opheffing van de voordelen in de werknemersbijdragen voor voetballers",
+    "impulse": {
+     "2025": 30.0,
+     "2026": 30.0,
+     "2027": 30.0,
+     "2028": 30.0,
+     "2029": 30.0
+    }
+   },
+   {
+    "id": 205,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke parafiscaliteit door de opheffing van de voordelen in de werkgeversbijdragen voor voetballers",
+    "impulse": {
+     "2025": 68.0,
+     "2026": 68.0,
+     "2027": 68.0,
+     "2028": 68.0,
+     "2029": 68.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Pensioenen versterken door de correcte indexering van het minimumpensioen.",
+    "impulse": {
+     "2025": -567.0,
+     "2026": -573.0,
+     "2027": -578.0,
+     "2028": -583.0,
+     "2029": -588.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke pensioenen door de koppeling van het pensioenbedrag aan de levensduurte in het land van uitbetaling buiten de Europese Unie.",
+    "impulse": {
+     "2025": 165.0,
+     "2026": 165.0,
+     "2027": 165.0,
+     "2028": 165.0,
+     "2029": 165.0
+    }
+   },
+   {
+    "id": 303,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Eerlijke pensioenen door de verlaging van het maximumpensioen.",
+    "impulse": {
+     "2025": 788.0,
+     "2026": 788.0,
+     "2027": 788.0,
+     "2028": 788.0,
+     "2029": 788.0
+    }
+   },
+   {
+    "id": 304,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Gezinnen steunen door het herstel van de automatische indexering van het Groeipakket (kinderbijslag)",
+    "impulse": {
+     "2025": -30.0,
+     "2026": -31.0,
+     "2027": -9.0,
+     "2028": 0.0,
+     "2029": 22.0
+    }
+   },
+   {
+    "id": 305,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Meer solidariteit door automatische en onmiddellijke toekenning van een huursubsidie aan kandidaat-huurders van een sociale woning",
+    "impulse": {
+     "2025": -375.0,
+     "2026": -375.0,
+     "2027": -375.0,
+     "2028": -375.0,
+     "2029": -375.0
+    }
+   },
+   {
+    "id": 306,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Migratiekosten beperken door een maximale verstrenging van gezinshereniging binnen de Europese wetgeving",
+    "impulse": {
+     "2025": 18.0,
+     "2026": 54.0,
+     "2027": 81.0,
+     "2028": 100.0,
+     "2029": 116.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Migratiekosten beperken door de afbouw van de asielinstroom en de verhoging van de asieluitstroom.",
+    "impulse": {
+     "2025": 716.0,
+     "2026": 716.0,
+     "2027": 716.0,
+     "2028": 716.0,
+     "2029": 716.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Meer solidariteit door de afbouw van de wachtlijsten voor persoonsgebonden budgetten voor mensen met een beperking.",
+    "impulse": {
+     "2025": -370.0,
+     "2026": -370.0,
+     "2027": -370.0,
+     "2028": -370.0,
+     "2029": -370.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Meer solidariteit door de invoering van de maximumfactuur voor rusthuizen, via de begrensde bijpassing tussen de factuur en het gemiddeld pensioen.",
+    "impulse": {
+     "2025": -136.0,
+     "2026": -136.0,
+     "2027": -136.0,
+     "2028": -136.0,
+     "2029": -136.0
+    }
+   },
+   {
+    "id": 404,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Beperken van de administratiekosten door vakbonden en ziekenfondsen",
+    "impulse": {
+     "2025": 51.0,
+     "2026": 91.0,
+     "2027": 140.0,
+     "2028": 191.0,
+     "2029": 249.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Afschaffen van de subsidie voor krantenbedeling en halveren van de subsidie voor de openbare omroep (VRT).",
+    "impulse": {
+     "2025": 179.0,
+     "2026": 179.0,
+     "2027": 274.0,
+     "2028": 274.0,
+     "2029": 274.0
+    }
+   },
+   {
+    "id": 502,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Invoeren van btw op kranten",
+    "impulse": {
+     "2025": 183.0,
+     "2026": 183.0,
+     "2027": 183.0,
+     "2028": 183.0,
+     "2029": 183.0
+    }
+   },
+   {
+    "id": 503,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Oprichting van een Vlaams energiebedrijf voor de bouw van nieuwe kerncentrales",
+    "impulse": {
+     "2025": -2000.0,
+     "2026": -2000.0,
+     "2027": -2000.0,
+     "2028": -2000.0,
+     "2029": -2000.0
+    }
+   },
+   {
+    "id": 504,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Strategisch investeren door de verkoop van niet-strategische overheidsparticipaties.",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 15000.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Besparing op politiek systeem door de afschaffing van de Vlaamse provincies, de afschaffing van de senaat, de afschaffing van de federale partijdotaties, de afschaffing van de dotatie van de monarchie, en door de halvering van de ministeriële kabinetten.",
+    "impulse": {
+     "2025": 210.0,
+     "2026": 235.0,
+     "2027": 259.0,
+     "2028": 284.0,
+     "2029": 309.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Migratiekosten beperken door inburgering en integratie betalend te maken",
+    "impulse": {
+     "2025": 97.0,
+     "2026": 97.0,
+     "2027": 97.0,
+     "2028": 97.0,
+     "2029": 97.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Schonere en betaalbare energie garanderen door de afschaffing van de subsidies voor nieuwe gascentrales, windmolenparken en renovaties",
+    "impulse": {
+     "2025": 200.0,
+     "2026": 200.0,
+     "2027": 200.0,
+     "2028": 200.0,
+     "2029": 200.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Schonere en betaalbare energie garanderen door de verlenging van de looptijd van Doel 1-2 en Tihange 1 vanaf begin 2026 gedurende minstens 10 jaar",
+    "impulse": {
+     "2025": -185.0,
+     "2026": -185.0,
+     "2027": -185.0,
+     "2028": -185.0,
+     "2029": -185.0
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "FICHE",
+    "title": "Autorijden betaalbaar houden door de afschaffing van de verkeersbelasting en invoering van een wegenvignet voor alle gebruikers, ook buitenlandse chauffeurs.",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    1.04,
+    1.35,
+    1.49,
+    1.49,
+    1.42
+   ],
+   "Privé-consumptie": [
+    2.4,
+    3.01,
+    3.39,
+    3.57,
+    3.63
+   ],
+   "Overheidsconsumptie": [
+    -0.32,
+    -0.39,
+    -0.44,
+    -0.48,
+    -0.51
+   ],
+   "Investeringen": [
+    2.38,
+    3.12,
+    3.38,
+    3.45,
+    3.41
+   ],
+   "Uitvoer": [
+    0.32,
+    0.3,
+    0.36,
+    0.22,
+    0.17
+   ],
+   "Invoer": [
+    1.13,
+    1.3,
+    1.46,
+    1.42,
+    1.44
+   ],
+   "Consumptieprijsindex": [
+    0.35,
+    0.09,
+    -0.13,
+    -0.1,
+    0.02
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    0.9,
+    -1.13,
+    -3.08,
+    -3.61,
+    -3.73
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    4.73,
+    4.59,
+    4.5,
+    4.44,
+    4.39
+   ],
+   "Werkgelegenheid": [
+    15080.0,
+    50530.0,
+    83910.0,
+    101490.0,
+    110060.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.21,
+    0.73,
+    1.21,
+    1.47,
+    1.59
+   ],
+   "Werkloosheidsgraad": [
+    -0.08,
+    -0.73,
+    -1.31,
+    -1.63,
+    -1.78
+   ],
+   "Vorderingensaldo van de overheid": [
+    -1.87,
+    -1.87,
+    -1.96,
+    -1.93,
+    -1.95
+   ],
+   "Overheidsschuld": [
+    0.28,
+    2.31,
+    4.39,
+    6.04,
+    5.34
+   ],
+   "Broeikasgasemissies": [
+    1.14,
+    0.87,
+    0.98,
+    0.91,
+    0.91
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    16.0,
+    0.98
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    49.0,
+    2.25
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    115.0,
+    5.1
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    169.0,
+    6.19
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    223.0,
+    6.79
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    280.0,
+    7.48
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    341.0,
+    7.93
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    402.0,
+    8.08
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    443.0,
+    7.75
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    483.0,
+    5.59
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    252.0,
+    6.4
+   ]
+  ]
+ },
+ "vooruit": {
+  "retrieved": "2026-11-26",
+  "measures": [
+   {
+    "id": 101,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lagere belasting op werk: verhoging belastingvrije som",
+    "impulse": {
+     "2025": -11093.0,
+     "2026": -11093.0,
+     "2027": -11093.0,
+     "2028": -11093.0,
+     "2029": -11093.0
+    }
+   },
+   {
+    "id": 102,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Lagere belasting op werk: versterking werkbonus",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -1575.0,
+     "2027": -1883.0,
+     "2028": -1883.0,
+     "2029": -2165.0
+    }
+   },
+   {
+    "id": 103,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globalisering personenbelasting: inkomsten uit financieel vermogen",
+    "impulse": {
+     "2025": 9695.0,
+     "2026": 9695.0,
+     "2027": 9695.0,
+     "2028": 9695.0,
+     "2029": 9695.0
+    }
+   },
+   {
+    "id": 104,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globalisering personenbelasting: reële huurinkomsten",
+    "impulse": {
+     "2025": 338.0,
+     "2026": 338.0,
+     "2027": 451.0,
+     "2028": 563.0,
+     "2029": 676.0
+    }
+   },
+   {
+    "id": 105,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Globalisering personenbelasting: meerwaarden op aandelen",
+    "impulse": {
+     "2025": 2889.0,
+     "2026": 2889.0,
+     "2027": 2889.0,
+     "2028": 2889.0,
+     "2029": 2889.0
+    }
+   },
+   {
+    "id": 106,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Hervorming  van  de erf- en schenkbelasting",
+    "impulse": {
+     "2025": 724.0,
+     "2026": 724.0,
+     "2027": 724.0,
+     "2028": 724.0,
+     "2029": 724.0
+    }
+   },
+   {
+    "id": 107,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "SIMUL",
+    "title": "Belasting aankoop woning: verlaging belasting aankoop gezinswoning en verhoging belasting aankoop buitenverblijven",
+    "impulse": {
+     "2025": 943.0,
+     "2026": 943.0,
+     "2027": 943.0,
+     "2028": 943.0,
+     "2029": 943.0
+    }
+   },
+   {
+    "id": 108,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Veralgemeende derdenrapportering financiële inkomsten door financiële instellingen",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 109,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Datamining CAP",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 110,
+    "category": "1. Fiscaliteit en parafiscaliteit",
+    "fpb_status": "FICHE",
+    "title": "Veralgemeende witte kassa & real time-VAT reporting",
+    "impulse": {
+     "2025": null,
+     "2026": null,
+     "2027": null,
+     "2028": null,
+     "2029": null
+    }
+   },
+   {
+    "id": 201,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Verhoging minimumloon naar 2.500 euro tegen 2029",
+    "impulse": {
+     "2025": 0.0,
+     "2026": -5.0,
+     "2027": -16.0,
+     "2028": -16.0,
+     "2029": -29.0
+    }
+   },
+   {
+    "id": 202,
+    "category": "2. Arbeidsmarkt (incl. werkloosheid)",
+    "fpb_status": "SIMUL",
+    "title": "Verlaging werkgeversbijdrage op lage lonen, gekoppeld aan optrekken van het minimumloon",
+    "impulse": {
+     "2025": -1500.0,
+     "2026": -1500.0,
+     "2027": -1500.0,
+     "2028": -1500.0,
+     "2029": -1500.0
+    }
+   },
+   {
+    "id": 301,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Gratis gezonde schoolmaaltijd in het kleuter- en lager onderwijs",
+    "impulse": {
+     "2025": -260.0,
+     "2026": -260.0,
+     "2027": -260.0,
+     "2028": -260.0,
+     "2029": -260.0
+    }
+   },
+   {
+    "id": 302,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Maximumfactuur secundair onderwijs",
+    "impulse": {
+     "2025": -202.0,
+     "2026": -202.0,
+     "2027": -202.0,
+     "2028": -202.0,
+     "2029": -202.0
+    }
+   },
+   {
+    "id": 303,
+    "category": "3. Sociale bescherming (incl. pensioenen)",
+    "fpb_status": "SIMUL",
+    "title": "Betaalbaar wonen: uitbreiding huurpremie",
+    "impulse": {
+     "2025": -149.0,
+     "2026": -149.0,
+     "2027": -149.0,
+     "2028": -149.0,
+     "2029": -149.0
+    }
+   },
+   {
+    "id": 401,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Investeringen in preventieve gezondheidszorg, met focus op jongeren en geestelijke gezondheidszorg",
+    "impulse": {
+     "2025": -18.0,
+     "2026": -35.0,
+     "2027": -53.0,
+     "2028": -71.0,
+     "2029": -89.0
+    }
+   },
+   {
+    "id": 402,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Uitbreiding centra geestelijke gezondheidszorg",
+    "impulse": {
+     "2025": -17.0,
+     "2026": -35.0,
+     "2027": -53.0,
+     "2028": -70.0,
+     "2029": -87.0
+    }
+   },
+   {
+    "id": 403,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Bijkomende plaatsen in jeugdhulpvoorzieningen en pleegzorg",
+    "impulse": {
+     "2025": -48.0,
+     "2026": -95.0,
+     "2027": -143.0,
+     "2028": -190.0,
+     "2029": -238.0
+    }
+   },
+   {
+    "id": 404,
+    "category": "4. Gezondheidszorg, invaliditeit",
+    "fpb_status": "SIMUL",
+    "title": "Zorg voor iedere persoon met een handicap",
+    "impulse": {
+     "2025": -74.0,
+     "2026": -148.0,
+     "2027": -222.0,
+     "2028": -296.0,
+     "2029": -370.0
+    }
+   },
+   {
+    "id": 501,
+    "category": "5. Economisch beleid (industrie- en mededingingsbeleid, O&O)",
+    "fpb_status": "SIMUL",
+    "title": "Minder marktmacht voor lagere facturen",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0
+    }
+   },
+   {
+    "id": 601,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Vermindering uitgaven overheid: personeel en werkingskosten",
+    "impulse": {
+     "2025": 235.0,
+     "2026": 235.0,
+     "2027": 235.0,
+     "2028": 235.0,
+     "2029": 235.0
+    }
+   },
+   {
+    "id": 602,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Vermindering uitgaven overheid: partijfinanciering",
+    "impulse": {
+     "2025": 48.0,
+     "2026": 48.0,
+     "2027": 48.0,
+     "2028": 48.0,
+     "2029": 48.0
+    }
+   },
+   {
+    "id": 603,
+    "category": "6. Werking van de overheid",
+    "fpb_status": "SIMUL",
+    "title": "Besparing op bedrijfssubsidies",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 0.0,
+     "2027": 677.0,
+     "2028": 807.0,
+     "2029": 936.0
+    }
+   },
+   {
+    "id": 701,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kwaliteit onderwijs: extra remediëring Nederlands in het basisonderwijs",
+    "impulse": {
+     "2025": -3.0,
+     "2026": -7.0,
+     "2027": -10.0,
+     "2028": -14.0,
+     "2029": -17.0
+    }
+   },
+   {
+    "id": 702,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kwaliteit onderwijs: Masters in het basisonderwijs",
+    "impulse": {
+     "2025": -12.0,
+     "2026": -24.0,
+     "2027": -37.0,
+     "2028": -49.0,
+     "2029": -61.0
+    }
+   },
+   {
+    "id": 703,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kwaliteit onderwijs: Extra leerkrachten kleuteronderwijs",
+    "impulse": {
+     "2025": -45.0,
+     "2026": -90.0,
+     "2027": -134.0,
+     "2028": -179.0,
+     "2029": -224.0
+    }
+   },
+   {
+    "id": 704,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kwaliteit onderwijs: Opwaardering beroeps- en technisch onderwijs",
+    "impulse": {
+     "2025": -12.0,
+     "2026": -25.0,
+     "2027": -37.0,
+     "2028": -50.0,
+     "2029": -62.0
+    }
+   },
+   {
+    "id": 705,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kwaliteit onderwijs: Betere begeleiding beginnende leerkrachten",
+    "impulse": {
+     "2025": -64.0,
+     "2026": -64.0,
+     "2027": -64.0,
+     "2028": -64.0,
+     "2029": -64.0
+    }
+   },
+   {
+    "id": 706,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Herschikking lesuren secundair onderwijs",
+    "impulse": {
+     "2025": 0.0,
+     "2026": 128.0,
+     "2027": 257.0,
+     "2028": 385.0,
+     "2029": 513.0
+    }
+   },
+   {
+    "id": 707,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kinderopvang: Een plaats voor ieder kind",
+    "impulse": {
+     "2025": -38.0,
+     "2026": -75.0,
+     "2027": -112.0,
+     "2028": -149.0,
+     "2029": -186.0
+    }
+   },
+   {
+    "id": 708,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kinderopvang: 130 dagen per jaar gratis voor ieder kind",
+    "impulse": {
+     "2025": -118.0,
+     "2026": -128.0,
+     "2027": -138.0,
+     "2028": -148.0,
+     "2029": -158.0
+    }
+   },
+   {
+    "id": 709,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Kinderopvang: Meer begeleiders per kind in de kinderopvang",
+    "impulse": {
+     "2025": -39.0,
+     "2026": -78.0,
+     "2027": -117.0,
+     "2028": -156.0,
+     "2029": -195.0
+    }
+   },
+   {
+    "id": 710,
+    "category": "7. Overheidsinvesteringen",
+    "fpb_status": "SIMUL",
+    "title": "Hervorming groeipakket - shift naar diensten",
+    "impulse": {
+     "2025": 13.0,
+     "2026": 52.0,
+     "2027": 90.0,
+     "2028": 128.0,
+     "2029": 166.0
+    }
+   },
+   {
+    "id": 801,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Verbetering openbaar vervoer: verhoging investeringsbudget De Lijn",
+    "impulse": {
+     "2025": -100.0,
+     "2026": -100.0,
+     "2027": -100.0,
+     "2028": -100.0,
+     "2029": -100.0
+    }
+   },
+   {
+    "id": 802,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Verbetering openbaar vervoer: verhoging werkingsmiddelen De Lijn",
+    "impulse": {
+     "2025": -200.0,
+     "2026": -200.0,
+     "2027": -200.0,
+     "2028": -200.0,
+     "2029": -200.0
+    }
+   },
+   {
+    "id": 803,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Afschaffing subsidie professionele diesel",
+    "impulse": {
+     "2025": 165.0,
+     "2026": 330.0,
+     "2027": 495.0,
+     "2028": 660.0,
+     "2029": 825.0
+    }
+   },
+   {
+    "id": 804,
+    "category": "8. Energie, mobiliteit, milieu, klimaatverandering",
+    "fpb_status": "SIMUL",
+    "title": "Spitsheffing op snelwegen rond Brussel (GEN zone), Antwerpen en Gent",
+    "impulse": {
+     "2025": 510.0,
+     "2026": 510.0,
+     "2027": 510.0,
+     "2028": 510.0,
+     "2029": 510.0
+    }
+   }
+  ],
+  "hermes": {
+   "Bbp": [
+    0.26,
+    0.41,
+    0.46,
+    0.49,
+    0.46
+   ],
+   "Privé-consumptie": [
+    -0.18,
+    -0.02,
+    0.08,
+    0.06,
+    0.02
+   ],
+   "Overheidsconsumptie": [
+    0.28,
+    0.35,
+    0.44,
+    0.52,
+    0.61
+   ],
+   "Investeringen": [
+    0.51,
+    0.61,
+    0.61,
+    0.6,
+    0.5
+   ],
+   "Uitvoer": [
+    0.17,
+    0.25,
+    0.27,
+    0.29,
+    0.26
+   ],
+   "Invoer": [
+    -0.02,
+    0.04,
+    0.08,
+    0.07,
+    0.05
+   ],
+   "Consumptieprijsindex": [
+    0.01,
+    -0.18,
+    -0.23,
+    -0.34,
+    -0.24
+   ],
+   "Nominale uurloonkosten (ondernemingen)": [
+    -0.77,
+    -2.2,
+    -3.17,
+    -4.12,
+    -4.04
+   ],
+   "Reëel beschikbaar inkomen van de particulieren": [
+    -0.24,
+    -0.08,
+    0.04,
+    -0.05,
+    -0.01
+   ],
+   "Werkgelegenheid": [
+    11710.0,
+    33770.0,
+    47960.0,
+    62640.0,
+    65460.0
+   ],
+   "Werkgelegenheidsgraad": [
+    0.16,
+    0.48,
+    0.69,
+    0.9,
+    0.94
+   ],
+   "Werkloosheidsgraad": [
+    0.2,
+    -0.12,
+    -0.34,
+    -0.57,
+    -0.6
+   ],
+   "Vorderingensaldo van de overheid": [
+    0.36,
+    0.18,
+    0.08,
+    0.06,
+    0.1
+   ],
+   "Overheidsschuld": [
+    -0.63,
+    -0.61,
+    -0.69,
+    -0.61,
+    -0.86
+   ],
+   "Broeikasgasemissies": [
+    0.13,
+    0.19,
+    0.2,
+    0.2,
+    0.2
+   ]
+  },
+  "expedition_deciles": [
+   [
+    "1ste deciel",
+    1623.0,
+    32.0,
+    1.99
+   ],
+   [
+    "2de deciel",
+    2195.0,
+    69.0,
+    3.12
+   ],
+   [
+    "3de deciel",
+    2249.0,
+    84.0,
+    3.76
+   ],
+   [
+    "4de deciel",
+    2721.0,
+    141.0,
+    5.18
+   ],
+   [
+    "5de deciel",
+    3284.0,
+    187.0,
+    5.7
+   ],
+   [
+    "6de deciel",
+    3738.0,
+    230.0,
+    6.15
+   ],
+   [
+    "7de deciel",
+    4307.0,
+    264.0,
+    6.13
+   ],
+   [
+    "8ste deciel",
+    4973.0,
+    296.0,
+    5.96
+   ],
+   [
+    "9de deciel",
+    5721.0,
+    311.0,
+    5.44
+   ],
+   [
+    "10de deciel",
+    8646.0,
+    301.0,
+    3.49
+   ],
+   [
+    "Alle huishoudens",
+    3944.0,
+    192.0,
+    4.9
+   ]
+  ]
+ }
+}

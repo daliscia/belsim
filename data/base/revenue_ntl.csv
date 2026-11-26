@@ -1,0 +1,110 @@
+item,label,year,line,S13,S1311,S1314,S1312,S1313
+D211P,VAT on products,2024,vat,37832.3,37832.3,0.0,0.0,0.0
+D2122C_1,Excise duties on mineral oil,2024,excise_fuel,60.0,60.0,0.0,0.0,0.0
+D2122C_11,Excise duties on coffee,2024,excise_beverages_packaging,13.6,13.6,0.0,0.0,0.0
+D2122C_12,Excise duties on intermediary products,2024,excise_alcohol,0.0,0.0,0.0,0.0,0.0
+D2122C_3,Excise duties on tobacco,2024,excise_tobacco,407.6,407.6,0.0,0.0,0.0
+D2122C_4,Excise duties on brandy,2024,excise_alcohol,215.7,215.7,0.0,0.0,0.0
+D2122C_5,Taxes on consumption of alcohol and brandy,2024,excise_alcohol,0.0,0.0,0.0,0.0,0.0
+D2122C_6,Excise duties on fermented sparkling drinks,2024,excise_alcohol,96.9,96.9,0.0,0.0,0.0
+D2122C_7,Excise duties on fermented fruit juices,2024,excise_alcohol,155.5,155.5,0.0,0.0,0.0
+D2122C_8,Excise duties on beer,2024,excise_alcohol,10.0,10.0,0.0,0.0,0.0
+D2122C_9,Excise duties on non-alcoholic beverages,2024,excise_beverages_packaging,82.2,82.2,0.0,0.0,0.0
+D214A_1,Excise duties on mineral oil,2024,excise_fuel,6768.7,6768.7,0.0,0.0,0.0
+D214A_11,Excise duties on coffee,2024,excise_beverages_packaging,0.0,0.0,0.0,0.0,0.0
+D214A_12,Excise duties on intermediary products,2024,excise_alcohol,19.0,19.0,0.0,0.0,0.0
+D214A_13,Contribution for the surveillance on domestic fuel oil,2024,excise_energy,24.8,24.8,0.0,0.0,0.0
+D214A_14,Contribution on oil product for heating,2024,excise_energy,4.5,4.5,0.0,0.0,0.0
+D214A_15,Contribution on energy,2024,excise_energy,360.0,360.0,0.0,0.0,0.0
+D214A_16,Federal contribution on electricity and natural gas / Contribution to the Energy Fund (FR),2024,excise_energy,160.5,0.0,0.0,160.5,0.0
+D214A_17,"Taxes on water (FR, WR and BCR)",2024,energy_green_levies,2.9,0.0,0.0,2.9,0.0
+D214A_23,Compulsory contributions from producers of animals and animal products (Sanitel),2024,excise_beverages_packaging,12.0,12.0,0.0,0.0,0.0
+D214A_28,Contribution for FAPETRO,2024,excise_fuel,3.1,3.1,0.0,0.0,0.0
+D214A_29,Contribution for APETRA,2024,excise_fuel,206.7,206.7,0.0,0.0,0.0
+D214A_3,Excise duties on tobacco,2024,excise_tobacco,2134.3,2134.3,0.0,0.0,0.0
+D214A_31,FC - green certificates delivery,2024,energy_green_levies,484.0,0.0,0.0,484.0,0.0
+D214A_32,FC - surtax on distribution prices to finance green certificates,2024,energy_green_levies,387.6,0.0,0.0,387.6,0.0
+D214A_33,WR - green certificates delivery,2024,energy_green_levies,382.0,0.0,0.0,382.0,0.0
+D214A_34,WR - surtax on transmission prices to finance green certificates,2024,energy_green_levies,43.7,0.0,0.0,43.7,0.0
+D214A_35,BCR - green certificates delivery,2024,energy_green_levies,96.7,0.0,0.0,96.7,0.0
+D214A_4,Excise duties on brandy,2024,excise_alcohol,81.0,81.0,0.0,0.0,0.0
+D214A_5,Taxes on consumption of alcohol and brandy,2024,excise_alcohol,0.0,0.0,0.0,0.0,0.0
+D214A_6,Excise duties on fermented sparkling drinks,2024,excise_alcohol,0.0,0.0,0.0,0.0,0.0
+D214A_7,Excise duties on fermented fruit juices,2024,excise_alcohol,0.1,0.1,0.0,0.0,0.0
+D214A_8,Excise duties on beer,2024,excise_alcohol,162.0,162.0,0.0,0.0,0.0
+D214A_9,Excise duties on non-alcoholic beverages,2024,excise_beverages_packaging,100.0,100.0,0.0,0.0,0.0
+D214C_1,Registration rights,2024,registration_duties,4865.6,162.3,0.0,4703.3,0.0
+D214C_2,Mortgage rights,2024,registration_duties,79.4,79.4,0.0,0.0,0.0
+D214C_3,Court rights,2024,other_taxes_production,30.2,30.2,0.0,0.0,0.0
+D214C_4,Taxes on stock exchange business,2024,stock_exchange_tax,428.7,428.7,0.0,0.0,0.0
+D214C_6,Duties on written documents,2024,other_taxes_production,84.3,84.3,0.0,0.0,0.0
+D214D_2,Traffic taxes,2024,vehicle_taxes,471.9,0.0,0.0,471.9,0.0
+D214F_1,Taxes on gambling and bets,2024,gambling_lottery,151.1,0.0,0.0,151.1,0.0
+D214G_1,Taxes on insurance contracts,2024,insurance_premium_tax,1749.7,1749.7,0.0,0.0,0.0
+D214G_2,Additional levy on premiums for industrial accidents,2024,insurance_premium_tax,40.5,0.0,40.5,0.0,0.0
+D214G_3,Additional levy on car insurance premiums,2024,insurance_premium_tax,823.7,0.0,823.7,0.0,0.0
+D214G_4,Additional levy on fire insurance premiums,2024,insurance_premium_tax,268.6,0.0,268.6,0.0,0.0
+D214G_5,Additional levy on hospitalization insurance premiums,2024,insurance_premium_tax,219.5,0.0,219.5,0.0,0.0
+D214G_6,Receipts for the benefit of the Belgian Red Cross,2024,insurance_premium_tax,9.7,9.7,0.0,0.0,0.0
+D214H_1,Tax on the embarkement of aircrafts,2024,other_taxes_production,42.3,42.3,0.0,0.0,0.0
+D214J_1,Profits of the national lottery,2024,gambling_lottery,220.0,220.0,0.0,0.0,0.0
+D214L_1,Taxes on poster advertising,2024,other_taxes_production,1.6,1.6,0.0,0.0,0.0
+D214L_2,Contribution on the turnover of the pharmaceutical industry,2024,pharma_levies,611.0,0.0,611.0,0.0,0.0
+D214L_3,Levy on particular pharmaceutical products,2024,pharma_levies,4.8,0.0,4.8,0.0,0.0
+D29A_1,Advance tax payment on property (PP),2024,property_tax,4896.4,0.0,0.0,388.2,4508.2
+D29A_2,Advance tax payment on property (Corp),2024,property_tax,2279.2,0.0,0.0,25.1,2254.1
+D29A_5,"Regional tax (BCR) - From 2002 onwards, only regional tax payable by the building owners",2024,property_tax,109.1,0.0,0.0,109.1,0.0
+D29B_1,Traffic taxes paid by corporations,2024,vehicle_taxes,682.6,0.0,0.0,620.5,62.1
+D29B_2,Tax on automatical recreation appliances,2024,gambling_lottery,50.0,0.0,0.0,50.0,0.0
+D29E_2,"Contribution to the Guarantee Fund for Financial Services (Formerly Special Protection Fund for deposits, life insurance contracts and the capital of approved cooperative societies)",2024,bank_levies,437.8,437.8,0.0,0.0,0.0
+D29E_3,Contribution for Financial Stability to the Resolution Funds / Single Resolution Fund,2024,bank_levies,0.1,0.1,0.0,0.0,0.0
+D29F_1,Tax on waste products (FR and WR),2024,environmental_taxes,104.5,0.0,0.0,104.5,0.0
+D29F_2,Tax on manure (FR),2024,environmental_taxes,5.0,0.0,0.0,5.0,0.0
+D29F_3,"Taxes on water (FR, WR and BCR)",2024,environmental_taxes,143.0,0.0,0.0,143.0,0.0
+D29F_4,Emission permits,2024,environmental_taxes,753.5,0.0,0.0,753.5,0.0
+D29H_1,Annuities for patented entities,2024,other_taxes_production,13.1,13.1,0.0,0.0,0.0
+D29H_12,"Annual tax on unit trusts, credit companies and insurance companies",2024,bank_levies,223.2,223.2,0.0,0.0,0.0
+D29H_13,Annual tax on credit institutions,2024,bank_levies,983.0,983.0,0.0,0.0,0.0
+D29H_15,Other taxes on production,2024,other_taxes_production,958.2,133.4,6.4,104.6,713.8
+D29H_16,Packaging levy,2024,excise_beverages_packaging,338.1,338.1,0.0,0.0,0.0
+D29H_3,Monopoly interest (National lottery),2024,gambling_lottery,101.5,101.5,0.0,0.0,0.0
+D29H_4,Non-recurrent company contribution,2024,other_taxes_production,299.7,0.0,299.7,0.0,0.0
+D29H_5,Contribution on public mandate,2024,other_taxes_production,5.7,0.0,5.7,0.0,0.0
+D29H_8,Contribution payable by the nuclear operators,2024,nuclear_levy,454.8,454.8,0.0,0.0,0.0
+D51A_1,Advance tax payment on movable property (PP),2024,withholding_tax,6655.9,6655.9,0.0,0.0,0.0
+D51A_2,Business' advance tax payment (PP),2024,pit_*,62486.8,62486.8,0.0,0.0,0.0
+D51A_3,Advance payments (PP),2024,pit_*,1618.1,1618.1,0.0,0.0,0.0
+D51A_4,Assessments (PP),2024,pit_*,1486.9,-15913.2,0.0,13294.6,4105.5
+D51A_5,Annual tax on profit sharing,2024,pit_*,40.1,40.1,0.0,0.0,0.0
+D51A_6,Special social contributions,2024,special_ssc,1370.5,0.0,1370.5,0.0,0.0
+D51A_7,Contribution large incomes,2024,special_ssc,0.1,0.0,0.1,0.0,0.0
+D51A_8,Tax on the worker's participation in the benefit or the capital of the company,2024,pit_*,11.7,11.7,0.0,0.0,0.0
+D51A_9,Other income taxes,2024,pit_*,42.2,42.2,0.0,0.0,0.0
+D51B_1,Advance tax payment on movable property (corp),2024,cit,980.3,980.3,0.0,0.0,0.0
+D51B_2,Advance payments (corp),2024,cit,22186.3,22186.3,0.0,0.0,0.0
+D51B_3,Taxes from non-residents (corp),2024,cit,73.4,73.4,0.0,0.0,0.0
+D51B_4,Assessments (corp),2024,cit,3785.7,3785.7,0.0,0.0,0.0
+D51B_5,Other income taxes,2024,cit,1.1,1.1,0.0,0.0,0.0
+D51E_2,Taxes from non-residents (PP),2024,pit_*,1141.9,1141.9,0.0,0.0,0.0
+D51E_3,Other income taxes,2024,pit_*,84.7,84.7,0.0,0.0,0.0
+D59A_1,Taxes on patrimony (grounds and buildings),2024,other_taxes_income_wealth,381.3,0.0,0.0,0.0,381.3
+D59A_2,Taxes on the NPIs,2024,other_taxes_income_wealth,98.3,98.3,0.0,0.0,0.0
+D59A_5,Transfer to the Fund for Industrial Accidents of recognized private insurance corporations,2024,other_taxes_income_wealth,421.0,0.0,421.0,0.0,0.0
+D59D_1,Taxes on traffic paid by the households,2024,vehicle_taxes,1386.1,0.0,0.0,1260.1,126.0
+D59F_1,Other taxes,2024,other_taxes_income_wealth,26.0,0.0,0.0,0.0,26.0
+D59G,Tax on securities accounts,2024,securities_account_tax,462.2,462.2,0.0,0.0,0.0
+D6111C_S13,To the general government account,2024,ssc_employer_public,11227.7,0.0,11216.9,10.8,0.0
+D6111C_X13,To the other sectors' account,2024,ssc_employer_private,37339.1,63.1,37276.0,0.0,0.0
+D612,Employers' imputed social contributions (D.612),2024,ssc_imputed,13657.9,3508.9,0.0,8140.1,2008.9
+D613CE,Compulsory employees' actual social contributions (D.613CE),2024,ssc_employee,24393.9,0.0,24064.8,308.2,20.9
+D613CN,Compulsory non employed persons' actual social contributions (D.613CN),2024,ssc_replacement_income,2405.5,0.0,2405.5,0.0,0.0
+D613CS,Compulsory self-employed persons' actual social contributions (D.613CS),2024,ssc_self_employed,5322.3,0.0,5322.3,0.0,0.0
+D613VE,Voluntary employees' actual social contributions (D.613VE),2024,ssc_employee,1.1,0.0,1.1,0.0,0.0
+D613VN,Voluntary non employed persons' actual social contributions (D.613VN),2024,ssc_replacement_income,67.8,0.0,67.8,0.0,0.0
+D614,Households' social contributions supplements (D.614),2024,ssc_imputed,0.9,0.0,0.0,0.0,0.9
+D61SC,Social insurance scheme service charge (D.61SC),2024,ssc_imputed,-0.1,0.0,0.0,0.0,-0.1
+D91A_1,Death duties,2024,inheritance_gift_tax,2933.1,0.0,0.0,2933.1,0.0
+D91A_2,Gift taxes,2024,inheritance_gift_tax,859.5,0.0,0.0,859.5,0.0
+D91B_1,Taxes on long-term savings,2024,other_taxes_income_wealth,234.1,234.1,0.0,0.0,0.0
+D91B_4,One-off tax regulation (bis),2024,other_taxes_income_wealth,12.6,5.2,0.0,7.4,0.0
+D91B_5,One-off tax regulation (ter),2024,other_taxes_income_wealth,218.5,218.5,0.0,0.0,0.0

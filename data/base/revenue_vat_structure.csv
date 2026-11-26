@@ -1,0 +1,62 @@
+level,coicop,category,value_meur,value_before_vat_meur,share_21,share_12,share_6,share_zero_exempt,note
+class,CP011,food,30553.9,28767.4,0.01,0.01,0.98,0.0,"food 6 %; margarine 12 %; lobster, caviar 21 %"
+class,CP012,food,3024.0,2852.8,0.0,0.0,1.0,0.0,"water, soft drinks, juices, coffee, tea 6 %"
+class,CP021,alcohol,4197.9,3469.3,1.0,0.0,0.0,0.0,
+class,CP023,tobacco,7083.9,5854.5,1.0,0.0,0.0,0.0,
+class,CP024,other_goods,1290.5,1290.5,0.0,0.0,0.0,1.0,illegal: no VAT
+class,CP031,other_goods,10570.6,8757.7,0.98,0.0,0.02,0.0,repair 6 %
+class,CP032,other_goods,2931.9,2432.1,0.97,0.0,0.03,0.0,repair 6 %
+class,CP041,housing,18441.7,18441.7,0.0,0.0,0.0,1.0,rents exempt
+class,CP042,housing,36791.1,36791.1,0.0,0.0,0.0,1.0,imputed rents
+class,CP043,renovation,947.5,846.0,0.4,0.0,0.6,0.0,"work on dwellings older than 10 years 6 %, materials 21 %"
+class,CP044,other_services,3154.0,2962.9,0.15,0.0,0.55,0.3,water 6 %; refuse collection and co-ownership charges outside VAT
+class,CP045,energy_home,14181.0,13074.9,0.16,0.01,0.83,0.0,"electricity, natural gas, heat, firewood 6 %; heating oil 21 %; coal 12 %"
+class,CP051,other_goods,5268.0,4353.7,1.0,0.0,0.0,0.0,
+class,CP052,other_goods,861.8,712.2,1.0,0.0,0.0,0.0,
+class,CP053,other_goods,2264.6,1871.6,1.0,0.0,0.0,0.0,
+class,CP054,other_goods,943.7,779.9,1.0,0.0,0.0,0.0,
+class,CP055,other_goods,1163.7,961.7,1.0,0.0,0.0,0.0,
+class,CP056,other_services,4207.9,3808.1,0.5,0.0,0.0,0.5,service vouchers and domestic staff outside VAT
+class,CP061,other_goods,5757.6,5246.1,0.25,0.0,0.75,0.0,medicines and most medical devices 6 %
+class,CP062,other_services,7838.9,7789.8,0.03,0.0,0.0,0.97,medical care exempt
+class,CP063,other_services,7762.2,7713.6,0.03,0.0,0.0,0.97,hospital care exempt
+class,CP064,other_services,1248.9,1241.1,0.03,0.0,0.0,0.97,
+class,CP071,other_goods,8291.0,7035.2,0.85,0.0,0.0,0.15,second-hand sales between households and margin scheme
+class,CP072,fuel,7867.0,6501.7,1.0,0.0,0.0,0.0,motor fuel (share of CP072)
+class,CP072,other_services,11800.5,9914.7,0.9,0.0,0.02,0.08,"non-fuel part: repairs, parts, parking; bicycle repair 6 %"
+class,CP073,other_services,2829.7,2715.6,0.0,0.0,0.7,0.3,"domestic passenger transport 6 %, international zero"
+class,CP074,other_services,1431.8,1248.3,0.7,0.0,0.0,0.3,universal postal service exempt
+class,CP081,other_goods,2292.2,1894.4,1.0,0.0,0.0,0.0,
+class,CP082,other_goods,148.8,123.0,1.0,0.0,0.0,0.0,
+class,CP083,other_services,7283.1,6019.1,1.0,0.0,0.0,0.0,
+class,CP091,other_goods,706.2,583.6,1.0,0.0,0.0,0.0,
+class,CP092,other_goods,2313.3,1911.8,1.0,0.0,0.0,0.0,
+class,CP093,other_goods,3178.9,2800.8,0.5,0.0,0.5,0.0,"plants, flowers, pet food 6 %"
+class,CP094,other_services,5613.3,5303.1,0.15,0.0,0.45,0.4,sport and leisure admissions 6 %; non-profit clubs and gambling exempt
+class,CP095,other_goods,296.3,254.3,0.7,0.0,0.3,0.0,
+class,CP096,other_services,2830.6,2678.0,0.1,0.0,0.6,0.3,"cinema, theatre, concerts, museums 6 %; recognised institutions exempt"
+class,CP097,other_goods,2879.6,2641.8,0.3,0.0,0.45,0.25,books 6 %; newspapers and weeklies zero; stationery 21 %
+class,CP098,other_services,3622.0,3547.5,0.1,0.0,0.0,0.9,margin scheme of travel agents
+class,CP101,other_services,127.8,127.8,0.0,0.0,0.0,1.0,education exempt
+class,CP102,other_services,77.4,77.4,0.0,0.0,0.0,1.0,
+class,CP103,other_services,412.4,412.4,0.0,0.0,0.0,1.0,
+class,CP104,other_services,274.9,274.9,0.0,0.0,0.0,1.0,
+class,CP105,other_services,186.2,186.2,0.0,0.0,0.0,1.0,
+class,CP111,restaurants,18389.0,16502.7,0.25,0.33,0.37,0.05,"meals on the premises 12 %, drinks 21 %, takeaway 6 %, school and care canteens exempt"
+class,CP112,restaurants,1705.4,1597.6,0.05,0.0,0.95,0.0,accommodation 6 % (12 % from March 2026)
+class,CP121,other_services,10054.0,10054.0,0.0,0.0,0.0,1.0,insurance exempt (premium tax)
+class,CP122,other_services,16139.2,15971.5,0.05,0.0,0.0,0.95,financial services exempt
+class,CP131,other_goods,5807.8,4860.1,0.9,0.0,0.1,0.0,hygiene products 6 %
+class,CP132,other_goods,1469.4,1214.4,1.0,0.0,0.0,0.0,
+class,CP133,other_services,3405.5,3405.5,0.0,0.0,0.0,1.0,social services exempt
+class,CP139,other_services,7754.9,6850.6,0.6,0.0,0.1,0.3,funeral services 6 %; administrative fees outside VAT
+category,,alcohol,,3469.3,1.0,0.0,0.0,0.0,copy into vat.mix
+category,,energy_home,,13074.9,0.16,0.01,0.83,0.0,copy into vat.mix
+category,,food,,31620.3,0.009,0.009,0.982,0.0,copy into vat.mix
+category,,fuel,,6501.7,1.0,0.0,0.0,0.0,copy into vat.mix
+category,,housing,,55232.8,0.0,0.0,0.0,1.0,copy into vat.mix
+category,,other_goods,,49725.1,0.793,0.0,0.147,0.06,copy into vat.mix
+category,,other_services,,92302.1,0.271,0.0,0.091,0.638,copy into vat.mix
+category,,renovation,,846.0,0.4,0.0,0.6,0.0,copy into vat.mix
+category,,restaurants,,18100.3,0.232,0.301,0.421,0.046,copy into vat.mix
+category,,tobacco,,5854.5,1.0,0.0,0.0,0.0,copy into vat.mix

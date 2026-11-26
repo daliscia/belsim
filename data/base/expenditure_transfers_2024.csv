@@ -1,0 +1,13 @@
+from,to,value,D7,D9,D4
+federal,social_security,50612.6,50174.0,35.6,403.0
+federal,regions_communities,57018.1,56915.4,73.7,29.0
+federal,local,4373.3,4342.5,25.5,5.3
+social_security,federal,3729.4,3729.4,0.0,0.0
+social_security,regions_communities,8001.9,8001.9,0.0,0.0
+social_security,local,1735.6,1735.6,0.0,0.0
+regions_communities,federal,25.4,24.0,1.4,0.0
+regions_communities,social_security,0.5,0.0,0.0,0.5
+regions_communities,local,15953.2,14509.4,1443.8,0.0
+local,federal,1.8,1.8,0.0,0.0
+local,social_security,0.0,0.0,0.0,0.0
+local,regions_communities,364.3,345.2,19.1,0.0

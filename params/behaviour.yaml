@@ -1,0 +1,526 @@
+# Behavioural-response parameters (owner: belsim.behaviour).
+#
+# Every elasticity here is a literature central value, not a Belgian estimate made for this
+# model: all are marked "ASSUMPTION - literature central value: <reference>". They are meant
+# to be changed by the user (single `Change`s) and scaled together with `beh.scale`.
+# Conventions: elasticities are LONG-RUN values; the share reached in the first year is the
+# channel's entry in `beh.lambda` (partial adjustment x_t = x_{t-1} + lambda (x* - x_{t-1})).
+
+# ----------------------------------------------------------------------------- switches
+beh.enabled:
+  description: Master switch for behavioural responses and demand feedback (1 = on, 0 = static costing)
+  unit: flag
+  source: "ASSUMPTION - model switch (no empirical content)"
+  values: {2024: 1}
+
+beh.scale:
+  description: Global multiplier on every behavioural response and fiscal multiplier (0.5 low / 1 central / 1.5 high)
+  unit: factor
+  source: "ASSUMPTION - model sensitivity knob (no empirical content)"
+  values: {2024: 1.0}
+
+beh.lambda:
+  description: >-
+    Partial-adjustment speed per channel = share of the long-run response reached in the first
+    year (then the remaining gap closes by the same share each year)
+  unit: fraction per year
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024 and WP 10-18), see data/reference/validation.yaml; labour supply and intensive margin slow (hardly any employment effect of income-tax and employee-contribution changes in the first year), labour demand fast (employer contributions: 13 to 17 thousand of the 22 to 23 thousand jobs in the first year); the headcount premium of a cut targeted at low wages slower (labour_composition; HERMES WP 10-18: 3 of 13 thousand extra jobs in the first year, 10 after two years); retirement 0.4 (Federal Planning Bureau Rapport 13299, table 2: the saving from postponed retirement after the 2027 malus builds up over three years, 228 / 463 / 677 EUR mn); other speeds are literature-based judgement
+  values:
+    2024:
+      labour_supply: 0.15
+      intensive: 0.25
+      labour_demand: 0.5
+      labour_composition: 0.25
+      retirement: 0.4
+      consumption: 0.6
+      cit_base: 0.5
+      cit_productivity: 0.1
+      capital_income: 0.7
+      property: 0.7
+beh.clip:
+  description: >-
+    Bounds on long-run targets so extreme measures cannot produce nonsense. Factors are bounded
+    in logs (0.7 = factor between exp(-0.7)=0.50 and exp(0.7)=2.0); emp_rate is the log change
+    in a cell's employment rate; emp_rate_delta_abs is the absolute cap on the additive change
+    in any cell's employment rate; retirement in years
+  unit: log points / years
+  source: "ASSUMPTION - model safeguard (no empirical content)"
+  values:
+    2024:
+      emp_rate: 0.25
+      emp_rate_delta_abs: 0.10
+      labour_demand: 0.15
+      self_employed: 0.30
+      productivity: 0.05
+      retirement: 3.0
+      consumption: 0.70
+      cit_base: 0.50
+      capital_income: 0.50
+      property: 0.70
+
+beh.marginal_step:
+  description: Relative gross-income step used to measure the effective marginal tax rate (finite difference)
+  unit: fraction
+  source: "ASSUMPTION - numerical choice (5% raise, robust to kinks)"
+  values: {2024: 0.05}
+
+# ----------------------------------------------------- 1. labour supply, extensive margin
+beh.ext.elasticity_by_decile:
+  description: >-
+    Participation elasticity w.r.t. the financial gain from working (net wage minus net
+    out-of-work income), by wage decile (1 = lowest)
+  unit: elasticity
+  source: >-
+    ASSUMPTION - literature central value: Immervoll, Kleven, Kreiner & Saez (2007, Economic
+    Journal) profile declining from 0.4 to ~0 with mean 0.2 (EU-15 incl. Belgium); Chetty,
+    Guren, Manoli & Weber (2013, NBER Macro Annual) extensive-margin consensus 0.25; Bargain,
+    Orsini & Peichl (2014, JHR) Belgian estimates 0.1-0.3
+  values:
+    2024: [0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.12, 0.10, 0.08, 0.05]
+
+beh.ext.sex_multiplier:
+  description: Multiplier on the participation elasticity by sex
+  unit: factor
+  source: >-
+    ASSUMPTION - literature central value: Bargain, Orsini & Peichl (2014, JHR): married
+    women's elasticities ~1.5-2x men's in Belgium; converging over time (Blau & Kahn 2007)
+  values:
+    2024: {M: 0.8, F: 1.2}
+
+beh.ext.age_bands:
+  description: Age limits of the groups young / prime / older for labour-supply responses [start young, start prime, start older, end (exclusive)]
+  unit: years
+  source: "ASSUMPTION - model grouping"
+  values:
+    2024: [18, 25, 55, 67]
+
+beh.ext.age_multiplier:
+  description: Multiplier on the participation elasticity by age group
+  unit: factor
+  source: >-
+    ASSUMPTION - literature central value: French (2005, REStud) and Chetty et al. (2013):
+    elasticities of older workers 2-3x prime-age; OECD Employment Outlook 2011 for youth
+  values:
+    2024: {young: 1.2, prime: 1.0, older: 1.5}
+
+beh.ext.decile_tilt:
+  description: >-
+    Position of each group in the wage distribution: weight of decile d is proportional to
+    exp(-tilt * z_d), z_d from -1 (lowest decile) to +1 (highest). Sex and age tilts add up.
+    Positive = concentrated in low deciles
+  unit: log-weight slope
+  source: >-
+    ASSUMPTION - no wage distribution by age and sex in the model contract; stylised on Statbel
+    Structure of Earnings Survey (young workers and women over-represented in low deciles)
+  values:
+    2024: {M: -0.15, F: 0.15, young: 0.60, prime: 0.0, older: -0.10}
+
+beh.ext.outside_option_weights:
+  description: >-
+    Mix of out-of-work situations used for the out-of-work income of a worker: unemployment
+    benefit, disability benefit, social assistance (integration income: flat, untaxed), no
+    replacement income (weights sum to 1)
+  unit: share
+  source: >-
+    ASSUMPTION - stylised on the composition of the non-employed aged 20-64 after the 2026 time limit on unemployment benefits (about 170,000 on unemployment benefit, 540,000 long-term sick, about 200,000 on the integration income or equivalent aid, the rest without replacement income). Social assistance is means-tested on the household, so only part of its recipients' situation is an alternative for a worker (singles and single parents: the inactivity trap documented for Belgium, from memory - OECD Benefits and Wages country notes; High Council for Employment 2014 on low-wage traps): 0.1, taken from the share without replacement income. With beh.ext.min_gain_share it gives about 10,000 fewer jobs after four years for unemployment benefits 10% higher, in line with duration elasticities of 0.3-0.6 in the literature (from memory: Lalive, Van Ours & Zweimuller 2006; Schmieder & von Wachter 2016), and about 4,000 for social assistance 10% higher
+  values:
+    2024:
+      unemployed: 0.3
+      disabled: 0.25
+      assisted: 0.1
+      none: 0.35
+
+beh.ext.min_gain_share:
+  description: Floor on the financial gain from working, as a share of the net wage (avoids log of a non-positive gain in benefit traps)
+  unit: share
+  source: "ASSUMPTION - floor on the gain from working. The lowest wage deciles are part-time earnings while benefits are computed for a full benefit, so the measured gain there is near zero and a small change in a benefit would otherwise produce an unbounded response (benefits 10% higher cost about 90,000 jobs with a floor of 0.05)"
+  values:
+    2024: 0.3
+
+# ------------------------------------- 2. intensive margin / elasticity of taxable income
+beh.eti.employee_by_decile:
+  description: >-
+    Elasticity of employees' effective labour input (hours, effort) w.r.t. the net-of-marginal-
+    tax rate, by wage decile; applied as a labour-productivity effect. The net return to an
+    extra hour includes the part of a loss in net wage that bargaining gives back in the gross
+    wage (dyn.wage_bargaining.compensation_employee_taxes), and the response moves output by
+    the share of private employees in labour income (government output is measured at cost)
+  unit: elasticity
+  source: >-
+    ASSUMPTION - real (hours and effort) response only, not the reporting response that the
+    elasticity of taxable income also contains: Bargain, Orsini & Peichl (2014, JHR) find
+    intensive-margin hours elasticities close to zero for Belgium (0.01-0.05); higher at the
+    top (Saez, Slemrod & Giertz 2012). The Federal Planning Bureau HERMES variants have no such
+    effect (see data/reference/validation.yaml).
+  values:
+    2024: [0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.025, 0.025, 0.035, 0.05]
+
+beh.eti.self_employed_by_decile:
+  description: Elasticity of self-employed taxable income w.r.t. the net-of-marginal-tax rate, by income decile
+  unit: elasticity
+  source: >-
+    ASSUMPTION - literature central value: Saez, Slemrod & Giertz (2012, JEL) range 0.12-0.40
+    overall, higher for self-employed and top incomes (Kleven & Schultz 2014: 0.1-0.3 for the
+    self-employed in Denmark; Saez 2010 bunching of the self-employed)
+  values:
+    2024: [0.20, 0.20, 0.20, 0.20, 0.25, 0.25, 0.30, 0.35, 0.40, 0.60]
+
+# ------------------------------------------------------------------- 3. labour demand
+beh.ld.elasticity_by_decile:
+  description: >-
+    Long-run elasticity of private employment w.r.t. the real labour cost (employer cost at
+    unchanged gross wage, and the wage level relative to prices and productivity), by wage
+    decile. The deciles are weighted with their share in the labour cost; the extra jobs of a
+    change concentrated on some deciles are governed by beh.ld.composition_net_share
+  unit: elasticity
+  source: >-
+    ASSUMPTION - calibrated between the Federal Planning Bureau HERMES variants (WP 4 DC2024 and WP 10-18; employer contributions +/-0.5% of GDP: 22 to 23 thousand jobs after four years, about -0.5 with contributions assessed on full-time-equivalent wages (ssc.fte_floor_wage); employee contributions, income tax and VAT: 17 to 21 thousand through indexed and bargained wages, about -0.65) and the evaluations of the 2015 index jump (about -0.45: National Bank, Planning Bureau); see data/reference/validation.yaml. Flat across deciles: the HERMES low-wage variant creates 1.6 times the jobs of the general cut, which the low cost of the jobs concerned more than explains (see beh.ld.composition_net_share); literature (Lichter, Peichl & Siegloch 2015, meta-analysis) -0.25 to -0.6
+  values:
+    2024: [-0.52, -0.52, -0.52, -0.52, -0.52, -0.52, -0.52, -0.52, -0.52, -0.52]
+beh.ld.composition_net_share:
+  description: >-
+    Labour demand reacts to a change in employer cost in two parts. (1) The cost of labour as
+    a whole: the response of each wage decile (beh.ld.elasticity_by_decile x the change in its
+    employer cost) weighted with the decile's share in the labour cost - what a general cut of
+    the same budget would give. (2) The composition of employment: a cut concentrated on low
+    wages buys more jobs per euro, because those jobs are cheap; that headcount premium is the
+    headcount-weighted response minus the cost-weighted one. This parameter is the share of the
+    premium that is a net addition to employment: the rest are low-wage jobs that replace
+    better-paid workers (substitution between wage classes). 1 = every job counts (pure
+    headcount weighting), 0 = only the labour cost as a whole matters. The premium builds up
+    at its own speed (beh.lambda, labour_composition). Zero for a measure that changes the cost
+    of every decile in the same proportion.
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the two employer-contribution variants of the Federal Planning
+    Bureau (HERMES, WP 10-18; see data/reference/validation.yaml): for the same 0.5% of GDP the
+    cut targeted at low wages creates 16.6 / 31.8 / 35.2 thousand jobs at t / t+2 / t+4 against
+    13.2 / 21.9 / 21.9 thousand for the general cut, i.e. a premium of 3 / 10 / 13 thousand
+    that builds up more slowly than the general effect. With employer contributions assessed on
+    full-time-equivalent wages (ssc.fte_floor_wage) the model gives 19 / 32 / 36 thousand
+    against 15 / 23 / 23 thousand.
+  values: {2024: 0.5}
+
+beh.ret.years_per_pct_replacement:
+  description: >-
+    Years of earlier effective retirement per 1% increase in the net pension replacement
+    ratio (net pension / net wage); a 10% pension cut delays retirement by 10x this value
+  unit: years per %
+  source: >-
+    ASSUMPTION - literature central value: Gruber & Wise (2004) and Belgian chapter (Dellis,
+    Desmet, Jousten & Perelman): a 10% benefit change moves the retirement age by 0.2-0.5
+    year; Manoli & Weber (2016, AEJ:EP) find the low end
+  values: {2024: 0.03}
+
+beh.ret.years_per_pp_accrual:
+  description: >-
+    Years of later retirement per percentage point of extra pension earned per additional
+    year worked (career accrual plus bonus/malus), for a small incentive; the response levels
+    off as the incentive grows (beh.ret.accrual_max_years). Used only if the expenditure module
+    provides calc.pension_accrual_incentive(p)
+  unit: years per pp
+  source: >-
+    ASSUMPTION - calibrated, together with beh.ret.accrual_max_years, on the Federal Planning
+    Bureau's evaluation of the 2026 bonus-malus (Rapport 13299, table 2; behaviour after Duval
+    2003, OECD WP 370; see data/reference/validation.yaml): pension spending 228 / 463 / 677 /
+    641 / 794 EUR mn lower in 2027-2031 (2024 prices), almost all of it postponed retirement,
+    i.e. an average postponement of about 0.2 year with the 2% malus and little more with the
+    4% one (model: 274 / 356 / 440 / 697 / 843). Micro-econometric studies find much less
+    (Hanel 2010 on German actuarial adjustments: 0.03-0.05 year per point; evaluations of the
+    2007-2014 pension bonus: small effects): 0.05 with beh.ret.accrual_max_years = 100 gives
+    that linear, weaker response
+  values: {2024: 0.30}
+
+beh.ret.accrual_max_years:
+  description: >-
+    Bound on the years of later retirement that the accrual incentive as a whole (career
+    accrual plus bonus/malus, a in % of the pension per additional year) can explain: years =
+    max x tanh(beh.ret.years_per_pp_accrual x a / max), and a reform moves retirement by the
+    difference of that expression between scenario and baseline. A penalty therefore acts
+    mostly when it is introduced: those who react already do so when it is small, only part of
+    each cohort is concerned and nobody can postpone beyond the legal age. A large value (100)
+    makes the response linear.
+  unit: years
+  source: >-
+    ASSUMPTION - calibrated on Federal Planning Bureau Rapport 13299, table 2 (see
+    beh.ret.years_per_pp_accrual): with a career accrual of 2.7% a year the 2% malus postpones
+    retirement by 0.22 year on average, the 4% malus by 0.29, the 5% malus by 0.31
+  values: {2024: 1.0}
+
+# ---------------------------------------------------------------------- 5. consumption
+beh.cons.elasticity:
+  description: Long-run own-price elasticity of the volume consumed, per category (includes the real-income effect for broad categories)
+  unit: elasticity
+  source: >-
+    ASSUMPTION - literature central value: tobacco Gallet & List (2003) / IARC Handbook 14
+    (2011) -0.4 to -0.6; alcohol Wagenaar, Salois & Komro (2009) -0.5; fuel Brons et al. (2008)
+    and Labandeira, Labeaga & Lopez-Otero (2017) SR -0.3 / LR -0.6 to -0.8; energy Labandeira
+    et al. (2017) LR -0.3 to -0.5; food Andreyeva, Long & Brownell (2010) -0.3 to -0.8;
+    restaurants and broad goods/services near -0.8 to -1 (budget constraint)
+  values:
+    2024:
+      food: -0.4
+      alcohol: -0.5
+      tobacco: -0.5
+      fuel: -0.6
+      energy_home: -0.35
+      housing: -0.2
+      restaurants: -1.0
+      renovation: -0.8
+      other_goods: -0.8
+      other_services: -0.8
+
+beh.cons.cross_border:
+  description: >-
+    Additional elasticity of the volume taxed in Belgium from cross-border shopping, tank
+    tourism and illicit trade (added to the own-price elasticity)
+  unit: elasticity
+  source: >-
+    ASSUMPTION - literature central value: Belgium is a net seller of tobacco and fuel to
+    neighbours' residents and professional diesel is mobile (Court of Audit reports on excise
+    yields 2016-2024 shortfalls; Leal, Lopez-Laborda & Rodrigo 2010 survey on cross-border
+    shopping; Rietveld & van Woudenberg 2005 on fuel)
+  values:
+    2024:
+      food: 0.0
+      alcohol: -0.2
+      tobacco: -0.3
+      fuel: -0.3
+      energy_home: 0.0
+      housing: 0.0
+      restaurants: 0.0
+      renovation: 0.0
+      other_goods: -0.05
+      other_services: 0.0
+
+beh.cons.pass_through:
+  description: Share of an indirect-tax change passed on to consumer prices, per category
+  unit: share
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024 and WP 10-18), see data/reference/validation.yaml; a VAT rise of 0.5% of GDP raises consumer prices by 1.2% in the first year, i.e. near-full pass-through
+  values:
+    2024:
+      food: 1.0
+      alcohol: 1.0
+      tobacco: 1.0
+      fuel: 1.0
+      energy_home: 1.0
+      housing: 1.0
+      restaurants: 0.8
+      renovation: 1.0
+      other_goods: 1.0
+      other_services: 1.0
+beh.cit.base_semi_elasticity:
+  description: >-
+    Semi-elasticity of the corporate tax base to the effective CIT rate: log change in the
+    base per 1.0 change in the rate (so +1 point of rate = -1.2% of base)
+  unit: semi-elasticity
+  source: >-
+    ASSUMPTION - literature central value: Heckemeyer & Overesch (2017, CJE) meta-analysis of
+    profit shifting 0.8; Beer, De Mooij & Liu (2020, J. Econ. Surveys) 1.0-1.5; De Mooij &
+    Ederveen (2008) larger once location and investment are included
+  values: {2024: -1.2}
+
+beh.cit.productivity_semi_elasticity:
+  description: >-
+    Long-run log change in labour productivity per 1.0 change in the effective CIT rate
+    (investment / capital-deepening effect; +10 points of CIT = -1% productivity)
+  unit: semi-elasticity
+  source: >-
+    ASSUMPTION - literature central value: user-cost elasticity of capital ~0.5-1 (Hassett &
+    Hubbard 2002; Bond & Xing 2015) with a capital share of 0.35; OECD (Johansson et al. 2008
+    'Tax and Economic Growth') same order of magnitude
+  values: {2024: -0.10}
+
+# -------------------------------------------------------- 7. capital income and property
+beh.cap.net_of_tax_elasticity:
+  description: Elasticity of the household capital-income tax base w.r.t. the net-of-tax rate (1 - capital income tax rate)
+  unit: elasticity
+  source: >-
+    ASSUMPTION - literature central value: Chetty & Saez (2005, QJE) dividend response to the
+    2003 US cut ~0.5; Kleven & Schultz (2014) capital income elasticities 2-3x labour income
+  values: {2024: 0.5}
+
+beh.prop.transactions_semi_elasticity:
+  description: >-
+    Log change in the value of property transactions per 1.0 change in the transaction tax
+    rate (registration duties); used only if the revenue module provides
+    calc.property_transaction_tax_rate(p)
+  unit: semi-elasticity
+  source: >-
+    ASSUMPTION - literature central value: Dachis, Duranton & Turner (2012, J. Econ. Geography)
+    Toronto 1.1-point tax -> -15% sales; Best & Kleven (2018, REStud) UK stamp duty; Fritzsche &
+    Vandrei (2019) Germany: 1 point -> -7% transactions
+  values: {2024: -8.0}
+
+# ------------------------------------------------------------- 9. demand (Keynesian) feedback
+beh.demand.enabled:
+  description: Switch for the short-run demand feedback of the fiscal impulse (1 = on)
+  unit: flag
+  source: "ASSUMPTION - model switch (no empirical content)"
+  values: {2024: 1}
+
+beh.demand.mult_purchases:
+  description: First-year output multiplier of public purchases (wages, goods and services, investment, benefits in kind)
+  unit: EUR GDP per EUR
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024 and WP 10-18), see data/reference/validation.yaml; first-year GDP effect of a 0.5% of GDP cut in public consumption: -0.28 to -0.35%
+  values:
+    2024: 0.6
+
+beh.demand.mult_transfers:
+  description: >-
+    Output multiplier of a change in the real disposable income of households once they have
+    adjusted their spending (marginal propensity to consume net of the import leakage; the
+    first-year effect is this value x beh.demand.income_first_year_share). Household income is
+    built from the model's own flows (wages of private employees, income of the self-employed,
+    capital income, cash benefits, less taxes and contributions paid by households), deflated
+    with the scenario's consumer prices relative to the baseline's, and taken net of the change
+    in real GDP on the supply side. The same multiplier applies to the nominal change of the
+    other transfers (subsidies, capital transfers, transfers abroad).
+  unit: EUR GDP per EUR
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024; see data/reference/validation.yaml): cut in social benefits of 0.5% of GDP (table 8: GDP -0.08% in the first year, -0.12% after two years, -0.13% after four), rise in income tax (table 16: -0.10 / -0.20%), in employee contributions (table 14: -0.06 / -0.19%) and in VAT (table 10: real disposable income -0.64% and private consumption -0.55% after four years, GDP -0.15%)
+  values:
+    2024: 0.27
+
+beh.demand.household_transfer_esa_prefixes:
+  description: ESA 2010 codes identifying the expenditure lines that are cash benefits of households (social benefits other than in kind); they are part of household income in the demand block. Lines classified as purchases (benefits in kind) are not concerned
+  unit: text
+  source: "ASSUMPTION - classification helper based on ESA 2010 transaction codes (D.62)"
+  values:
+    2024: [D62]
+
+beh.demand.household_direct_tax_esa_prefixes:
+  description: ESA 2010 codes identifying the revenue lines that are direct taxes and social contributions of households (taxes on income and wealth, households' social contributions, capital taxes); they are deducted from household income in the demand block. Lines paid by firms (beh.demand.firm_tax_keywords) are not concerned; employers' imputed contributions are not paid by households
+  unit: text
+  source: "ASSUMPTION - classification helper based on ESA 2010 transaction codes (D.51, D.59, D.613, D.91)"
+  values:
+    2024: [D51, D59, D613, D91]
+
+beh.demand.mult_taxes_firms:
+  description: >-
+    Output multiplier of taxes and contributions paid by firms, by kind: the key is a substring
+    of the revenue line (name, label or group; lines matching beh.demand.firm_tax_keywords),
+    the value the multiplier (absolute value). Corporate tax: small, most of it is absorbed by
+    profits. Employer contributions: none of their own, because their effects are modelled one
+    by one: jobs, bargained wages, consumer prices and dividends change the real income of
+    households (beh.demand.mult_transfers), labour cost changes competitiveness
+    (dyn.wage_cost.net_export_output_elasticity) and labour demand.
+  unit: EUR GDP per EUR
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, table 12, and WP 10-18; see data/reference/validation.yaml): GDP effect of a 0.5% of GDP rise in employer contributions: -0.13% in the first year and -0.11% after four years; +0.13% after four years for a cut. Corporate tax: judgement (no HERMES variant), in line with the low short-run multipliers of corporate tax changes in the literature (0.1 to 0.3)
+  values:
+    2024: {corporate: 0.1, employer: 0.0}
+
+beh.demand.firm_tax_keywords:
+  description: Lower-case substrings identifying revenue lines (name, label or group) paid by firms, for the choice of multiplier
+  unit: text
+  source: "ASSUMPTION - classification helper; other revenue lines are treated as paid by households"
+  values:
+    2024: [employer, corporate]
+
+beh.demand.purchases_pay_share:
+  description: Share of pay in public purchases other than health care (beh.demand.lagged_price_lines), used to deflate them - the pay share follows the wage index, the rest (goods and services, other benefits in kind, investment) the health index. The price change of purchases is not demand; public pay per head is part of household income in the demand block
+  unit: share
+  source: "Eurostat gov_10a_main 2024, Belgium: compensation of employees D.1 77 / (D.1 + intermediate consumption P.2 26 + social transfers in kind via market producers D.632 50 + gross capital formation P.51g 19) EUR bn = 0.45; without the health-care line (about EUR 40 bn of D.632) 77 / 132 = 0.58, rounded"
+  values:
+    2024: 0.6
+
+beh.demand.lagged_price_lines:
+  description: Expenditure lines classified as purchases whose price follows the health index of the previous year for the share health.indexation_lag_share (the health-insurance budget and its fees are set before the year starts). They are deflated with that index, not with the mix of wages and prices of the other purchases, and their indexation is income of the care providers
+  unit: list of expenditure lines
+  source: "ASSUMPTION - mirrors the rule of the expenditure module for health care (health.indexation_lag_share)"
+  values:
+    2024: [health_care]
+
+beh.demand.purchases_output_elasticity:
+  description: Share of public purchases that follows real GDP under unchanged policy (operating spending other than pay, investment and defence set in % of GDP, part of health care). The purchases induced by a supply-side change in real GDP are not counted as a fiscal impulse, like the revenue removed with beh.demand.budget_semi_elasticity
+  unit: elasticity
+  source: "DERIVED - property of the expenditure rules of this model: with real GDP 1% above the baseline and unchanged prices and wages, public purchases in volume are about 0.55% higher"
+  values:
+    2024: 0.55
+
+beh.demand.income_first_year_share:
+  description: Share of the demand effect of a change in household income (transfers, taxes on households) reached in the first year; the remaining gap closes by the same share each year
+  unit: fraction per year
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, table 8; see data/reference/validation.yaml): private consumption after a cut in social benefits: -0.39% in the first year, -0.56% after two years, -0.63% after four
+  values:
+    2024: 0.6
+
+beh.demand.mult_default:
+  description: Average multiplier used when the impulse cannot be split by revenue/expenditure line (fallback on the primary balance)
+  unit: EUR GDP per EUR
+  source: "ASSUMPTION - literature central value: average of the three multipliers above"
+  values: {2024: 0.5}
+
+beh.demand.persistence:
+  description: >-
+    Share of last year's demand gap that persists (0.95: a permanent impulse keeps 81% of its
+    first-year effect after 4 years, then fades as output returns to its supply-determined level)
+  unit: fraction per year
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024 and WP 10-18), see data/reference/validation.yaml: the GDP effect of a permanent cut in public consumption is still 0.25% after four years against 0.28% in the first; set a little lower so the economy returns to supply-determined output in the long run (half-life about 13 years)
+  values:
+    2024: 0.95
+beh.demand.budget_semi_elasticity:
+  description: >-
+    Budget-balance semi-elasticity to output, used to remove the endogenous part (supply
+    responses changing GDP) from the measured change in the balance before applying multipliers
+  unit: points of GDP per % of GDP
+  source: "European Commission, Mourre, Poissonnier & Lausegger (2019), Discussion Paper 098: Belgium 0.615"
+  values: {2024: 0.615}
+
+beh.pubcap.output_per_capital:
+  description: >-
+    Change in output per unit of change in the public capital stock relative to the baseline
+    (both in points of GDP): consumption of fixed capital of public assets, which is part of
+    measured GDP, plus the services of public infrastructure to private production
+  unit: EUR GDP per EUR of public capital, per year
+  source: >-
+    ASSUMPTION - calibrated on the Federal Planning Bureau HERMES variants (WP 4 DC2024, tables 4 and 6; see data/reference/validation.yaml): after four years a cut in public investment of 0.5% of GDP lowers GDP by 0.09 point more than the same cut in public consumption (government output falls with depreciation). Lower than the return implied by Bom & Ligthart (2014, J. Econ. Surveys: output elasticity of public capital about 0.08-0.12, i.e. 0.15-0.2 per euro of capital), which builds up over a longer horizon
+  values: {2024: 0.07}
+
+beh.pubcap.depreciation_rate:
+  description: Yearly depreciation of the public capital gap built up by a change in public investment
+  unit: fraction per year
+  source: "ASSUMPTION - consumption of fixed capital of general government (about 2.5% of GDP, Eurostat gov_10a_main P.51c) over a net capital stock of about half of GDP: roughly 5% a year"
+  values: {2024: 0.05}
+
+beh.pubcap.investment_esa_prefixes:
+  description: ESA 2010 code prefixes identifying expenditure lines that are public capital formation only (their difference with the baseline builds the public capital gap)
+  unit: text
+  source: "ASSUMPTION - classification helper based on ESA 2010 transaction codes"
+  values:
+    2024: [P5]
+
+beh.demand.max_gap:
+  description: Bound on the absolute demand gap
+  unit: fraction of GDP
+  source: "ASSUMPTION - model safeguard (no empirical content)"
+  values: {2024: 0.05}
+
+beh.demand.purchase_keywords:
+  description: >-
+    Lower-case substrings identifying expenditure lines (name, label or group) that are public
+    purchases rather than cash transfers, for the choice of multiplier
+  unit: text
+  source: "ASSUMPTION - classification helper; unmatched non-interest lines are treated as transfers"
+  values:
+    2024: [wage, compensation, staff, intermediate, purchase, operating, investment, gfcf, capital formation, in kind, health care, healthcare, defence, education]
+
+beh.demand.purchase_esa_prefixes:
+  description: ESA 2010 code prefixes identifying purchases (compensation, intermediate consumption, capital formation, social transfers in kind)
+  unit: text
+  source: "ASSUMPTION - classification helper based on ESA 2010 transaction codes"
+  values:
+    2024: [P2, D1, P5, D632, D63]
+
+beh.demand.interest_keywords:
+  description: Lower-case substrings / ESA codes identifying interest lines (excluded from the primary impulse)
+  unit: text
+  source: "ASSUMPTION - classification helper"
+  values:
+    2024: [interest, d41]

@@ -1,0 +1,261 @@
+# Prebuilt measures. Each is a list of dated changes to parameters; combine them freely in a scenario.
+measures:
+  - name: VAT standard rate 21% -> 22%
+    description: Raise the standard VAT rate by one point from 2027.
+    tags: [revenue, vat]
+    changes:
+      - {param: vat.rate_standard, value: 0.22, start: 2027}
+
+  - name: VAT reduced rate 6% -> 9%
+    description: Raise the reduced VAT rate (food, medicines, renovation ...) from 6% to 9% from 2027.
+    tags: [revenue, vat]
+    changes:
+      - {param: vat.rate_reduced, value: 0.09, start: 2027}
+
+  - name: Income tax - tax-free allowance +EUR 2,000
+    description: Raise the personal income tax-free allowance by EUR 2,000 (2027 euros, then indexed) for earned income. As in the 2026 reform, the increase is neutralised for pensions and replacement incomes (drop the second change to give it to everybody).
+    tags: [revenue, pit, purchasing power]
+    changes:
+      - {param: pit.basic_allowance, value: 2000, op: add, start: 2027}
+      - {param: pit.allowance_neutralised_replacement, value: 2000, op: add, start: 2027}
+
+  - name: Income tax - top rate 50% -> 55%
+    description: Raise the top marginal personal income tax rate by five points from 2027.
+    tags: [revenue, pit]
+    changes:
+      - {param: pit.bracket_rates, key: "3", value: 0.55, start: 2027}
+
+  - name: Corporate tax 25% -> 20%
+    description: Cut the standard corporate income tax rate to 20% from 2027.
+    tags: [revenue, cit]
+    changes:
+      - {param: cit.rate, value: 0.20, start: 2027}
+
+  - name: Employer social contributions -2 points
+    description: Cut the employer social contribution face rate by two points from 2027.
+    tags: [revenue, labour cost]
+    changes:
+      - {param: ssc.employer_rate, value: -0.02, op: add, start: 2027}
+
+  - name: Capital gains tax 10% -> 20%
+    description: Double the rate of the tax on financial capital gains from 2027.
+    tags: [revenue, capital]
+    changes:
+      - {param: cap.gains_tax_rate, value: 0.20, start: 2027}
+
+  - name: Withholding tax 30% -> 35%
+    description: Raise the withholding tax on interest and dividends by five points from 2027.
+    tags: [revenue, capital]
+    changes:
+      - {param: cap.withholding_rate, value: 0.35, start: 2027}
+
+  - name: Fuel excise +10 cents per litre
+    description: Raise motor-fuel duty by EUR 0.10 per litre from 2027.
+    tags: [revenue, excise, climate]
+    changes:
+      - {param: excise.fuel_duty, value: 0.10, op: add, start: 2027}
+
+  - name: Tobacco excise +25%
+    description: Raise tobacco duty by a quarter from 2027.
+    tags: [revenue, excise, health]
+    changes:
+      - {param: excise.tobacco_duty, value: 1.25, op: mul, start: 2027}
+
+  - name: Legal pension age 68 from 2035
+    description: Raise the legal pension age from 67 to 68 in 2035.
+    tags: [pensions, labour]
+    changes:
+      - {param: labour.legal_pension_age, value: 68, start: 2035}
+
+  - name: Keep legal pension age at 66
+    description: Cancel the legislated rise of the legal pension age to 67 in 2030.
+    tags: [pensions, labour]
+    changes:
+      - {param: labour.legal_pension_age, value: 66, start: 2030}
+
+  - name: Pension malus 5% per year of early retirement
+    description: Reduce new pensions by 5% per year of retirement before the legal age (and reward later retirement symmetrically) from 2027.
+    tags: [pensions]
+    changes:
+      - {param: pension.bonus_malus_per_year, value: 0.05, start: 2027}
+
+  - name: Restore civil-servant pension perequation
+    description: Pass real public-sector wage growth fully on to civil-servant pensions in payment again from 2027, without the 0.3% a year ceiling (perequation was abolished by the pension law of 30 May 2026).
+    tags: [pensions, expenditure]
+    changes:
+      - {param: pension.perequation_share, value: 1.0, start: 2027}
+      - {param: pension.perequation_cap, value: null, start: 2027}
+
+  - name: Abolish the unemployment benefit time limit
+    description: Return to unlimited-duration unemployment benefits (undo the 12-24 month limit of 2026).
+    tags: [unemployment, expenditure]
+    changes:
+      - {param: labour.unemp_benefit_max_years, value: 0, start: 2026}
+
+  - name: Index jump of 2% over 2027-2029
+    description: Forgo 2% of automatic indexation of wages and social benefits, spread over three years as inflation accumulates (the form of the 2015 index jump).
+    tags: [indexation, wages, expenditure]
+    changes:
+      # Timing of the 2015 jump as evaluated by the Planning Bureau and the National Bank
+      # (Chamber DOC 54 0913/001): private wages lose 0.2% / 1.4% / 2% in the three years;
+      # social benefits and public pay (pivot index) 0.7% in the first year and 2% from the
+      # second. Benefits: changes of the baseline factor (0.9 in 2028); public pay follows the
+      # wage index, its faster loss is given with the wage drift and taken back in 2029-2030.
+      - {param: labour.indexation_factor, value: 0.937, start: 2027, end: 2027}
+      - {param: labour.indexation_factor, value: 0.547, start: 2028, end: 2028}
+      - {param: labour.indexation_factor, value: 0.70, start: 2029, end: 2029}
+      - {param: exp.benefit_indexation_factor, value: -0.226, op: add, start: 2027, end: 2027}
+      - {param: exp.benefit_indexation_factor, value: -0.674, op: add, start: 2028, end: 2028}
+      - {param: labour.wage_drift, key: emp_public, value: -0.005, op: add, start: 2027, end: 2027}
+      - {param: labour.wage_drift, key: emp_public, value: -0.001, op: add, start: 2028, end: 2028}
+      - {param: labour.wage_drift, key: emp_public, value: 0.005, op: add, start: 2029, end: 2029}
+      - {param: labour.wage_drift, key: emp_public, value: 0.001, op: add, start: 2030, end: 2030}
+
+  - name: Index jump in 2027
+    description: Skip one whole year of automatic indexation of wages and social benefits (2027; about 3% in the baseline, larger than the 2015 jump).
+    tags: [indexation, wages, expenditure]
+    changes:
+      - {param: labour.indexation_factor, value: 0, start: 2027, end: 2027}
+      - {param: exp.benefit_indexation_factor, value: 0, start: 2027, end: 2027}
+
+  - name: Health-care growth norm 2%
+    description: Cap real growth of health-care spending at 2% a year from 2030 (baseline 2.5%).
+    tags: [health, expenditure]
+    changes:
+      - {param: health.growth_norm, value: 0.02, start: 2030}
+
+  - name: Defence 3.5% of GDP by 2035
+    description: Raise defence spending linearly from the baseline path to 3.5% of GDP in 2035.
+    tags: [defence, expenditure]
+    changes:
+      - {param: defence.target_pct_gdp, value: 3.5, start: 2027, phase_in_years: 8}
+
+  - name: Public investment +1% of GDP
+    description: Raise public investment by one point of GDP, phased in over 2027-2030.
+    tags: [investment, expenditure]
+    changes:
+      - {param: invest.public_pct_gdp, value: 1.0, op: add, start: 2027, phase_in_years: 3}
+
+  - name: Public employment -1% a year for 5 years
+    description: Shrink general-government employment by 1% a year from 2027 to 2031.
+    tags: [public sector, expenditure]
+    changes:
+      - {param: labour.public_employment_growth, value: -0.01, start: 2027, end: 2031}
+
+  - name: Cut subsidies to firms by 10%
+    description: Reduce wage, service-voucher, transport, energy and other subsidies by 10% from 2027.
+    tags: [subsidies, expenditure]
+    changes:
+      - {param: subsidy.factor, value: 0.9, op: mul, start: 2027}
+
+  - name: Welfare envelope restored from 2027
+    description: Resume real increases of pensions and benefits from 2027 instead of 2030.
+    tags: [social protection, expenditure]
+    changes:
+      - {param: pension.welfare_adjustment, value: 0.005, start: 2027, end: 2029}
+      - {param: exp.welfare_adjustment, value: 0.01, start: 2027, end: 2029}
+
+  - name: Net migration +20,000 a year
+    description: Higher net international migration than the reference projection, from 2027.
+    tags: [demography, assumption]
+    changes:
+      - {param: demo.net_migration, value: 20000, op: add, start: 2027}
+
+  - name: Productivity growth +0.25 point
+    description: Faster trend productivity growth than the baseline assumption, from 2027.
+    tags: [macro, assumption]
+    changes:
+      - {param: macro.productivity_growth, value: 0.0025, op: add, start: 2027}
+
+  - name: Interest rates +1 point
+    description: Long and short interest rates one point above the baseline assumption from 2027.
+    tags: [macro, assumption, debt]
+    changes:
+      - {param: macro.interest_rate_10y, value: 0.01, op: add, start: 2027}
+      - {param: macro.interest_rate_short, value: 0.01, op: add, start: 2027}
+
+  - name: Tax thresholds follow prices only (fiscal drag)
+    description: Keep income-tax and contribution thresholds indexed on prices only after 2030 (current law), so the tax burden rises with real wages.
+    tags: [revenue, pit, assumption]
+    changes:
+      - {param: core.tax_threshold_wage_link, value: 0.0, start: 2031}
+
+  - name: Static costing (no behavioural responses)
+    description: Switch off all behavioural and demand responses; add to a scenario to see its mechanical effect.
+    tags: [method]
+    changes:
+      - {param: beh.enabled, value: 0, start: 2025}
+
+  # ---------------------------------------------------------------- regional measures
+  # Region-keyed parameters: one Change with key = FLA | WAL | BRU (or a Community id).
+  - name: "Wallonia: structural unemployment -1 point by 2032"
+    description: Lower the structural unemployment rate of Wallonia by one percentage point, phased in from 2027 to 2032 (labour-market reform, training, mobility).
+    tags: [regional, WAL, labour market]
+    changes:
+      - {param: labour.nairu, key: WAL, value: -0.01, op: add, start: 2027, phase_in_years: 5}
+
+  - name: "Brussels: activation effort +25%"
+    description: Raise the activation effort of Actiris by a quarter from 2027 (phased in over three years) - lower structural unemployment in Brussels and more of the people excluded by the federal time limit find work.
+    tags: [regional, BRU, labour market]
+    changes:
+      - {param: labour.activation_factor, key: BRU, value: 1.25, start: 2027, phase_in_years: 3}
+
+  - name: "Wallonia: invalidity -10% (return to work)"
+    description: Reduce the share of people in invalidity in Wallonia by 10% through regional return-to-work programmes, phased in from 2027 to 2032.
+    tags: [regional, WAL, labour market]
+    changes:
+      - {param: labour.disability_rate_factor, key: WAL, value: 0.9, start: 2027, phase_in_years: 5}
+
+  - name: "Flanders: +0.25 point regional productivity growth"
+    description: Productivity in Flanders grows a quarter point a year faster than the national trend from 2027.
+    tags: [regional, FLA, growth]
+    changes:
+      - {param: regional.productivity_growth_wedge, key: FLA, value: 0.0025, start: 2027}
+
+  - name: "Wallonia: family allowance +10%"
+    description: Raise Walloon family allowances by 10% from 2027.
+    tags: [regional, WAL, family, purchasing power]
+    changes:
+      - {param: family.allowance_per_child, key: WAL, value: 1.1, op: mul, start: 2027}
+
+  - name: "Brussels: public employment -1% a year for 5 years"
+    description: Reduce the number of public employees residing in Brussels by 1% a year from 2027 to 2031 (all levels of government).
+    tags: [regional, BRU, public employment]
+    changes:
+      - {param: labour.public_employment_growth, key: BRU, value: -0.01, start: 2027, end: 2031}
+
+  - name: "Flanders: public investment +0.5% of regional GDP"
+    description: Raise public investment of the Flemish governments by 0.5% of Flemish GDP, phased in over 2027-2029.
+    tags: [regional, FLA, investment]
+    changes:
+      - {param: invest.regional_extra_pct_gdp, key: FLA, value: 0.5, start: 2027, phase_in_years: 2}
+
+  - name: "French Community: education cost per pupil -5%"
+    description: Cut the public cost per pupil in French Community education (Wallonia and French-language schools in Brussels) by 5%, phased in over 2027-2030.
+    tags: [regional, WAL, BRU, education]
+    changes:
+      - {param: educ.community_cost_factor, key: french_community, value: 0.95, start: 2027, phase_in_years: 3}
+
+  - name: "Flanders: elderly-care spending +10%"
+    description: Raise Flemish long-term care spending (residential care, care budgets) by 10% from 2027.
+    tags: [regional, FLA, health]
+    changes:
+      - {param: health.ltc_regional_factor, key: FLA, value: 1.1, start: 2027}
+
+  - name: "Brussels: service-voucher subsidy -20%"
+    description: Cut the Brussels subsidy per service voucher by 20% from 2027.
+    tags: [regional, BRU, subsidies]
+    changes:
+      - {param: subsidy.service_voucher_factor, key: BRU, value: 0.8, start: 2027}
+
+  - name: "Flanders: international immigration +20%"
+    description: A fifth more international immigrants settle in Flanders from 2027 (labour migration policy is a regional competence); immigration to the other regions is unchanged.
+    tags: [regional, FLA, demography]
+    changes:
+      - {param: demo.immigration_factor, key: FLA, value: 1.2, start: 2027}
+
+  - name: "Brussels: a quarter fewer residents leave for the other regions"
+    description: Cut by 25% the moves out of Brussels towards Flanders and Wallonia from 2027 (housing and family policy that keeps households in the city), phased in over 2027-2030.
+    tags: [regional, BRU, demography]
+    changes:
+      - {param: demo.internal_migration_factor, key: BRU, value: 0.75, start: 2027, phase_in_years: 3}

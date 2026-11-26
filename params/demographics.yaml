@@ -1,0 +1,188 @@
+# Demographic assumptions and policy levers (module: belsim.demographics).
+# Flows are per calendar year; the value dated t applies to the flows during year t, i.e. it
+# changes the population from 1 January t+1 onwards.
+
+demo.net_migration:
+  description: >-
+    Net international migration (immigration minus emigration, persons per year) when the
+    immigration and emigration factors are 1. Emigration follows age-specific rates; immigration
+    is set so that the balance equals this number.
+  unit: persons/year
+  source: >-
+    2024-2025 observed (Eurostat demo_gind, CNMIGRAT = net migration plus statistical adjustment);
+    2026-2030 Eurostat EUROPOP2023 baseline assumption for Belgium (proj_23ndbi, NMIGRAT);
+    2031, 2050 and 2070 - Federal Planning Bureau and Statbel, population projection 2025-2080, as
+    printed in Study Committee on Ageing, annual report July 2026, Tableau 2
+    (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26):
+    34 400, 36 900 and 35 600. ASSUMPTION - linear interpolation between those three years
+    (EUROPOP2023 had 36 800 in 2031 falling to 28 900 in 2070; see data/base/demographics_europop_summary.csv)
+  values:
+    2024: 69343
+    2025: 75702
+    2026: 38197
+    2027: 36784
+    2028: 37028
+    2029: 37330
+    2030: 37156
+    2031: 34400
+    2032: 34532
+    2033: 34663
+    2034: 34795
+    2035: 34926
+    2036: 35058
+    2037: 35189
+    2038: 35321
+    2039: 35453
+    2040: 35584
+    2041: 35716
+    2042: 35847
+    2043: 35979
+    2044: 36111
+    2045: 36242
+    2046: 36374
+    2047: 36505
+    2048: 36637
+    2049: 36768
+    2050: 36900
+    2051: 36835
+    2052: 36770
+    2053: 36705
+    2054: 36640
+    2055: 36575
+    2056: 36510
+    2057: 36445
+    2058: 36380
+    2059: 36315
+    2060: 36250
+    2061: 36185
+    2062: 36120
+    2063: 36055
+    2064: 35990
+    2065: 35925
+    2066: 35860
+    2067: 35795
+    2068: 35730
+    2069: 35665
+    2070: 35600
+
+demo.immigration_factor:
+  description: Multiplier on gross international immigration settling in each region (1 = reference path; regional shares of immigration are those observed in 2023-2024). A scalar is accepted and applies to the three regions. REGIONAL LEVER - Change(..., key="BRU").
+  unit: factor
+  source: Scenario lever; neutral value
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+demo.emigration_factor:
+  description: Multiplier on the age-specific international emigration rates of the residents of each region (1 = rates observed 2023-2024). A scalar is accepted and applies to the three regions. REGIONAL LEVER - Change(..., key="BRU").
+  unit: factor
+  source: Scenario lever; neutral value
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+demo.emigration_rate_age_profile:
+  description: >-
+    Age pattern of international emigration relative to the age-specific rates observed in
+    2023-2024: list of [age, factor] knots, linear in between (1 = observed rate). Part of the
+    reference path: immigration is net migration (demo.net_migration) plus the emigration these
+    rates imply, so a higher factor at some ages replaces older leavers by (mostly young)
+    arrivals without changing net migration.
+  unit: "[age, factor]"
+  source: >-
+    DERIVED - fitted on the yearly change of cohorts by single year of age in the Federal Planning
+    Bureau and Statbel population projection 2025-2080 (Study Committee on Ageing, statistical
+    annex of July 2026, sheet "perspectives de population",
+    https://www.plan.be/sites/default/files/documents/DATA_FOR_VERG_FR.xlsx, fetched 2026-11-26).
+    Over 2026-2034, when death rates are still close to the observed ones, cohorts aged 55-59 and
+    60-64 lose 0.10 and 0.14% a year more in the national projection than with the Eurostat
+    emigration rates of 2023-2024 (0.5% a year at those ages): factors 1.2 at 57 and 1.3 at 62
+    close that gap (to +0.01 / +0.04). Applied from 2032, after the horizon of the medium-term
+    outlook to which the baseline is aligned. Effect: 14 thousand fewer people aged 67 and over
+    in 2050 and 29 thousand fewer in 2070 (the model was 45 and 81 thousand above the national
+    projection, measured at the same date), 34 thousand more people in work in 2070. NOT
+    explained by this: the gap keeps widening after 2035 at ages 60-69 (another 0.1% a year)
+    while the model has fewer people aged 90 and over, which points to a different age pattern
+    of mortality gains (no national death rates by age are published); and the base population
+    of Eurostat is 54 thousand above the national one on 1 January 2024, nearly all under 50
+    (people on the waiting register), which does not reach the over-67s before 2045.
+  values:
+    2024: [[0, 1.0], [100, 1.0]]
+    2032: [[0, 1.0], [50, 1.0], [57, 1.2], [62, 1.3], [66, 1.0], [100, 1.0]]
+
+demo.internal_migration_factor:
+  description: Multiplier on the migration rates out of each region towards the two other regions (1 = flows observed 2023-2024). A scalar is accepted and applies to the three regions. REGIONAL LEVER - Change(..., key="BRU").
+  unit: factor
+  source: Scenario lever; neutral value
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+demo.tfr_target:
+  description: >-
+    National total fertility rate reached in demo.tfr_target_year. The fertility path is the
+    EUROPOP2023 path scaled linearly (from 2024) towards this target; at the baseline value the
+    EUROPOP path is followed unchanged.
+  unit: children per woman
+  source: Eurostat EUROPOP2023 baseline assumption for Belgium in 2070 (proj_23naasfr, age TOTAL)
+  values:
+    2024: 1.63767
+
+demo.tfr_target_year:
+  description: Year in which demo.tfr_target is reached (held afterwards, relative to the reference path)
+  unit: year
+  source: Horizon of the simulation; EUROPOP2023 value of that year is the baseline target
+  values:
+    2024: 2070
+
+demo.tfr_convergence_year:
+  description: >-
+    Year by which the gap between the observed 2024 fertility (TFR 1.44) and the EUROPOP2023
+    path (1.54 in 2024) is closed, linearly.
+  unit: year
+  source: "ASSUMPTION - EUROPOP2023 predates the 2023-2024 fertility decline; a ten-year return to its path is assumed"
+  values:
+    2024: 2035
+
+demo.fertility_factor:
+  description: Regional multiplier on age-specific fertility rates (after the national TFR path)
+  unit: factor
+  source: Scenario lever; neutral value. Regional differences in level and age pattern are the observed 2024 ones (Eurostat demo_r_frate2), held constant.
+  values:
+    2024: {FLA: 1.0, WAL: 1.0, BRU: 1.0}
+
+demo.mortality_improvement:
+  description: >-
+    Multiplier on the yearly rate of change of age-specific death rates assumed in EUROPOP2023
+    (1 = EUROPOP2023 improvement, 0 = death rates frozen, 2 = twice as fast)
+  unit: factor
+  source: Scenario lever; neutral value. Path from Eurostat proj_23naasmr.
+  values:
+    2024: 1.0
+
+demo.mortality_improvement_by_sex:
+  description: >-
+    Multiplier by sex (M, F) on the yearly rate of change of age-specific death rates of EUROPOP2023,
+    on top of demo.mortality_improvement - the national projection has life expectancy of men
+    catching up with that of women faster than EUROPOP2023
+  unit: factor
+  source: >-
+    DERIVED - fitted on life expectancy at birth in the Federal Planning Bureau and Statbel population
+    projection 2025-2080 as printed in Study Committee on Ageing, annual report July 2026, Tableau 2
+    (https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf, fetched 2026-11-26):
+    men 80.7 / 81.7 / 85.0 / 88.0 and women 84.7 / 85.3 / 87.3 / 89.1 years in 2025 / 2031 / 2050 / 2070
+    (with EUROPOP2023 alone the model gave 86.5 for men and 90.2 for women in 2070)
+  values:
+    2024: {M: 1.0, F: 1.0}
+    2025: {M: 1.28, F: 0.78}
+
+demo.sex_ratio_at_birth:
+  description: Boys per girl at birth
+  unit: ratio
+  source: Eurostat demo_fasec, Belgium, live births by sex 2019-2023 (average 1.045)
+  values:
+    2024: 1.045
+
+demo.infant_death_share_birth_year:
+  description: Share of deaths at age 0 that occur in the calendar year of birth
+  unit: fraction
+  source: "ASSUMPTION - infant deaths are concentrated in the first weeks of life; ~0.85 is the usual separation factor in low-mortality life tables"
+  values:
+    2024: 0.85

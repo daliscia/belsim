@@ -1,0 +1,1453 @@
+{
+ "common": {
+  "baseline": "Basisscenario",
+  "scenario": "Scenario",
+  "baseline_total": "Totaal basisscenario",
+  "year": "Jaar",
+  "total": "Totaal",
+  "other_n": "Overige ({n})",
+  "value": "Waarde",
+  "loading": "Laden…",
+  "unit": "Eenheid",
+  "all": "Alle",
+  "belgium": "België",
+  "vs_baseline": "t.o.v. basis",
+  "delta_vs_baseline": "Δ t.o.v. basis",
+  "pts": "ppt",
+  "pts_gdp": "ppt bbp",
+  "points_gdp": "procentpunt van het bbp",
+  "points": "procentpunt",
+  "thousand": "duizend",
+  "million": "miljoen",
+  "current_prices": "lopende prijzen",
+  "prices_of": "prijzen van {year}",
+  "in_prices_of": "in prijzen van {year}",
+  "not_provided": "nog niet geleverd door het model",
+  "remove": "Verwijderen",
+  "change": "Verandering",
+  "in_scenario": "In scenario",
+  "add_to_scenario": "Toevoegen aan scenario",
+  "measure": "Maatregel",
+  "units": "eenheden",
+  "server_unreachable": "De server is niet bereikbaar. Start hem met: {cmd}",
+  "n_measures": {
+   "one": "{n} maatregel",
+   "other": "{n} maatregelen"
+  },
+  "n_changes": {
+   "one": "{n} wijziging",
+   "other": "{n} wijzigingen"
+  },
+  "list_sep": ", ",
+  "colon": ": ",
+  "per_year": "per jaar",
+  "all_regions": "De drie gewesten",
+  "region": "Gewest",
+  "skip": "Naar de inhoud",
+  "still_computing": "De server is dit nog aan het berekenen; probeer het over een minuut opnieuw."
+ },
+ "unit": {
+  "bn": "mld. €",
+  "bn_real": "mld. €, prijzen van {year}",
+  "pct_gdp": "% van het bbp",
+  "pct_gdp_short": "% bbp",
+  "eur_real": "€, prijzen van {year}",
+  "thousand_persons": "duizend personen",
+  "persons": "personen",
+  "k": "k",
+  "index": "index, {year} = 1",
+  "years": "jaar",
+  "y": "j",
+  "eur_per_year": "€ per jaar",
+  "million_persons": "miljoen"
+ },
+ "fmt": {
+  "pct": "{v}%",
+  "eur": "€ {v}",
+  "eur_bn": "{v} mld. €"
+ },
+ "nav": {
+  "tagline": "België, economie en overheidsfinanciën",
+  "aria": "Weergaven",
+  "group": {
+   "projection": "Projectie",
+   "policy": "Beleid",
+   "trust": "Betrouwbaarheid"
+  },
+  "overview": {
+   "title": "Overzicht",
+   "nav": "Overzicht"
+  },
+  "budget": {
+   "title": "Begroting",
+   "nav": "Begroting"
+  },
+  "regions": {
+   "title": "Gewesten",
+   "nav": "Gewesten"
+  },
+  "population": {
+   "title": "Bevolking",
+   "nav": "Bevolking"
+  },
+  "labour": {
+   "title": "Arbeidsmarkt",
+   "nav": "Arbeid"
+  },
+  "economy": {
+   "title": "Economie",
+   "nav": "Economie"
+  },
+  "explorer": {
+   "title": "Verkenner",
+   "nav": "Alle reeksen"
+  },
+  "measures": {
+   "title": "Maatregelen",
+   "nav": "Maatregelen"
+  },
+  "compare": {
+   "title": "Scenario's vergelijken",
+   "nav": "Vergelijken"
+  },
+  "balance": {
+   "title": "De begroting in evenwicht brengen",
+   "nav": "Begroting sluitend"
+  },
+  "distribution": {
+   "title": "Wie wint, wie verliest",
+   "nav": "Verdeling"
+  },
+  "payslip": {
+   "title": "Loonfiche",
+   "nav": "Loonfiche"
+  },
+  "validation": {
+   "title": "Het model tegenover officiële cijfers",
+   "nav": "Validatie"
+  },
+  "active_measures": {
+   "one": "{n} actieve maatregel",
+   "other": "{n} actieve maatregelen"
+  },
+  "kept_scenarios": {
+   "one": "{n} scenario bewaard voor de vergelijking",
+   "other": "{n} scenario's bewaard voor de vergelijking"
+  },
+  "model_size": "{series} reeksen, {params} parameters",
+  "assumptions": {
+   "one": "{n} parameter is een aanname",
+   "other": "{n} parameters zijn aannames"
+  },
+  "reload": "Model herladen",
+  "parties": {
+   "title": "Partijprogramma's (doorrekening 2024)",
+   "nav": "Partijprogramma's"
+  },
+  "methodology": "Methodologie"
+ },
+ "bar": {
+  "units_aria": "Bedragen weergegeven in",
+  "lang_aria": "Taal",
+  "year_aria": "Geselecteerd jaar",
+  "play": "De jaren afspelen",
+  "prev_year": "Vorig jaar",
+  "next_year": "Volgend jaar",
+  "scenario_n": "Scenario ({n})",
+  "light_theme": "Licht thema",
+  "dark_theme": "Donker thema",
+  "refused": "Het scenario werd geweigerd.",
+  "run_again": "Opnieuw uitvoeren",
+  "simulating": "Het scenario wordt gesimuleerd…",
+  "stale_run": "Het scenario is gewijzigd sinds de laatste simulatie: de cijfers hieronder zijn die van de vorige simulatie.",
+  "stale_never": "Het scenario bevat maatregelen die nog niet gesimuleerd zijn: de cijfers hieronder zijn die van het basisscenario.",
+  "run": "Scenario simuleren",
+  "boot_failed": "Het model kon niet worden geladen",
+  "try_again": "Opnieuw proberen",
+  "view_failed": "De weergave “{view}” kon niet worden getoond",
+  "loading_model": "Het model wordt geladen…",
+  "params_failed": "De parameters konden niet worden geladen: {error}"
+ },
+ "chart": {
+  "aria": "grafiek",
+  "empty_series": "Het model levert deze reeks nog niet.",
+  "empty_series_plural": "Het model levert deze reeksen nog niet.",
+  "empty_values": "Het model levert deze waarden nog niet.",
+  "dashed_baseline": "Stippellijn: basisscenario",
+  "range": "{lo} tot {hi}",
+  "pyramid_aria": "Bevolkingspiramide",
+  "age": "{age} jaar"
+ },
+ "cmp": {
+  "show_chart": "Grafiek tonen",
+  "show_table": "Tabel tonen",
+  "download_csv": "CSV downloaden",
+  "static": "Statisch (zonder gedragsreactie)",
+  "band_name": "Bandbreedte van de gedragsreacties, ×0,5 tot ×1,5 (geen betrouwbaarheidsinterval)",
+  "name_baseline": "{name}, basisscenario",
+  "col_baseline": "{name} (basisscenario)",
+  "col_scenario": "{name} (scenario)",
+  "missing": "Nog niet geleverd door het model: {keys}.",
+  "not_available": "Nog niet beschikbaar.",
+  "server_missing": "De server levert dit nog niet.",
+  "check_again": "Opnieuw controleren",
+  "compute_failed": "Dit kon niet worden berekend",
+  "try_again": "Opnieuw proberen",
+  "display_failed": "Het antwoord van de server kon niet worden weergegeven",
+  "sort_by": "Sorteren op {label}"
+ },
+ "panel": {
+  "aria": "Scenario samenstellen",
+  "default_name": "Mijn scenario",
+  "measure_n": "Maatregel {n}",
+  "skipped": {
+   "one": "({n} uitgeschakelde of lege maatregel weggelaten)",
+   "other": "({n} uitgeschakelde of lege maatregelen weggelaten)"
+  },
+  "compare": {
+   "none": "Dit scenario bevat geen actieve maatregel om te vergelijken.",
+   "updated": "“{name}” bijgewerkt in de vergelijking.",
+   "full": "De vergelijking bevat hoogstens {max} scenario's. Verwijder er eerst een.",
+   "kept": "“{name}” bewaard voor de vergelijking."
+  },
+  "import": {
+   "measure": "Maatregel “{name}” toegevoegd.",
+   "scenario": "Scenario “{name}” geladen.",
+   "measures": {
+    "one": "{n} maatregel toegevoegd.",
+    "other": "{n} maatregelen toegevoegd."
+   },
+   "not_scenario": "Dit bestand is geen scenario en geen maatregel (“measures” of “changes” verwacht).",
+   "failed": "{file} kon niet worden geïmporteerd: {error}",
+   "button": "Bestand importeren"
+  },
+  "err": {
+   "no_value": "Geef een waarde op.",
+   "not_number": "“{text}” is geen getal.",
+   "start_outside": "Het beginjaar valt buiten de simulatie."
+  },
+  "change": {
+   "unknown_title": "Deze parameter bestaat niet in het model",
+   "unknown": "Onbekende parameter: de simulatie zal worden geweigerd.",
+   "remove": "Deze wijziging verwijderen",
+   "operation": "Bewerking",
+   "from": "van",
+   "to": "tot",
+   "from_aria": "Beginjaar",
+   "to_aria": "Eindjaar",
+   "open": "open",
+   "phase_in": "infasering",
+   "phase_aria": "Jaren van infasering"
+  },
+  "op": {
+   "set": "instellen op",
+   "add": "optellen",
+   "mul": "vermenigvuldigen met"
+  },
+  "measure": {
+   "include_title": "Deze maatregel in de simulatie opnemen",
+   "include": "{name} opnemen",
+   "name": "Naam van de maatregel",
+   "remove_title": "Deze maatregel verwijderen",
+   "remove": "{name} verwijderen",
+   "empty": "Nog geen wijzigingen. Kies een parameter in Maatregelen en voeg een wijziging toe aan deze maatregel."
+  },
+  "lib": {
+   "regional": "Gewestelijk",
+   "unknown_params": "Onbekende parameters: {list}",
+   "needs_update": "bij te werken",
+   "added_toast": "“{name}” toegevoegd. Simuleer het scenario om het effect te zien.",
+   "added": "Toegevoegd",
+   "add": "Toevoegen",
+   "title": "Kant-en-klare maatregelen ({n})",
+   "none_match": "Geen kant-en-klare maatregel voor deze selectie.",
+   "empty": "Nog geen kant-en-klare maatregelen. Bestanden in scenarios/ en belsim/measures/library/ verschijnen hier.",
+   "scenarios": "Kant-en-klare scenario's"
+  },
+  "load": "Laden",
+  "saved": {
+   "loaded": "“{name}” geladen.",
+   "delete_title": "Dit opgeslagen scenario verwijderen",
+   "delete": "{name} verwijderen",
+   "title": "Opgeslagen scenario's ({n})",
+   "empty": "Nog niets opgeslagen. “Opslaan” bewaart het scenario als YAML-bestand onder scenarios/user/.",
+   "saved_to": "Opgeslagen in {file}",
+   "saved_but": "Opgeslagen, maar: {problem}",
+   "in_browser": "bewaard in deze browser",
+   "empty_browser": "Nog niets opgeslagen. ‘Opslaan’ bewaart het scenario alleen in deze browser; gebruik de exportknoppen om het elders te gebruiken.",
+   "saved_browser": "Opgeslagen in deze browser.",
+   "browser_failed": "De browser weigerde het scenario op te slaan; exporteer het naar een bestand."
+  },
+  "status": {
+   "simulating": "Simulatie loopt…",
+   "failed": "De laatste simulatie is mislukt",
+   "none": "Geen actieve maatregelen: het basisscenario wordt getoond",
+   "edited": "Gewijzigd sinds de laatste simulatie",
+   "not_run": "Nog niet gesimuleerd",
+   "current": "De resultaten zijn actueel"
+  },
+  "hide": "Verbergen",
+  "name_aria": "Naam van het scenario",
+  "running": "Bezig…",
+  "band": {
+   "title": "Simuleert het scenario nog drie keer: gedragsreacties vermenigvuldigd met 0,5 en 1,5, en uitgeschakeld. Geen betrouwbaarheidsinterval.",
+   "label": "Statische raming en de marge van gedragsreacties tonen",
+   "computing": "(wordt berekend…)",
+   "failed": "(mislukt: {error})"
+  },
+  "refused": "Het scenario werd geweigerd",
+  "empty": {
+   "lead": "Nog geen maatregelen.",
+   "rest": "Kies een parameter en voeg een wijziging toe, of voeg hieronder een kant-en-klare maatregel toe."
+  },
+  "add_change": "Wijziging toevoegen",
+  "new_measure": "Nieuwe lege maatregel",
+  "clear_confirm": "Alle maatregelen uit dit scenario verwijderen?",
+  "clear": "Alles wissen",
+  "keep_title": "Dit scenario onder zijn naam bewaren in de weergave Vergelijken",
+  "in_comparison": "In vergelijking",
+  "keep": "Bewaren om te vergelijken",
+  "save": "Opslaan",
+  "export": "{format} exporteren",
+  "exported": "{format} geëxporteerd",
+  "results_csv": "Resultaten als CSV"
+ },
+ "impact": {
+  "title": "Impact van de maatregelen",
+  "sub": "{name} min het basisscenario",
+  "sub_stale": "(scenario gewijzigd sinds deze simulatie)",
+  "change_vs_baseline": "Verschil t.o.v. het basisscenario",
+  "group": {
+   "budget": "Begroting",
+   "economy": "Economie"
+  },
+  "row": {
+   "revenue": "Ontvangsten",
+   "expenditure": "Uitgaven",
+   "balance": "Saldo",
+   "debt": "Schuld",
+   "gdp_nominal": "Nominaal bbp",
+   "gdp_real": "Reëel bbp",
+   "employment": "Werkgelegenheid",
+   "employment_rate": "Werkgelegenheidsgraad 20-64 jaar",
+   "unemployment_rate": "Werkloosheidsgraad"
+  },
+  "years": "Jaren",
+  "years_aria": "Jaren in de impacttabel",
+  "years_error": "Geef jaren tussen {first} en {last} op.",
+  "breakdown": {
+   "interaction": "Wisselwerking tussen de maatregelen",
+   "all": "Alle maatregelen samen",
+   "sub": "Effect op het saldo van elke maatregel afzonderlijk gesimuleerd, {unit}",
+   "loading": "Elke maatregel wordt gesimuleerd…",
+   "button": "Uitsplitsen per maatregel"
+  },
+  "regions": {
+   "title": "Per gewest",
+   "toggle": "Per gewest",
+   "entities_note": "Het model levert geen overheidssaldo per grondgebied: het getoonde saldo is dat van elke gemeenschap en elk gewest als instelling."
+  },
+  "band": {
+   "title": "Statische raming en marge van gedragsreacties",
+   "failed": "De gevoeligheidssimulaties zijn mislukt: {error}",
+   "loading": "Het scenario wordt vier keer gesimuleerd…",
+   "run_first": "Simuleer het scenario om de marge te berekenen.",
+   "run": {
+    "static": "Statisch: zonder gedragsreactie",
+    "low": "Zwakke reactie (×0,5)",
+    "central": "Centraal (×1)",
+    "high": "Sterke reactie (×1,5)"
+   },
+   "notice": "Dit is geen statistisch betrouwbaarheidsinterval. De marge toont hetzelfde scenario met alle gedragselasticiteiten en begrotingsmultiplicatoren vermenigvuldigd met 0,5 en met 1,5; de statische rij schakelt ze uit (alleen het mechanische effect). De gedragsparameters zijn aannames: de spreiding toont in welke mate het resultaat ervan afhangt.",
+   "toggle_title": "Simuleert het scenario met gedragsreacties vermenigvuldigd met 0,5 en 1,5, en zonder",
+   "toggle": "Statische raming en marge"
+  },
+  "empty": {
+   "run_lead": "Simuleer het scenario",
+   "run_rest": "om het effect te zien op de ontvangsten, de uitgaven, het saldo, de schuld, het bbp en de werkgelegenheid.",
+   "add_lead": "Voeg een maatregel toe",
+   "add_rest": "in het scenariopaneel en simuleer het. De impact op de begroting en de economie verschijnt hier."
+  }
+ },
+ "overview": {
+  "gdp": "Bbp",
+  "growth": "Reële bbp-groei",
+  "population": "Bevolking",
+  "employment_rate": "Werkgelegenheidsgraad, 20-64 jaar",
+  "unemployment_rate": "Werkloosheidsgraad",
+  "revenue": "Ontvangsten",
+  "expenditure": "Uitgaven",
+  "balance": "Saldo",
+  "debt": "Schuld",
+  "baseline": "basisscenario",
+  "balance_title": "Begrotingssaldo",
+  "deficit_limit": "Tekortdrempel, −3% van het bbp",
+  "debt_title": "Overheidsschuld",
+  "debt_ref": "Referentiewaarde, 60% van het bbp",
+  "rev_exp_title": "Ontvangsten en uitgaven",
+  "about": {
+   "title": "De methode in het kort",
+   "what": "Een jaarlijkse simulatie van België tot 2070: bevolking, arbeidsmarkt, economie en elke ontvangsten- en uitgavenlijn van de gezamenlijke overheid. Het basisscenario volgt het Federaal Planbureau tot 2031 en de Studiecommissie voor de Vergrijzing daarna; een maatregel is een wijziging van parameters en het effect ervan is het verschil met dat basisscenario.",
+   "limits_lead": "Geen officiële doorrekening, geen voorspelling.",
+   "limits": "De resultaten zijn grootteordes. De weergave Validatie toont waar het model bij de officiële cijfers aansluit en waar niet; er is nog geen toetsing door een onafhankelijke deskundige geweest.",
+   "link": "Lees de methodologie"
+  }
+ },
+ "budget": {
+  "side": {
+   "revenue": "Ontvangsten",
+   "expenditure": "Uitgaven"
+  },
+  "tab_entities": "Per overheidsniveau",
+  "unclassified": "Niet ingedeeld",
+  "n_groups": {
+   "one": "{n} groep",
+   "other": "{n} groepen"
+  },
+  "n_lines": {
+   "one": "{n} post",
+   "other": "{n} posten"
+  },
+  "tree": {
+   "title": "{side} in {year}",
+   "sub": "{groups}, {lines}. Klik op een rij voor de grafiek; klik op de pijl om een groep in te klappen.",
+   "fold_group": "{group} inklappen",
+   "total_revenue": "Totale ontvangsten",
+   "total_expenditure": "Totale uitgaven",
+   "unfold_all": "Alles uitklappen",
+   "fold_all": "Alles inklappen",
+   "col_line": "Post en ESR-code",
+   "col_share": "Aandeel, %",
+   "gap": "De posten tellen op tot {sum}, maar {key} geeft {reported} in {year}."
+  },
+  "detail": {
+   "by_line": "{group}, per post"
+  },
+  "by_group": "{side} per groep",
+  "empty_revenue": "Het model levert nog geen ontvangstenposten.",
+  "empty_expenditure": "Het model levert nog geen uitgavenposten.",
+  "measure": {
+   "revenue": "Ontvangsten",
+   "expenditure": "Uitgaven",
+   "balance": "Saldo",
+   "debt": "Schuld"
+  },
+  "entities": {
+   "title": "Overheidsniveaus in {year}",
+   "sub": "{unit}, na overdrachten tussen overheden",
+   "col_entity": "Entiteit",
+   "general_government": "Gezamenlijke overheid",
+   "derived": "* Geraamd op basis van de verdeling van elke post over de entiteiten, vóór overdrachten tussen overheden: het model levert dit cijfer nog niet per entiteit.",
+   "fed_note": "De gemeenschappen en gewesten staan uitgesplitst onder “Gemeenschappen en gewesten”. De consolidatierij is geen overheid: het is het verschil tussen hun som en de geconsolideerde subsector.",
+   "missing": "Nog niet per entiteit geleverd door het model: {list}.",
+   "chart_balance": "Saldo per overheidsniveau",
+   "chart_debt": "Schuld per overheidsniveau",
+   "chart_revenue": "Ontvangsten per overheidsniveau",
+   "chart_expenditure": "Uitgaven per overheidsniveau",
+   "fed_chart_balance": "Saldo van de gemeenschappen en gewesten",
+   "fed_chart_debt": "Schuld van de gemeenschappen en gewesten",
+   "fed_chart_revenue": "Ontvangsten van de gemeenschappen en gewesten",
+   "fed_chart_expenditure": "Uitgaven van de gemeenschappen en gewesten"
+  }
+ },
+ "regions": {
+  "delta": {
+   "employment": "Werkgelegenheid",
+   "gdp": "Bbp",
+   "gov_balance": "Saldo van de deelstaatoverheden",
+   "entity_balance": "Saldo van de gemeenschappen en gewesten"
+  },
+  "empty": {
+   "lead": "Nog geen cijfers per gewest.",
+   "rest": "Deze weergave wordt ingevuld zodra het model reeksen per gewest publiceert."
+  },
+  "intro": "Basisscenario in {year}. Verschuif de jaarschuif om het jaar te wijzigen.",
+  "intro_run": "“{name}” in {year}, met het verschil t.o.v. het basisscenario.",
+  "mode": {
+   "levels": "Niveaus",
+   "delta": "Verschil t.o.v. basis"
+  },
+  "table": {
+   "metric": "Indicator",
+   "title": "De drie gewesten in {year}",
+   "sub": {
+    "one": "{n} indicator gepubliceerd door het regionale model",
+    "other": "{n} indicatoren gepubliceerd door het regionale model"
+   },
+   "other_title": "Andere reeksen per gewest, {year}",
+   "other_sub": "Gepubliceerd door de modules demografie en arbeidsmarkt",
+   "revenue_title": "Ontvangsten per gewest, {year}",
+   "expenditure_title": "Uitgaven per gewest, {year}",
+   "lines_sub": "Begrotingsposten volgens het gewest waar ze ontstaan"
+  },
+  "chart": {
+   "baseline_of": "{region}, basisscenario",
+   "delta_sub": "Verschil t.o.v. het basisscenario, {unit}"
+  },
+  "entities_hint": "Begrotingen van de gemeenschappen en gewesten als instellingen:",
+  "entities_pending": "Begrotingen per overheidsniveau:",
+  "entities_link": "Begroting, per overheidsniveau"
+ },
+ "population": {
+  "pyramid": {
+   "loading": "Bevolking naar leeftijd laden…",
+   "no_data": "Geen bevolkingsgegevens voor {year}.",
+   "hint": "{total} miljoen inwoners op 1 januari {year}. Gebruik de jaarschuif of ▶ in de bovenbalk om door de tijd te bewegen.",
+   "load_error": "De bevolkingspiramide kon niet worden geladen: {error}",
+   "title": "Bevolking naar leeftijd en geslacht, {year}",
+   "sub": "Personen per leeftijdsjaar"
+  },
+  "dependency": {
+   "title": "Afhankelijkheidsratio van de ouderen",
+   "sub": "67-plussers per persoon van 18 tot 66 jaar",
+   "sub_computed": "67-plussers per persoon van 18 tot 66 jaar (berekend uit de leeftijdsgroepen)"
+  },
+  "flows": {
+   "title": "Geboorten, sterfgevallen en migratiesaldo",
+   "births": "Geboorten",
+   "deaths": "Sterfgevallen",
+   "net_migration": "Migratiesaldo"
+  },
+  "age_groups": {
+   "title": "Bevolking naar leeftijdsgroep",
+   "over_67": "67 jaar en ouder"
+  },
+  "total_title": "Totale bevolking",
+  "by_region_title": "Bevolking per gewest",
+  "migration": {
+   "title": "Immigratie en emigratie",
+   "immigration": "Immigratie",
+   "emigration": "Emigratie"
+  },
+  "tfr": {
+   "title": "Totaal vruchtbaarheidscijfer",
+   "sub": "Kinderen per vrouw"
+  },
+  "life": {
+   "title": "Levensverwachting bij de geboorte",
+   "men": "Mannen",
+   "women": "Vrouwen"
+  }
+ },
+ "labour": {
+  "load_error": "De gegevens voor {year} konden niet worden geladen: {error}",
+  "cause": {
+   "unemp_exclusion": "Uitsluiting uit de werkloosheid",
+   "pension_age": "Pensioenleeftijd",
+   "structural_unemployment": "Structurele werkloosheid",
+   "labour_supply": "Arbeidsaanbod",
+   "labour_demand": "Arbeidsvraag",
+   "cyclical": "Conjunctuur"
+  },
+  "causes": {
+   "total": "Totale verandering van de werkgelegenheid",
+   "title": "Waarom de werkgelegenheid afwijkt van het basisscenario",
+   "sub": "Duizend personen, per oorzaak zoals gerapporteerd door het model",
+   "aria": "Werkgelegenheid t.o.v. het basisscenario, per oorzaak",
+   "none": "Dit scenario verandert de werkgelegenheid niet."
+  },
+  "population": "Bevolking",
+  "sector": "Sector",
+  "all_sectors": "Alle sectoren",
+  "avg_gross_earnings": "Gemiddeld brutoloon",
+  "decile": "Deciel {n}",
+  "per_age": "Personen per leeftijdsjaar",
+  "thousand_persons": "Duizend personen",
+  "status": {
+   "title": "Bevolking naar statuut"
+  },
+  "status_age": {
+   "title": "Statuut naar leeftijd, {year}"
+  },
+  "employment_rate": "Werkgelegenheidsgraad, 20-64 jaar",
+  "unemployment_rate": "Werkloosheidsgraad",
+  "employment": "Werkgelegenheid",
+  "activity_rate": "Activiteitsgraad, 20-64 jaar",
+  "by_sector": {
+   "title": "Werkgelegenheid per sector en type job, {year}"
+  },
+  "table": {
+   "title": "Werkgelegenheidstabel, {year}"
+  },
+  "wages": {
+   "title": "Gemiddeld brutoloon per sector, {year}",
+   "sub": "€ per werkende per jaar, {prices}"
+  },
+  "deciles": {
+   "title": "Lonen per deciel, {year}",
+   "sub": "Gemiddeld brutojaarloon van elk tiende van de werkenden, €, {prices}"
+  },
+  "avg_earnings": {
+   "title": "Gemiddeld arbeidsinkomen",
+   "private": "Werknemers privésector",
+   "public": "Werknemers overheidssector",
+   "self_employed": "Zelfstandigen"
+  },
+  "special_title": "Bijzondere arbeidsregelingen",
+  "wage_bill": {
+   "title": "Loonmassa en inkomen van zelfstandigen",
+   "private": "Loonmassa privésector",
+   "public": "Loonmassa overheidssector",
+   "self_employed": "Inkomen van zelfstandigen"
+  }
+ },
+ "economy": {
+  "va": {
+   "title": "Toegevoegde waarde per sector",
+   "empty": "Het model levert de toegevoegde waarde per sector nog niet.",
+   "title_year": "Toegevoegde waarde per sector, {year}",
+   "value": "Toegevoegde waarde"
+  },
+  "gdp_current": "Bbp, lopende prijzen",
+  "gdp_share_hint": "Weergegeven als aandeel van zichzelf; schakel over naar mld. €",
+  "gdp_volume": "Bbp, volume",
+  "growth": "Reële bbp-groei",
+  "components": {
+   "title": "Bestedingscomponenten van het bbp",
+   "households": "Consumptie van de huishoudens",
+   "government": "Overheidsconsumptie",
+   "investment": "Investeringen",
+   "exports": "Uitvoer",
+   "imports": "Invoer"
+  },
+  "cons_title": "Consumptie van de huishoudens per categorie",
+  "prices": {
+   "title": "Prijzen en loonindex",
+   "cpi": "Consumptieprijzen",
+   "health_index": "Gezondheidsindex",
+   "wage_index": "Loonindex",
+   "gdp_deflator": "Bbp-deflator"
+  },
+  "inflation": "Inflatie",
+  "rates": {
+   "title": "Rentevoeten",
+   "bond_10y": "Overheidsobligatie op 10 jaar (OLO)",
+   "short": "Korte termijn"
+  },
+  "income": {
+   "title": "Inkomenscomponenten",
+   "compensation": "Beloning van werknemers",
+   "gos": "Bruto-exploitatieoverschot",
+   "mixed": "Gemengd inkomen"
+  },
+  "tax_bases": "Belastbare grondslagen",
+  "productivity": "Productiviteitsgroei",
+  "demand_gap": "Vraagkloof door de budgettaire impuls"
+ },
+ "explorer": {
+  "section": {
+   "fiscal": "Overheidsfinanciën",
+   "revenue": "Ontvangstenposten",
+   "expenditure": "Uitgavenposten",
+   "macro": "Economie",
+   "labour": "Arbeidsmarkt",
+   "demo": "Demografie",
+   "pop": "Bevolking",
+   "status": "Statuut van de bevolking",
+   "emp": "Werkgelegenheid",
+   "va": "Toegevoegde waarde",
+   "regional": "Gewesten"
+  },
+  "no_match": "Geen enkele reeks komt overeen met “{q}”.",
+  "search_placeholder": "Reeks zoeken, bv. pensioen, btw, schuld",
+  "mode": {
+   "level": "Niveaus",
+   "delta": "Verschil met het basisscenario"
+  },
+  "remove_aria": "{label} verwijderen",
+  "delta_sub": "{key}, verschil in {unit}",
+  "delta_series": "Scenario min basisscenario",
+  "run_first": "Voer een scenario uit om de verschillen met het basisscenario te zien.",
+  "all": {
+   "title": "Alle reeksen",
+   "sub": {
+    "one": "{n} scalaire reeks geproduceerd door het model",
+    "other": "{n} scalaire reeksen geproduceerd door het model"
+   }
+  },
+  "selected": {
+   "one": "{n} geselecteerd",
+   "other": "{n} geselecteerd"
+  },
+  "selected_capped": {
+   "one": "{n} geselecteerd, eerste {max} in grafiek",
+   "other": "{n} geselecteerd, eerste {max} in grafiek"
+  },
+  "download": "Selectie downloaden als CSV",
+  "clear": "Wissen",
+  "none": {
+   "title": "Niets geselecteerd",
+   "lead": "Selecteer een of meer reeksen",
+   "rest": "aan de linkerkant om het basisscenario tegenover het scenario uit te zetten. Elke sleutel die het model produceert staat in de lijst, ook die welke geen andere weergave toont."
+  }
+ },
+ "measures": {
+  "tab": {
+   "params": "Parameters",
+   "impact": "Impacttabel"
+  },
+  "list_of": {
+   "one": "lijst van {n}",
+   "other": "lijst van {n}"
+  },
+  "n_keys": {
+   "one": "{n} sleutel",
+   "other": "{n} sleutels"
+  },
+  "by_region": "per gewest",
+  "n_params": {
+   "one": "{n} parameter",
+   "other": "{n} parameters"
+  },
+  "n_files": {
+   "one": "{n} bestand",
+   "other": "{n} bestanden"
+  },
+  "filter": {
+   "all": "Alle {n}",
+   "assumptions": "Aannames {n}",
+   "regional": "Gewestbevoegdheid {n}",
+   "changed": "In scenario {n}"
+  },
+  "tag": {
+   "assumption": "aanname",
+   "regional": "per gewest",
+   "regional_title": "Gewestbevoegdheid: één waarde per gewest, een maatregel kan dus één gewest wijzigen",
+   "wage_linked": "loongekoppeld",
+   "wage_linked_title": "Volgt de reële loongroei (core.tax_threshold_wage_link)",
+   "in_scenario": "in scenario"
+  },
+  "no_description": "Geen beschrijving",
+  "no_match": "Geen parameter komt overeen met deze zoekopdracht.",
+  "no_params": "Het model definieert nog geen parameters. Ze verschijnen hier zodra er params/*.yaml-bestanden bestaan.",
+  "search": "Zoek op naam, beschrijving, eenheid of bron",
+  "params_title": "Parameters",
+  "params_sub": "{params} in {files}. De getoonde waarden zijn die van {year}.",
+  "form": {
+   "title": "Wijziging toevoegen",
+   "sub": "Waarden staan in de eenheid van de parameter; tarieven zijn fracties (0.25 = 25%).",
+   "op": {
+    "set": "Instellen op",
+    "add": "Optellen",
+    "mul": "Vermenigvuldigen met"
+   },
+   "region_now": "{region}  (nu {value})",
+   "whole_region": "Volledige waarde van het gewest",
+   "whole_value": "Volledige waarde",
+   "element_now": "{path}  (nu {value})",
+   "value_placeholder": "getal, of JSON voor de volledige waarde",
+   "all_territories": "Allemaal",
+   "permanent": "permanent",
+   "new_measure": "Nieuwe maatregel",
+   "new_name": "Naam van de nieuwe maatregel",
+   "new_name_placeholder": "bv. {example}",
+   "added": "Wijziging toegevoegd. Simuleer het scenario om het effect te zien.",
+   "added_n": {
+    "one": "{n} wijziging toegevoegd. Simuleer het scenario om het effect te zien.",
+    "other": "{n} wijzigingen toegevoegd, één per gewest. Simuleer het scenario om het effect te zien."
+   },
+   "operation": "Bewerking",
+   "element": "Element",
+   "value_unit": "Waarde, {unit}",
+   "from_year": "Vanaf jaar",
+   "until_year": "Tot jaar",
+   "phase_in": "Infasering, jaren",
+   "add_to": "Toevoegen aan",
+   "submit": "Wijziging aan scenario toevoegen"
+  },
+  "err": {
+   "no_value": "Geef een waarde op voor de wijziging.",
+   "bad_json": "De waarde is geen geldige JSON.",
+   "not_number": "“{text}” is geen getal.",
+   "start_range": "Het beginjaar moet tussen {first} en {last} liggen.",
+   "end_before_start": "Het eindjaar ligt vóór het beginjaar.",
+   "need_element": "Deze parameter bevat meerdere waarden: kies welk element u wijzigt, of geef de volledige waarde als JSON."
+  },
+  "preview": {
+   "becomes": "{from} wordt {to}{unit}",
+   "from": "vanaf {start}",
+   "from_to": "van {start} tot {end}",
+   "phased": {
+    "one": "ingefaseerd over {n} jaar",
+    "other": "ingefaseerd over {n} jaar"
+   },
+   "uprated": "(waarde van {year}; latere jaren worden geïndexeerd met {index})"
+  },
+  "index": {
+   "cpi": "de consumptieprijzen",
+   "health_index": "de gezondheidsindex",
+   "wages": "de lonen"
+  },
+  "indexation": {
+   "uprated": "elk jaar geïndexeerd met {index}",
+   "wage_link": "volgt ook de reële loongroei in de mate bepaald door {param}",
+   "wage_link_generic": "de loonkoppeling van het model",
+   "none": "geen (blijft op de wettelijke waarde)"
+  },
+  "struct": {
+   "element": "Element",
+   "first": "Eerste",
+   "second": "Tweede",
+   "key": "Sleutel",
+   "empty": "Leeg in het basisscenario."
+  },
+  "choose": {
+   "title": "Kies een parameter",
+   "lead": "Kies een parameter",
+   "rest": "aan de linkerkant om de definitie en het basispad te zien, en beschrijf hoe de maatregel hem wijzigt: een nieuwe waarde instellen, iets optellen of vermenigvuldigen, vanaf een beginjaar."
+  },
+  "assumption_note": "Deze waarde is een aanname, geen officieel cijfer. Wees voorzichtig met resultaten die ervan afhangen.",
+  "not_stated": "niet vermeld",
+  "kv": {
+   "source": "Bron",
+   "indexation": "Indexering",
+   "defined_in": "Gedefinieerd in",
+   "legislated": "Wettelijk"
+  },
+  "baseline_by_year": "Basiswaarde per jaar",
+  "value_in": "Waarde in {year}",
+  "address_region": "Kies hieronder met “Gewest” welk gewest u wijzigt.",
+  "address_element": "Kies hieronder één element met “Element”.",
+  "already_changed": "Al gewijzigd door: {list}.",
+  "load_failed": "De parameters konden niet worden geladen."
+ },
+ "compare": {
+  "being_edited": "{name} (wordt bewerkt)",
+  "metric": {
+   "balance": "Saldo",
+   "revenue": "Ontvangsten",
+   "expenditure": "Uitgaven",
+   "gdp_real": "Reëel bbp",
+   "employment": "Werkgelegenheid",
+   "debt": "Schuld"
+  },
+  "set": {
+   "add_aria": "Een scenario aan de vergelijking toevoegen",
+   "add": "Scenario toevoegen…",
+   "saved": "Opgeslagen scenario's",
+   "prebuilt": "Kant-en-klare scenario's",
+   "one_measure": "Eén kant-en-klare maatregel afzonderlijk",
+   "replace_confirm": "Het scenario dat u bewerkt (“{current}”) vervangen door “{name}”? Het is niet bewaard in de vergelijking.",
+   "now_in_panel": "“{name}” is nu het scenario in het zijpaneel.",
+   "in_panel": "in het zijpaneel",
+   "edit": "Bewerken",
+   "remove_title": "Uit de vergelijking verwijderen",
+   "remove": "{name} uit de vergelijking verwijderen",
+   "title": "Vergeleken scenario's",
+   "sub": "Tot {max} benoemde scenario's, elk tegenover hetzelfde basisscenario. “Bewaren om te vergelijken” in het zijpaneel bewaart het scenario dat u bewerkt onder zijn naam.",
+   "remove_all_confirm": "Alle scenario's uit de vergelijking verwijderen?",
+   "remove_all": "Alles verwijderen",
+   "empty_lead": "Nog niets te vergelijken.",
+   "empty_rest": "Stel een scenario samen in het zijpaneel en kies “Bewaren om te vergelijken”, of voeg een opgeslagen of kant-en-klaar scenario toe via het menu hierboven. Wijzig daarna het scenario en bewaar het opnieuw onder een andere naam."
+  },
+  "refused": "Geweigerd: {error}",
+  "head": {
+   "debt_end": "Δ Schuld in {year}, {unit}",
+   "debt_end_title": "Verandering van de schuldgraad in het laatste gesimuleerde jaar",
+   "title": "Kernresultaten in {year}",
+   "sub": "Elk scenario min het basisscenario. Verschuif de jaarschuif om het jaar te wijzigen; klik op een kolom om te sorteren."
+  },
+  "regions": {
+   "title": "Per gewest in {year}",
+   "sub": "Elk scenario min het basisscenario, in elk gewest"
+  },
+  "years": {
+   "title": "Verschil t.o.v. het basisscenario, per jaar"
+  },
+  "chart": {
+   "balance": "Begrotingssaldo",
+   "debt": "Overheidsschuld",
+   "employment": "Werkgelegenheid",
+   "diff_sub": "Verschil t.o.v. het basisscenario, {unit}"
+  },
+  "mode": {
+   "levels": "Niveaus",
+   "delta": "Verschil t.o.v. basis"
+  },
+  "simulating": {
+   "one": "{n} scenario wordt gesimuleerd…",
+   "other": "{n} scenario's worden gesimuleerd…"
+  },
+  "some_refused": "Sommige scenario's werden door het model geweigerd en ontbreken in de grafieken:",
+  "charts_show": "De grafieken tonen"
+ },
+ "balance": {
+  "kind": {
+   "deficit": "Tekortplafond",
+   "debt": "Stabiele schuldgraad"
+  },
+  "target": "Doelstelling",
+  "deficit_at_most": "een tekort van hoogstens",
+  "debt_rule": "een saldo dat de schuld, in procent van het bbp, op het peil van het jaar voordien houdt",
+  "in_year": "in",
+  "measured_on": "Gemeten op “{name}”",
+  "measured_on_baseline": "Gemeten op het basisscenario: er is geen scenario gesimuleerd",
+  "spare": "{v} marge",
+  "gap": {
+   "balance_scenario": "Saldo in het scenario",
+   "balance_baseline": "Saldo in het basisscenario",
+   "target": "Beoogd saldo",
+   "to_close": "Te dichten kloof",
+   "title": "Kloof tussen het saldo en de doelstelling",
+   "sub": "Positief = nog te leveren inspanning om de doelstelling te halen",
+   "debt_note": "Stabiliserend saldo = −(schuld van het vorige jaar × nominale bbp-groei) / bbp. Het beweegt mee met de schuld en de groei van de simulatie en houdt geen rekening met stock-flowaanpassingen."
+  },
+  "series": {
+   "target_deficit": "Doelstelling: tekort van {v} van het bbp",
+   "target_debt": "Doelstelling: saldo dat de schuldgraad stabiliseert"
+  },
+  "verdict": {
+   "none": "Geen cijfer voor {year}.",
+   "miss_scenario": "In {year} mist het scenario de doelstelling met {pts} procentpunt van het bbp: {amount}{prices} te vinden.",
+   "miss_baseline": "In {year} mist het basisscenario de doelstelling met {pts} procentpunt van het bbp: {amount}{prices} te vinden.",
+   "meet_scenario": "In {year} haalt het scenario de doelstelling, met {pts} procentpunt van het bbp ({amount}) marge.",
+   "meet_baseline": "In {year} haalt het basisscenario de doelstelling, met {pts} procentpunt van het bbp ({amount}) marge."
+  },
+  "chart": {
+   "title": "Saldo en doelstelling"
+  },
+  "rank": {
+   "loading": {
+    "one": "De kant-en-klare maatregel wordt afzonderlijk gesimuleerd…",
+    "other": "Elk van de {n} kant-en-klare maatregelen wordt afzonderlijk gesimuleerd…"
+   },
+   "loading_detail": "Een tiental seconden de eerste keer; daarna uit de cache.",
+   "no_region": "Geen regionaal detail",
+   "measures_for": "Maatregelen",
+   "effect_in": "Effect in",
+   "col_measure": "Maatregel afzonderlijk",
+   "failed": "Kon niet worden gesimuleerd: {error}",
+   "col_balance": "Δ saldo, {unit}",
+   "col_share": "Aandeel van de kloof",
+   "col_share_title": "Verandering van het saldo als aandeel van de te dichten kloof in het gekozen jaar",
+   "col_employment": "Δ werkgelegenheid, duizend",
+   "col_gdp": "Δ reëel bbp, %",
+   "added": "“{name}” toegevoegd. Simuleer het scenario om de nieuwe kloof te zien.",
+   "no_year": "De rangschikking bevat geen cijfers voor {year}.",
+   "note": "Elke maatregel wordt afzonderlijk gesimuleerd tegenover het basisscenario, met gedragsreacties, met de omvang uit de bibliotheek. De effecten van meerdere maatregelen tellen niet exact op (ze werken op elkaar in), en een maatregel die al in uw scenario zit, levert niet tweemaal hetzelfde bedrag op: voeg maatregelen toe, simuleer het scenario en lees hierboven de nieuwe kloof af.",
+   "title": "Wat elke kant-en-klare maatregel verandert in {year}",
+   "sub": "Gerangschikt volgens het effect op het saldo; klik op een kolom om te sorteren.",
+   "filter": "Maatregelen filteren"
+  },
+  "unavailable": "Het model levert het saldo nog niet in procent van het bbp."
+ },
+ "distribution": {
+  "read_first": "Lees dit eerst: hoe deze cijfers tot stand komen.",
+  "income_measured": "Gemeten inkomen.",
+  "indicator": {
+   "gini": "Gini-coëfficiënt",
+   "s80s20": "Inkomenskwintielverhouding S80/S20",
+   "poverty_rate": "Armoederisicopercentage"
+  },
+  "indicator_change": "{name}, verandering",
+  "model_levels": "Model: {baseline} in het basisscenario, {scenario} in het scenario",
+  "observed": "Waargenomen: {value}",
+  "observed_year": "Waargenomen: {value} in {year}",
+  "read_change_hint": "Lees de verandering, niet het niveau: het model past de regels toe op enkele typehuishoudens, waardoor de ongelijkheid ver onder de waargenomen statistieken uitkomt.",
+  "tile": {
+   "gaining": "Winnende huishoudens",
+   "gaining_sub": "beschikbaar inkomen hoger, na prijsveranderingen",
+   "losing": "Verliezende huishoudens",
+   "losing_sub": "beschikbaar inkomen lager, na prijsveranderingen",
+   "avg": "Gemiddelde verandering per huishouden",
+   "avg_sub": "{pct} van het beschikbaar inkomen",
+   "all": "Alle huishoudens samen",
+   "all_sub": "verandering van het beschikbaar inkomen"
+  },
+  "a_year": "per jaar",
+  "decile": {
+   "name": "Deciel",
+   "title": "Verandering van het beschikbaar inkomen per deciel",
+   "title_year": "Verandering van het beschikbaar inkomen per deciel, {year}",
+   "none": "De server gaf geen decielen terug.",
+   "sub": "Tienden van de huishoudens, van het laagste (1) tot het hoogste (10) inkomen; verandering in % tegenover het basisscenario, na aftrek van het prijseffect",
+   "flat_run": "Dit scenario verandert het beschikbaar inkomen in geen enkel deciel.",
+   "flat_norun": "Reken een scenario door om te zien wie wint en wie verliest.",
+   "series": "Verandering van het beschikbaar inkomen, %",
+   "tip_change": "Verandering van het beschikbaar inkomen",
+   "baseline_income": "Inkomen in het basisscenario",
+   "head": {
+    "baseline_income_eur": "Inkomen basisscenario, €",
+    "change_eur": "Verandering, €",
+    "change_pct": "Verandering, %",
+    "gaining": "Winnaars",
+    "losing": "Verliezers"
+   }
+  },
+  "cause": {
+   "wages": "Lonen",
+   "benefits": "Uitkeringen",
+   "contributions": "Bijdragen",
+   "direct_taxes": "Directe belastingen",
+   "indirect_taxes_prices": "Indirecte belastingen en prijzen"
+  },
+  "of_which": "waarvan {cause}",
+  "of_which_eur": "waarvan {cause}, €",
+  "due_to": "Deel van de verandering van het netto-inkomen door {cause}",
+  "hh": {
+   "title": "Typehuishoudens",
+   "title_year": "Typehuishoudens, {year}",
+   "none": "De server gaf geen huishoudens terug.",
+   "sub": {
+    "one": "{shown} van {n} geval. € per jaar; “Verandering” is na aftrek van het effect van het scenario op de prijzen. Klik op een kolom om te sorteren.",
+    "other": "{shown} van {n} gevallen. € per jaar; “Verandering” is na aftrek van het effect van het scenario op de prijzen. Klik op een kolom om te sorteren."
+   },
+   "filter": "Huishoudens filteren"
+  },
+  "col": {
+   "household": "Huishouden",
+   "households": "Huishoudens",
+   "households_title": "Aantal huishoudens waarvoor dit geval staat",
+   "gross": "Bruto, €",
+   "net_baseline": "Netto, basisscenario, €",
+   "net_scenario": "Netto, scenario, €",
+   "change_before_prices": "Verandering vóór prijzen, €",
+   "change_before_prices_title": "Nominale verandering van het beschikbaar inkomen, vóór het effect van het scenario op de consumptieprijzen",
+   "change_eur": "Verandering, €",
+   "change_eur_title": "Verandering van het beschikbaar inkomen, na aftrek van het effect van het scenario op de consumptieprijzen",
+   "change_pct": "Verandering, %",
+   "avg": "Gemiddeld tarief",
+   "avg_title": "Belastingen en bijdragen als aandeel van het bruto-inkomen",
+   "marg": "Marginaal tarief",
+   "marg_title": "Aandeel van één extra euro bruto-inkomen dat opgaat aan belastingen, bijdragen en verloren uitkeringen",
+   "part": "Participatiebelastingtarief",
+   "part_title": "Aandeel van het brutoloon dat verloren gaat aan belastingen en ingetrokken uitkeringen bij werkhervatting (werkloosheidsval)",
+   "in_scenario_note": "{title} (in het scenario)"
+  },
+  "hint_scenario": "“{name}” tegenover het basisscenario in {year}. Verschuif de jaarschuif om het jaar te wijzigen.",
+  "hint_scenario_stale": "“{name}” tegenover het basisscenario in {year} (het scenario zoals het nu in het zijpaneel staat, niet de laatste doorrekening). Verschuif de jaarschuif om het jaar te wijzigen.",
+  "hint_baseline": "Geen actieve maatregel: de cijfers beschrijven het basisscenario in {year}. Voeg in het zijpaneel een maatregel toe om te zien wie wint en wie verliest.",
+  "loading": "Effect op de huishoudens wordt berekend…",
+  "missing": "Het huishoudensmodel (POST /api/distribution) maakt nog geen deel uit van deze server. Deze weergave wordt ingevuld zodra dat het geval is.",
+  "unexpected": "onverwacht antwoord: {answer}",
+  "poverty": {
+   "title": "Armoederisico per huishoudtype en activiteit",
+   "sub": "Aandeel van de personen onder 60% van het mediaan equivalent inkomen. De huishoudset is gestileerd: lees de wijziging eerder dan het niveau.",
+   "by_household": "Per huishoudtype",
+   "by_activity": "Per activiteitsstatus (volwassenen)",
+   "share": "Aandeel van de groep",
+   "observed": "Waargenomen",
+   "change": "Wijziging, punten"
+  }
+ },
+ "payslip": {
+  "form": {
+   "kind": "Soort inkomen",
+   "household": "Huishouden",
+   "region": "Gewest (lokale en gewestelijke belastingen)",
+   "gross_min": "Bruto vanaf, € per jaar",
+   "gross_max": "Bruto tot, € per jaar",
+   "at": "Uitsplitsing bij, € per jaar"
+  },
+  "ref": {
+   "min_wage": "Minimumloon",
+   "p25": "Eerste kwartiel",
+   "median": "Mediaan",
+   "p75": "Derde kwartiel",
+   "p90": "90e percentiel",
+   "top": "Top"
+  },
+  "ref_bar": "Verplaats de uitsplitsing naar een referentieloon van {year}:",
+  "ref_button": "{name}, {amount}",
+  "breakdown": {
+   "title": "Uitsplitsing",
+   "none": "De server gaf geen uitsplitsing terug.",
+   "title_at": "Uitsplitsing bij een bruto-inkomen van {amount} per jaar",
+   "sub": "€ per jaar, behalve voor tarieven.",
+   "sub_nearest": "Dichtstbijzijnde berekende punt bij {amount}. € per jaar, behalve voor tarieven.",
+   "item": "Post"
+  },
+  "item": {
+   "gross": "Bruto-inkomen",
+   "employer_cost": "Loonkosten",
+   "ssc_employer": "Werkgeversbijdragen",
+   "ssc_employee": "Werknemersbijdragen",
+   "taxable_income": "Belastbaar inkomen",
+   "tax_federal": "Federale belasting",
+   "tax_regional": "Gewestelijke belasting",
+   "tax_local": "Gemeentelijke opcentiemen",
+   "tax_child_credit": "Belastingkrediet voor kinderen ten laste",
+   "tax_total": "Personenbelasting, totaal",
+   "allowances_tax_free_allowance": "Belastingvrije som",
+   "allowances_marital_quotient": "Huwelijksquotiënt",
+   "allowances_family_allowance": "Kinderbijslag",
+   "household_gross": "Bruto-inkomen van het huishouden",
+   "net": "Netto-inkomen",
+   "net_earner_only": "Netto-inkomen, alleen de verdiener",
+   "marginal_rate": "Marginaal tarief",
+   "average_rate": "Gemiddeld tarief",
+   "participation_rate": "Participatiebelastingtarief",
+   "federal": "Federale belasting",
+   "regional": "Gewestelijke belasting",
+   "local": "Gemeentelijke opcentiemen",
+   "child_credit": "Belastingkrediet voor kinderen ten laste",
+   "income_tax": "Personenbelasting",
+   "tax_free_allowance": "Belastingvrije som",
+   "marital_quotient": "Huwelijksquotiënt",
+   "family_allowance": "Kinderbijslag",
+   "benefits": "Uitkeringen",
+   "market_income": "Marktinkomen",
+   "indirect_taxes": "Indirecte belastingen"
+  },
+  "no_grid": "onverwacht antwoord: geen raster",
+  "same": "Het scenario verandert deze loonfiche niet: basisscenario en scenario vallen samen.",
+  "net": {
+   "title": "Netto-inkomen tegenover bruto-inkomen",
+   "sub": "€ per jaar, {year}. Klik op de grafiek om de uitsplitsing te verplaatsen.",
+   "head_baseline": "Netto, basisscenario",
+   "head_scenario": "Netto, scenario"
+  },
+  "gross": "Bruto",
+  "gross_prefix": "Bruto € ",
+  "marg": {
+   "title": "Marginaal tarief tegenover bruto-inkomen",
+   "sub": "Aandeel van één extra euro bruto-inkomen dat het netto-inkomen niet bereikt, %",
+   "head_baseline": "Marginaal tarief, basisscenario, %",
+   "head_scenario": "Marginaal tarief, scenario, %"
+  },
+  "options_loading": "Opties van de loonfiche worden geladen…",
+  "options_missing": "De loonfichecalculator (GET /api/payslip/options, POST /api/payslip) maakt nog geen deel uit van deze server. Deze weergave wordt ingevuld zodra dat het geval is.",
+  "whose": "Wiens loonfiche",
+  "whose_sub_scenario": "Regels van {year} (verschuif de jaarschuif), basisscenario tegenover “{name}”",
+  "whose_sub_baseline": "Regels van {year} (verschuif de jaarschuif), alleen het basisscenario: geen actieve maatregel",
+  "loading": "Loonfiche wordt berekend…",
+  "missing": "De loonfichecalculator (POST /api/payslip) maakt nog geen deel uit van deze server."
+ },
+ "validation": {
+  "bucket": {
+   "b0": "binnen 5%",
+   "b1": "5 tot 10%",
+   "b2": "10 tot 25%",
+   "b3": "25 tot 50%",
+   "b4": "meer dan 50%"
+  },
+  "bucket_count": "{count} {label}",
+  "bucket_legend": "{label} ({count})",
+  "source": "Bron",
+  "confidence": {
+   "high": "hoog",
+   "medium": "middelmatig",
+   "low": "laag"
+  },
+  "confidence_title": "Betrouwbaarheid van het referentiecijfer: {level}",
+  "sum": {
+   "baseline_compared": {
+    "one": "{n} cijfer van het basisscenario vergeleken",
+    "other": "{n} cijfers van het basisscenario vergeleken"
+   },
+   "costing_compared": {
+    "one": "{n} ramingscijfer vergeleken",
+    "other": "{n} ramingscijfers vergeleken"
+   },
+   "median": ", mediaan verschil {gap} van het officiële cijfer",
+   "no_equivalent": {
+    "one": "{n} heeft geen equivalent in het model",
+    "other": "{n} hebben geen equivalent in het model"
+   },
+   "zero_ref": {
+    "one": "{n} heeft een referentie gelijk aan nul (geen relatief verschil)",
+    "other": "{n} hebben een referentie gelijk aan nul (geen relatief verschil)"
+   }
+  },
+  "filter": {
+   "any_confidence": "Elke betrouwbaarheid",
+   "high": "Hoog",
+   "medium": "Middelmatig",
+   "low": "Laag",
+   "by_reference": "Per referentie",
+   "largest_gaps": "Grootste verschillen eerst",
+   "institution": "Instelling",
+   "any_institution": "Elke instelling",
+   "only_compared": "Alleen vergeleken",
+   "search": "Zoek op beschrijving, bron of eenheid"
+  },
+  "status": {
+   "no_model_equivalent": "geen equivalent in het model"
+  },
+  "variant": {
+   "static": "statisch",
+   "behavioural": "met gedragsreacties",
+   "unspecified": "methode niet vermeld"
+  },
+  "col": {
+   "when": "Jaar of periode",
+   "official": "Officieel",
+   "model": "Model",
+   "gap": "Verschil",
+   "gap_pct": "Verschil, % van officieel",
+   "figure": "Cijfer",
+   "model_static": "Model, statisch",
+   "model_behavioural": "Model, met gedrag",
+   "reference": "Referentie",
+   "searched": "Waar ernaar is gezocht"
+  },
+  "base": {
+   "title": "Basisprojectie tegenover officiële projecties",
+   "sub": {
+    "one": "{shown} van {n} cijfer getoond. Verschil = model min officieel.",
+    "other": "{shown} van {n} cijfers getoond. Verschil = model min officieel."
+   },
+   "empty": "Geen enkele referentie voldoet aan deze filters."
+  },
+  "meas": {
+   "title": "Maatregelen tegenover officiële ramingen",
+   "sub": {
+    "one": "{shown} van {n} cijfer getoond. Het verschil vergelijkt het officiële cijfer met de modelberekening van dezelfde aard (statisch wanneer de officiële raming statisch is, anders met gedragsreacties): die kolom is gemarkeerd.",
+    "other": "{shown} van {n} cijfers getoond. Het verschil vergelijkt het officiële cijfer met de modelberekening van dezelfde aard (statisch wanneer de officiële raming statisch is, anders met gedragsreacties): die kolom is gemarkeerd."
+   },
+   "empty": "Geen enkele raming voldoet aan deze filters.",
+   "official_costing": "Officiële raming: {institution}",
+   "added": "“{name}” toegevoegd aan het scenario.",
+   "add": "Deze maatregel aan het scenario toevoegen",
+   "model_year": "{ref} (model {model})"
+  },
+  "rest": {
+   "not_found_title": "Gezochte en niet gevonden referenties",
+   "not_found_sub": "Officiële cijfers die nuttig zouden zijn maar niet konden worden teruggevonden",
+   "none": "Geen.",
+   "problems_title": "Referenties die niet konden worden geëvalueerd",
+   "problems_none": "Elke referentie met een equivalent in het model is geëvalueerd."
+  },
+  "loading": "Het model wordt naast de officiële referentiecijfers gelegd…",
+  "loading_detail": "Elke geraamde maatregel wordt twee keer gesimuleerd (met en zonder gedragsreacties). Ongeveer een minuut de eerste keer, daarna in de cache tot de parameters veranderen.",
+  "missing": "De server heeft geen bestand met validatiereferenties.",
+  "tab": {
+   "baseline": "Basisscenario ({n})",
+   "measures": "Ramingen van maatregelen ({n})",
+   "not_found": "Niet gevonden of niet geëvalueerd ({n})"
+  },
+  "how_title": "Hoe dit te lezen.",
+  "how_text": "Elke regel zet een cijfer dat een officiële instantie heeft gepubliceerd naast wat het model voor hetzelfde geeft. Kleine verschillen op een regel die dicht bij uw vraag ligt, zijn een reden om het resultaat te vertrouwen; grote verschillen betekenen dat het model dat soort vragen slecht beantwoordt. De betrouwbaarheid slaat op het referentiecijfer: hoog = gelezen in het officiële document, middelmatig = betrouwbare secundaire bron of eenvoudige berekening op een officiële tabel, laag = zwakker.",
+  "retrieved": "Referenties geraadpleegd op {date}",
+  "computed_in": "Berekend in {seconds} s."
+ },
+ "parties": {
+  "title": "Partijprogramma's (doorrekening 2024)",
+  "none": "Op deze server is geen partijscenario beschikbaar.",
+  "caveat_lead": "Lees dit eerst.",
+  "source_link": "Planbureau: DC2024",
+  "method_title": "Hoe de maatregelen zijn vertaald",
+  "group": {
+   "nl": "Nederlandstalige partijen",
+   "fr": "Franstalige partijen",
+   "national": "Nationale partij"
+  },
+  "keep": "Vergelijken",
+  "details": "Details",
+  "load_long": "Laden als actief scenario",
+  "keep_long": "Toevoegen aan de vergelijking",
+  "load_title": "Maak van de maatregelen van {name} het scenario in het zijpaneel",
+  "keep_title": "Voeg de maatregelen van {name} toe aan de vergeleken scenario's",
+  "panel_title": "Partijprogramma's, doorrekening 2024 ({n})",
+  "panel_line": "{n} maatregelen, waarvan {with} met wijzigingen",
+  "list_sub": "De maatregelen die elke partij in 2024 aan het Federaal Planbureau voorlegde, vertaald naar dit model. Per taalgemeenschap, daarna alfabetisch.",
+  "coverage_aria": "Dekking van {name}: {text}",
+  "cov_short": "{m} gemodelleerd, {p} deels",
+  "col": {
+   "party": "Partij",
+   "measures": "Doorgerekend / ingediend",
+   "measures_title": "Door het Bureau doorgerekende maatregelen op het aantal ingediende maatregelen",
+   "coverage": "Aandeel van de ex-ante-impuls per status",
+   "impulse": "Officiële ex-ante-impuls {year}, miljoen euro",
+   "impulse_title": "Som van de ex-ante-impulsen van het Bureau voor de doorgerekende maatregelen van de partij (prijzen en hoeveelheden van 2024, positief = verbetert het saldo); eigen optelling"
+  },
+  "status": {
+   "modelled": "Gemodelleerd",
+   "partly_modelled": "Deels gemodelleerd",
+   "not_modelled": "Niet gemodelleerd",
+   "already_in_baseline": "Al in het basisscenario"
+  },
+  "method": {
+   "pinned": "Waarde overgenomen uit de fiche; de raming van het model kan afwijken van die van het Bureau.",
+   "sized": "Parameter geschaald op de ex-ante-impuls van het Bureau.",
+   "proxy": "Gedragen door een bredere begrotingslijn, geschaald op de impuls van het Bureau: het bedrag wordt weergegeven, niet het ontwerp van de maatregel.",
+   "increment": "Sinds 2024 deels ingevoerd: enkel wat verder gaat dan de wet wordt toegevoegd.",
+   "reversal": "Draait een sinds 2024 ingevoerde hervorming terug.",
+   "baseline": "Sinds 2024 ingevoerd ({what}): in het basisscenario, er wordt niets toegevoegd.",
+   "not_costed": "Niet doorgerekend door het Planbureau: geen impuls gepubliceerd.",
+   "zero_impulse": "Ex-ante-impuls nul in de doorrekening (budgetneutrale of structurele maatregel).",
+   "no_lever": "Geen geschikte parameter in het model.",
+   "residual": "De parameter kan niet de hele impuls dragen (er ontbreekt {gap} miljoen euro).",
+   "missing": "Ontbrekende hefboom: {lever}."
+  },
+  "baseline": {
+   "unemp_limit": "beperking van de werkloosheidsuitkering in de tijd",
+   "rcc": "einde van de werkloosheid met bedrijfstoeslag",
+   "welfare_freeze": "geen welvaartsaanpassingen van uitkeringen in 2025-2029",
+   "pension_bonus": "einde van de pensioenbonus",
+   "perequation": "perequatie van de ambtenarenpensioenen beperkt",
+   "defence": "defensie op 2% van het bbp in 2029 en 2,5% in 2034",
+   "replacement_reductions": "lagere belastingverminderingen voor werkloosheidsuitkeringen en hoge pensioenen"
+  },
+  "lever": {
+   "new_tax": "een eigen nieuwe belasting (digitaal, luchtvaart, banken, wegenheffing…)",
+   "wealth_tax": "een belasting op het nettovermogen",
+   "capital_income": "progressieve belasting van kapitaalinkomsten",
+   "rental_income": "belasting van werkelijke huurinkomsten",
+   "cit_base": "de grondslag van de vennootschapsbelasting (aftrekken, vrijstellingen)",
+   "alt_remuneration": "de fiscale behandeling van bedrijfswagens, cheques en aandelenopties",
+   "targeted_tax_credit": "een belastingkrediet gericht op lage en middenlonen",
+   "pit_brackets": "meer dan vier belastingschijven",
+   "pit_expenditure": "specifieke aftrekken in de personenbelasting",
+   "targeted_reductions": "doelgroepverminderingen van bijdragen en bedrijfsvoorheffing",
+   "benefit_structure": "uitkeringsregels per gezinstype, plafonds en toegangsvoorwaarden",
+   "health_envelope": "specifieke budgetten en prijzen in de gezondheidszorg",
+   "programme_spending": "een eigen uitgavenprogramma",
+   "asylum_migration": "uitgaven voor asiel en migratie",
+   "asset_sales": "de verkoop van overheidsparticipaties (opbrengst en besteding)",
+   "energy_policy": "energiebeleid (kerncentrales, steunregelingen, tarieven)",
+   "institutional": "de kosten van politieke instellingen en uitbetalingsinstellingen",
+   "activation": "activerings- en re-integratiebeleid",
+   "regulation": "marktregulering en administratieve vereenvoudiging",
+   "labour_regulation": "arbeidsrecht (minimumloon, flexi-jobs, overuren, ontslagname)",
+   "excise_structure": "de structuur van de accijnzen (teruggaven, verschuivingen tussen brandstoffen)",
+   "vat_item": "het btw-tarief van één product",
+   "local_finance": "overdrachten aan lokale besturen"
+  },
+  "detail": {
+   "title": "{name}: in 2024 ingediende maatregelen",
+   "sub": "{full} · {n} maatregelen, waarvan {costed} doorgerekend door het Bureau. Elke maatregel afzonderlijk gesimuleerd.",
+   "pick": "Partij",
+   "pick_one": "Kies een partij…",
+   "none_title": "Eén partij in detail",
+   "none": "Kies een partij om haar maatregelen, hun status, de impuls van het Bureau en het effect in dit model te zien.",
+   "loading": "Elke maatregel van {name} wordt gesimuleerd…",
+   "source": "Fiches (pdf)",
+   "workbook": "Resultatenwerkmap van het Bureau",
+   "title_in_fiche": "Titel in de fiche",
+   "filter": {
+    "all": "Alle maatregelen",
+    "changes": "Met wijzigingen",
+    "none": "Zonder wijzigingen"
+   },
+   "year_note": "Jaar {T} van het programma wordt gelezen in jaar {y} van het model. Gebruik de jaarkiezer bovenaan (effecten tot {max}).",
+   "scaled": "≈ {v} in {year}",
+   "package": "Volledig pakket",
+   "package_sub": "Alle maatregelen met wijzigingen samen (de effecten tellen niet exact op)",
+   "official_results": "Resultaten van het Bureau voor het pakket, {year}",
+   "model_results": "Dit model, {year}",
+   "units": "Modelkolommen: wijziging van het saldo vóór rente, in miljoen euro van het jaar; werkgelegenheid in duizend personen. Kleine letters onder de officiële impuls: hetzelfde aandeel van het bbp in euro van het modeljaar.",
+   "col": {
+    "fiche": "Fiche",
+    "measure": "Maatregel",
+    "status": "Status en methode",
+    "official": "Officiële impuls {year}, miljoen euro van 2024",
+    "official_title": "Budgettaire ex-ante-impuls gepubliceerd door het Bureau voor jaar {T} van het programma, in prijzen en hoeveelheden van 2024 (positief = verbetert het saldo)",
+    "static": "Model, statisch, {year}",
+    "behav": "Model, met gedrag, {year}",
+    "model_title": "Wijziging van het primair saldo in {year} (miljoen euro) wanneer enkel deze maatregel aan het basisscenario wordt toegevoegd",
+    "employment": "Δ Werkgelegenheid, {year}"
+   }
+  },
+  "all": {
+   "button": "Alle partijen vergelijken",
+   "hide": "Vergelijking verbergen",
+   "title": "Alle partijen naast elkaar, {year}",
+   "sub": "Elk pakket tegenover hetzelfde basisscenario. Kleine letters: het resultaat van het Planbureau voor jaar {oyear} van de programma's.",
+   "loading": "De {n} partijprogramma's worden gesimuleerd…",
+   "note": "De twee reeksen cijfers verschillen door het model, het basispad en de dekking: enkel de maatregelen met wijzigingen zitten in het resultaat van dit model, en hervormingen die sinds 2024 zijn ingevoerd zitten in zijn basisscenario. De dekkingsbalk toont welk deel van elk pakket is gemodelleerd.",
+   "model": "Dit model",
+   "bureau": "Bureau",
+   "col": {
+    "balance": "Δ Saldo {year}, punten bbp",
+    "employment": "Δ Werkgelegenheid {year}, duizend",
+    "gdp": "Δ Reëel bbp {year}, %",
+    "debt": "Δ Schuld {year}, punten bbp"
+   },
+   "chart": {
+    "balance": "Wijziging van het begrotingssaldo, {year}",
+    "debt": "Wijziging van de schuldgraad, {year}",
+    "employment": "Wijziging van de werkgelegenheid, {year}",
+    "gdp": "Wijziging van het reëel bbp, {year}"
+   },
+   "chart_unit": {
+    "balance": "punten bbp",
+    "debt": "punten bbp",
+    "employment": "duizend personen",
+    "gdp": "%"
+   },
+   "dist_button": "Toon het effect per inkomensdeciel (ongeveer een halve minuut)",
+   "dist_hide": "Verbergen",
+   "dist_title": "Beschikbaar inkomen per inkomensdeciel, {year}",
+   "dist_sub": "Wijziging van het beschikbaar gezinsinkomen per tiende van de huishoudens, in %. Tweede lijn: de directe impact die het Bureau berekende, waar die bestaat.",
+   "dist_loading": "De verdeling voor {n} partijen wordt berekend…",
+   "decile": "D{n}"
+  }
+ },
+ "meta": {
+  "description": "Een vrije, open simulator van de Belgische economie en overheidsfinanciën, 2024-2070: wijzig belastingen, uitkeringen en uitgaven en zie het effect op de begroting, de werkgelegenheid en de huishoudens. Een verkennend model, geen officiële doorrekening."
+ },
+ "foot": {
+  "disclaimer": "Verkennend model — geen officiële doorrekening.",
+  "source": "Broncode (AGPL-3.0)",
+  "method": "Hoe het gebouwd is en hoe ver u erop kunt vertrouwen",
+  "build": "Versie {commit}, {date}"
+ },
+ "wp": {
+  "doc_title": "Methodologie — belsim",
+  "meta_description": "Hoe de simulator belsim van de Belgische overheidsfinanciën gebouwd is, waar de cijfers vandaan komen, in welke mate ze overeenstemmen met officiële cijfers en waarvoor hij niet gebruikt mag worden.",
+  "contents": "Inhoud",
+  "open_app": "Open de simulator",
+  "print": "Afdrukken of opslaan als pdf",
+  "na": "niet beschikbaar",
+  "pending": "Wordt berekend door de server",
+  "live_failed": "Sommige live berekende cijfers konden niet van de server worden geladen; ze staan in de tekst als ‘niet beschikbaar’.",
+  "build": {
+   "commit": "Versie (git-commit)",
+   "date": "Datum van de versie",
+   "params": "Parameters",
+   "assumptions": "waarvan aannames",
+   "tests": "Geautomatiseerde tests",
+   "dirty": "met niet-vastgelegde wijzigingen",
+   "unknown": "De versie kon niet worden vastgesteld."
+  },
+  "params": {
+   "caption": "Parameters en aannames per parameterbestand",
+   "file": "Bestand",
+   "count": "Parameters",
+   "assumptions": "Aannames",
+   "share": "Aandeel"
+  },
+  "base": {
+   "caption": "Basisscenario (bij ongewijzigd beleid), geselecteerde jaren"
+  },
+  "val": {
+   "computing": "De vergelijking met de officiële cijfers wordt door de server berekend (ongeveer een minuut de eerste keer). Dit deel vult zich vanzelf in.",
+   "failed": "De vergelijking met de officiële cijfers kon niet worden geladen; ze is beschikbaar in de weergave Validatie van de simulator.",
+   "group": {
+    "base": "Basisprojectie",
+    "ind": "Doorrekeningen en evaluaties van maatregelen"
+   },
+   "line": "{n} cijfers, waarvan {compared} vergeleken: {w10} binnen 10% van het officiële cijfer, {w25} binnen 25%, {w50} binnen 50%.",
+   "caption": "Het model tegenover officiële cijfers: een selectie",
+   "col": {
+    "what": "Referentie",
+    "official": "Officieel",
+    "model": "Model",
+    "gap": "Verschil"
+   },
+   "sec": {
+    "near": "Basisscenario tot 2031",
+    "long": "Lange termijn",
+    "static": "Belastingen, statische doorrekening",
+    "dynamic": "Dynamische reacties",
+    "measures": "Aangenomen of doorgerekende maatregelen"
+   }
+  },
+  "sources": {
+   "caption": "{n} documenten in het referentiebestand",
+   "institution": "Instelling",
+   "document": "Document",
+   "date": "Datum",
+   "refs": "Referenties"
+  },
+  "dist": {
+   "caption": "Synthetische huishoudens tegenover de inkomensenquête, basisscenario {year}",
+   "gini": "Gini-coëfficiënt van het beschikbaar inkomen",
+   "s80": "Inkomenskwintielverhouding (S80/S20)",
+   "poverty": "Armoederisicopercentage",
+   "by_type": "Armoederisicopercentage per huishoudtype",
+   "observed": "Enquête (EU-SILC {year})"
+  }
+ }
+}

@@ -1,0 +1,164 @@
+<header class="wp-head">
+  <h1>Comment ce simulateur a été construit, et pourquoi on peut et ne peut pas s'y fier</h1>
+  <p class="standfirst">belsim est un outil libre et ouvert pour explorer ce que des choix budgétaires changeraient aux finances publiques, à l'économie et aux ménages en Belgique. Cette page explique ce qu'il contient, d'où viennent ses chiffres, dans quelle mesure ils concordent avec les chiffres officiels et où ils s'en écartent.</p>
+  <div data-block="build"></div>
+  <p class="key"><span class="live">Les chiffres marqués ainsi</span> ne sont pas saisis dans ce texte : ils sont lus dans le modèle en cours d'exécution au chargement de la page et suivent donc les paramètres de la version indiquée ci-dessus.</p>
+</header>
+
+<section id="purpose">
+  <h2>Objet et statut</h2>
+  <p>belsim permet à chacun de modifier un taux d'imposition, une prestation, un âge de la pension ou une trajectoire de dépenses et d'en voir la conséquence, année par année, sur le budget de chaque niveau de pouvoir, sur l'emploi et sur les revenus des ménages. Il est gratuit ; son code, ses paramètres et ses sources sont ouverts.</p>
+  <div class="status">
+    <p><b>Ce n'est pas un chiffrage officiel.</b> Aucune institution publique ne l'a produit, examiné ni approuvé.</p>
+    <p><b>Ce n'est pas une prévision.</b> Le scénario de référence suit les projections officielles ; le modèle n'y ajoute rien de son cru sur l'état futur de l'économie.</p>
+    <p><b>Ses résultats sont des ordres de grandeur.</b> Un chiffre de 1,5 milliard d'euros veut dire « entre un et deux milliards », pas « 1,5 plutôt que 1,4 ».</p>
+  </div>
+  <p>Il s'adresse aux citoyens, aux journalistes, aux étudiants et aux collaborateurs politiques qui veulent comprendre comment les éléments du budget s'articulent, ce que coûte à peu près une proposition et quels mécanismes comptent.</p>
+  <p>Il ne doit pas servir au chiffrage d'un texte légal, à l'estimation précise d'un rendement, ni à quoi que ce soit qui requière l'autorité du Bureau fédéral du Plan, de la Cour des comptes, de la Banque nationale de Belgique ou de l'administration. Pour cela, leurs publications font référence ; plusieurs figurent sous <a href="#sources">Sources</a>.</p>
+</section>
+
+<section id="model">
+  <h2>Ce qu'est le modèle</h2>
+  <p>belsim est une simulation annuelle de la Belgique, cohérente sur le plan comptable, de <span class="live" data-v="m.base"></span> à <span class="live" data-v="m.end"></span>. Chaque année est calculée à partir de la précédente par des blocs reliés entre eux :</p>
+  <ul>
+    <li><b>Population</b> : une projection par cohortes selon l'âge, le sexe et la région (naissances, décès, migrations).</li>
+    <li><b>Marché du travail</b> : le statut de chaque personne (salarié, indépendant, fonctionnaire, chômeur, invalide, pensionné, étudiant, autre), l'emploi par secteur et par type d'emploi, et les salaires.</li>
+    <li><b>Économie</b> : le PIB, les prix, l'indice santé, les revenus et la consommation.</li>
+    <li><b>Finances publiques</b> : chaque ligne de recettes (<span class="live" data-v="m.rev_lines"></span>) et de dépenses (<span class="live" data-v="m.exp_lines"></span>) des administrations publiques ; le pouvoir fédéral, la sécurité sociale, les Communautés et Régions avec les quatre entités fédérées, et les pouvoirs locaux ; les charges d'intérêts et la dette.</li>
+    <li><b>Réactions comportementales</b> : la manière dont les ménages et les entreprises réagissent à une mesure.</li>
+    <li><b>Répartition entre ménages</b> et <b>régions</b> : qui gagne et qui perd, et ce qui se passe en Flandre, en Wallonie et à Bruxelles.</li>
+  </ul>
+  <p>Chaque ligne budgétaire est le produit d'une base imposable, des paramètres fixés par la législation et d'un facteur de calibrage. Ce facteur est ajusté une seule fois, pour que <span class="live" data-v="m.base"></span> reproduise les comptes publiés, puis reste constant. Une mesure est une modification datée d'un ou de plusieurs paramètres ; son effet est l'écart par rapport au scénario de référence. Un scénario sans mesure reproduit exactement le scénario de référence, ce qu'un test automatisé vérifie.</p>
+  <p>Cette architecture a été préférée à un modèle d'équilibre général ou à un modèle multi-agents pour trois raisons. Elle est transparente : chaque ligne se ramène à une base, à une règle et à une source. Elle ne requiert aucune microdonnée à accès restreint, de sorte que chacun peut l'exécuter et la vérifier. Et elle parle la langue des documents budgétaires eux-mêmes, ligne par ligne. Le prix à payer est que les effets de retour économiques ne découlent pas de principes premiers : ce sont des coefficients de réaction calibrés sur des résultats de modèles officiels (voir <a href="#behaviour">Comportements</a>).</p>
+</section>
+
+<section id="data">
+  <h2>Données</h2>
+  <p>L'année de base repose sur des statistiques officielles téléchargées : les comptes nationaux et les comptes des administrations publiques de 2024 (SEC 2010), la population, la fécondité, la mortalité et les migrations, le statut sur le marché du travail, l'emploi, la valeur ajoutée et les salaires par secteur, la consommation des ménages et les statistiques fiscales, auprès d'Eurostat, de la Banque nationale de Belgique et de Statbel. Les comptes des administrations publiques observés pour 2025 sont reproduits ligne par ligne.</p>
+  <p>Les règles en matière d'impôts, de cotisations et de prestations ont été vérifiées auprès de sources officielles ou faisant autorité le 25 novembre 2026 ; la source et la date sont consignées avec chaque paramètre, et certaines règles reposent sur des sources secondaires, ce qui y est signalé. Jusqu'en 2031, le scénario de référence utilise les tableaux des perspectives du Bureau fédéral du Plan de juin 2026 ; le long terme s'appuie sur le rapport 2026 du Comité d'étude sur le vieillissement ; les montants de la loi spéciale de financement proviennent des documents budgétaires fédéraux.</p>
+  <p>Le modèle compte <span class="live" data-v="p.count"></span> paramètres. Chacun porte sa source. Un paramètre sans source officielle est signalé comme hypothèse, dans les fichiers de paramètres comme dans le tableau de bord : c'est le cas de <span class="live" data-v="p.assumptions"></span> d'entre eux, soit <span class="live" data-v="p.share"></span>. Ils sont de quatre sortes : des élasticités et d'autres coefficients de comportement ; des trajectoires de projection à long terme ; des parts structurelles qui déterminent la réaction d'une ligne budgétaire ; et des valeurs légales qui n'ont pas pu être vérifiées dans un texte officiel.</p>
+  <div data-block="params-table"></div>
+</section>
+
+<section id="baseline">
+  <h2>Le scénario de référence et les conventions retenues</h2>
+  <p>Tout résultat est un écart par rapport à un scénario de référence : ses conventions comptent donc autant que le modèle. Voici les choix opérés et la raison de chacun.</p>
+  <ol class="conventions">
+    <li><b>« À politique inchangée » comprend les réformes adoptées, et rien d'autre.</b> Le scénario de référence contient la réforme de l'impôt des personnes physiques avec la hausse de la quotité exemptée d'impôt jusqu'en 2030, la réforme des pensions et son malus, la limitation dans le temps des allocations de chômage, la taxe sur les plus-values, la trajectoire de la défense et la norme de croissance des soins de santé. Les mesures annoncées mais non votées en sont exclues, parce que leur contenu n'est pas arrêté.</li>
+    <li><b>Jusqu'en 2031, le scénario de référence est ancré sur le Bureau fédéral du Plan ; jusqu'en <span class="live" data-v="m.end"></span>, sur le Comité d'étude sur le vieillissement.</b> Le PIB nominal et réel, les prix, l'emploi et les dépenses par niveau de pouvoir suivent les tableaux des perspectives de juin 2026 du Bureau ; les pensions et les soins de santé suivent la projection à long terme du Comité. Sur cet horizon, le modèle n'est donc pas une prévision indépendante : c'est un cadre cohérent, proche du cadre officiel, dans lequel des mesures peuvent être comparées.</li>
+    <li><b>Les comptes observés priment sur les prévisions.</b> Les comptes des administrations publiques de 2025 sont connus, et le scénario de référence les reproduit, y compris un niveau de recettes supérieur à l'estimation de juin du Bureau pour cette année. Ce niveau est conservé. À partir de 2026, un alignement explicitement désigné comme tel (<code>rev.fpb_alignment</code>) fait évoluer chaque catégorie de recettes, en pourcentage du PIB, d'autant que dans les perspectives du Bureau, à partir de l'année 2025 observée : le Bureau fournit la variation, les comptes fournissent le niveau. Cet alignement n'est ni une disposition légale ni une estimation, et il possède un interrupteur (<code>rev.fpb_alignment_enabled</code>). Une fois désactivé, la projection de recettes propre au modèle déplace le ratio des recettes de 2031 de <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:sd2"></span> point de PIB et donne un déficit de <span class="live" data-v="s:align_off:fiscal.balance_pct_gdp@2031:abspct1"></span> du PIB au lieu de <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span>.</li>
+    <li><b>Après 2030, les seuils de l'impôt des personnes physiques suivent les salaires plutôt que les prix.</b> C'est la convention habituelle des projections à long terme. Dans le droit actuel, les seuils ne suivent que les prix, et la croissance des salaires réels relèverait alors les recettes d'environ <span class="live" data-v="d:price_link:fiscal.revenue_pct_gdp@2070:abs1"></span> points de PIB d'ici 2070 dans ce modèle. Cette convention est un levier (<code>core.tax_threshold_wage_link</code>) que l'on peut ramener au droit actuel.</li>
+    <li><b>Les volumes soumis aux accises sur les carburants et le tabac diminuent par hypothèse.</b> Le modèle ne comporte aucune réaction du commerce illicite ou des achats transfrontaliers pour ces produits ; les volumes suivent une tendance à la baisse posée par hypothèse, ce qui explique en partie que le ratio des recettes passe de <span class="live" data-v="b:fiscal.revenue_pct_gdp@2031:pct1"></span> du PIB en 2031 à <span class="live" data-v="b:fiscal.revenue_pct_gdp@2070:pct1"></span> en 2070. C'est également un levier (<code>excise.volume_growth</code>).</li>
+    <li><b>Les trajectoires de dépenses des entités fédérées pour 2025-2031 proviennent des tableaux du Bureau</b> et sont maintenues ensuite, faute de projection officielle par entité au-delà.</li>
+    <li><b>La productivité, les taux d'intérêt et les migrations à long terme suivent les hypothèses officielles</b> (Comité d'étude sur le vieillissement, perspectives de population du Bureau du Plan et de Statbel), et non une vision propre au modèle.</li>
+  </ol>
+  <p>Le scénario de référence qui en résulte, tel que le modèle le calcule aujourd'hui :</p>
+  <div data-block="baseline-table"></div>
+  <p class="note">La forte hausse du déficit et de la dette après 2031 est ce que signifie « à politique inchangée » lorsque les coûts du vieillissement et les charges d'intérêts augmentent et que rien n'est fait ; c'est une ligne de référence, et non la prédiction que rien ne sera fait.</p>
+</section>
+
+<section id="behaviour">
+  <h2>Comment les comportements sont modélisés et calibrés</h2>
+  <p>Chaque scénario est calculé deux fois. Le chiffrage <b>statique</b> (mécanique) modifie la règle et laisse le comportement de chacun tel qu'il est dans le scénario de référence ; c'est ce que rapporte une fiche budgétaire ex ante. Le résultat <b>avec réactions comportementales</b> laisse l'économie réagir. Le tableau de bord montre les deux.</p>
+  <p>Les réactions sont regroupées en canaux : l'offre et la demande de travail ; la négociation salariale ; les prix et l'indexation automatique ; la consommation des ménages ; les bases de l'impôt des sociétés et de l'impôt sur le capital ; l'âge de départ à la pension ; l'effet de retour à court terme de la demande sur l'activité ; et le capital public. Chacun tient en un petit nombre de coefficients dont la source est documentée.</p>
+  <p>Ces coefficients ont été calibrés sur les variantes publiées pour le modèle HERMES du Bureau fédéral du Plan (la réaction du PIB, de l'emploi, des prix et du solde à des chocs types de 0,5 % du PIB) et sur les évaluations du saut d'index de 2015. Ils ont été réglés à la main, non estimés.</p>
+  <p>Là où les institutions officielles divergent, le modèle le dit. Le Bureau du Plan et la Banque nationale ne s'accordent pas sur l'effet de la modération salariale sur le PIB. La valeur par défaut suit le Bureau ; une autre valeur, documentée, d'un seul paramètre (<code>dyn.wage_cost.net_export_output_elasticity</code>, 0,30 au lieu de 0,05) reproduit le résultat de la Banque.</p>
+  <p>Deux calibrages sortent de ce qu'établit la littérature micro-économétrique, et mieux vaut dire pourquoi :</p>
+  <ul>
+    <li><b>Le départ à la pension et le malus.</b> La réaction de l'âge de départ au malus de pension est calibrée sur le rapport du Bureau du Plan consacré à la réforme des pensions. Elle est bien plus forte que ne le suggèrent les études sur microdonnées. Elle a été conservée parce que l'objectif est de rester comparable à l'évaluation officielle d'une réforme adoptée.</li>
+    <li><b>L'offre de travail et le niveau des allocations.</b> Une erreur a été trouvée dans le premier calibrage : des allocations de chômage supérieures de 10 % coûtaient environ 90 000 emplois, un chiffre invraisemblable. La réaction a été recalibrée sur les élasticités de durée de la littérature ; la même mesure coûte désormais environ 10 000 emplois après quatre ans. L'aide sociale (le revenu d'intégration) compte désormais dans le revenu dont une personne dispose sans travailler, et donc dans l'incitation à travailler.</li>
+  </ul>
+  <p>La fourchette tracée autour d'un résultat dans les graphiques est l'intervalle entre la moitié et une fois et demie les réactions centrales. Elle montre à quel point la réponse dépend des comportements. Ce n'est pas un intervalle de confiance statistique.</p>
+</section>
+
+<section id="validation">
+  <h2>Validation</h2>
+  <p>Le principe est simple : le modèle est confronté à des chiffres officiels, rassemblés avec leurs sources dans un fichier de référence, et la comparaison est publiée intégralement dans la vue Validation du tableau de bord. Des tests automatisés (<span class="live" data-v="v.tests"></span> pour l'ensemble de la suite) empêchent que les concordances obtenues ne se dégradent lorsque le modèle évolue.</p>
+  <p>Le fichier de référence contient <span class="live" data-v="val.base.n"></span> chiffres portant sur la projection de référence et <span class="live" data-v="val.ind.n"></span> chiffres portant sur le coût ou l'effet de mesures, tirés de chiffrages et d'évaluations officiels. S'y ajoutent <span class="live" data-v="val.sized.n"></span> lignes qui sont des fiches des programmes des partis de 2024 dont le paramètre a été dimensionné sur l'impulsion officielle : elles concordent par construction, ne disent rien de la justesse du modèle et sont comptées à part.</p>
+  <div data-block="val-summary"></div>
+  <p>Une sélection de ce qui concorde et de ce qui ne concorde pas, avec la valeur actuelle du modèle. La liste complète, avec les sources, se trouve dans la vue Validation.</p>
+  <div data-block="val-table"></div>
+  <h3>Écarts connus</h3>
+  <ul class="gaps">
+    <li>Là où le Bureau du Plan et la Banque nationale divergent, on ne peut rejoindre que l'un des deux. Les effets sur le PIB que la Banque attribue au saut d'index et à la baisse des cotisations patronales de 2016 ne sont reproduits qu'avec l'autre valeur du paramètre mentionné plus haut ; la valeur par défaut suit le Bureau.</li>
+    <li>Après une hausse de la TVA, l'emploi recule moins la première année que dans HERMES, et le gain pour le solde après deux à quatre ans est plus faible (voir le tableau).</li>
+    <li>Après une hausse des cotisations personnelles, le gain pour le solde après quatre ans est nettement inférieur à celui de HERMES (voir le tableau), et la compensation de ces cotisations à l'impôt des personnes physiques est plus forte ; une baisse des prestations réduit moins le PIB que dans HERMES.</li>
+    <li>Les réformes des tranches supérieures de l'impôt des personnes physiques ressortent 10 à 18 % plus coûteuses que les chiffrages des programmes électoraux de 2024. Les bases imposables que ces chiffrages impliquent sont plus étroites dans les tranches supérieures ; le modèle conserve les déclarations fiscales de 2024, sur lesquelles son barème reproduit les recettes de 2024, et propose les bases du Bureau comme variante, désactivée par défaut (<code>pit.bracket_base_factor</code>).</li>
+    <li>La réforme de 2028 de la cotisation spéciale de sécurité sociale coûte environ un tiers de plus que le chiffre officiel, et le quotient conjugal ressort environ 30 % trop bas à périmètre comparable.</li>
+    <li>Les recettes de 2026 à 2031 ne sont pas un résultat du modèle : la variation de chaque catégorie depuis 2025 est celle du Bureau du Plan, par l'alignement décrit dans les conventions. Sans cet alignement, les recettes sont jusqu'à <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:abs2"></span> point de PIB plus élevées en 2031.</li>
+    <li>À court terme : le déficit de 2031 est de <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span> du PIB contre 6,4 % dans les perspectives du Bureau du Plan, et la dette est inférieure de 0,3 à 1,1 point de PIB à la prévision de la Banque nationale pour 2026-2028.</li>
+    <li>À long terme : le modèle compte en 2070 environ 50 000 personnes de 67 ans et plus de plus que les perspectives nationales de population, et une population totale supérieure d'environ 160 000 personnes ; la croissance de l'emploi d'ici 2070 est un peu inférieure à celle du Comité d'étude sur le vieillissement.</li>
+    <li>Répartition : le taux de pauvreté global est de 10,1 % contre 10,9 % observés et les taux par type de ménage s'en écartent d'environ 2 points au plus, mais le taux des personnes sans emploi autres que les chômeurs et les pensionnés est trop élevé de 3,4 points et le revenu médian est trop bas d'environ 2 %.</li>
+    <li>Programmes des partis : les résultats d'un programme entier diffèrent de ceux du Bureau du Plan pour plusieurs partis, en particulier pour l'emploi ; les propositions chiffrées en 2024 par rapport au droit de l'époque ne sont pas comparables telles quelles lorsqu'une réforme a été adoptée depuis.</li>
+  </ul>
+</section>
+
+<section id="distribution">
+  <h2>Répartition</h2>
+  <p>La vue « qui gagne, qui perd » repose sur des ménages synthétiques, et non sur une enquête : les types de ménages de l'enquête sur les revenus (EU-SILC) répétés sur les classes de revenus de la statistique des déclarations fiscales, soit environ 290 ménages en tout<span data-optional> (<span class="live" data-v="dist.households"></span> pour l'année du tableau ci-dessous, dont <span class="live" data-v="dist.shown"></span> sont affichés)</span>. Les impôts et les prestations sont calculés pour chacun avec les mêmes règles que les lignes budgétaires<span data-optional> ; ensemble, ces ménages portent <span class="live" data-v="dist.pit"></span> de l'impôt des personnes physiques du budget</span>.</p>
+  <p>Le tableau compare cette population synthétique à l'enquête sur les revenus, dont l'édition 2025 porte sur les revenus de 2024. L'inégalité et la pauvreté sont proches des niveaux observés ; là où les deux diffèrent, c'est le niveau du modèle qui est en défaut. Le patrimoine, le coût du logement et le non-recours aux prestations ne sont pas représentés. Cette vue se lit donc pour la <em>variation</em> qu'une mesure apporte à chaque classe de revenus et à chaque type de ménage, et non pour le niveau du revenu de qui que ce soit ni pour celui de la pauvreté.</p>
+  <div data-block="dist-table"></div>
+</section>
+
+<section id="regions">
+  <h2>Régions</h2>
+  <p>Les résultats sont publiés pour la Flandre, la Wallonie et Bruxelles, ainsi que pour les entités fédérées : la Communauté flamande, la Région wallonne, la Communauté française et la Région de Bruxelles-Capitale. Les leviers qui relèvent d'une compétence régionale ou communautaire se règlent par région ou par Communauté, de sorte qu'une mesure peut ne s'appliquer qu'à l'une d'elles.</p>
+  <p>Deux précautions. Les transferts nets entre régions dépendent de conventions de répartition (les prestations sont attribuées selon le lieu de résidence, les dépenses fédérales indivisibles selon la population) ; d'autres conventions donnent d'autres chiffres, et le modèle ne prend pas position sur celle qui serait la bonne. Et les réductions groupes-cibles modifient le budget régional mais pas les embauches dans le modèle.</p>
+</section>
+
+<section id="parties">
+  <h2>Programmes des partis</h2>
+  <p>Le tableau de bord propose un scénario préconstruit pour chacun des <span class="live" data-v="party.n"></span> partis dont le programme électoral de 2024 a été chiffré par le Bureau fédéral du Plan (DC2024). Ce chiffrage est la source unique : <span class="live" data-v="party.measures"></span> mesures, avec leur fiche et l'impulsion ex ante du Bureau.</p>
+  <p>Une seule méthode est appliquée à tous les partis. Lorsqu'une fiche fixe une valeur, cette valeur est reprise ; sinon, le paramètre est dimensionné de manière que l'effet budgétaire statique du modèle égale l'impulsion du Bureau ; <span class="live" data-v="party.sized"></span> mesures sont dimensionnées de cette manière. Parmi les mesures, <span class="live" data-v="party.modelled"></span> sont modélisées, <span class="live" data-v="party.partly"></span> le sont en partie (souvent sur une ligne budgétaire plus large que la proposition), <span class="live" data-v="party.not"></span> n'entraînent aucun changement (non chiffrées, budgétairement neutres ou sans levier utilisable) et <span class="live" data-v="party.baseline"></span> ont été adoptées depuis et figurent déjà dans le scénario de référence. La couverture est indiquée pour chaque parti.</p>
+  <p>Les résultats sont ceux de ce modèle, non ceux du Bureau du Plan : pour plusieurs partis, l'effet de l'ensemble du programme sur le solde, et en particulier sur l'emploi, diffère de celui du Bureau ; la fiche de chaque parti montre les deux. Les propositions chiffrées en 2024 par rapport au droit de l'époque ne sont pas comparables telles quelles lorsqu'une réforme a été adoptée depuis. Il s'agit des mesures que les partis ont soumises en 2024. Ce ne sont pas leurs positions actuelles.</p>
+</section>
+
+<section id="built">
+  <h2>Comment il a été construit</h2>
+  <p>belsim a été développé en novembre 2026 par une seule personne dirigeant des agents de programmation fondés sur l'intelligence artificielle (Claude, d'Anthropic, dans Claude Code). Les agents ont travaillé en parallèle sur des modules distincts, selon un contrat écrit fixant les unités, les noms et l'ordre des calculs ; chaque module a été testé, et l'ensemble a été confronté aux chiffres officiels comme décrit plus haut.</p>
+  <p>Les données ont été téléchargées par les agents auprès de sources publiques officielles. Les valeurs légales ont été vérifiées auprès des sources aux dates consignées avec chaque paramètre. Les textes français et néerlandais ont été traduits automatiquement par le même système et n'ont été relus que par des contrôles de cohérence automatisés.</p>
+  <div class="status plain">
+    <p><b>Ce que cela implique.</b> Aucun expert indépendant n'a encore examiné le modèle. Des erreurs subsistent vraisemblablement, dans le code, dans les paramètres et dans les traductions. Les corrections sont les bienvenues.</p>
+  </div>
+  <p>Le dépôt compte <span class="live" data-v="v.commits"></span> commits ; cette page a été servie à partir du commit <span class="live" data-v="v.commit"></span> du <span class="live" data-v="v.date"></span>. Ses modules sont : <span class="live" data-v="v.modules"></span>.</p>
+</section>
+
+<section id="limits">
+  <h2>Limites</h2>
+  <ul class="limits">
+    <li>Les résultats sont des ordres de grandeur, non des chiffrages officiels ; voir les écarts ci-dessus.</li>
+    <li>Les paramètres de comportement ont été réglés à la main sur les variantes HERMES ; les références à la littérature dans les fichiers de paramètres de comportement ont été écrites de mémoire et n'ont pas été vérifiées dans les articles.</li>
+    <li>Les emplois gagnés ou perdus du fait d'une mesure reçoivent un salaire et une productivité relatifs qui dépendent de leur origine. Ce sont des valeurs de jugement, constantes dans le temps.</li>
+    <li>Les modifications d'impôts indirects déplacent les prix à la consommation et l'indexation, mais le PIB et la consommation restent valorisés aux taux d'impôts indirects du scénario de référence.</li>
+    <li>Résultats régionaux : les transferts nets entre régions reposent sur des conventions de répartition ; les réductions groupes-cibles modifient le budget mais pas les embauches.</li>
+    <li>Les leviers de l'enseignement relatifs au coût par élève et à la croissance réelle des coûts modifient les dépenses mais pas l'emploi.</li>
+    <li>La vue Répartition utilise environ 290 ménages synthétiques, et non des microdonnées d'enquête ou administratives ; ils portent environ 90 % de l'impôt des personnes physiques du budget. Lisez les variations plutôt que les niveaux.</li>
+    <li>Adoptés mais non modélisés : l'indexation plafonnée des pensions élevées, le nouveau barème des allocations de chômage, la cotisation de solidarité des employeurs en cas de maladie, plusieurs modifications fiscales de moindre ampleur. Les mesures annoncées mais non votées sont exclues.</li>
+    <li>Deux éléments du scénario de référence reposent sur des décisions qui ne sont pas encore définitives : la baisse wallonne des droits de succession à partir de 2028 (un remplacement moins coûteux a été annoncé en octobre 2026) et le droit d'enregistrement flamand de 3 % sur l'habitation unique à partir de 2027.</li>
+    <li>Après 2030, le scénario de référence laisse les seuils fiscaux suivre les salaires ; dans le droit actuel, les recettes seraient nettement plus élevées d'ici 2070 (voir les conventions ci-dessus).</li>
+    <li>Les accises sur le tabac et les carburants ne comportent aucune réaction du commerce illicite ou transfrontalier ; leurs volumes diminuent par hypothèse.</li>
+  </ul>
+</section>
+
+<section id="reproduce">
+  <h2>Comment reproduire les résultats</h2>
+  <p>Tout ce qui figure sur cette page peut être recalculé à partir du dépôt. À l'exécution, le modèle ne lit que des fichiers locaux.</p>
+  <pre><code>uv sync
+uv run python -m belsim.api          # tableau de bord sur http://127.0.0.1:8000
+uv run pytest -q                     # la suite de tests
+uv run python -m belsim.validation   # le modèle face au fichier de référence ; écrit le rapport</code></pre>
+  <p>Les paramètres et leurs sources se trouvent dans <code>params/*.yaml</code> ; les chiffres de référence dans <code>data/reference/validation.yaml</code> ; la comparaison dans <code>data/reference/validation_report.md</code> ; la traduction des programmes des partis dans <code>scenarios/parties/source/mapping.yaml</code>.</p>
+</section>
+
+<section id="sources">
+  <h2>Sources</h2>
+  <p>Les institutions et les documents auxquels le modèle est confronté, tels qu'ils figurent dans le fichier de référence. Les données statistiques proviennent d'Eurostat, de la Banque nationale de Belgique (NBB.Stat) et de Statbel ; les sources de la législation sont indiquées avec chaque paramètre.</p>
+  <div data-block="sources"></div>
+</section>
+
+<section id="licence">
+  <h2>Licence et contact</h2>
+  <p>Le code est un logiciel libre sous <a href="https://www.gnu.org/licenses/agpl-3.0.html">licence publique générale GNU Affero, version 3 ou ultérieure</a> : chacun peut l'utiliser, l'étudier, le modifier et l'héberger, à condition de publier sous la même licence les versions modifiées mises en ligne. Les sources se trouvent sur <a href="https://github.com/daliscia/belsim">github.com/daliscia/belsim</a>. Les statistiques et documents utilisés restent soumis aux conditions de leurs éditeurs (Eurostat, Banque nationale de Belgique, Statbel, Bureau fédéral du Plan et les autres institutions citées dans les sources).</p>
+  <p>Publié par Daliscia (<a href="https://github.com/daliscia">github.com/daliscia</a>). Pour signaler une erreur ou proposer une correction, ouvrez un ticket sur <a href="https://github.com/daliscia/belsim/issues">github.com/daliscia/belsim/issues</a>.</p>
+  <p>Le site ne collecte aucune donnée à caractère personnel, ne dépose aucun cookie et ne charge rien auprès d'un tiers. Vos scénarios et vos préférences d'affichage sont conservés dans votre propre navigateur.</p>
+</section>
