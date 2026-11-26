@@ -1,0 +1,44 @@
+# Builds the container image of the public demo and publishes it to the GitHub
+# Container Registry as ghcr.io/<owner>/belsim (tags: latest and the commit).
+# The host (see docs/DEPLOY.md) pulls it from there.
+name: image
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the build info counts commits
+
+      - uses: astral-sh/setup-uv@v5
+
+      # What /api/version and the methodology page show: the image has neither .git nor tests/.
+      - name: Record commit, date and test count
+        run: |
+          uv sync --frozen
+          uv run python -m belsim.api.version --write
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
