@@ -1,164 +1,94 @@
 <header class="wp-head">
-  <h1>Hoe deze simulator gebouwd is, en waarom u er wel en niet op kunt vertrouwen</h1>
-  <p class="standfirst">belsim is een vrij en open instrument om te verkennen wat begrotingskeuzes zouden betekenen voor de overheidsfinanciën, de economie en de huishoudens in België. Deze pagina legt uit wat erin zit, waar de cijfers vandaan komen, in welke mate ze overeenstemmen met officiële cijfers en waar ze ervan afwijken.</p>
-  <div data-block="build"></div>
-  <p class="key"><span class="live">Cijfers die zo gemarkeerd zijn</span> staan niet in deze tekst getypt: ze worden bij het laden van de pagina uit het draaiende model gelezen en volgen dus de parameters van de hierboven vermelde versie.</p>
+  <h1>Hoe het werkt</h1>
+  <p class="standfirst">belsim is een kleine simulator van de Belgische overheidsfinanciën. U wijzigt een belastingtarief, een pensioenleeftijd of een uitgavenregel, en ziet wat er gebeurt met het tekort, de schuld en de werkgelegenheid tot <span class="live" data-v="m.end"></span>. Het is speelgoed om mee te proberen en over te discussiëren, geen officiële doorrekening.</p>
+  <p class="key"><span class="live">Cijfers die zo gemarkeerd zijn</span> worden door het model berekend wanneer de pagina laadt.</p>
 </header>
 
-<section id="purpose">
-  <h2>Doel en status</h2>
-  <p>Met belsim kan iedereen een belastingtarief, een uitkering, een pensioenleeftijd of een uitgavenpad wijzigen en het gevolg zien, jaar na jaar, voor de begroting van elk bestuursniveau, voor de werkgelegenheid en voor de inkomens van de huishoudens. Het is gratis; de code, de parameters en de bronnen zijn open.</p>
-  <div class="status">
-    <p><b>Het is geen officiële doorrekening.</b> Geen enkele overheidsinstelling heeft het gemaakt, nagekeken of goedgekeurd.</p>
-    <p><b>Het is geen voorspelling.</b> Het basisscenario volgt de officiële vooruitzichten; het model voegt daar niets eigens aan toe over de toekomstige toestand van de economie.</p>
-    <p><b>De resultaten zijn grootteordes.</b> Een cijfer van 1,5 miljard euro betekent 'tussen één en twee miljard', niet '1,5 in plaats van 1,4'.</p>
-  </div>
-  <p>Het is bedoeld voor burgers, journalisten, studenten en beleidsmedewerkers die willen begrijpen hoe de onderdelen van de begroting in elkaar passen, wat een voorstel ruwweg kost en welke mechanismen ertoe doen.</p>
-  <p>Het mag niet worden gebruikt voor de doorrekening van een wettekst, voor een precieze opbrengst, of voor wat dan ook waarvoor het gezag van het Federaal Planbureau, het Rekenhof, de Nationale Bank van België of de administratie nodig is. Daarvoor zijn hun publicaties de referentie; een aantal staat onder <a href="#sources">Bronnen</a>.</p>
-</section>
-
-<section id="model">
-  <h2>Wat het model is</h2>
-  <p>belsim is een jaarlijkse, boekhoudkundig consistente simulatie van België van <span class="live" data-v="m.base"></span> tot <span class="live" data-v="m.end"></span>. Elk jaar wordt uit het vorige berekend door onderling verbonden blokken:</p>
-  <ul>
-    <li><b>Bevolking</b>: een cohort-componentprojectie naar leeftijd, geslacht en gewest (geboorten, sterfgevallen, migratie).</li>
-    <li><b>Arbeidsmarkt</b>: het statuut van elke persoon (werknemer, zelfstandige, ambtenaar, werkloze, arbeidsongeschikte, gepensioneerde, student, overige), de werkgelegenheid per sector en type job, en de lonen.</li>
-    <li><b>Economie</b>: het bbp, de prijzen, de gezondheidsindex, de inkomens en de consumptie.</li>
-    <li><b>Overheidsfinanciën</b>: elke ontvangstenlijn (<span class="live" data-v="m.rev_lines"></span>) en uitgavenlijn (<span class="live" data-v="m.exp_lines"></span>) van de gezamenlijke overheid; de federale overheid, de sociale zekerheid, de gemeenschappen en gewesten met de vier deelstaten, en de lokale overheden; de rentelasten en de schuld.</li>
-    <li><b>Gedragsreacties</b>: hoe huishoudens en ondernemingen op een maatregel reageren.</li>
-    <li><b>Verdeling over de huishoudens</b> en <b>gewesten</b>: wie wint en wie verliest, en wat er gebeurt in Vlaanderen, Wallonië en Brussel.</li>
-  </ul>
-  <p>Elke begrotingslijn is het product van een belastbare grondslag, de wettelijk vastgelegde parameters en een kalibratiefactor. Die factor wordt één keer bepaald, zodat <span class="live" data-v="m.base"></span> de gepubliceerde rekeningen weergeeft, en blijft daarna constant. Een maatregel is een gedateerde wijziging van één of meer parameters; het effect ervan is het verschil met het basisscenario. Een scenario zonder maatregelen geeft exact het basisscenario terug, en een geautomatiseerde test controleert dat.</p>
-  <p>Deze opzet kreeg om drie redenen de voorkeur boven een algemeen-evenwichtsmodel of een agentgebaseerd model. Ze is transparant: elke lijn is terug te voeren op een grondslag, een regel en een bron. Ze vereist geen microdata met beperkte toegang, zodat iedereen het model kan draaien en controleren. En ze spreekt de taal van de begrotingsdocumenten zelf, lijn per lijn. De prijs daarvoor is dat de economische terugkoppeling niet uit eerste principes wordt afgeleid: het gaat om reactiecoëfficiënten die gekalibreerd zijn op resultaten van officiële modellen (zie <a href="#behaviour">Gedrag</a>).</p>
+<section id="about">
+  <h2>Wat het is, en wat niet</h2>
+  <p>Het model gaat jaar per jaar vooruit. Het volgt de bevolking, de jobs en de lonen, de economie, en elke ontvangsten- en uitgavenlijn van de federale staat, de sociale zekerheid, de gemeenschappen en gewesten en de lokale besturen. Een maatregel is een wijziging van één of meer parameters vanaf een bepaald jaar. Het effect is het verschil met 'ongewijzigd beleid'.</p>
+  <p>Geen enkele overheidsinstelling heeft het gemaakt, nagekeken of goedgekeurd. Het voorspelt niets, en de resultaten zijn grootteordes: 'één à twee miljard', niet '1,5 in plaats van 1,4'. Voor alles wat ertoe doet, gebruikt u de publicaties van het Federaal Planbureau, de Nationale Bank of het Rekenhof.</p>
 </section>
 
 <section id="data">
-  <h2>Gegevens</h2>
-  <p>Het basisjaar berust op gedownloade officiële statistieken: de nationale rekeningen en de overheidsrekeningen van 2024 (ESR 2010), de bevolking, de vruchtbaarheid, de sterfte en de migratie, het arbeidsmarktstatuut, de werkgelegenheid, de toegevoegde waarde en de lonen per sector, de consumptie van de huishoudens en de fiscale statistieken, van Eurostat, de Nationale Bank van België en Statbel. De waargenomen overheidsrekeningen van 2025 worden lijn per lijn weergegeven.</p>
-  <p>De regels inzake belastingen, bijdragen en uitkeringen zijn op 25 november 2026 getoetst aan officiële of gezaghebbende bronnen; de bron en de datum zijn bij elke parameter vermeld, en sommige regels berusten op secundaire bronnen, wat daar is aangegeven. Tot 2031 gebruikt het basisscenario de tabellen van de vooruitzichten van het Federaal Planbureau van juni 2026; de lange termijn steunt op het verslag 2026 van de Studiecommissie voor de Vergrijzing; de bedragen van de bijzondere financieringswet komen uit de federale begrotingsdocumenten.</p>
-  <p>Het model telt <span class="live" data-v="p.count"></span> parameters. Elke parameter vermeldt zijn bron. Een parameter zonder officiële bron is als aanname gemarkeerd, in de parameterbestanden en in het dashboard: dat geldt voor <span class="live" data-v="p.assumptions"></span> ervan, of <span class="live" data-v="p.share"></span>. Ze zijn van vier soorten: elasticiteiten en andere gedragscoëfficiënten; projectiepaden voor de lange termijn; structurele aandelen die bepalen hoe een begrotingslijn reageert; en wettelijke waarden die niet aan een officiële tekst konden worden getoetst.</p>
-  <div data-block="params-table"></div>
+  <h2>Wat echt is, wat aangenomen is</h2>
+  <p>Het vertrekpunt is echt: de overheidsrekeningen van 2024 en 2025, officiële statistieken over bevolking, werk en inkomens, en de belasting- en uitkeringsregels die vandaag gelden.</p>
+  <p>De rest is modelwerk. Het model telt <span class="live" data-v="p.count"></span> parameters, elk met zijn bron. <span class="live" data-v="p.assumptions"></span> daarvan hebben geen officiële bron: vooral hoe mensen en bedrijven reageren, en langetermijntrends. Ze staan in de app aangeduid als aanname, en u kunt ze wijzigen.</p>
 </section>
 
 <section id="baseline">
-  <h2>Het basisscenario en de gekozen conventies</h2>
-  <p>Elk resultaat is een verschil met een basisscenario; de conventies ervan wegen dus even zwaar als het model. Dit zijn de gemaakte keuzes en de reden voor elk ervan.</p>
-  <ol class="conventions">
-    <li><b>'Bij ongewijzigd beleid' omvat de goedgekeurde hervormingen, en niets anders.</b> Het basisscenario bevat de hervorming van de personenbelasting met de verhoging van de belastingvrije som tot 2030, de pensioenhervorming met de malus, de beperking van de werkloosheidsuitkeringen in de tijd, de meerwaardebelasting, het defensiepad en de groeinorm voor de gezondheidszorg. Maatregelen die zijn aangekondigd maar niet in wetgeving zijn omgezet, blijven erbuiten, omdat hun inhoud niet vastligt.</li>
-    <li><b>Tot 2031 is het basisscenario verankerd aan het Federaal Planbureau; tot <span class="live" data-v="m.end"></span> aan de Studiecommissie voor de Vergrijzing.</b> Het nominale en reële bbp, de prijzen, de werkgelegenheid en de uitgaven per bestuursniveau volgen de tabellen van de vooruitzichten van juni 2026 van het Bureau; de pensioenen en de gezondheidszorg volgen de langetermijnprojectie van de Commissie. Over die horizon is het model dus geen onafhankelijke voorspelling: het is een samenhangend kader, dicht bij het officiële, waarin maatregelen kunnen worden vergeleken.</li>
-    <li><b>Waargenomen rekeningen gaan voor op vooruitzichten.</b> De overheidsrekeningen van 2025 zijn bekend, en het basisscenario geeft ze weer, met inbegrip van een ontvangstenniveau dat boven de raming van juni van het Bureau voor dat jaar ligt. Dat niveau blijft behouden. Vanaf 2026 zorgt een als zodanig benoemde afstemming (<code>rev.fpb_alignment</code>) ervoor dat elke categorie van ontvangsten, in procent van het bbp, evenveel verandert als in de vooruitzichten van het Bureau, gerekend vanaf het waargenomen jaar 2025: het Bureau levert de verandering, de rekeningen leveren het niveau. Die afstemming is geen wetgeving en geen raming, en ze heeft een schakelaar (<code>rev.fpb_alignment_enabled</code>). Uitgeschakeld verschuift de eigen ontvangstenprojectie van het model de ontvangstenquote van 2031 met <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:sd2"></span> procentpunt van het bbp en geeft ze een tekort van <span class="live" data-v="s:align_off:fiscal.balance_pct_gdp@2031:abspct1"></span> van het bbp in plaats van <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span>.</li>
-    <li><b>Na 2030 volgen de drempels van de personenbelasting de lonen in plaats van de prijzen.</b> Dat is de gebruikelijke conventie in langetermijnprojecties. Volgens de huidige wetgeving volgen de drempels alleen de prijzen, en de groei van de reële lonen zou de ontvangsten in dit model dan tegen 2070 met ongeveer <span class="live" data-v="d:price_link:fiscal.revenue_pct_gdp@2070:abs1"></span> procentpunt van het bbp opdrijven. Deze conventie is een hefboom (<code>core.tax_threshold_wage_link</code>) die naar de huidige wetgeving kan worden teruggezet.</li>
-    <li><b>De volumes onderworpen aan accijnzen op brandstof en tabak dalen bij aanname.</b> Het model bevat voor deze producten geen reactie van illegale handel of grensoverschrijdende aankopen; de volumes volgen een aangenomen dalende trend, wat mee verklaart waarom de ontvangstenquote daalt van <span class="live" data-v="b:fiscal.revenue_pct_gdp@2031:pct1"></span> van het bbp in 2031 naar <span class="live" data-v="b:fiscal.revenue_pct_gdp@2070:pct1"></span> in 2070. Ook dit is een hefboom (<code>excise.volume_growth</code>).</li>
-    <li><b>De uitgavenpaden van de deelstaten voor 2025-2031 komen uit de tabellen van het Bureau</b> en worden daarna aangehouden, omdat er voor de periode nadien geen officiële projectie per deelstaat bestaat.</li>
-    <li><b>De productiviteit, de rentevoeten en de migratie op lange termijn volgen de officiële aannames</b> (Studiecommissie voor de Vergrijzing, bevolkingsvooruitzichten van het Planbureau en Statbel), niet een eigen visie van het model.</li>
-  </ol>
-  <p>Het basisscenario dat daaruit volgt, zoals het model het nu berekent:</p>
-  <div data-block="baseline-table"></div>
-  <p class="note">De sterke stijging van het tekort en de schuld na 2031 is wat 'bij ongewijzigd beleid' betekent wanneer de vergrijzingskosten en de rentelasten toenemen en er niets wordt gedaan; het is een referentielijn, geen voorspelling dat er niets zal worden gedaan.</p>
-</section>
-
-<section id="behaviour">
-  <h2>Hoe gedrag gemodelleerd en gekalibreerd is</h2>
-  <p>Elk scenario wordt twee keer berekend. De <b>statische</b> (mechanische) doorrekening wijzigt de regel en laat ieders gedrag zoals in het basisscenario; dat is wat een budgettaire fiche ex ante vermeldt. Het resultaat <b>met gedragsreacties</b> laat de economie reageren. Het dashboard toont beide.</p>
-  <p>De reacties zijn gegroepeerd in kanalen: arbeidsaanbod en arbeidsvraag; loononderhandelingen; prijzen en automatische indexering; consumptie van de huishoudens; de grondslagen van de vennootschapsbelasting en van de belasting op kapitaal; de pensioneringsleeftijd; de terugkoppeling van de vraag op de activiteit op korte termijn; en het overheidskapitaal. Elk kanaal bestaat uit een klein aantal coëfficiënten met een gedocumenteerde bron.</p>
-  <p>Deze coëfficiënten zijn gekalibreerd op de varianten die voor het HERMES-model van het Federaal Planbureau zijn gepubliceerd (de reactie van het bbp, de werkgelegenheid, de prijzen en het saldo op standaardschokken van 0,5% van het bbp) en op de evaluaties van de indexsprong van 2015. Ze zijn met de hand afgesteld, niet geschat.</p>
-  <p>Waar officiële instellingen het oneens zijn, zegt het model dat. Het Planbureau en de Nationale Bank verschillen over het effect van loonmatiging op het bbp. De standaardwaarde volgt het Bureau; een gedocumenteerde alternatieve waarde van één parameter (<code>dyn.wage_cost.net_export_output_elasticity</code>, 0,30 in plaats van 0,05) geeft het resultaat van de Bank weer.</p>
-  <p>Twee kalibraties vallen buiten wat de micro-econometrische literatuur aangeeft, en het is beter te zeggen waarom:</p>
+  <h2>De startlijn: ongewijzigd beleid</h2>
+  <p>Elk resultaat wordt vergeleken met een basisscenario waarin niets nieuws wordt beslist. Vijf keuzes bepalen het:</p>
   <ul>
-    <li><b>Pensionering en de pensioenmalus.</b> De reactie van de pensioneringsleeftijd op de malus is gekalibreerd op het rapport van het Planbureau over de pensioenhervorming. Ze is veel sterker dan microstudies doen vermoeden. Ze is behouden omdat het de bedoeling is vergelijkbaar te blijven met de officiële evaluatie van een goedgekeurde hervorming.</li>
-    <li><b>Arbeidsaanbod en de hoogte van de uitkeringen.</b> In de eerste kalibratie is een fout gevonden: werkloosheidsuitkeringen die 10% hoger liggen, kostten ongeveer 90.000 jobs, een ongeloofwaardig cijfer. De reactie is opnieuw gekalibreerd op duurelasticiteiten uit de literatuur; dezelfde maatregel kost nu ongeveer 10.000 jobs na vier jaar. De sociale bijstand (het leefloon) telt nu mee in het inkomen waarop iemand zonder werk kan terugvallen, en dus in de prikkel om te werken.</li>
+    <li>Hervormingen die al gestemd zijn, zitten erin. Aangekondigde niet.</li>
+    <li>Tot 2031 volgt het de vooruitzichten van het Federaal Planbureau; daarna de Studiecommissie voor de Vergrijzing voor pensioenen en gezondheidszorg.</li>
+    <li>De rekeningen van 2025 zijn bekend en worden dus overgenomen zoals ze zijn.</li>
+    <li>Na 2030 volgen de belastingdrempels de lonen in plaats van de prijzen, zoals langetermijnprojecties meestal aannemen.</li>
+    <li>De verkoop van brandstof en tabak blijft dalen; dat is een aanname.</li>
   </ul>
-  <p>De band die in de grafieken rond een resultaat is getekend, is het interval tussen de helft en anderhalve keer de centrale reacties. Hij toont hoe sterk het antwoord van het gedrag afhangt. Het is geen statistisch betrouwbaarheidsinterval.</p>
+  <p>De schuld die in dit basisscenario blijft stijgen, is geen voorspelling. Het is wat er op papier gebeurt als niemand iets doet.</p>
 </section>
 
-<section id="validation">
-  <h2>Validatie</h2>
-  <p>Het principe is eenvoudig: het model wordt getoetst aan officiële cijfers, die met hun bronnen in één referentiebestand zijn verzameld, en de vergelijking wordt volledig gepubliceerd in de weergave Validatie van het dashboard. Geautomatiseerde tests (<span class="live" data-v="v.tests"></span> in de hele suite) verhinderen dat de bereikte overeenstemming verloren gaat wanneer het model verandert.</p>
-  <p>Het referentiebestand bevat <span class="live" data-v="val.base.n"></span> cijfers over de basisprojectie en <span class="live" data-v="val.ind.n"></span> cijfers over de kostprijs of het effect van maatregelen, afkomstig uit officiële doorrekeningen en evaluaties. Daarnaast zijn er <span class="live" data-v="val.sized.n"></span> rijen met fiches van de partijprogramma's van 2024 waarvan de parameter op de officiële impuls is afgestemd: ze stemmen door constructie overeen, zeggen niets over de juistheid van het model en worden apart geteld.</p>
-  <div data-block="val-summary"></div>
-  <p>Een selectie van wat overeenstemt en wat niet, met de huidige waarde van het model. De volledige lijst, met bronnen, staat in de weergave Validatie.</p>
+<section id="results">
+  <h2>Een resultaat lezen</h2>
+  <p>Elk scenario wordt twee keer berekend. Het <b>statische</b> resultaat wijzigt de regel en neemt aan dat niemand reageert. Het resultaat <b>met gedrag</b> laat mensen en bedrijven reageren: werken, aanwerven, lonen, prijzen, consumptie.</p>
+  <p>De gekleurde band rond een lijn toont het resultaat met reacties die half zo sterk en anderhalve keer zo sterk zijn. Hij laat zien hoezeer het antwoord van gedrag afhangt. Het is geen foutenmarge.</p>
+</section>
+
+<section id="accuracy">
+  <h2>Hoe dicht het erbij zit</h2>
+  <p>Het model wordt vergeleken met <span class="live" data-v="val.n"></span> officiële cijfers over wat maatregelen kosten of opbrengen. <span class="live" data-v="val.w10"></span> liggen binnen 10% van het officiële cijfer, <span class="live" data-v="val.w25"></span> binnen 25% en <span class="live" data-v="val.w50"></span> binnen 50%. Het basisscenario zit dichter, maar dat is geen verdienste: het volgt de officiële projecties.</p>
+  <p>Enkele voorbeelden, goede en slechte. De pagina Validatie van de app toont ze allemaal.</p>
   <div data-block="val-table"></div>
-  <h3>Bekende verschillen</h3>
-  <ul class="gaps">
-    <li>Waar het Planbureau en de Nationale Bank het oneens zijn, kan maar met één van beide worden overeengestemd. De effecten op het bbp die de Bank toeschrijft aan de indexsprong en aan de verlaging van de werkgeversbijdragen van 2016, worden alleen weergegeven met de alternatieve waarde van de hierboven vermelde parameter; de standaardwaarde volgt het Bureau.</li>
-    <li>Na een btw-verhoging daalt de werkgelegenheid in het eerste jaar minder dan in HERMES, en de winst voor het saldo na twee tot vier jaar is kleiner (zie de tabel).</li>
-    <li>Na een verhoging van de werknemersbijdragen ligt de winst voor het saldo na vier jaar duidelijk onder die van HERMES (zie de tabel), en de compensatie van die bijdragen in de personenbelasting is groter; een verlaging van de uitkeringen drukt het bbp minder dan in HERMES.</li>
-    <li>Hervormingen van de hoogste schijven van de personenbelasting komen 10 tot 18% duurder uit dan de doorrekeningen van de verkiezingsprogramma's van 2024. De belastbare grondslagen die uit die doorrekeningen volgen, zijn kleiner in de hoogste schijven; het model behoudt de belastingaangiften van 2024, waarop zijn barema de ontvangsten van 2024 weergeeft, en biedt de grondslagen van het Bureau aan als alternatief, dat standaard is uitgeschakeld (<code>pit.bracket_base_factor</code>).</li>
-    <li>De hervorming van 2028 van de bijzondere bijdrage voor de sociale zekerheid kost ongeveer een derde meer dan het officiële cijfer, en het huwelijksquotiënt komt op vergelijkbare basis ongeveer 30% te laag uit.</li>
-    <li>De ontvangsten van 2026 tot 2031 zijn geen resultaat van het model: de verandering van elke categorie sinds 2025 is die van het Planbureau, via de afstemming die bij de conventies is beschreven. Zonder die afstemming liggen de ontvangsten in 2031 tot <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:abs2"></span> procentpunt van het bbp hoger.</li>
-    <li>Korte termijn: het tekort van 2031 bedraagt <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span> van het bbp tegenover 6,4% in de vooruitzichten van het Planbureau, en de schuld ligt 0,3 tot 1,1 procentpunt van het bbp onder de prognose van de Nationale Bank voor 2026-2028.</li>
-    <li>Lange termijn: het model telt in 2070 ongeveer 50.000 meer 67-plussers dan de nationale bevolkingsvooruitzichten, en een totale bevolking die ongeveer 160.000 hoger ligt; de groei van de werkgelegenheid tot 2070 ligt wat onder die van de Studiecommissie voor de Vergrijzing.</li>
-    <li>Verdeling: het totale armoederisicopercentage bedraagt 10,1% tegenover 10,9% waargenomen en de percentages per huishoudtype liggen binnen ongeveer 2 punten, maar het percentage van de personen zonder werk andere dan werklozen en gepensioneerden ligt 3,4 punten te hoog en het mediaan inkomen ligt ongeveer 2% te laag.</li>
-    <li>Partijprogramma's: de resultaten van een volledig pakket wijken voor verscheidene partijen af van die van het Planbureau, in het bijzonder voor de werkgelegenheid; voorstellen die in 2024 zijn doorgerekend ten opzichte van de toenmalige wetgeving zijn niet zonder meer vergelijkbaar wanneer sindsdien een hervorming is goedgekeurd.</li>
+</section>
+
+<section id="limits">
+  <h2>Waar het zwak is</h2>
+  <ul>
+    <li>Hoe mensen en bedrijven reageren, steunt op enkele met de hand afgestelde coëfficiënten, niet op echte schattingen.</li>
+    <li>Sommige resultaten liggen ver van de officiële cijfers, zoals de verlaging van de vennootschapsbelasting of het begrotingseffect van een btw-verhoging na enkele jaren.</li>
+    <li>Waar het Planbureau en de Nationale Bank het oneens zijn, volgt het model het Planbureau.</li>
+    <li>Tot 2031 volgen de ontvangsten het pad van het Planbureau, niet de eigen berekening van het model.</li>
+    <li>Enkele recente hervormingen ontbreken, zoals de begrensde indexering van hoge pensioenen en de nieuwe schaal van de werkloosheidsuitkeringen.</li>
+    <li>Niemand onafhankelijk heeft het nagekeken. Er zitten zeker nog fouten in.</li>
   </ul>
-</section>
-
-<section id="distribution">
-  <h2>Verdeling</h2>
-  <p>De weergave 'wie wint, wie verliest' berust op synthetische huishoudens, niet op een enquête: de huishoudtypes van de inkomensenquête (EU-SILC), herhaald over de inkomensklassen van de statistiek van de belastingaangiften, samen ongeveer 290 huishoudens<span data-optional> (<span class="live" data-v="dist.households"></span> in het jaar van de tabel hieronder, waarvan er <span class="live" data-v="dist.shown"></span> worden getoond)</span>. Belastingen en uitkeringen worden voor elk huishouden berekend met dezelfde regels als de begrotingslijnen<span data-optional>; samen dragen deze huishoudens <span class="live" data-v="dist.pit"></span> van de personenbelasting in de begroting</span>.</p>
-  <p>De tabel vergelijkt deze synthetische bevolking met de inkomensenquête, waarvan de editie 2025 de inkomens van 2024 meet. Ongelijkheid en armoede liggen dicht bij de waargenomen niveaus; waar de twee verschillen, is het niveau van het model fout. Vermogen, woonkosten en het niet-opnemen van uitkeringen zijn niet weergegeven. De weergave moet dus worden gelezen voor de <em>verandering</em> die een maatregel voor elke inkomensklasse en elk huishoudtype teweegbrengt, niet voor het niveau van iemands inkomen of van de armoede.</p>
-  <div data-block="dist-table"></div>
-</section>
-
-<section id="regions">
-  <h2>Gewesten</h2>
-  <p>De resultaten worden gepubliceerd voor Vlaanderen, Wallonië en Brussel, en voor de deelstaten: de Vlaamse Gemeenschap, het Waals Gewest, de Franse Gemeenschap en het Brussels Hoofdstedelijk Gewest. Beleidshefbomen die een gewest- of gemeenschapsbevoegdheid zijn, worden per gewest of per gemeenschap ingesteld, zodat een maatregel voor slechts één ervan kan gelden.</p>
-  <p>Twee kanttekeningen. De nettotransfers tussen de gewesten hangen af van toewijzingsconventies (uitkeringen worden toegewezen volgens de woonplaats, ondeelbare federale uitgaven volgens de bevolking); andere conventies geven andere cijfers, en het model neemt geen standpunt in over welke de juiste is. En doelgroepverminderingen wijzigen in het model de gewestbegroting, maar niet de aanwervingen.</p>
+  <p>De volledige lijst staat in <a href="https://github.com/daliscia/belsim/blob/main/docs/DETAILS.md">docs/DETAILS.md</a> (in het Engels).</p>
 </section>
 
 <section id="parties">
   <h2>Partijprogramma's</h2>
-  <p>Het dashboard biedt een kant-en-klaar scenario voor elk van de <span class="live" data-v="party.n"></span> partijen waarvan het verkiezingsprogramma van 2024 door het Federaal Planbureau is doorgerekend (DC2024). Die doorrekening is de enige bron: <span class="live" data-v="party.measures"></span> maatregelen, met hun fiche en de ex-ante-impuls van het Bureau.</p>
-  <p>Voor alle partijen wordt één methode toegepast. Legt een fiche een waarde vast, dan wordt die waarde gebruikt; anders wordt de parameter zo afgestemd dat het statische budgettaire effect van het model gelijk is aan de impuls van het Bureau; <span class="live" data-v="party.sized"></span> maatregelen zijn op die manier afgestemd. Van de maatregelen zijn er <span class="live" data-v="party.modelled"></span> gemodelleerd, <span class="live" data-v="party.partly"></span> gedeeltelijk gemodelleerd (vaak op een bredere begrotingslijn dan het voorstel), <span class="live" data-v="party.not"></span> zonder enige wijziging (niet doorgerekend, budgetneutraal of zonder bruikbare hefboom) en <span class="live" data-v="party.baseline"></span> intussen goedgekeurd en dus al in het basisscenario opgenomen. De dekking wordt voor elke partij getoond.</p>
-  <p>De resultaten zijn die van dit model, niet die van het Planbureau: voor verscheidene partijen wijkt het effect van het hele pakket op het saldo, en in het bijzonder op de werkgelegenheid, af van dat van het Bureau; het paneel van elke partij toont beide. Voorstellen die in 2024 zijn doorgerekend ten opzichte van de toenmalige wetgeving zijn niet zonder meer vergelijkbaar wanneer sindsdien een hervorming is goedgekeurd. Het gaat om de maatregelen die de partijen in 2024 hebben ingediend. Het zijn niet hun huidige standpunten.</p>
+  <p>De app kan het programma van 2024 laden van elk van de <span class="live" data-v="party.n"></span> partijen, zoals doorgerekend door het Federaal Planbureau, met dezelfde methode voor allemaal. De resultaten zijn die van dit model en wijken af van die van het Planbureau, soms sterk, vooral voor de werkgelegenheid. Het zijn de voorstellen van 2024, niet wat de partijen vandaag verdedigen.</p>
+</section>
+
+<section id="more">
+  <h2>Huishoudens en gewesten</h2>
+  <p><b>Huishoudens.</b> De weergave 'wie wint, wie verliest' gebruikt enkele honderden typehuishoudens die uit statistieken zijn opgebouwd, geen echte gezinnen uit een enquête. Kijk naar de verandering die een maatregel brengt, niet naar de inkomensniveaus.</p>
+  <p><b>Gewesten.</b> De resultaten worden opgesplitst tussen Vlaanderen, Wallonië en Brussel. De transfers tussen gewesten hangen af van hoe federale ontvangsten en uitgaven worden verdeeld; andere redelijke regels geven andere cijfers.</p>
 </section>
 
 <section id="built">
   <h2>Hoe het gebouwd is</h2>
-  <p>belsim is in november 2026 ontwikkeld door één persoon die AI-programmeeragenten aanstuurde (Claude van Anthropic, in Claude Code). De agenten werkten parallel aan afzonderlijke modules, volgens een geschreven contract dat de eenheden, de namen en de volgorde van de berekeningen vastlegt; elke module is getest, en het geheel is aan officiële cijfers getoetst zoals hierboven beschreven.</p>
-  <p>De gegevens zijn door de agenten opgehaald bij officiële openbare bronnen. De wettelijke waarden zijn aan bronnen getoetst op de data die bij elke parameter zijn vermeld. De Franse en de Nederlandse teksten zijn door hetzelfde systeem machinaal vertaald en alleen door geautomatiseerde consistentiecontroles nagekeken.</p>
-  <div class="status plain">
-    <p><b>Wat dat inhoudt.</b> Het model is nog niet door een onafhankelijke deskundige nagekeken. Er zitten wellicht nog fouten in, in de code, in de parameters en in de vertalingen. Verbeteringen zijn welkom.</p>
-  </div>
-  <p>De repository telt <span class="live" data-v="v.commits"></span> commits; deze pagina is geleverd vanuit commit <span class="live" data-v="v.commit"></span> van <span class="live" data-v="v.date"></span>. De modules zijn: <span class="live" data-v="v.modules"></span>.</p>
-</section>
-
-<section id="limits">
-  <h2>Beperkingen</h2>
-  <ul class="limits">
-    <li>De resultaten zijn grootteordes, geen officiële doorrekeningen; zie de verschillen hierboven.</li>
-    <li>De gedragsparameters zijn met de hand afgesteld op de HERMES-varianten; de literatuurverwijzingen in de parameterbestanden voor gedrag zijn uit het geheugen geschreven en niet aan de artikelen getoetst.</li>
-    <li>Jobs die door een maatregel worden gewonnen of verloren, krijgen een relatief loon en een relatieve productiviteit die afhangen van hun herkomst. Het zijn inschattingen, constant in de tijd.</li>
-    <li>Wijzigingen van indirecte belastingen verschuiven de consumptieprijzen en de indexering, maar het bbp en de consumptie blijven gewaardeerd tegen de tarieven van de indirecte belastingen in het basisscenario.</li>
-    <li>Gewestelijke resultaten: de nettotransfers tussen de gewesten berusten op toewijzingsconventies; doelgroepverminderingen wijzigen de begroting, maar niet de aanwervingen.</li>
-    <li>De onderwijshefbomen voor de kostprijs per leerling en de reële kostengroei wijzigen de uitgaven, maar niet de werkgelegenheid.</li>
-    <li>De weergave Verdeling gebruikt ongeveer 290 synthetische huishoudens, geen enquête- of administratieve microdata; ze dragen ongeveer 90% van de personenbelasting in de begroting. Lees de veranderingen, niet de niveaus.</li>
-    <li>Goedgekeurd maar niet gemodelleerd: de geplafonneerde indexering van hoge pensioenen, het nieuwe barema van de werkloosheidsuitkeringen, de solidariteitsbijdrage van werkgevers bij ziekte, verscheidene kleinere belastingwijzigingen. Maatregelen die zijn aangekondigd maar niet in wetgeving zijn omgezet, blijven erbuiten.</li>
-    <li>Twee elementen van het basisscenario berusten op beslissingen die nog niet definitief zijn: de Waalse verlaging van de successierechten vanaf 2028 (in oktober 2026 is een goedkopere vervanging aangekondigd) en het Vlaamse registratierecht van 3% op de enige woning vanaf 2027.</li>
-    <li>Na 2030 laat het basisscenario de belastingdrempels de lonen volgen; volgens de huidige wetgeving zouden de ontvangsten tegen 2070 beduidend hoger liggen (zie de conventies hierboven).</li>
-    <li>De accijnzen op tabak en brandstof kennen geen reactie van illegale of grensoverschrijdende handel; de volumes dalen bij aanname.</li>
-  </ul>
-</section>
-
-<section id="reproduce">
-  <h2>Hoe de resultaten te reproduceren</h2>
-  <p>Alles op deze pagina kan vanuit de repository opnieuw worden berekend. Tijdens de uitvoering leest het model alleen lokale bestanden.</p>
-  <pre><code>uv sync
-uv run python -m belsim.api          # dashboard op http://127.0.0.1:8000
-uv run pytest -q                     # de testsuite
-uv run python -m belsim.validation   # het model tegenover het referentiebestand; schrijft het rapport</code></pre>
-  <p>De parameters en hun bronnen staan in <code>params/*.yaml</code>; de referentiecijfers in <code>data/reference/validation.yaml</code>; de vergelijking in <code>data/reference/validation_report.md</code>; de vertaling van de partijprogramma's in <code>scenarios/parties/source/mapping.yaml</code>.</p>
+  <p>belsim is in november 2026 in enkele dagen gebouwd door één persoon die AI-programmeeragenten aanstuurde (Claude, van Anthropic). De agenten hebben ook de gegevens opgehaald en de Franse en Nederlandse teksten geschreven; dat zijn machinevertalingen. Niemand onafhankelijk heeft het model al nagekeken: reken dus op fouten, en meld ze gerust.</p>
+  <p class="note">Deze pagina draait op versie <span class="live" data-v="v.commit"></span> van <span class="live" data-v="v.date"></span>.</p>
 </section>
 
 <section id="sources">
   <h2>Bronnen</h2>
-  <p>De instellingen en documenten waaraan het model wordt getoetst, zoals ze in het referentiebestand staan. De statistische gegevens komen van Eurostat, de Nationale Bank van België (NBB.Stat) en Statbel; de bronnen van de wetgeving staan bij elke parameter.</p>
-  <div data-block="sources"></div>
+  <ul>
+    <li><a href="https://ec.europa.eu/eurostat">Eurostat</a>: nationale rekeningen en overheidsrekeningen, inkomensenquête.</li>
+    <li><a href="https://www.nbb.be">Nationale Bank van België</a>: rekeningen en projecties.</li>
+    <li><a href="https://statbel.fgov.be">Statbel</a>: bevolking, arbeidsmarkt, belastingaangiften.</li>
+    <li><a href="https://www.plan.be">Federaal Planbureau</a>: middellangetermijnvooruitzichten, bevolkingsprojecties, standaardschokken op belastingen en bijdragen.</li>
+    <li><a href="https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf">Studiecommissie voor de Vergrijzing</a>: pensioenen en gezondheidszorg op lange termijn.</li>
+    <li><a href="https://www.dc2024.be">DC2024</a>: de doorrekening van de partijprogramma's van 2024 door het Planbureau.</li>
+    <li><a href="https://www.dekamer.be">Kamer van volksvertegenwoordigers</a>: begrotingsdocumenten en commentaar van het Rekenhof.</li>
+  </ul>
+  <p>Elke parameter toont zijn eigen bron in de app. De rest staat in <a href="https://github.com/daliscia/belsim/blob/main/docs/DETAILS.md">docs/DETAILS.md</a>.</p>
 </section>
 
 <section id="licence">
   <h2>Licentie en contact</h2>
-  <p>De code is vrije software onder de <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License, versie 3 of later</a>: iedereen mag ze gebruiken, bestuderen, aanpassen en hosten, op voorwaarde dat aangepaste versies die publiek draaien onder dezelfde licentie worden gepubliceerd. De broncode staat op <a href="https://github.com/daliscia/belsim">github.com/daliscia/belsim</a>. De gebruikte statistieken en documenten blijven onderworpen aan de voorwaarden van hun uitgevers (Eurostat, Nationale Bank van België, Statbel, Federaal Planbureau en de andere instellingen vermeld onder de bronnen).</p>
+  <p>De code is vrije software onder de <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License, versie 3 of later</a>: iedereen mag ze gebruiken, bestuderen, aanpassen en hosten, op voorwaarde dat aangepaste versies die publiek draaien onder dezelfde licentie worden gepubliceerd. De broncode staat op <a href="https://github.com/daliscia/belsim">github.com/daliscia/belsim</a>. De gebruikte statistieken en documenten blijven onderworpen aan de voorwaarden van hun uitgevers.</p>
   <p>Gepubliceerd door Daliscia (<a href="https://github.com/daliscia">github.com/daliscia</a>). Om een fout te melden of een verbetering voor te stellen, open een issue op <a href="https://github.com/daliscia/belsim/issues">github.com/daliscia/belsim/issues</a>.</p>
   <p>De site verzamelt geen persoonsgegevens, plaatst geen cookies en laadt niets bij een derde partij. Uw scenario's en weergavevoorkeuren worden in uw eigen browser bewaard.</p>
 </section>

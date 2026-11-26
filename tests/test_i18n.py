@@ -216,9 +216,8 @@ def _outline(html: str) -> list:
 
 def test_whitepaper_fragments_have_the_same_structure():
     en = _outline(_fragment("en"))
-    assert [s[0] for s in en] == ["head", "purpose", "model", "data", "baseline", "behaviour", "validation",
-                                  "distribution", "regions", "parties", "built", "limits", "reproduce",
-                                  "sources", "licence"]
+    assert [s[0] for s in en] == ["head", "about", "data", "baseline", "results", "accuracy", "limits",
+                                  "parties", "more", "built", "sources", "licence"]
     for lang in TRANSLATED:
         other = _outline(_fragment(lang))
         assert [s[0] for s in other] == [s[0] for s in en], f"{lang}: sections differ"
@@ -236,9 +235,8 @@ def test_whitepaper_fragments_are_complete_and_inert():
         # every anchor points at a section of the page
         ids = set(re.findall(r'<section id="([\w-]+)"', html))
         assert set(re.findall(r'href="#([\w-]+)"', html)) <= ids
-    # the same commands are given in the three languages
-    cmds = [re.findall(r"^uv run [^#\n]+", _fragment(lang), flags=re.M) for lang in ("en", *TRANSLATED)]
-    assert cmds[0] and [[c.strip() for c in x] for x in cmds].count([c.strip() for c in cmds[0]]) == 3
+        # the page stays short and points at the repository for the detail
+        assert "docs/DETAILS.md" in html
 
 
 def test_whitepaper_live_keys_are_known_to_the_page_script():

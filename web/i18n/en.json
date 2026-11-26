@@ -144,7 +144,7 @@
    "title": "Party programmes (2024 costing)",
    "nav": "Party programmes"
   },
-  "methodology": "Methodology"
+  "methodology": "How it works"
  },
  "bar": {
   "units_aria": "Amounts shown as",
@@ -386,11 +386,11 @@
   "debt_ref": "Reference value, 60% of GDP",
   "rev_exp_title": "Revenue and expenditure",
   "about": {
-   "title": "Method in brief",
-   "what": "An annual simulation of Belgium to 2070: population, labour market, economy and every revenue and expenditure line of general government. The baseline follows the Federal Planning Bureau to 2031 and the Study Committee on Ageing afterwards; a measure is a change of parameters and its effect is the difference from that baseline.",
-   "limits_lead": "Not an official costing, not a forecast.",
-   "limits": "Results are orders of magnitude. The Validation view shows where the model matches official figures and where it does not; no independent expert has reviewed it yet.",
-   "link": "Read the methodology"
+   "title": "About this model",
+   "what": "A small simulator of Belgium's public finances to 2070. It starts from the real 2024 and 2025 accounts and follows official projections; a measure is a change of parameters, and its effect is the difference with \"no policy change\".",
+   "limits_lead": "A toy model — not an official costing.",
+   "limits": "Results are rough sizes. The Validation page shows where it matches official figures and where it does not; nobody independent has reviewed it yet.",
+   "link": "How it works"
   }
  },
  "budget": {
@@ -1375,79 +1375,32 @@
   }
  },
  "meta": {
-  "description": "A free, open simulator of Belgium's economy and public finances, 2024-2070: change taxes, benefits and spending and see the effect on the budget, jobs and households. An exploratory model, not an official costing."
+  "description": "A small, free simulator of Belgium's public finances, 2024-2070: change taxes, benefits and spending and see the effect on the budget, jobs and households. A toy model, not an official costing."
  },
  "foot": {
-  "disclaimer": "Exploratory model — not an official costing.",
+  "disclaimer": "A toy model — not an official costing.",
   "source": "Source code (AGPL-3.0)",
-  "method": "How it was built and how far to trust it",
+  "method": "How it works",
   "build": "Build {commit}, {date}"
  },
  "wp": {
-  "doc_title": "Methodology — belsim",
-  "meta_description": "How the belsim simulator of Belgium's public finances was built, where its numbers come from, how far they agree with official figures, and what it should not be used for.",
-  "contents": "Contents",
+  "doc_title": "How it works — belsim",
+  "meta_description": "How belsim, a small simulator of Belgium's public finances, works: what is real, what is assumed, and how much to trust it.",
   "open_app": "Open the simulator",
   "print": "Print or save as PDF",
   "na": "not available",
   "pending": "Being computed by the server",
   "live_failed": "Some live figures could not be loaded from the server; they are marked “not available” in the text.",
-  "build": {
-   "commit": "Build (git commit)",
-   "date": "Date of the build",
-   "params": "Parameters",
-   "assumptions": "of which assumptions",
-   "tests": "Automated tests",
-   "dirty": "with uncommitted changes",
-   "unknown": "The build could not be identified."
-  },
-  "params": {
-   "caption": "Parameters and assumptions by parameter file",
-   "file": "File",
-   "count": "Parameters",
-   "assumptions": "Assumptions",
-   "share": "Share"
-  },
-  "base": {
-   "caption": "Baseline (no policy change), selected years"
-  },
   "val": {
    "computing": "The comparison with official figures is being computed by the server (about a minute the first time). This section fills in by itself.",
    "failed": "The comparison with official figures could not be loaded; it is available in the Validation view of the simulator.",
-   "group": {
-    "base": "Baseline projection",
-    "ind": "Costings and evaluations of measures"
-   },
-   "line": "{n} figures, {compared} compared: {w10} within 10% of the official figure, {w25} within 25%, {w50} within 50%.",
-   "caption": "Model against official figures: a selection",
+   "caption": "The model against official figures: a few examples",
    "col": {
     "what": "Reference",
     "official": "Official",
     "model": "Model",
     "gap": "Gap"
-   },
-   "sec": {
-    "near": "Baseline to 2031",
-    "long": "Long run",
-    "static": "Taxes, static costing",
-    "dynamic": "Dynamic responses",
-    "measures": "Enacted or costed measures"
    }
-  },
-  "sources": {
-   "caption": "{n} documents in the reference file",
-   "institution": "Institution",
-   "document": "Document",
-   "date": "Date",
-   "refs": "References"
-  },
-  "dist": {
-   "caption": "Synthetic households against the income survey, baseline {year}",
-   "gini": "Gini coefficient of disposable income",
-   "s80": "Income quintile share ratio (S80/S20)",
-   "poverty": "At-risk-of-poverty rate",
-   "by_type": "At-risk-of-poverty rate by household type",
-   "observed": "Survey (EU-SILC {year})"
   }
  }
 }

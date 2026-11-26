@@ -144,7 +144,7 @@
    "title": "Programmes des partis (chiffrage 2024)",
    "nav": "Programmes des partis"
   },
-  "methodology": "Méthodologie"
+  "methodology": "Comment ça marche"
  },
  "bar": {
   "units_aria": "Montants affichés en",
@@ -386,11 +386,11 @@
   "debt_ref": "Valeur de référence, 60 % du PIB",
   "rev_exp_title": "Recettes et dépenses",
   "about": {
-   "title": "La méthode en bref",
-   "what": "Une simulation annuelle de la Belgique jusqu'en 2070 : population, marché du travail, économie et chaque ligne de recettes et de dépenses des administrations publiques. Le scénario de référence suit le Bureau fédéral du Plan jusqu'en 2031 et le Comité d'étude sur le vieillissement ensuite ; une mesure est une modification de paramètres et son effet est l'écart par rapport à ce scénario de référence.",
-   "limits_lead": "Ni chiffrage officiel, ni prévision.",
-   "limits": "Les résultats sont des ordres de grandeur. La vue Validation montre où le modèle rejoint les chiffres officiels et où il s'en écarte ; aucun expert indépendant ne l'a encore examiné.",
-   "link": "Lire la méthodologie"
+   "title": "À propos de ce modèle",
+   "what": "Un petit simulateur des finances publiques belges jusqu'en 2070. Il part des comptes réels de 2024 et 2025 et suit les projections officielles ; une mesure est une modification de paramètres, et son effet est l'écart par rapport à la situation « à politique inchangée ».",
+   "limits_lead": "Un modèle jouet — pas un chiffrage officiel.",
+   "limits": "Les résultats sont des ordres de grandeur. La page Validation montre où il rejoint les chiffres officiels et où il s'en écarte ; personne d'indépendant ne l'a encore examiné.",
+   "link": "Comment ça marche"
   }
  },
  "budget": {
@@ -1375,79 +1375,32 @@
   }
  },
  "meta": {
-  "description": "Un simulateur libre et ouvert de l'économie et des finances publiques belges, 2024-2070 : modifiez impôts, prestations et dépenses et voyez l'effet sur le budget, l'emploi et les ménages. Un modèle exploratoire, pas un chiffrage officiel."
+  "description": "Un petit simulateur libre des finances publiques belges, 2024-2070 : modifiez impôts, prestations et dépenses et voyez l'effet sur le budget, l'emploi et les ménages. Un modèle jouet, pas un chiffrage officiel."
  },
  "foot": {
-  "disclaimer": "Modèle exploratoire — pas un chiffrage officiel.",
+  "disclaimer": "Un modèle jouet — pas un chiffrage officiel.",
   "source": "Code source (AGPL-3.0)",
-  "method": "Comment il a été construit et jusqu'où s'y fier",
+  "method": "Comment ça marche",
   "build": "Version {commit}, {date}"
  },
  "wp": {
-  "doc_title": "Méthodologie — belsim",
-  "meta_description": "Comment le simulateur belsim des finances publiques belges a été construit, d'où viennent ses chiffres, dans quelle mesure ils concordent avec les chiffres officiels et à quoi il ne doit pas servir.",
-  "contents": "Sommaire",
+  "doc_title": "Comment ça marche — belsim",
+  "meta_description": "Comment fonctionne belsim, un petit simulateur des finances publiques belges : ce qui est réel, ce qui est supposé, et jusqu'où s'y fier.",
   "open_app": "Ouvrir le simulateur",
   "print": "Imprimer ou enregistrer en PDF",
   "na": "non disponible",
   "pending": "En cours de calcul sur le serveur",
   "live_failed": "Certains chiffres calculés en direct n'ont pas pu être chargés depuis le serveur ; ils portent la mention « non disponible » dans le texte.",
-  "build": {
-   "commit": "Version (commit git)",
-   "date": "Date de la version",
-   "params": "Paramètres",
-   "assumptions": "dont hypothèses",
-   "tests": "Tests automatisés",
-   "dirty": "avec des modifications non validées",
-   "unknown": "La version n'a pas pu être identifiée."
-  },
-  "params": {
-   "caption": "Paramètres et hypothèses par fichier de paramètres",
-   "file": "Fichier",
-   "count": "Paramètres",
-   "assumptions": "Hypothèses",
-   "share": "Part"
-  },
-  "base": {
-   "caption": "Scénario de référence (à politique inchangée), années choisies"
-  },
   "val": {
    "computing": "La comparaison avec les chiffres officiels est en cours de calcul sur le serveur (environ une minute la première fois). Cette section se complète d'elle-même.",
    "failed": "La comparaison avec les chiffres officiels n'a pas pu être chargée ; elle est disponible dans la vue Validation du simulateur.",
-   "group": {
-    "base": "Projection de référence",
-    "ind": "Chiffrages et évaluations de mesures"
-   },
-   "line": "{n} chiffres, dont {compared} comparés : {w10} à moins de 10 % du chiffre officiel, {w25} à moins de 25 %, {w50} à moins de 50 %.",
-   "caption": "Le modèle face aux chiffres officiels : une sélection",
+   "caption": "Le modèle face aux chiffres officiels : quelques exemples",
    "col": {
     "what": "Référence",
     "official": "Officiel",
     "model": "Modèle",
     "gap": "Écart"
-   },
-   "sec": {
-    "near": "Scénario de référence jusqu'en 2031",
-    "long": "Long terme",
-    "static": "Fiscalité, chiffrage statique",
-    "dynamic": "Réponses dynamiques",
-    "measures": "Mesures adoptées ou chiffrées"
    }
-  },
-  "sources": {
-   "caption": "{n} documents dans le fichier de référence",
-   "institution": "Institution",
-   "document": "Document",
-   "date": "Date",
-   "refs": "Références"
-  },
-  "dist": {
-   "caption": "Ménages synthétiques face à l'enquête sur les revenus, scénario de référence {year}",
-   "gini": "Coefficient de Gini du revenu disponible",
-   "s80": "Rapport interquintile de revenu (S80/S20)",
-   "poverty": "Taux de risque de pauvreté",
-   "by_type": "Taux de risque de pauvreté par type de ménage",
-   "observed": "Enquête (EU-SILC {year})"
   }
  }
 }

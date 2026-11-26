@@ -1,164 +1,94 @@
 <header class="wp-head">
-  <h1>How this simulator was built, and why you can and cannot rely on it</h1>
-  <p class="standfirst">belsim is a free, open tool for exploring what budget choices would do to Belgium's public finances, economy and households. This page explains what is inside it, where its numbers come from, how far they agree with official figures and where they do not.</p>
-  <div data-block="build"></div>
-  <p class="key"><span class="live">Figures marked like this</span> are not typed into this text: they are read from the running model when the page loads, so they follow the parameters of the build shown above.</p>
+  <h1>How it works</h1>
+  <p class="standfirst">belsim is a small simulator of Belgium's public finances. You change a tax rate, a pension age or a spending rule, and it shows what happens to the deficit, the debt and employment up to <span class="live" data-v="m.end"></span>. It is a toy to play with and argue over, not an official costing.</p>
+  <p class="key"><span class="live">Figures marked like this</span> are computed by the model when the page loads.</p>
 </header>
 
-<section id="purpose">
-  <h2>Purpose and status</h2>
-  <p>belsim lets anyone change a tax rate, a benefit, a retirement age or a spending path and see the consequence, year by year, for the budget of every level of government, for employment and for household incomes. It is free and its code, parameters and sources are open.</p>
-  <div class="status">
-    <p><b>It is not an official costing.</b> No public institution produced, reviewed or endorsed it.</p>
-    <p><b>It is not a forecast.</b> The baseline follows official projections; the model adds nothing of its own about the future state of the economy.</p>
-    <p><b>Its results are orders of magnitude.</b> A figure of EUR 1.5 bn means "between one and two billion", not "1.5 rather than 1.4".</p>
-  </div>
-  <p>It is meant for citizens, journalists, students and policy staff who want to understand how the pieces of the budget fit together, what a proposal roughly costs and which mechanisms matter.</p>
-  <p>It should not be used for the costing of a legal text, for a precise yield, or for anything that needs the authority of the Federal Planning Bureau, the Court of Audit, the National Bank of Belgium or the administration. For those, their publications are the reference; several are listed under <a href="#sources">Sources</a>.</p>
-</section>
-
-<section id="model">
-  <h2>What the model is</h2>
-  <p>belsim is an annual, accounting-consistent simulation of Belgium from <span class="live" data-v="m.base"></span> to <span class="live" data-v="m.end"></span>. Each year is computed from the previous one by linked blocks:</p>
-  <ul>
-    <li><b>Population</b>: a cohort-component projection by age, sex and region (births, deaths, migration).</li>
-    <li><b>Labour market</b>: the status of every person (employee, self-employed, civil servant, unemployed, disabled, retired, student, other), employment by sector and job type, and wages.</li>
-    <li><b>Economy</b>: GDP, prices, the health index, incomes and consumption.</li>
-    <li><b>Public finances</b>: every revenue line (<span class="live" data-v="m.rev_lines"></span>) and expenditure line (<span class="live" data-v="m.exp_lines"></span>) of general government; the federal government, social security, the Communities and Regions with the four federated entities, and local authorities; interest and debt.</li>
-    <li><b>Behavioural responses</b>: how households and firms react to a measure.</li>
-    <li><b>Household distribution</b> and <b>regions</b>: who gains and who loses, and what happens in Flanders, Wallonia and Brussels.</li>
-  </ul>
-  <p>Every budget line is computed as a tax base, multiplied by the legislated parameters, multiplied by a calibration factor. The factor is fitted once so that <span class="live" data-v="m.base"></span> reproduces the published accounts, and is then held constant. A policy measure is a dated change to one or more parameters; its effect is the difference from the baseline. A scenario with no measures reproduces the baseline exactly, and an automated test checks this.</p>
-  <p>This design was chosen over a general-equilibrium or agent-based model for three reasons. It is transparent: every line can be traced to a base, a rule and a source. It needs no restricted microdata, so anyone can run and check it. And it speaks the language of the budget documents themselves, line by line. The price is that economic feedback is not derived from first principles: it is a set of response coefficients calibrated on official model results (see <a href="#behaviour">Behaviour</a>).</p>
+<section id="about">
+  <h2>What it is, and what it is not</h2>
+  <p>The model moves forward one year at a time. It follows the population, jobs and wages, the economy, and every revenue and spending line of the federal state, social security, the Communities and Regions, and local authorities. A measure is a change to one or more parameters from a given year. Its effect is the difference with "no policy change".</p>
+  <p>No public institution made, checked or endorsed it. It does not forecast anything, and its results are rough sizes: "one to two billion", not "1.5 rather than 1.4". For anything that matters, use the publications of the Federal Planning Bureau, the National Bank or the Court of Audit.</p>
 </section>
 
 <section id="data">
-  <h2>Data</h2>
-  <p>The base year rests on downloaded official statistics: the 2024 national accounts and government accounts (ESA 2010), population, fertility, mortality and migration, labour-force status, employment, value added and wages by sector, household consumption and fiscal statistics, from Eurostat, the National Bank of Belgium and Statbel. The observed 2025 government accounts are reproduced line by line.</p>
-  <p>Tax, contribution and benefit rules were checked against official or authoritative sources on 25 November 2026; the source and the date are recorded with each parameter, and some rest on secondary sources, which is noted there. The baseline to 2031 uses the tables of the Federal Planning Bureau's outlook of June 2026; the long run uses the 2026 report of the Study Committee on Ageing; the amounts of the Special Financing Act come from federal budget documents.</p>
-  <p>The model has <span class="live" data-v="p.count"></span> parameters. Each carries its source. A parameter without an official source is flagged as an assumption, in the parameter files and in the dashboard: <span class="live" data-v="p.assumptions"></span> of them are, that is <span class="live" data-v="p.share"></span>. They are of four kinds: elasticities and other behavioural coefficients; long-run projection paths; structural shares that shape how a budget line reacts; and legislated values that could not be verified against an official text.</p>
-  <div data-block="params-table"></div>
+  <h2>What is real, what is assumed</h2>
+  <p>The starting point is real: the 2024 and 2025 public accounts, official statistics on population, jobs and incomes, and the tax and benefit rules in force today.</p>
+  <p>The rest is modelling. The model has <span class="live" data-v="p.count"></span> parameters, each with its source. <span class="live" data-v="p.assumptions"></span> of them have no official source: mostly how people and firms react, and long-run trends. They are flagged as assumptions in the app, and you can change them.</p>
 </section>
 
 <section id="baseline">
-  <h2>The baseline and the conventions chosen</h2>
-  <p>Every result is a difference from a baseline, so the baseline's conventions matter as much as the model. These are the choices made and the reason for each.</p>
-  <ol class="conventions">
-    <li><b>"No policy change" includes enacted reforms and nothing else.</b> The baseline contains the income-tax reform with the tax-free allowance rising to 2030, the pension reform and its malus, the time limit on unemployment benefits, the capital gains tax, the defence path and the health growth norm. Measures that were announced but not legislated are left out, because their content is not fixed.</li>
-    <li><b>To 2031 the baseline is anchored on the Federal Planning Bureau; to <span class="live" data-v="m.end"></span> on the Study Committee on Ageing.</b> Nominal and real GDP, prices, employment and spending by level of government follow the tables of the Bureau's June 2026 outlook; pensions and health care follow the Committee's long-term projection. Over that horizon the model is therefore not an independent forecast: it is a consistent frame, close to the official one, in which measures can be compared.</li>
-    <li><b>Observed accounts take precedence over forecasts.</b> The 2025 government accounts are known, and the baseline reproduces them, including a revenue level above the Bureau's June estimate for that year. That level is kept. From 2026 a labelled alignment (<code>rev.fpb_alignment</code>) makes each category of revenue change, as a share of GDP, by as much as in the Bureau's outlook, counted from the observed 2025: the Bureau supplies the change, the accounts supply the level. The alignment is neither legislation nor an estimate, and it has a switch (<code>rev.fpb_alignment_enabled</code>). Switched off, the model's own revenue projection moves the 2031 revenue ratio by <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:sd2"></span> point of GDP and gives a deficit of <span class="live" data-v="s:align_off:fiscal.balance_pct_gdp@2031:abspct1"></span> of GDP instead of <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span>.</li>
-    <li><b>After 2030, income-tax thresholds follow wages rather than prices.</b> This is the usual convention of long-term projections. Under current law thresholds follow prices only, and real wage growth would then push revenue up by about <span class="live" data-v="d:price_link:fiscal.revenue_pct_gdp@2070:abs1"></span> points of GDP by 2070 in this model. The convention is a lever (<code>core.tax_threshold_wage_link</code>) that can be set back to current law.</li>
-    <li><b>Fuel and tobacco excise volumes decline by assumption.</b> The model has no illicit or cross-border response for these products; the volumes follow an assumed downward trend, which is one reason the revenue ratio falls from <span class="live" data-v="b:fiscal.revenue_pct_gdp@2031:pct1"></span> of GDP in 2031 to <span class="live" data-v="b:fiscal.revenue_pct_gdp@2070:pct1"></span> in 2070. This too is a lever (<code>excise.volume_growth</code>).</li>
-    <li><b>The spending paths of the federated entities for 2025-2031 come from the Bureau's tables</b> and are held afterwards, since no official projection by entity exists beyond that.</li>
-    <li><b>Long-run productivity, interest rates and migration follow official assumptions</b> (Study Committee on Ageing, Planning Bureau and Statbel population projection), not the model's own view.</li>
-  </ol>
-  <p>The resulting baseline, as the model computes it now:</p>
-  <div data-block="baseline-table"></div>
-  <p class="note">The steep rise of the deficit and the debt after 2031 is what "no policy change" means when ageing costs and interest grow and nothing is done; it is a reference line, not a prediction that nothing will be done.</p>
-</section>
-
-<section id="behaviour">
-  <h2>How behaviour is modelled and calibrated</h2>
-  <p>Each scenario is computed twice. The <b>static</b> (mechanical) costing changes the rule and leaves everyone's behaviour as in the baseline; it is what an ex-ante budget fiche reports. The <b>behavioural</b> result lets the economy react. The dashboard shows both.</p>
-  <p>The reactions are grouped in channels: labour supply and labour demand; wage bargaining; prices and automatic indexation; household consumption; the corporate and capital tax bases; the age of retirement; short-run demand feedback on output; and public capital. Each is a small set of coefficients with a documented source.</p>
-  <p>These coefficients were calibrated on the variants published for the Federal Planning Bureau's HERMES model (the response of GDP, employment, prices and the balance to standard shocks of 0.5% of GDP) and on the evaluations of the 2015 index jump. They were tuned by hand, not estimated.</p>
-  <p>Where official institutions disagree, the model says so. The Planning Bureau and the National Bank differ on the effect of wage moderation on GDP. The default follows the Bureau; a documented alternative value of one parameter (<code>dyn.wage_cost.net_export_output_elasticity</code>, 0.30 instead of 0.05) reproduces the Bank's result.</p>
-  <p>Two calibrations sit outside the micro-econometric literature, and it is better to say why:</p>
+  <h2>The starting line: no policy change</h2>
+  <p>Every result is compared with a baseline in which nothing new is decided. Five choices shape it:</p>
   <ul>
-    <li><b>Retirement and the pension malus.</b> The response of the retirement age to the malus is calibrated on the Planning Bureau's report on the pension reform. It is far stronger than micro studies suggest. It was kept because the purpose is to stay comparable with the official evaluation of an enacted reform.</li>
-    <li><b>Labour supply and benefit levels.</b> An error was found in the first calibration: unemployment benefits 10% higher cost about 90,000 jobs, an implausible figure. The response was recalibrated on duration elasticities from the literature; the same measure now costs about 10,000 jobs after four years. Social assistance (the integration income) now counts in the income a person can fall back on without work, and so in the incentive to work.</li>
+    <li>Reforms already voted are in. Announced ones are out.</li>
+    <li>Up to 2031 it follows the Federal Planning Bureau's outlook; after that, the Study Committee on Ageing for pensions and health care.</li>
+    <li>The 2025 accounts are known, so they are kept as they are.</li>
+    <li>After 2030, tax thresholds follow wages rather than prices, as long-term projections usually assume.</li>
+    <li>Fuel and tobacco sales keep falling, by assumption.</li>
   </ul>
-  <p>The band drawn around a result in the charts is the range between half and one-and-a-half times the central responses. It shows how much the answer depends on behaviour. It is not a statistical confidence interval.</p>
+  <p>The debt that keeps rising in this baseline is not a prediction. It is what happens on paper if nobody does anything.</p>
 </section>
 
-<section id="validation">
-  <h2>Validation</h2>
-  <p>The principle is simple: the model is confronted with official figures, collected with their sources in one reference file, and the comparison is published in full in the dashboard's Validation view. Automated tests (<span class="live" data-v="v.tests"></span> in the whole suite) keep the matches that have been reached from regressing when the model changes.</p>
-  <p>The reference file holds <span class="live" data-v="val.base.n"></span> figures on the baseline projection and <span class="live" data-v="val.ind.n"></span> figures on the cost or effect of measures taken from official costings and evaluations. A further <span class="live" data-v="val.sized.n"></span> rows are fiches of the 2024 party programmes whose parameter was sized to the official impulse: they match by construction, say nothing about the model's accuracy and are counted apart.</p>
-  <div data-block="val-summary"></div>
-  <p>A selection of what matches and what does not, with the model's current value. The full list, with sources, is in the Validation view.</p>
+<section id="results">
+  <h2>Reading a result</h2>
+  <p>Each scenario is computed twice. The <b>static</b> result changes the rule and assumes nobody reacts. The <b>behavioural</b> result lets people and firms react: work, hiring, wages, prices, spending.</p>
+  <p>The shaded band around a line shows the result with reactions half as strong and one and a half times as strong. It tells you how much the answer depends on behaviour. It is not a margin of error.</p>
+</section>
+
+<section id="accuracy">
+  <h2>How close it gets</h2>
+  <p>The model is checked against <span class="live" data-v="val.n"></span> official figures on what measures cost or bring in. <span class="live" data-v="val.w10"></span> land within 10% of the official figure, <span class="live" data-v="val.w25"></span> within 25% and <span class="live" data-v="val.w50"></span> within 50%. The baseline is closer, but that is no merit: it follows the official projections.</p>
+  <p>A few examples, good and bad. The Validation page of the app shows all of them.</p>
   <div data-block="val-table"></div>
-  <h3>Known gaps</h3>
-  <ul class="gaps">
-    <li>Where the Planning Bureau and the National Bank disagree, only one can be matched. The Bank's effects on GDP of the index jump and of the 2016 cut in employer contributions are reproduced only with the alternative value of the parameter mentioned above; the default follows the Bureau.</li>
-    <li>After a rise in VAT, employment falls less in the first year than in HERMES, and the gain for the balance after two to four years is smaller (see the table).</li>
-    <li>After a rise in employee contributions, the gain for the balance after four years is well below that of HERMES (see the table), and the income-tax offset of these contributions is larger; a cut in benefits lowers GDP less than in HERMES.</li>
-    <li>Reforms of the upper income-tax brackets come out 10 to 18% more expensive than the costings of the 2024 election programmes. The tax bases those costings imply are smaller in the upper brackets; the model keeps the 2024 tax returns, on which its schedule reproduces the 2024 receipts, and offers the Bureau's bases as an alternative that is off by default (<code>pit.bracket_base_factor</code>).</li>
-    <li>The 2028 reform of the special social-security contribution costs about a third more than the official figure, and the marital quotient comes out about 30% short on a like-for-like basis.</li>
-    <li>Revenue from 2026 to 2031 is not a result of the model: the change of each category since 2025 is the Planning Bureau's, through the alignment described under the conventions. With the alignment off, revenue is up to <span class="live" data-v="d:align_off:fiscal.revenue_pct_gdp@2031:abs2"></span> point of GDP higher by 2031.</li>
-    <li>Near term: the 2031 deficit is <span class="live" data-v="b:fiscal.balance_pct_gdp@2031:abspct1"></span> of GDP against 6.4% in the Planning Bureau's outlook, and the debt is 0.3 to 1.1 point of GDP below the National Bank's forecast for 2026-2028.</li>
-    <li>Long run: the model has about 50,000 more people aged 67 and over in 2070 than the national population projection, and a total population about 160,000 higher; employment growth to 2070 is somewhat short of that of the Study Committee on Ageing.</li>
-    <li>Distribution: the overall poverty rate is 10.1% against 10.9% observed and the rates by household type are within about 2 points, but the rate of people out of work other than the unemployed and the retired is 3.4 points too high and median income is about 2% too low.</li>
-    <li>Party programmes: the results for a whole package differ from the Planning Bureau's for several parties, in particular on employment; proposals costed in 2024 against the law of that time are not like for like where a reform has since been enacted.</li>
+</section>
+
+<section id="limits">
+  <h2>Where it is weak</h2>
+  <ul>
+    <li>How people and firms react rests on a few coefficients tuned by hand, not on proper estimates.</li>
+    <li>Some results are far from the official ones, such as the corporate tax cut or the budget effect of a VAT rise after a few years.</li>
+    <li>Where the Planning Bureau and the National Bank disagree, the model follows the Bureau.</li>
+    <li>Revenue up to 2031 follows the Planning Bureau's path, not the model's own calculation.</li>
+    <li>Some recent reforms are missing, such as the capped indexation of high pensions and the new unemployment benefit scale.</li>
+    <li>Nobody independent has checked it. There are certainly errors left.</li>
   </ul>
-</section>
-
-<section id="distribution">
-  <h2>Distribution</h2>
-  <p>The "who gains, who loses" view rests on synthetic households, not on a survey: the household types of the income survey (EU-SILC) repeated over the income groups of the tax-return statistics, about 290 households in all<span data-optional> (<span class="live" data-v="dist.households"></span> in the year of the table below, of which <span class="live" data-v="dist.shown"></span> are shown)</span>. Taxes and benefits are computed for each with the same rules as the budget lines<span data-optional>; together these households carry <span class="live" data-v="dist.pit"></span> of the income tax in the budget</span>.</p>
-  <p>The table compares this synthetic population with the income survey, whose 2025 edition records the incomes of 2024. Inequality and poverty are close to the observed levels; where the two differ, it is the model's level that is off. Wealth, housing costs and the non-take-up of benefits are not represented. The view should therefore be read for the <em>change</em> a measure brings to each income group and household type, not for the level of anyone's income or of poverty.</p>
-  <div data-block="dist-table"></div>
-</section>
-
-<section id="regions">
-  <h2>Regions</h2>
-  <p>Results are published for Flanders, Wallonia and Brussels, and for the federated entities: the Flemish Community, the Walloon Region, the French Community and the Brussels-Capital Region. Policy levers that are a regional or community competence are set per region or per Community, so a measure can apply to one of them only.</p>
-  <p>Two cautions. Net transfers between regions depend on allocation conventions (benefits are attributed by residence, indivisible federal spending by population); other conventions give other figures, and the model takes no position on which is right. And target-group reductions change the regional budget but not hiring in the model.</p>
+  <p>The full list is in <a href="https://github.com/daliscia/belsim/blob/main/docs/DETAILS.md">docs/DETAILS.md</a>.</p>
 </section>
 
 <section id="parties">
   <h2>Party programmes</h2>
-  <p>The dashboard offers one prebuilt scenario for each of the <span class="live" data-v="party.n"></span> parties whose 2024 election programme was costed by the Federal Planning Bureau (DC2024). That costing is the single source: <span class="live" data-v="party.measures"></span> measures with their fiche and the Bureau's ex-ante impulse.</p>
-  <p>One method is applied to all parties. Where a fiche fixes a value, that value is used; otherwise the parameter is sized so that the model's static budget effect equals the Bureau's impulse; <span class="live" data-v="party.sized"></span> measures are sized in this way. Of the measures, <span class="live" data-v="party.modelled"></span> are modelled, <span class="live" data-v="party.partly"></span> partly modelled (often on a broader budget line than the proposal), <span class="live" data-v="party.not"></span> carry no change (not costed, budget-neutral, or no usable lever) and <span class="live" data-v="party.baseline"></span> have been enacted since and are already in the baseline. The coverage is shown for each party.</p>
-  <p>The results are this model's, not the Planning Bureau's: for several parties the effect of the whole package on the balance, and in particular on employment, differs from the Bureau's; each party's panel shows both. Proposals costed in 2024 against the law of that time are not like for like where a reform has since been enacted. These are the measures the parties submitted in 2024. They are not their current positions.</p>
+  <p>The app can load the 2024 programme of each of <span class="live" data-v="party.n"></span> parties, as costed by the Federal Planning Bureau, with the same method for all of them. The results are this model's and differ from the Bureau's, sometimes a lot, especially on employment. These are the proposals of 2024, not what the parties say today.</p>
+</section>
+
+<section id="more">
+  <h2>Households and regions</h2>
+  <p><b>Households.</b> The "who gains, who loses" view uses a few hundred typical households built from statistics, not real families from a survey. Look at the change a measure brings, not at the income levels.</p>
+  <p><b>Regions.</b> Results are split between Flanders, Wallonia and Brussels. Transfers between regions depend on how federal revenue and spending are shared out; other reasonable rules give other figures.</p>
 </section>
 
 <section id="built">
   <h2>How it was built</h2>
-  <p>belsim was developed in November 2026 by one person directing AI coding agents (Anthropic's Claude, in Claude Code). The agents worked in parallel on separate modules against a written contract fixing units, names and the order of computation; each module was tested, and the whole was confronted with official figures as described above.</p>
-  <p>The data were fetched by the agents from official public sources. Legislated values were verified against sources on the dates recorded with each parameter. The French and Dutch texts were machine-translated by the same system and reviewed only by automated consistency checks.</p>
-  <div class="status plain">
-    <p><b>What this implies.</b> No independent expert has reviewed the model yet. Errors are likely to remain, in the code, in the parameters and in the translations. Corrections are welcome.</p>
-  </div>
-  <p>The repository holds <span class="live" data-v="v.commits"></span> commits; this page was served from commit <span class="live" data-v="v.commit"></span> of <span class="live" data-v="v.date"></span>. Its modules are: <span class="live" data-v="v.modules"></span>.</p>
-</section>
-
-<section id="limits">
-  <h2>Limits</h2>
-  <ul class="limits">
-    <li>Results are orders of magnitude, not official costings; see the gaps above.</li>
-    <li>Behavioural parameters were tuned by hand on the HERMES variants; the literature references in the behaviour parameter files were written from memory and have not been checked against the papers.</li>
-    <li>Jobs gained or lost through a measure carry a relative wage and productivity that depend on where they come from. These are judgement values, constant over time.</li>
-    <li>Indirect-tax changes move consumer prices and indexation, but GDP and consumption stay valued at baseline indirect-tax rates.</li>
-    <li>Regional results: net transfers between regions rest on allocation conventions; target-group subsidies change the budget but not hiring.</li>
-    <li>The education levers for cost per pupil and real cost growth change spending but not employment.</li>
-    <li>The distribution view uses about 290 synthetic households, not survey or administrative microdata; they carry about 90% of the income tax in the budget. Read changes rather than levels.</li>
-    <li>Enacted but not modelled: capped indexation of high pensions, the new unemployment benefit schedule, the employer solidarity contribution on sickness, several smaller tax changes. Announced but not legislated measures are left out.</li>
-    <li>Two baseline entries rest on decisions that are not yet final: the Walloon inheritance-tax cut from 2028 (a cheaper replacement was announced in October 2026) and the Flemish 3% registration duty on the sole home from 2027.</li>
-    <li>After 2030 the baseline lets tax thresholds follow wages; under current law revenue would be markedly higher by 2070 (see the conventions above).</li>
-    <li>Tobacco and fuel excise have no illicit or cross-border response; their volumes decline by assumption.</li>
-  </ul>
-</section>
-
-<section id="reproduce">
-  <h2>How to reproduce</h2>
-  <p>Everything on this page can be recomputed from the repository. The model reads only local files at run time.</p>
-  <pre><code>uv sync
-uv run python -m belsim.api          # dashboard on http://127.0.0.1:8000
-uv run pytest -q                     # the test suite
-uv run python -m belsim.validation   # model against the reference file; writes the report</code></pre>
-  <p>The parameters and their sources are in <code>params/*.yaml</code>; the reference figures in <code>data/reference/validation.yaml</code>; the comparison in <code>data/reference/validation_report.md</code>; the party translation in <code>scenarios/parties/source/mapping.yaml</code>.</p>
+  <p>belsim was built in a few days in November 2026 by one person directing AI coding agents (Anthropic's Claude). The agents also fetched the data and wrote the French and Dutch texts, which are machine translations. Nobody independent has reviewed the model yet, so expect mistakes, and please report them.</p>
+  <p class="note">This page runs on version <span class="live" data-v="v.commit"></span> of <span class="live" data-v="v.date"></span>.</p>
 </section>
 
 <section id="sources">
   <h2>Sources</h2>
-  <p>The institutions and documents the model is confronted with, as listed in the reference file. Statistical data come from Eurostat, the National Bank of Belgium (NBB.Stat) and Statbel; legislation sources are given with each parameter.</p>
-  <div data-block="sources"></div>
+  <ul>
+    <li><a href="https://ec.europa.eu/eurostat">Eurostat</a>: national and government accounts, income survey.</li>
+    <li><a href="https://www.nbb.be">National Bank of Belgium</a>: accounts and projections.</li>
+    <li><a href="https://statbel.fgov.be">Statbel</a>: population, labour market, tax returns.</li>
+    <li><a href="https://www.plan.be">Federal Planning Bureau</a>: medium-term outlook, population projections, standard tax and contribution shocks.</li>
+    <li><a href="https://www.plan.be/sites/default/files/documents/FOR_VERG2026_13333_FR.pdf">Study Committee on Ageing</a>: pensions and health care in the long run.</li>
+    <li><a href="https://www.dc2024.be">DC2024</a>: the Planning Bureau's costing of the 2024 party programmes.</li>
+    <li><a href="https://www.dekamer.be">Chamber of Representatives</a>: budget documents and Court of Audit comments.</li>
+  </ul>
+  <p>Each parameter shows its own source in the app. The rest is in <a href="https://github.com/daliscia/belsim/blob/main/docs/DETAILS.md">docs/DETAILS.md</a>.</p>
 </section>
 
 <section id="licence">
   <h2>Licence and contact</h2>
-  <p>The code is free software under the <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License, version 3 or later</a>: anyone may use, study, modify and host it, provided modified versions that are run publicly are published under the same licence. The source is at <a href="https://github.com/daliscia/belsim">github.com/daliscia/belsim</a>. The statistics and documents it draws on remain under the terms of their publishers (Eurostat, National Bank of Belgium, Statbel, Federal Planning Bureau and the others listed under Sources).</p>
+  <p>The code is free software under the <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License, version 3 or later</a>: anyone may use, study, modify and host it, provided modified versions that are run publicly are published under the same licence. The source is at <a href="https://github.com/daliscia/belsim">github.com/daliscia/belsim</a>. The statistics and documents it draws on remain under the terms of their publishers.</p>
   <p>Published by Daliscia (<a href="https://github.com/daliscia">github.com/daliscia</a>). To report an error or propose a correction, open an issue at <a href="https://github.com/daliscia/belsim/issues">github.com/daliscia/belsim/issues</a>.</p>
   <p>The site collects no personal data, sets no cookie and loads nothing from a third party. Your scenarios and display preferences are stored in your own browser.</p>
 </section>

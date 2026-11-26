@@ -36,7 +36,7 @@ one person directing AI coding agents, and nobody independent has reviewed it ye
 
 When compared with official costings, roughly two results in five land within 10% and two in
 three within 25%. The app has a Validation page that shows every comparison, and a
-Methodology page that explains the choices made.
+"How it works" page that explains the choices made.
 
 Found something wrong? [Open an issue](https://github.com/daliscia/belsim/issues).
 

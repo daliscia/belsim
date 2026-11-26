@@ -144,7 +144,7 @@
    "title": "Partijprogramma's (doorrekening 2024)",
    "nav": "Partijprogramma's"
   },
-  "methodology": "Methodologie"
+  "methodology": "Hoe het werkt"
  },
  "bar": {
   "units_aria": "Bedragen weergegeven in",
@@ -386,11 +386,11 @@
   "debt_ref": "Referentiewaarde, 60% van het bbp",
   "rev_exp_title": "Ontvangsten en uitgaven",
   "about": {
-   "title": "De methode in het kort",
-   "what": "Een jaarlijkse simulatie van België tot 2070: bevolking, arbeidsmarkt, economie en elke ontvangsten- en uitgavenlijn van de gezamenlijke overheid. Het basisscenario volgt het Federaal Planbureau tot 2031 en de Studiecommissie voor de Vergrijzing daarna; een maatregel is een wijziging van parameters en het effect ervan is het verschil met dat basisscenario.",
-   "limits_lead": "Geen officiële doorrekening, geen voorspelling.",
-   "limits": "De resultaten zijn grootteordes. De weergave Validatie toont waar het model bij de officiële cijfers aansluit en waar niet; er is nog geen toetsing door een onafhankelijke deskundige geweest.",
-   "link": "Lees de methodologie"
+   "title": "Over dit model",
+   "what": "Een kleine simulator van de Belgische overheidsfinanciën tot 2070. Hij vertrekt van de echte rekeningen van 2024 en 2025 en volgt de officiële projecties; een maatregel is een wijziging van parameters, en het effect is het verschil met 'ongewijzigd beleid'.",
+   "limits_lead": "Een speelgoedmodel — geen officiële doorrekening.",
+   "limits": "De resultaten zijn grootteordes. De pagina Validatie toont waar het bij de officiële cijfers aansluit en waar niet; niemand onafhankelijk heeft het al nagekeken.",
+   "link": "Hoe het werkt"
   }
  },
  "budget": {
@@ -1375,79 +1375,32 @@
   }
  },
  "meta": {
-  "description": "Een vrije, open simulator van de Belgische economie en overheidsfinanciën, 2024-2070: wijzig belastingen, uitkeringen en uitgaven en zie het effect op de begroting, de werkgelegenheid en de huishoudens. Een verkennend model, geen officiële doorrekening."
+  "description": "Een kleine, vrije simulator van de Belgische overheidsfinanciën, 2024-2070: wijzig belastingen, uitkeringen en uitgaven en zie het effect op de begroting, de werkgelegenheid en de huishoudens. Een speelgoedmodel, geen officiële doorrekening."
  },
  "foot": {
-  "disclaimer": "Verkennend model — geen officiële doorrekening.",
+  "disclaimer": "Een speelgoedmodel — geen officiële doorrekening.",
   "source": "Broncode (AGPL-3.0)",
-  "method": "Hoe het gebouwd is en hoe ver u erop kunt vertrouwen",
+  "method": "Hoe het werkt",
   "build": "Versie {commit}, {date}"
  },
  "wp": {
-  "doc_title": "Methodologie — belsim",
-  "meta_description": "Hoe de simulator belsim van de Belgische overheidsfinanciën gebouwd is, waar de cijfers vandaan komen, in welke mate ze overeenstemmen met officiële cijfers en waarvoor hij niet gebruikt mag worden.",
-  "contents": "Inhoud",
+  "doc_title": "Hoe het werkt — belsim",
+  "meta_description": "Hoe belsim werkt, een kleine simulator van de Belgische overheidsfinanciën: wat echt is, wat aangenomen is, en hoe ver u erop kunt vertrouwen.",
   "open_app": "Open de simulator",
   "print": "Afdrukken of opslaan als pdf",
   "na": "niet beschikbaar",
   "pending": "Wordt berekend door de server",
   "live_failed": "Sommige live berekende cijfers konden niet van de server worden geladen; ze staan in de tekst als ‘niet beschikbaar’.",
-  "build": {
-   "commit": "Versie (git-commit)",
-   "date": "Datum van de versie",
-   "params": "Parameters",
-   "assumptions": "waarvan aannames",
-   "tests": "Geautomatiseerde tests",
-   "dirty": "met niet-vastgelegde wijzigingen",
-   "unknown": "De versie kon niet worden vastgesteld."
-  },
-  "params": {
-   "caption": "Parameters en aannames per parameterbestand",
-   "file": "Bestand",
-   "count": "Parameters",
-   "assumptions": "Aannames",
-   "share": "Aandeel"
-  },
-  "base": {
-   "caption": "Basisscenario (bij ongewijzigd beleid), geselecteerde jaren"
-  },
   "val": {
    "computing": "De vergelijking met de officiële cijfers wordt door de server berekend (ongeveer een minuut de eerste keer). Dit deel vult zich vanzelf in.",
    "failed": "De vergelijking met de officiële cijfers kon niet worden geladen; ze is beschikbaar in de weergave Validatie van de simulator.",
-   "group": {
-    "base": "Basisprojectie",
-    "ind": "Doorrekeningen en evaluaties van maatregelen"
-   },
-   "line": "{n} cijfers, waarvan {compared} vergeleken: {w10} binnen 10% van het officiële cijfer, {w25} binnen 25%, {w50} binnen 50%.",
-   "caption": "Het model tegenover officiële cijfers: een selectie",
+   "caption": "Het model tegenover officiële cijfers: enkele voorbeelden",
    "col": {
     "what": "Referentie",
     "official": "Officieel",
     "model": "Model",
     "gap": "Verschil"
-   },
-   "sec": {
-    "near": "Basisscenario tot 2031",
-    "long": "Lange termijn",
-    "static": "Belastingen, statische doorrekening",
-    "dynamic": "Dynamische reacties",
-    "measures": "Aangenomen of doorgerekende maatregelen"
    }
-  },
-  "sources": {
-   "caption": "{n} documenten in het referentiebestand",
-   "institution": "Instelling",
-   "document": "Document",
-   "date": "Datum",
-   "refs": "Referenties"
-  },
-  "dist": {
-   "caption": "Synthetische huishoudens tegenover de inkomensenquête, basisscenario {year}",
-   "gini": "Gini-coëfficiënt van het beschikbaar inkomen",
-   "s80": "Inkomenskwintielverhouding (S80/S20)",
-   "poverty": "Armoederisicopercentage",
-   "by_type": "Armoederisicopercentage per huishoudtype",
-   "observed": "Enquête (EU-SILC {year})"
   }
  }
 }
